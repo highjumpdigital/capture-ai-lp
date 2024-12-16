@@ -39,6 +39,29 @@ a {
   text-decoration: none;
 }
 
+.heroSection {
+  height: 990px;
+  width: 100%;
+  background-image: url("./assets/herosectionbgImage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.herobackground{
+  border-top: 10px solid ;
+  border-left:10px solid ;
+  border-right:10px solid ;
+
+  border-radius: 10px;
+
+
+
+  border: 10px solid linear-gradient(90deg, rgba(47, 53, 57, 0.5) 0%, rgba(131, 148, 159, 0.5) 100%);
+
+  
+  
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

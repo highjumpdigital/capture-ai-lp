@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   //   footerRoutes: { about, privacy, support, terms },
   // } = constants;
   return (
-    <div className="flex flex-col bg-black px-6 md:px-12 py-6 md:py-12">
+    <div className="flex flex-col bg-black px-[100px] py-6 md:py-12">
       <div className="flex flex-col md:flex-row md:items-center   pl-5 lg:pl-0  justify-between w-full space-y-4 md:space-y-0">
         <div className="flex  flex-col gap-4 lg:gap-8 lg:flex-row      ">
           <Image
@@ -17,18 +17,6 @@ export const Footer: React.FC = () => {
             src={Logo}
             alt=""
           />
-          {/* <div className="flex flex-row items-center space-x-10 space-y-2 md:space-y-0 text-white">
-          {[`|`, about, support, privacy, terms].map(
-            (item: string, index: number) => (
-              <span
-                key={index}
-                className={`text-center ${index !== 0 && `cursor-pointer`}`}
-              >
-                {item}
-              </span>
-            ),
-          )}
-        </div> */}
         </div>
       </div>
       <div className="flex justify-between   py-10 items-center">
