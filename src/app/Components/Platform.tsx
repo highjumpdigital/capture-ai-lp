@@ -43,9 +43,8 @@ export const Platform = () => {
       <div className="flex gap-[100px] justify-between items-center">
         {data.map((item, index) => {
           return (
-            <div>
+            <div key={index}>
               <Image src={item.img} alt="image"
-              
               height={24}
               width={24}
               />

@@ -3,7 +3,6 @@ import HeroSectionImage from "../assets/CONVERSATIONS THAT CONVERT..png";
 import PeopleGroup from "../assets/personGroup.png";
 import HeroSectionDashboardImage from "../assets/image.png";
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
 export const HeroSection = (): any => {
