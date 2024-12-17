@@ -3,7 +3,7 @@ import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";
 
 export const FAQ = () => {
-  const data = [
+  const data = [     
     {
       title: "Can I cancel my subscription?",
       description:
