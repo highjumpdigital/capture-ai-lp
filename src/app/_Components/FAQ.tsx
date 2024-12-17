@@ -1,41 +1,10 @@
 import React, { useState } from "react";
 import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";
+import { FaqData } from "./constants";
 
 export const FAQ = () => {
-  const data = [
-    {
-      title: "Can I cancel my subscription?",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
-    },
-    {
-      title: "Can I integrate the chatbot with 3rd party applications?",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
-    },
-    {
-      title: "How many questions can the chatbot ask?",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
-    },
-    {
-      title: "Does the chatbot log conversations?",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
-    },
-    {
-      title:
-        "Is it possible to make amendments to the chatbot once it is live?",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
-    },
-    {
-      title: "How long does the chatbot conversation stay active?",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
-    },
-  ];
+
 
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -56,7 +25,7 @@ export const FAQ = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          {data.map((item, index) => (
+          {FaqData.map((item, index) => (
             <div
               key={index}
               className="max-w-[658px] w-full  hover:bg-[#FF420633] hover:border-[#FF4206] cursor-pointer rounded-[5px] p-[10px] border-[3px] border-[#383E4E33] min-h-[54px]"
