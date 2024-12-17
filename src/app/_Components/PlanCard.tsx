@@ -5,58 +5,8 @@ import { MdDone } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { DiVim } from "react-icons/di";
 import { FilledButton } from "./FilledButton";
+import { Plandata } from "./constants";
 export const PlanCard = () => {
-  const data = [
-    {
-      title: "1 WEBSITE AGENT (X MESSAGES)",
-      flag: true,
-    },
-    {
-      title: "BASIC VERSION",
-      flag: true,
-    },
-
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-    {
-      title: "",
-      flag: false,
-    },
-  ];
   return (
     <div className="flex flex-col gap-4 max-w-[308px] w-full p-5 border border-[#00000033] plandetailshadow rounded-[5px]">
       <div className="w-full flex justify-between items-center">
@@ -75,7 +25,7 @@ export const PlanCard = () => {
       </div>
 
       <div className="flex flex-col gap-5">
-        {data.map((item, index) => {
+        {Plandata.map((item, index) => {
           return (
             <div className="flex gap-4 justify-start items-center text-[12px] font-bold ">
               <div>

@@ -12,7 +12,7 @@ export default function Home() {
     <div>
       <Header />
 
-      <HeroSection />
+      {/* <HeroSection /> */}
       <Platform />
       <Immersion />
       <ChatPerformance />

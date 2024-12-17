@@ -35,7 +35,7 @@ export const Platform = () => {
   ];
 
   return (
-    <div className="platformbg px-[100px] justify-center items-center flex gap-[100px] h-[95px]">
+    <div className="platformbg  px-[20px] lg:px-[100px] justify-center items-center flex gap-[100px] h-[95px]">
       <div className="flex justify-start items-center text-4 leading-6 text-[#FFFFFFCC]  font-bold">
         AVAILABLE ON ALL PLATFORMS:
       </div>
@@ -44,7 +44,11 @@ export const Platform = () => {
         {data.map((item, index) => {
           return (
             <div>
-              <Image src={item.img} alt="image" />
+              <Image src={item.img} alt="image"
+              
+              height={24}
+              width={24}
+              />
             </div>
           );
         })}

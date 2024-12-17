@@ -5,7 +5,7 @@ import gear from "../assets/GIF/gear.gif";
 import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
-import ImmersionImage from "../assets/Immersion.png";
+import ImmersionImage from "../assets/latestnewImage.png";
 
 export const Immersion = () => {
   const data = [
@@ -41,21 +41,21 @@ export const Immersion = () => {
     },
   ];
   return (
-    <div className="px-[100px] mt-[100px] flex justify-between items-center">
+    <div className=" px-[20px] xl:px-[100px] py-[100px] flex  flex-col lg:flex-row  gap-4 justify-between items-center">
       <div>
-        <div className="text-[64px] leading-[64px] text-[#FF4206]">
+        <div className="  text-[34px]  lg:text-[64px]  leading-[44px] lg:leading-[64px] text-[#FF4206]">
           FULL IMMERSION. <br />
           <span className="font-bold text-black">FULL ATTENTION.</span>
         </div>
 
-        <div className="flex justify-start items-center">
+        <div className="flex justify-start items-center mt-[50px]">
           <Image src={ImmersionImage} alt="ImmersionImage" />
         </div>
       </div>
       <div>
         {data.map((item, index) => {
           return (
-            <div key={index} className="max-w-[417px] w-full bg-[#FFFFFF33] flex gap-[50px] justify-between items-center mt-[10px] immersionBgColor p-[20px]">
+            <div key={index} className="max-w-[417px] min-h-[129px] w-full bg-[#FFFFFF33] flex gap-[50px] justify-between items-center mt-[10px] immersionBgColor p-[20px]">
               <div className="h-20 w-20  flex justify-center items-center rounded-[5px] bg-[white]">
                 <Image src={item.img} alt="Image" />
               </div>
