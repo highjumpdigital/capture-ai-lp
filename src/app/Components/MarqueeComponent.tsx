@@ -1,27 +1,9 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { marquee1 } from "./constants";
 
 export const MarqueeComponent = () => {
-  const marquee1 = [
-    {
-      text: "Need Help Placing Order",
-    },
-    {
-      text: "How to apply for discount",
-    },
-    {
-      text: "csn i get invoice?",
-    },
-    {
-      text: "how to update my address?",
-    },
-    {
-      text: "Need Help tracking order",
-    },
-    {
-      text: "want to see your latest offers",
-    },
-  ];
+ 
   return (
     <div className=" flex flex-col gap-4 text-[#FFFFFFCC] ">
       <Marquee speed={200}>

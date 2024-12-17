@@ -123,3 +123,37 @@ export const Plandata = [
         "choose from a discreet chat bot, or integrate our system directly into your platform.",
     },
   ];
+export   const marquee1 = [
+  {
+    text: "Need Help Placing Order",
+  },
+  {
+    text: "How to apply for discount",
+  },
+  {
+    text: "csn i get invoice?",
+  },
+  {
+    text: "how to update my address?",
+  },
+  {
+    text: "Need Help tracking order",
+  },
+  {
+    text: "want to see your latest offers",
+  },
+];
+
+  export  const constants={
+immersion:{
+
+  fullimmersion:"FULL IMMERSION.",
+  fullattention:"FULL ATTENTION."
+},
+ask:{
+frequentalyasked:"FREQUENTLY ASKED",
+QUESTIONS:"QUESTIONS"
+}
+
+
+  }
