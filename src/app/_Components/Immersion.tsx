@@ -41,7 +41,7 @@ export const Immersion = () => {
     },
   ];
   return (
-    <div className="px-[100px] mt-[100px]">
+    <div className="px-[100px] mt-[100px] flex justify-between items-center">
       <div>
         <div className="text-[64px] leading-[64px] text-[#FF4206]">
           FULL IMMERSION. <br />
@@ -52,21 +52,22 @@ export const Immersion = () => {
           <Image src={ImmersionImage} alt="ImmersionImage" />
         </div>
       </div>
-      {/* <div>
+      <div>
         {data.map((item, index) => {
-          return <div className="max-w-[417px] w-full bg-[#FFFFFF33] p-[20px]">
+          return (
+            <div className="max-w-[417px] w-full bg-[#FFFFFF33] flex gap-[50px] justify-between items-center mt-[10px] immersionBgColor p-[20px]">
+              <div className="h-20 w-20  flex justify-center items-center rounded-[5px] bg-[white]">
+                <Image src={item.img} alt="Image" />
+              </div>
 
-<div className="h-20 w-20  rounded-[5px] bg-[white]">
-    <Image src={item.img}
-    alt="Image"
-    />
-
-
-</div>
-
-          </div>;
+              <div>
+                <div className="font-bold text-[16px] leading-4 text-[#000000CC] uppercase max-w-[237px] ">{item.title}</div>
+                <div className="font-medium text-[14px] leading-[14px mt-4 text-[#000000CC] max-w-[237px] ">{item.description}</div>
+              </div>
+            </div>
+          );
         })}
-      </div> */}
+      </div>
     </div>
   );
 };

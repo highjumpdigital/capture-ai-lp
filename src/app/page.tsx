@@ -6,16 +6,18 @@ import { Platform } from "./_Components/Platform";
 import { FAQ } from "./_Components/FAQ";
 import { PaymentSol } from "./_Components/PaymentSol";
 import { Immersion } from "./_Components/Immersion";
+import { ChatPerformance } from "./_Components/Chatperformance";
 export default function Home() {
   return (
     <div>
       <Header />
 
       <HeroSection />
-      <Platform/>
-      <Immersion/>
-      <PaymentSol/>
-      <FAQ/>
+      <Platform />
+      <Immersion />
+      <ChatPerformance />
+      <PaymentSol />
+      <FAQ />
       <Footer />
     </div>
   );
