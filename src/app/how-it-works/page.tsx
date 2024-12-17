@@ -51,7 +51,7 @@ const HowItWorks = () => {
     >
       {/* Left Section */}
       <div className="w-1/2 flex items-center justify-center">
-        <h1 className="text-[120px] font-extrabold leading-none tracking-tight text-black">
+        <h1 className="text-[128px] font-extrabold leading-none tracking-tight text-black font-['Cairo']">
           Here&apos;s<br />
           How it<br />
           Works
