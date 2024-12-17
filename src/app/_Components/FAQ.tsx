@@ -1,0 +1,89 @@
+import React, { useState } from "react";
+import { MdArrowForward } from "react-icons/md";
+import { MdOutlineArrowUpward } from "react-icons/md";
+
+export const FAQ = () => {
+  const data = [
+    {
+      title: "Can I cancel my subscription?",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
+    },
+    {
+      title: "Can I integrate the chatbot with 3rd party applications?",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
+    },
+    {
+      title: "How many questions can the chatbot ask?",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
+    },
+    {
+      title: "Does the chatbot log conversations?",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
+    },
+    {
+      title:
+        "Is it possible to make amendments to the chatbot once it is live?",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
+    },
+    {
+      title: "How long does the chatbot conversation stay active?",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium",
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleToggle = (index:any) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
+  return (
+    <div className="faq flex justify-center px-[100px] items-center">
+        <div className="flex justify-between items-start w-full">
+
+      <div>
+        <div className="text-[48px] leading-[48px] text-[#FF4206]">
+          FREQUENTLY ASKED
+        </div>
+        <div className="text-[48px] leading-[48px] text-black font-bold">
+          QUESTIONS
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        {data.map((item, index) => (
+          <div
+            key={index}
+            className="max-w-[658px] w-full cursor-pointer rounded-[5px] p-[10px] border-[3px] border-[#383E4E33] min-h-[54px]"
+            onClick={() => handleToggle(index)}
+          >
+            <div className="flex justify-between items-center">
+              <div className="text-4 leading-4 font-bold">{item.title}</div>
+              <div className="cursor-pointer">
+                {activeIndex === index ? (
+                  <MdOutlineArrowUpward fill="#FF4206" />
+                ) : (
+                  <MdArrowForward fill="#FF4206" />
+                )}
+              </div>
+            </div>
+            <div
+              className={`overflow-hidden transition-max-height duration-300 ease-in-out ${
+                activeIndex === index ? "max-h-[500px] mt-4" : "max-h-0"
+              }`}
+            >
+              <div className="text-sm text-gray-700">{item.description}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+        </div>
+    </div>
+  );
+};
