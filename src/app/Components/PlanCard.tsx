@@ -1,9 +1,7 @@
 import Image from "next/image";
-import { MdPerson } from "react-icons/md";
 import Person from "../assets/si_user-fill.png";
 import { MdDone } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import { DiVim } from "react-icons/di";
 import { FilledButton } from "./FilledButton";
 import { Plandata } from "./constants";
 export const PlanCard = () => {
@@ -27,7 +25,7 @@ export const PlanCard = () => {
       <div className="flex flex-col gap-5">
         {Plandata.map((item, index) => {
           return (
-            <div className="flex gap-4 justify-start items-center text-[12px] font-bold ">
+            <div key={index} className="flex gap-4 justify-start items-center text-[12px] font-bold ">
               <div>
                 {item.flag ? (
                   <div className="bg-[green] rounded-[50%] border border-white h-5 w-5 flex justify-center items-center ">
@@ -35,7 +33,7 @@ export const PlanCard = () => {
                   </div>
                 ) : (
                   <div className="bg-[red] rounded-[50%] border border-white h-5 w-5 flex justify-center items-center ">
-                    <MdDone fill="white" size={12} />
+                    <RxCross2 fill="white" size={12} />
                   </div>
                 )}
               </div>
