@@ -2,6 +2,7 @@ import Image from "next/image";
 import Logo from "@/app/assets/Logo.png";
 import { FilledButton } from "./FilledButton";
 import { Sofia_Sans_Semi_Condensed } from "next/font/google";
+import Link from "next/link";
 
 const sofiaSans = Sofia_Sans_Semi_Condensed({
   subsets: ['latin'],
@@ -16,11 +17,11 @@ export const Header = () => {
       </div>
       <div className="flex gap-5">
         <div className="font-bold text-4 leading-4 text-white">FEATURES</div>
-        <div className="font-bold text-4 leading-4 text-white">
+        <Link href="/how-it-works" className="font-bold text-4 leading-4 text-white hover:text-[#FF4206] transition-colors">
           HOW IT WORKS
-        </div>
+        </Link>
         <div className="font-bold text-4 leading-4 text-white">SOLUTIONS</div>
-        <div className="font-bold text-4 leading-4 text-white">FAQ'S</div>
+        <div className="font-bold text-4 leading-4 text-white">FAQ&apos;S</div>
       </div>
       <div className="flex gap-5 justify-center items-center">
         <div className="text-[#FF4206] font-bold text-4 leading-4">
