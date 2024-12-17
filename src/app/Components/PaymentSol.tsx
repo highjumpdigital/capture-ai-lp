@@ -1,5 +1,5 @@
-import { PlanCard } from "./PlanCard";
-import { PlanDetails } from "./PlanDetails";
+import { PlanCard } from "@/app/Components/PlanCard";
+import { PlanDetails } from "@/app/Components/PlanDetails";
 
 export const PaymentSol = () => {
   return (

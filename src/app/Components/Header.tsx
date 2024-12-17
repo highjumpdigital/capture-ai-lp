@@ -48,7 +48,7 @@ export const Header = () => {
           <div className="font-bold text-white cursor-pointer">FEATURES</div>
           <div className="font-bold text-white cursor-pointer">HOW IT WORKS</div>
           <div className="font-bold text-white cursor-pointer">SOLUTIONS</div>
-          <div className="font-bold text-white cursor-pointer">FAQ'S</div>
+          <div className="font-bold text-white cursor-pointer">FAQ&apos;S</div>
           <div className="font-bold text-[#FF4206] cursor-pointer">LOG IN</div>
         </div>
       </div>
@@ -64,7 +64,7 @@ export const Header = () => {
           <div className="font-bold text-4 leading-4 text-white">FEATURES</div>
           <div className="font-bold text-4 leading-4 text-white">HOW IT WORKS</div>
           <div className="font-bold text-4 leading-4 text-white">SOLUTIONS</div>
-          <div className="font-bold text-4 leading-4 text-white">FAQ'S</div>
+          <div className="font-bold text-4 leading-4 text-white">FAQ&apos;S</div>
         </div>
         <div className="flex gap-5 justify-center items-center">
           <div className="text-[#FF4206] font-bold text-4 leading-4">LOG IN</div>

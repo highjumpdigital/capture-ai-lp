@@ -42,8 +42,11 @@ export const Platform = () => {
 
         {data.map((item, index) => {
           return (
-            <div className="h-6 w-6">
-              <Image src={item.img} alt="image" height={24} width={24} />
+            <div key={index}>
+              <Image src={item.img} alt="image"
+              height={24}
+              width={24}
+              />
             </div>
           );
         })}
