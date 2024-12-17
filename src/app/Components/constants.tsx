@@ -91,7 +91,7 @@ export const Plandata = [
     },
   ];
 
-  const Immersiondata = [
+  export const Immersiondata = [
     {
       img: time,
       title: "ROUND-THE-CLOCK ENGAGEMENT",

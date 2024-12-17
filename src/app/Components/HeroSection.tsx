@@ -8,10 +8,13 @@ import { MarqueeComponent } from "./MarqueeComponent";
 export const HeroSection = (): any => {
   return (
     <div className=" heroSection relative">
-      <div className="flex justify-center items-center pt-[100px]">
-        <Image src={HeroSectionImage} alt="chat" />
+      <div className="flex justify-center font-medium  text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[100px]">
+        CONVERSATIONS 
       </div>
-      <div className="max-w-[848px] text-[24px] leading-[36px] text-center mx-auto mt-8  text-black">
+      <div className="flex justify-center font-medium  text-[40px]  md:text-[80px] lg:text-[119px] leading-[40px] md:leading-[80px] lg:leading-[119px]  text-black items-center">
+        THAT CONVERT.
+      </div>
+      <div className="max-w-[848px] text-[16px]  px-[20px]  md:text-[24px]  leading-[26px] md:leading-[36px] text-center mx-auto mt-8  text-black">
         Our 24/7 AI Chatbot boosts engagement, manages leads, and integrates
         seamlessly with your CRM for efficient interactions.
       </div>
@@ -28,7 +31,7 @@ export const HeroSection = (): any => {
           VIEW SOLUTIONS
         </div>
       </div>
-      <div className="absolute bottom-0 left-[30%] herobackground z-10">
+      <div className="absolute bottom-0  hidden md:block  right-[30%] left-[30%] herobackground z-10">
         <Image src={HeroSectionDashboardImage} alt="" />
       </div>
       <div>

@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-
 const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
@@ -12,5 +11,4 @@ const nextConfig: NextConfig = {
   compress: true,
   productionBrowserSourceMaps: false
 };
-
 export default nextConfig;

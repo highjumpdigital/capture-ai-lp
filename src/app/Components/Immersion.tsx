@@ -6,40 +6,10 @@ import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
 import ImmersionImage from "../assets/latestnewImage.png";
+import { Immersiondata } from "./constants";
 
 export const Immersion = () => {
-  const data = [
-    {
-      img: time,
-      title: "ROUND-THE-CLOCK ENGAGEMENT",
-      description:
-        "Your AI Chatbot is available 24/7, ensuring every potential lead is captured.",
-    },
-    {
-      img: gear,
-      title: "Customised with Your Business Info",
-      description:
-        "Equipped with your business’s details, your AI Chatbot answers all lead queries comprehensively.",
-    },
-    {
-      img: robot,
-      title: "Efficient Lead Management",
-      description:
-        "Expertly captures and channels inquiries, boosting engagement and user experience.",
-    },
-    {
-      img: stock,
-      title: "Higher Conversion Potential ",
-      description:
-        "Personalised interactions foster deeper understanding and nurturing of prospects.",
-    },
-    {
-      img: search,
-      title: "full screen sales agent",
-      description:
-        "choose from a discreet chat bot, or integrate our system directly into your platform.",
-    },
-  ];
+ 
   return (
     <div className=" px-[20px] xl:px-[100px] py-[100px] flex  flex-col lg:flex-row  gap-4 justify-between items-center">
       <div>
@@ -53,10 +23,10 @@ export const Immersion = () => {
         </div>
       </div>
       <div>
-        {data.map((item, index) => {
+        {Immersiondata.map((item, index) => {
           return (
             <div key={index} className="max-w-[417px] min-h-[129px] w-full bg-[#FFFFFF33] flex gap-[50px] justify-between items-center mt-[10px] immersionBgColor p-[20px]">
-              <div className="h-20 w-20  flex justify-center items-center rounded-[5px] bg-[white]">
+              <div className="h-20 w-20  flex justify-center items-center  gifshadow bg-[white]">
                 <Image src={item.img} alt="Image" />
               </div>
 
