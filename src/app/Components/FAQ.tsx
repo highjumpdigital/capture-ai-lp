@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";
-import { FaqData } from "./constants";
+import { constants, FaqData } from "./constants";
 
 export const FAQ = () => {
 
@@ -15,12 +15,12 @@ export const FAQ = () => {
   return (
     <div className="faq flex justify-center  px-[20px] lg:px-[100px] items-center">
       <div className="flex flex-col lg:flex-row gap-5  justify-between items-start w-full">
-        <div>
+        <div className="">
           <div className=" text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206]">
-            FREQUENTLY ASKED
+            {constants.ask.frequentalyasked}
           </div>
           <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-black font-bold">
-            QUESTIONS
+            {constants.ask.QUESTIONS}
           </div>
         </div>
 
