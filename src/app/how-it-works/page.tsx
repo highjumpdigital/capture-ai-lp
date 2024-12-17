@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import HeroSectionBgImage from "@/app/assets/herosectionbgImage.png";
+import React, { useState, useEffect } from 'react';
 
 const cards = [
   {
@@ -22,114 +22,96 @@ const cards = [
 ];
 
 const HowItWorks = () => {
-  const [[currentCard, direction], setCard] = useState([0, 0]);
-  const y = useMotionValue(0);
-  
-  const cardOpacity = useTransform(
-    y,
-    [-300, 0, 300],
-    [0.3, 1, 0.3]
-  );
+  const [currentCard, setCard] = useState(0);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      y: direction > 0 ? 1000 : -1000,
-      scale: 0.5,
-      filter: "blur(10px)"
-    }),
-    center: {
-      zIndex: 1,
-      y: 0,
-      scale: 1,
-      filter: "blur(0px)"
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      y: direction < 0 ? 1000 : -1000,
-      scale: 0.5,
-      filter: "blur(10px)"
-    })
-  };
+  useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      if (e.deltaY > 0) {
+        // Scrolling down
+        setCard((prev) => Math.min(prev + 1, cards.length - 1));
+      } else {
+        // Scrolling up
+        setCard((prev) => Math.max(prev - 1, 0));
+      }
+    };
 
-  const swipeConfidenceThreshold = 10000;
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
-  };
-
-  const paginate = (newDirection: number) => {
-    const nextCard = (currentCard + newDirection + cards.length) % cards.length;
-    setCard([nextCard, newDirection]);
-  };
-
-  const ballPosition = (currentCard / (cards.length - 1)) * 100;
+    window.addEventListener('wheel', handleScroll);
+    return () => window.removeEventListener('wheel', handleScroll);
+  }, []);
 
   return (
-    <div className="flex min-h-screen p-8">
+    <div 
+      className="flex min-h-screen p-8 relative"
+      style={{
+        backgroundImage: `url(${HeroSectionBgImage.src})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       {/* Left Section */}
       <div className="w-1/2 flex items-center justify-center">
-        <h1 className="text-4xl font-bold">Here&apos;s How it Works</h1>
+        <h1 className="text-[120px] font-extrabold leading-none tracking-tight text-black">
+          Here&apos;s<br />
+          How it<br />
+          Works
+        </h1>
       </div>
 
-      {/* Center Line with Ball */}
+      {/* Center Line */}
       <div className="relative flex items-center justify-center mx-4">
-        <div className="w-1 h-[600px] bg-orange-500"></div>
-        <motion.div 
-          className="absolute w-4 h-4 bg-orange-500 rounded-full"
-          animate={{ 
-            y: `${ballPosition}%`
-          }}
-          transition={{ 
-            type: "spring", 
-            stiffness: 300, 
-            damping: 30,
-            duration: 0.5 
-          }}
-        />
+        <div className="w-1 h-[428px] bg-orange-500">
+          {cards.map((_, index) => (
+            <div
+              key={index}
+              className={`absolute w-4 h-4 rounded-full transition-all duration-300 ease-in-out ${
+                index === currentCard ? 'bg-orange-500' : 'bg-orange-300'
+              }`}
+              style={{
+                left: '-6px',
+                transform: `translateY(${(index - currentCard) * 160}px)`,
+                top: '214px',
+                opacity: Math.abs(index - currentCard) <= 1 ? 1 : 0.3
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Right Section with Animated Cards */}
-      <div className="w-1/2 flex items-center justify-center overflow-hidden">
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.div
-            key={currentCard}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
+      {/* Right Section with Cards */}
+      <div className="w-1/2 relative max-h-[428px] overflow-y-auto flex items-center justify-center mt-[160px] scrollbar-hide" 
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <style jsx>{`
+          div::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+        {cards.map((card, index) => (
+          <div
+            key={card.id}
+            className="absolute w-[541px] p-[30px_0px_0px_0px] border-t-[3px] border-gray-200 rounded-tl-[5px] bg-white shadow-lg transition-all duration-300 ease-in-out"
             style={{
-              y,
-              opacity: cardOpacity,
-              perspective: "1000px",
-              transformStyle: "preserve-3d"
+              transform: `translate(-50%, ${(index - currentCard) * 160 - 40}%)`,
+              opacity: index === currentCard ? 1 : 0.3,
+              filter: index === currentCard ? 'blur(0px)' : `blur(${Math.abs(index - currentCard) * 2}px)`,
+              left: "50%",
+              top: "50%",
             }}
-            transition={{
-              y: { type: "spring", stiffness: 300, damping: 30 },
-              scale: { duration: 0.5 },
-              filter: { duration: 0.5 }
-            }}
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={1}
-            onDragEnd={(e, { offset, velocity }) => {
-              const swipe = swipePower(offset.y, velocity.y);
-              if (swipe < -swipeConfidenceThreshold) {
-                paginate(1);
-              } else if (swipe > swipeConfidenceThreshold) {
-                paginate(-1);
-              }
-            }}
-            className="w-[541px] p-[30px_0px_0px_0px] border-t-[3px] border-gray-200 rounded-tl-[5px] bg-white shadow-lg cursor-grab active:cursor-grabbing"
           >
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{cards[currentCard].title}</h3>
-              <p className="text-gray-600">{cards[currentCard].content}</p>
+            <div className="relative">
+              <span className="absolute -left-[80px] top-[30px] text-orange-500 font-bold text-3xl">
+                {String(card.id).padStart(2, '0')}.
+              </span>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+                <p className="text-gray-600">{card.content}</p>
+              </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default HowItWorks; 
+export default HowItWorks;

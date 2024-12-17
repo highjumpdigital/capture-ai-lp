@@ -23,7 +23,7 @@ export const MarqueeComponent = () => {
     },
   ];
   return (
-    <div className=" flex flex-col gap-4 text-[#FFFFFFCC]">
+    <div className=" flex flex-col gap-4 text-[#FFFFFFCC] ">
       <Marquee speed={200}>
         <div className="flex gap-4">
           {marquee1.map((item, index) => {

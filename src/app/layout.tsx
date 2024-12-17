@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import Script from "next/script";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,6 +26,22 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
         {children}
+
+        <Script
+          src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"
+          strategy="beforeInteractive"
+          crossOrigin="anonymous"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+          strategy="beforeInteractive"
+          crossOrigin="anonymous"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+          strategy="beforeInteractive"
+          crossOrigin="anonymous"
+        />
       </body>
     </html>
   );
