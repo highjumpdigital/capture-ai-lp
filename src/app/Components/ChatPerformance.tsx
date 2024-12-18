@@ -2,32 +2,14 @@ import Image from "next/image";
 import { MdArrowForward } from "react-icons/md";
 import ChatImage from "../assets/chatimage.png";
 import { FilledButton } from "./FilledButton";
+import { ChatPerformancedata, constants } from "./constants";
 export const ChatPerformance = () => {
-  const data = [
-    {
-      title: "3rd party tool integration",
-    },
-    {
-      title: "Provide company documents",
-    },
-    {
-      title: "Showcase work",
-    },
-    {
-      title: "Lead capture functionality",
-    },
-    {
-      title: "User intent configuration",
-    },
-    {
-      title: "Suggestion capabilities",
-    },
-  ];
+
 
   return (
     <div className=" px-5 py-8 xl:p-[100px] gap-4  flex flex-col lg:flex-row justify-between items-center w-full bg-white ">
    <div className="max-w-[641px] h-[374px] flex flex-col justify-between items-center w-full">
-  {data.map((item, index) => {
+  {ChatPerformancedata.map((item, index) => {
     return (
       <div
         key={index} // Ensure unique keys for list items
@@ -37,7 +19,7 @@ export const ChatPerformance = () => {
         } flex justify-between items-center w-full bg-[#FFFFFFCC] cursor-pointer rounded-[5px] p-[10px] border-[3px] border-[#383E4E33] min-h-[54px] 
           hover:bg-[#FF420633] hover:border-[#FF4206]`}
       >
-        <div className="font-bold text-[16px] leading-[16px] text-[#000000CC] uppercase">
+        <div className="font-bold text-[16px] leading-[16px] text-[#000000CC] Cairo uppercase">
           {item.title}
         </div>
         <div>
@@ -60,8 +42,7 @@ export const ChatPerformance = () => {
         </div>
         <div className="max-w-[248px]">
           <div className="font-medium text-[16px] leading-6  text-[#000000CC] ">
-            Showcase your work to your customers, from before and after images
-            to showcasing your most recent testimonials.
+         {constants.chatperformance.showase}
           </div>
 
           <div className="mt-[10px]">

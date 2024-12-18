@@ -35,7 +35,7 @@ export const Platform = () => {
   ];
 
   return (
-    <div className="platformbg  px-[20px] lg:px-[100px]  justify-center md:justify-between items-center flex  lg:flex-row  gap-[20px] h-[95px]">
+    <div className="platformbg z-10 px-[20px] relative lg:px-[100px]  justify-center md:justify-between items-center flex  lg:flex-row  gap-[20px] h-[95px]">
       <div className="flex justify-start items-center  text-[12px] sm:text-[16px] leading-6 text-[#FFFFFFCC]  font-bold">
         AVAILABLE ON ALL PLATFORMS:
       </div>

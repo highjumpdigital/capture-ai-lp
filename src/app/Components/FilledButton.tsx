@@ -14,7 +14,7 @@ export const FilledButton: React.FC<{
       } ${className.includes("bg-") ? className : `bg-primaryColor ${className}`}`}
       onClick={onClick}
     >
-      <span className={`   ${titleClassName}`}>
+      <span className={`   ${titleClassName} sofia`}>
         {buttonTitle}
       </span>
     </div>
