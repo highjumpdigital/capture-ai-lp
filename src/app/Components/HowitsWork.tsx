@@ -62,10 +62,10 @@ export default function Work2() {
         const containerRect = container.getBoundingClientRect();
         const distanceFromCenter = Math.abs(cardCenter - (containerRect.top + containerHeight / 2));
         const maxDistance = containerHeight * 0.6;
-        const opacity = Math.max(0.1, 1 - (distanceFromCenter / maxDistance) * 1.2);
+        const opacity = Math.max(0.5, 1 - (distanceFromCenter / maxDistance) * 1);
         return {
           opacity,
-          blur: (1 - opacity) * 5 
+          blur: (1 - opacity) * 2
         };
       });
 
