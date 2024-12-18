@@ -5,9 +5,9 @@ import { marquee1 } from "./constants";
 export const MarqueeComponent = () => {
  
   return (
-    <div className=" flex flex-col gap-4 text-[#FFFFFFCC] ">
+    <div className=" flex flex-col gap-3 text-[#FFFFFFCC] ">
       <Marquee speed={200}>
-        <div className="flex gap-4">
+        <div className="flex gap-4 opacity-50">
           {marquee1.map((item, index) => {
             return (
               <div
@@ -24,7 +24,7 @@ export const MarqueeComponent = () => {
       </Marquee>
 
       <Marquee direction="right" speed={200}>
-        <div className="flex gap-4">
+        <div className="flex gap-4 opacity-75">
           {marquee1.map((item, index) => {
             return (
               <div

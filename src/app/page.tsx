@@ -9,6 +9,7 @@ import {
   Immersion,
   ChatPerformance,
 } from "./Components";
+import HowItWorks from "./Components/HowitsWork";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Platform />
       <Immersion />
       <ChatPerformance />
+      <HowItWorks />
       <PaymentSol />
       <FAQ />
       <Footer />

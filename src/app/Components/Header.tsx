@@ -5,6 +5,7 @@ import { Sofia_Sans_Semi_Condensed } from "next/font/google";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import { constants } from "./constants";
 
 const sofiaSans = Sofia_Sans_Semi_Condensed({
   subsets: ["latin"],
@@ -53,7 +54,14 @@ export const Header = () => {
             className="font-bold text-white cursor-pointer">
             FEATURES
           </div>
-          <div className="font-bold text-white cursor-pointer">HOW IT WORKS</div>
+          <div className="font-bold text-white cursor-pointer"
+          
+          onClick={() => {
+            document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+            toggleMobileMenu();
+          }}
+          
+          >HOW IT WORKS</div>
           <div 
             onClick={() => {
               document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
@@ -89,12 +97,18 @@ export const Header = () => {
             className="font-bold text-4 leading-4 text-white cursor-pointer">
             FEATURES
           </div>
-          <div className="font-bold text-4 leading-4 text-white">HOW IT WORKS</div>
+          <div className="font-bold text-4 leading-4 text-white cursor-pointer"
+          
+          onClick={() => {
+            document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          
+          >HOW IT WORKS</div>
           <div 
             onClick={() => {
               document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="font-bold text-4 leading-4 text-white cursor-pointer">
+            className="font-bold text-4 leading-4 text-white cursor-pointer ">
             SOLUTIONS
           </div>
           <div 
@@ -106,7 +120,7 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex gap-5 justify-center items-center">
-          <div className="text-[#FF4206] font-bold text-4 leading-4">LOG IN</div>
+          <div className="text-[#FF4206] font-bold text-4 leading-4">{constants.header.login}</div>
           <FilledButton
             buttonTitle="GET STARTED"
             className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
