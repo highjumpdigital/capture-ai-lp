@@ -1,3 +1,4 @@
+//How its work
 "use client";
 
 import bgImage from '../assets/herosectionbgImage.png';
