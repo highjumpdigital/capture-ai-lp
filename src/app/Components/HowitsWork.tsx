@@ -161,7 +161,7 @@ export default function Work2() {
           >
             <div 
               ref={containerRef} 
-              className="py-4 lg:py-8 px-4  ml-[-26px] lg:ml-[-10px] lg:pl-0 lg:pr-8 max-h-[550px] overflow-y-auto scroll-smooth scrollbar-hide"
+              className="py-4 lg:py-8 px-4  ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[550px] overflow-y-auto scroll-smooth scrollbar-hide"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',

@@ -9,14 +9,14 @@ import { constants } from "./constants";
 export const HeroSection = (): any => {
   return (
     <div className=" heroSection relative">
-      <div className="flex justify-center font-medium  text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[100px]">
+      <div className="flex justify-center font-medium  Cairo text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[100px]">
        {constants.herosection.CONVERSATIONS}
       </div>
-      <div className="flex justify-center font-medium  text-[40px]  md:text-[80px] lg:text-[119px] leading-[40px] md:leading-[80px] lg:leading-[119px]  text-black items-center">
+      <div className="flex justify-center font-medium  Cairo text-[40px]  md:text-[80px] lg:text-[119px] leading-[40px] md:leading-[80px] lg:leading-[119px]  text-black items-center">
       {constants.herosection.thatconvert}
 
       </div>
-      <div className="max-w-[848px] text-[16px]  px-[20px]  md:text-[24px]  leading-[26px] md:leading-[36px] text-center mx-auto mt-8  text-black">
+      <div className="max-w-[848px] text-[16px]  Inter px-[20px]  md:text-[24px]  leading-[26px] md:leading-[36px] text-center mx-auto mt-8  text-black">
       {constants.herosection.chatbotengangement}
 
       </div>
