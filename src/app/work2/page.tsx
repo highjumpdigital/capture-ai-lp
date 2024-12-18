@@ -11,7 +11,7 @@ const cairo = Cairo({
   weight: ['400', '700'],
 });
 
-const SCROLL_ANIMATION_DURATION = 2000; // Increased from 800ms to 1200ms
+const SCROLL_ANIMATION_DURATION = 2000;
 
 export default function Work2() {
   const cards = [
