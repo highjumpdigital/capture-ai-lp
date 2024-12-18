@@ -5,7 +5,8 @@ import { useRef, useEffect, useState } from 'react';
 import { Cairo } from 'next/font/google';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { motion } from 'framer-motion';
-
+import Image from 'next/image';
+import Eclipse from "../assets/Ellipse 5.png"
 const cairo = Cairo({ 
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -109,8 +110,9 @@ export default function Work2() {
       style={{
         backgroundImage: `url(${bgImage.src})`
       }}
+      id='work'
     >
-      <div className="flex min-h-screen bg-black/50 flex-col lg:flex-row">
+      <div className="flex min-h-screen flex-col lg:flex-row">
         {/* Left Section */}
         <div className="w-full lg:w-1/2 p-4 lg:p-8 flex items-center justify-center">
           <h1 className="text-black font-bold leading-tight text-center lg:text-left" style={{
@@ -133,14 +135,19 @@ export default function Work2() {
               style={{
                 background: 'linear-gradient(to bottom, transparent, #f97316 50%)'
               }}
-            ></div>
+            >
+            
+            </div>
             {/* Main line */}
-            <div className="absolute top-12 bottom-12 left-0 right-0 bg-orange-500"></div>
+            <div className="absolute top-12 bottom-12 left-0 right-0 bg-orange-500">
+         
+
+            </div>
             {/* Bottom blur gradient */}
             <div 
               className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[2px] h-16"
               style={{
-                background: 'linear-gradient(to top, transparent, #f97316 50%)'
+                background: 'linear-gradient(to top, transparent, #f97316 30%)'
               }}
             ></div>
           </div>
@@ -154,7 +161,7 @@ export default function Work2() {
           >
             <div 
               ref={containerRef} 
-              className="py-4 lg:py-8 px-4 lg:px-8 max-h-[400px] overflow-y-auto scroll-smooth scrollbar-hide"
+              className="py-4 lg:py-8 px-4  ml-[-26px] lg:ml-[-10px] lg:pl-0 lg:pr-8 max-h-[550px] overflow-y-auto scroll-smooth scrollbar-hide"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
@@ -187,9 +194,15 @@ export default function Work2() {
                     }}
                   >
                     <motion.div 
-                      className="w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-orange-500"
+                      className=" rounded-full"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
-                    />
+                    >
+
+                      <Image
+                      src={Eclipse}
+                      alt=''
+                      />
+                      </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span 
                         className="text-xl lg:text-3xl font-bold text-orange-500"
@@ -198,7 +211,10 @@ export default function Work2() {
                       <motion.span 
                         className="text-xl lg:text-3xl font-bold text-orange-500"
                         style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
-                      >.</motion.span>
+                      >
+
+
+                      </motion.span>
                     </div>
                     <motion.div 
                       className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border border-[#AEB9DC33] relative"

@@ -46,21 +46,39 @@ export const Header = () => {
           />
         </div>
         <div className="flex flex-col gap-5 p-5">
-          <div className="font-bold text-white cursor-pointer">{constants.header.FEATURES}</div>
-          <div className="font-bold text-white cursor-pointer">
-          {constants.header.howitwork}
-
+          <div 
+            onClick={() => {
+              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+              toggleMobileMenu();
+            }}
+            className="font-bold text-white cursor-pointer">
+            FEATURES
           </div>
-          <div className="font-bold text-white cursor-pointer">{constants.header.SOLUTIONS}</div>
-          <div className="font-bold text-white cursor-pointer">{constants.header.FAQ}</div>
-          <div className="font-bold text-[#FF4206] cursor-pointer">{constants.header.login}</div>
-          <div>
-          <FilledButton
-            buttonTitle="GET STARTED"
-            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
-            onClick={() => {}}
-          />
+          <div className="font-bold text-white cursor-pointer"
+          
+          onClick={() => {
+            document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+            toggleMobileMenu();
+          }}
+          
+          >HOW IT WORKS</div>
+          <div 
+            onClick={() => {
+              document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
+              toggleMobileMenu();
+            }}
+            className="font-bold text-white cursor-pointer">
+            SOLUTIONS
           </div>
+          <div 
+            onClick={() => {
+              document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+              toggleMobileMenu();
+            }}
+            className="font-bold text-white cursor-pointer">
+            FAQ&apos;S
+          </div>
+          <div className="font-bold text-[#FF4206] cursor-pointer">LOG IN</div>
         </div>
       </div>
 
@@ -72,10 +90,34 @@ export const Header = () => {
           <Image src={Logo} alt="Logo" width={190} height={19} />
         </div>
         <div className="flex gap-5">
-          <div className="font-bold text-4 leading-4 text-white">{constants.header.FEATURES}</div>
-          <div className="font-bold text-4 leading-4 text-white">{constants.header.howitwork}</div>
-          <div className="font-bold text-4 leading-4 text-white">{constants.header.SOLUTIONS}</div>
-          <div className="font-bold text-4 leading-4 text-white">{constants.header.FAQ}</div>
+          <div 
+            onClick={() => {
+              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="font-bold text-4 leading-4 text-white cursor-pointer">
+            FEATURES
+          </div>
+          <div className="font-bold text-4 leading-4 text-white cursor-pointer"
+          
+          onClick={() => {
+            document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          
+          >HOW IT WORKS</div>
+          <div 
+            onClick={() => {
+              document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="font-bold text-4 leading-4 text-white cursor-pointer ">
+            SOLUTIONS
+          </div>
+          <div 
+            onClick={() => {
+              document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="font-bold text-4 leading-4 text-white cursor-pointer">
+            FAQ&apos;S
+          </div>
         </div>
         <div className="flex gap-5 justify-center items-center">
           <div className="text-[#FF4206] font-bold text-4 leading-4">{constants.header.login}</div>

@@ -8,7 +8,7 @@ import { constants, Plandata,STARTERPlandata ,InfinityProPlandata} from "./const
 
 export const PaymentSol = () => {
   return (
-    <div className="bg-[#F2F5F7]  px-[20px] xl:px-[100px]  py-[50px] lg:py-[100px] ">
+    <div id="solutions" className="bg-[#F2F5F7]  px-[20px] xl:px-[100px]  py-[50px] lg:py-[100px] ">
       <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo  text-[#FF4206]">
         {constants.paymentSol.FLEXIBLE}
         <span className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairofont-bold text-black">

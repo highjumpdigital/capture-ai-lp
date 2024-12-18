@@ -14,7 +14,7 @@ export const FAQ = () => {
 
   return (
     <div className=" flex justify-center   items-center">
-    <div className="  faq flex justify-center pt-[20px] lg:pt-[80px]  px-[20px] lg:px-[100px] items-start">
+    <div id="faq"   className="  faq flex justify-center pt-[20px] lg:pt-[80px]  px-[20px] lg:px-[100px] items-start">
   <div className="flex flex-col lg:flex-row gap-5 justify-between items-start w-full">
     {/* Left Section */}
     <div className="sticky top-">
