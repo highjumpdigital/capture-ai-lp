@@ -1,10 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import time from "../assets/GIF/time.gif";
-import gear from "../assets/GIF/gear.gif";
-import robot from "../assets/GIF/robot.gif";
-import stock from "../assets/GIF/stock.gif";
-import search from "../assets/GIF/search.gif";
+
 import ImmersionImage from "../assets/latestnewImage.png";
 import { constants, Immersiondata } from "./constants";
 
