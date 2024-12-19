@@ -9,7 +9,8 @@ export const Footer: React.FC = () => {
   //   footerRoutes: { about, privacy, support, terms },
   // } = constants;
   return (
-    <div className="flex flex-col bg-black  px-[20px] lg:px-[100px] py-6 md:py-12">
+    <div className="flex flex-col bg-black  px-[20px] lg:px-[100px] py-6 md:py-12 ">
+      <div className="max-w-[1311px] w-full mx-auto">
       <div className="flex flex-col md:flex-row md:items-center    justify-between w-full space-y-4 md:space-y-0">
         <div className="flex  flex-col gap-4 lg:gap-8 lg:flex-row      ">
           <Image
@@ -35,6 +36,7 @@ All Rights Reserved.`}
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };
