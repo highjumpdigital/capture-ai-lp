@@ -24,7 +24,7 @@ export const HeroSection = (): React.ReactElement => {
       <div className="flex justify-center items-center gap-5   mt-[50px]">
         <div>
           <FilledButton
-            buttonTitle="GET STARTED"
+            buttonTitle={constants.buttons.getStarted}
             className="rounded-[8px] w-[141px] h-10 text-white text-4  font-bold bg-[#FF4206] leading-4 "
             onClick={() => {}}
           />

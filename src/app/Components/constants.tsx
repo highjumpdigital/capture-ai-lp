@@ -3,8 +3,6 @@ import gear from "../assets/GIF/gear.gif";
 import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
-import ImmersionImage from "../assets/Immersion.png";
-
 export const Plandata = [
   {
     title: "1 WEBSITE AGENT (X MESSAGES)",
@@ -290,14 +288,33 @@ export const constants = {
     FREE:"FREE",
     offer:"Offer services, answer questions, trigger user intents, manage documents, and provide suggestions."
   },
-
   chatperformance:{
-    showase:" Showcase your work to your customers, from before and after images to showcasing your most recent testimonials."
+    showase:" Showcase your work to your customers, from before and after images to showcasing your most recent testimonials.",
+    title: "ENDLESS FEATURES",
+    subtitle: " TO INCREASE YOUR CHAT PERFORMANCE"
   },
   header:{
     FEATURES:"FEATURES",
-    howitwork:"HOW IT WORKS",SOLUTIONS:"SOLUTIONS",
+    howitwork:"HOW IT WORKS",
+    SOLUTIONS:"SOLUTIONS",
     FAQ:"FAQ'S",
     login:"LOG IN"
+  },
+  buttons: {
+    getStarted: "GET STARTED"
+  },
+  planDetails: {
+    personalAgent: "PERSONAL WEBSITE AGENT",
+    dashboard: "DASHBOARD",
+    captureData: "CAPTURE DATA",
+    quoteSupport: "QUOTE & SUPPORT INTENTS",
+    services: "SERVICES",
+    companyMaterial: "COMPANY MATERIAL INTEGRATION",
+    showcaseImages: "SHOWCASE IMAGES",
+    showcaseProducts: "SHOWCASE PRODUCT RANGES",
+    proactiveSuggestion: "PROACTIVE SUGGESTION",
+    realTimeAlerts: "REAL-TIME LEADS ALERTS",
+    thirdParty: "3RD PARTY INTEGRATIONS",
+    technicalSupport: "TECHNICAL SUPPORT"
   }
 };

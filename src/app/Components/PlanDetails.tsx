@@ -1,40 +1,42 @@
+import { constants } from './constants';
+
 export const PlanDetails = () => {
   const data = [
     {
-      text: "PERSONAL WEBSITE AGENT",
+      text: constants.planDetails.personalAgent,
     },
     {
-      text: "DASHBOARD",
+      text: constants.planDetails.dashboard,
     },
     {
-      text: "CAPTURE DATA",
+      text: constants.planDetails.captureData,
     },
     {
-      text: "QUOTE & SUPPORT INTENTS",
+      text: constants.planDetails.quoteSupport,
     },
     {
-      text: "SERVICES",
+      text: constants.planDetails.services,
     },
     {
-      text: "COMPANY MATERIAL INTEGRATION",
+      text: constants.planDetails.companyMaterial,
     },
     {
-      text: "SHOWCASE IMAGES",
+      text: constants.planDetails.showcaseImages,
     },
     {
-      text: "SHOWCASE PRODUCT RANGES",
+      text: constants.planDetails.showcaseProducts,
     },
     {
-      text: "PROACTIVE SUGGESTION",
+      text: constants.planDetails.proactiveSuggestion,
     },
     {
-      text: "REAL-TIME LEADS ALERTS",
+      text: constants.planDetails.realTimeAlerts,
     },
     {
-      text: "3RD PARTY INTEGRATIONS",
+      text: constants.planDetails.thirdParty,
     },
     {
-      text: "TECHNICAL SUPPORT",
+      text: constants.planDetails.technicalSupport,
     },
   ];
 

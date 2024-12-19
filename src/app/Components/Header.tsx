@@ -122,7 +122,7 @@ export const Header = () => {
         <div className="flex gap-5 justify-center items-center">
           <div className="text-[#FF4206] font-bold text-4 leading-4">{constants.header.login}</div>
           <FilledButton
-            buttonTitle="GET STARTED"
+            buttonTitle={constants.buttons.getStarted}
             className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
             onClick={() => {}}
           />
