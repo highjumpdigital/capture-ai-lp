@@ -6,16 +6,16 @@ import { constants, FaqData } from "./constants";
 export const FAQ = () => {
 
 
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const handleToggle = (index: any) => {
+  const handleToggle = (index: number) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
     <div className=" flex justify-center   items-center">
-    <div id="faq"   className="  faq flex justify-center pt-[20px] lg:pt-[80px]  px-[20px] lg:px-[100px] items-start">
-  <div className="flex flex-col lg:flex-row gap-5 justify-between items-start w-full">
+    <div id="faq"   className="  faq flex justify-center pt-[20px] lg:pt-[80px]  px-[20px] lg:px-[100px] items-start max">
+  <div className="flex flex-col lg:flex-row gap-5 justify-between items-start w-full max-w-[1311px] mx-auto">
     {/* Left Section */}
     <div className="sticky top-">
       <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206]">

@@ -5,12 +5,12 @@ import { FilledButton } from "./FilledButton";
 import { ChatPerformancedata, constants } from "./constants";
 export const ChatPerformance = () => {
   return (
-    <div id="features" className="px-5 py-8 xl:p-[50px]   w-full bg-white">
+    <div id="features" className="px-5 py-8 xl:p-[50px]   w-[100%] bg-white">
       <div className=" text-[26px] lg:text-[48px]  leading-[26px] lg:leading-[48px] Cairo text-[#FF4206] text-center font-bold">
         ENDLESS FEATURES
         <span className="text-black"> TO INCREASE YOUR CHAT PERFORMANCE</span>
       </div>
-      <div className="  py-8  gap-4  flex flex-col lg:flex-row justify-between items-center w-full bg-white ">
+      <div className="  py-8  gap-4  flex flex-col lg:flex-row justify-between items-center w-full max-w-[1312px] mx-auto bg-white ">
         <div className="max-w-[641px] h-[374px] flex flex-col justify-between items-center w-full">
           {ChatPerformancedata.map((item, index) => {
             return (
