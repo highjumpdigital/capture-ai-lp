@@ -14,7 +14,7 @@ const cairo = Cairo({
   weight: ['400', '700'],
 });
 
-const SCROLL_ANIMATION_DURATION = 2000; // Increased from 800ms to 1200ms
+const SCROLL_ANIMATION_DURATION = 2000;
 
 export default function Work2() {
  
@@ -181,8 +181,13 @@ export default function Work2() {
                       </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span 
-                        className="text-xl lg:text-3xl font-bold text-orange-500"
-                        style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
+                        className="text-orange-500"
+                        style={{ 
+                          opacity: cardOpacities[index]?.opacity ?? 1,
+                          fontWeight: 300,
+                          fontSize: '48px',
+                          lineHeight: '48px'
+                        }}
                       >{card.number}</motion.span>
                       <motion.span 
                         className="text-xl lg:text-3xl font-bold text-orange-500"

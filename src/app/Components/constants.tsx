@@ -3,11 +3,12 @@ import gear from "../assets/GIF/gear.gif";
 import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
-import chatimage from "../assets/chatimage.png";
 import provide from "../assets/performance/provide.svg"
 import thirdparty from "../assets/performance/thirdparty.svg"
 import showcase from "../assets/performance/showcase.svg"
 import leadcapture from "../assets/performance/leadcapture.svg"
+import userintent from "../assets/performance/userintent.svg"
+import suggestion from "../assets/performance/suggest.svg"
 export const Plandata = [
   {
     title: "1 WEBSITE AGENT (X MESSAGES)",
@@ -323,11 +324,11 @@ export const ChatPerformancedata = [
   },
   {
     title: "User intent configuration",
-    image: time
+    image: userintent
   },
   {
     title: "Suggestion capabilities",
-    image: chatimage
+    image: suggestion
   },
 ];
 export const constants = {
