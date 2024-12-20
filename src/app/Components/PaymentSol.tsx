@@ -1,8 +1,8 @@
 import { PlanCard } from "@/app/Components/PlanCard";
 import { PlanDetails } from "@/app/Components/PlanDetails";
-import FreePalnImage from "../assets/si_user-fill.png"
-import StarterPalnImage from "../assets/material-symbols_rocket.png"
-import AdvacedPalnImage from "../assets/basil_diamond-solid.png"
+import personicon from "../assets/price/personicon.svg"
+import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
+import diamond from "../assets/price/basil_diamond-solid.svg"
 
 import { constants, Plandata,STARTERPlandata ,InfinityProPlandata} from "./constants";
 
@@ -21,10 +21,10 @@ export const PaymentSol = () => {
           <div>
             <PlanDetails />
           </div>
-          <PlanCard planData={Plandata}  title="BASIC"  image={FreePalnImage}   price="FREE"  className="border-[#00000033] bg-[#F3F6F8]"  headerText="text-black" textClass="text-[#000000CC]"
+          <PlanCard planData={Plandata}  title="BASIC"  image={personicon}   price="FREE"  className="border-[#00000033] bg-[#F3F6F8]"  headerText="text-black" textClass="text-[#000000CC]"
    />
-          <PlanCard planData={STARTERPlandata}  title="STARTER KIT"  image={StarterPalnImage} price="$49/MO." className="border-[#00000033] bg-[#F3F6F8]" textClass="text-[#000000CC]" headerText="text-black" />
-          <PlanCard planData={InfinityProPlandata}  title="INFINITY PRO"  image={AdvacedPalnImage} price="$99/MO."  className="border-[#FF4206] bg-black paySolShadow" textClass="text-[#FFFFFFCC]" headerText="text-white"
+          <PlanCard planData={STARTERPlandata}  title="STARTER KIT"  image={materialsymbolrocket} price="$49/MO." className="border-[#00000033] bg-[#F3F6F8]" textClass="text-[#000000CC]" headerText="text-black" />
+          <PlanCard planData={InfinityProPlandata}  title="INFINITY PRO"  image={diamond} price="$99/MO."  className="border-[#FF4206] bg-black paySolShadow" textClass="text-[#FFFFFFCC]" headerText="text-white"
    />
         </div>
       </div>
