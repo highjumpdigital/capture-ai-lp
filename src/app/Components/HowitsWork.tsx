@@ -8,6 +8,7 @@ import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Eclipse from "../assets/Ellipse 5.png"
+import { cards } from './constants';
 const cairo = Cairo({ 
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -16,33 +17,7 @@ const cairo = Cairo({
 const SCROLL_ANIMATION_DURATION = 2000; // Increased from 800ms to 1200ms
 
 export default function Work2() {
-  const cards = [
-    { 
-      number: ". 01", 
-      heading: "AI-Powered Analysis",
-      text: "Our advanced algorithms analyze your content in real-time." 
-    },
-    { 
-      number: ". 02", 
-      heading: "Smart Recommendations",
-      text: "Get personalized suggestions based on your unique needs." 
-    },
-    { 
-      number: ". 03", 
-      heading: "Instant Results",
-      text: "See immediate improvements in your content quality." 
-    },
-    { 
-      number: ". 04", 
-      heading: "Easy Integration",
-      text: "Seamlessly integrate with your existing workflow." 
-    },
-    { 
-      number: ". 05", 
-      heading: "Continuous Learning",
-      text: "Our system evolves and improves with each interaction." 
-    },
-  ];
+ 
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [cardOpacities, setCardOpacities] = useState<{ opacity: number; blur: number }[]>(new Array(cards.length).fill({ opacity: 1, blur: 0 }));
@@ -66,7 +41,7 @@ export default function Work2() {
         const opacity = Math.max(0.5, 1 - (distanceFromCenter / maxDistance) * 1);
         return {
           opacity,
-          blur: (1 - opacity) * 2
+          blur: (1 - opacity) * 1
         };
       });
 
@@ -107,13 +82,13 @@ export default function Work2() {
 
   return (
     <div 
-      className={`min-h-screen bg-cover bg-center bg-no-repeat ${cairo.className}`}
+      className={`h-[700px] bg-cover   bg-center bg-no-repeat ${cairo.className}`}
       style={{
         backgroundImage: `url(${bgImage.src})`
       }}
       id='work'
     >
-      <div className="flex min-h-screen flex-col lg:flex-row">
+      <div className="flex  flex-col justify-center items-center h-full lg:flex-row  ">
         {/* Left Section */}
         <div className="w-full lg:w-1/2 p-4 lg:p-8 flex items-center justify-center">
           <h1 className="text-black font-bold leading-tight text-center lg:text-left" style={{
@@ -129,7 +104,7 @@ export default function Work2() {
         {/* Right Content Section with Line */}
         <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0">
           {/* Vertical Orange Line with Enhanced Gradient Blur */}
-          <div className="relative w-[2px] h-[400px] self-center overflow-visible">
+          <div className="relative w-[2px] h-[400px] self-center overflow-visible"> 
             {/* Top blur gradient */}
             <div 
               className="absolute -top-4 left-1/2 -translate-x-1/2 w-[2px] h-16"
@@ -162,7 +137,7 @@ export default function Work2() {
           >
             <div 
               ref={containerRef} 
-              className="py-4 lg:py-8 px-4  ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[550px] overflow-y-auto scroll-smooth scrollbar-hide"
+              className="py-4 lg:py-8 px-4  ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth scrollbar-hide"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
