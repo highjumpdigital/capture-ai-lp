@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";
 import { constants, FaqData } from "./constants";
-import faqbackimage from "../assets/background/faqsimage.png"
 
 export const FAQ = () => {
 
@@ -15,7 +14,8 @@ export const FAQ = () => {
 
   return (
     <div className=" flex justify-center   items-center">
-    <div id="faq" style={{backgroundImage: `url(${faqbackimage})`, backgroundSize: 'cover', backgroundPosition: 'center'}} className="  faq flex justify-center pt-[20px] lg:pt-[80px]  px-[20px] lg:px-[100px] items-start max">
+    <div id="faq" style={{ backgroundImage: `url('/background/faqimage.svg')`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="  faq flex justify-center pt-[20px] lg:pt-[80px]  px-[20px] lg:px-[100px] items-start max">
+
   <div className="flex flex-col lg:flex-row gap-5 justify-between items-start w-full max-w-[1311px] mx-auto">
     {/* Left Section */}
     <div className="sticky top-">

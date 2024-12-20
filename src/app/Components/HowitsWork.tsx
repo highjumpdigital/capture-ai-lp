@@ -206,7 +206,7 @@ export default function Work2() {
                         style={{
                           borderTop: '10px solid transparent',
                           borderBottom: '10px solid transparent',
-                          borderRight: '10px solid light-gray',
+                          borderRight: '10px solid #d3ddef33',
                         }}
                       />
                       <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
