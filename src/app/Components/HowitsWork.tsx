@@ -18,27 +18,27 @@ const SCROLL_ANIMATION_DURATION = 2000; // Increased from 800ms to 1200ms
 export default function Work2() {
   const cards = [
     { 
-      number: "01", 
+      number: ". 01", 
       heading: "AI-Powered Analysis",
       text: "Our advanced algorithms analyze your content in real-time." 
     },
     { 
-      number: "02", 
+      number: ". 02", 
       heading: "Smart Recommendations",
       text: "Get personalized suggestions based on your unique needs." 
     },
     { 
-      number: "03", 
+      number: ". 03", 
       heading: "Instant Results",
       text: "See immediate improvements in your content quality." 
     },
     { 
-      number: "04", 
+      number: ". 04", 
       heading: "Easy Integration",
       text: "Seamlessly integrate with your existing workflow." 
     },
     { 
-      number: "05", 
+      number: ". 05", 
       heading: "Continuous Learning",
       text: "Our system evolves and improves with each interaction." 
     },
