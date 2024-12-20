@@ -25,8 +25,8 @@ export const ChatPerformance = () => {
                 whileTap={{ scale: 0.98 }}
                 className={`max-w-[641px] ${
                   index === 0 ? "mt-[0px]" : "mt-[10px]"
-                } flex justify-between items-center w-full bg-[#FFFFFFCC] cursor-pointer rounded-[5px] p-[10px] border-[3px] ${
-                  selectedOption === index ? "border-[#FF4206] bg-[#FF420633]" : "border-[#383E4E33]"
+                } flex justify-between items-center w-full  cursor-pointer rounded-[5px] p-[10px] border-[3px] ${
+                  selectedOption === index ? "border-[#FF4206] bg-[#FF420633]" : "border-[#383E4E33] bg-[#FFFFFFCC]"
                 } min-h-[54px] 
           hover:bg-[#FF420633] hover:border-[#FF4206]`}
               >
