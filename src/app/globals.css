@@ -85,29 +85,7 @@ a {
   
  }
 }
-.immersionCardBorder
-  {
-    border: 3px solid ;
-    border-image-source: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(174, 185, 220, 0.2) 100%);
-    border-image-slice: 1;
-    border-radius: 5px;
-  }
 
-
-.herobackground{
-  border-top: 10px solid ;
-  border-left:10px solid ;
-  border-right:10px solid ;
-
-  border-radius: 10px;
-
-
-
-  border: 10px solid linear-gradient(90deg, rgba(47, 53, 57, 0.5) 0%, rgba(131, 148, 159, 0.5) 100%);
-
-  
-  
-}
 .marqueebg{
   background: radial-gradient(103.36% 103.36% at 50% 100%, #000000 60%, rgba(0, 0, 0, 0) 100%);
 
