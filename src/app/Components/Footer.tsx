@@ -43,7 +43,7 @@ All Rights Reserved.`}
               key={index}
             >
               <div
-                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-[5px] bg-[#FF4206] hover:opacity-80 transition-opacity"
+                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-[5px] bg-[#FF4206] "
               >
                 <Icon size={15} fill="black" />
               </div>
