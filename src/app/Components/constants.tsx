@@ -55,7 +55,6 @@ export const Plandata = [
   },
 ];
 
-
 export const STARTERPlandata = [
   {
     title: "1 WEBSITE AGENT",
@@ -68,7 +67,7 @@ export const STARTERPlandata = [
 
   {
     title: "NAME, EMAIL & PHONE ONLY",
-    flag: true, 
+    flag: true,
   },
   {
     title: "1 USER INTENT",
@@ -120,7 +119,7 @@ export const InfinityProPlandata = [
 
   {
     title: "NAME, EMAIL, PHONE + CUSTOM",
-    flag: true, 
+    flag: true,
   },
   {
     title: "10 USER INTENTS (10 Q’S EACH)",
@@ -245,6 +244,31 @@ export const marquee1 = [
     text: "want to see your latest offers",
   },
 ];
+
+export const marquee = [
+  {
+    text: "How do change my subscription plan?",
+  },
+  {
+    text: "Shall i guide you through the checkout",
+  }, {
+    text: "Do you ship Internationally",
+  }, {
+    text: "What payment method do you accept",
+  }, {
+    text: "",
+  }, {
+    text: "",
+  }, {
+    text: "",
+  }, {
+    text: "",
+  }, {
+    text: "",
+  }, {
+    text: "",
+  },
+];
 export const ChatPerformancedata = [
   {
     title: "3rd party tool integration",
@@ -282,11 +306,12 @@ export const constants = {
     viewSolution: " VIEW SOLUTIONS",
     leadsCapture: "5000+ LEADS CAPTURED FOR OUR PARTNERS",
   },
-  paymentSol:{
-    FLEXIBLE:"FLEXIBLE",
-    paymentsol:" PAYMENT SOLUTIONS",
-    FREE:"FREE",
-    offer:"Offer services, answer questions, trigger user intents, manage documents, and provide suggestions."
+  paymentSol: {
+    FLEXIBLE: "FLEXIBLE",
+    paymentsol: " PAYMENT SOLUTIONS",
+    FREE: "FREE",
+    offer:
+      "Offer services, answer questions, trigger user intents, manage documents, and provide suggestions.",
   },
   chatperformance:{
     showase:" Showcase your work to your customers, from before and after images to showcasing your most recent testimonials.",

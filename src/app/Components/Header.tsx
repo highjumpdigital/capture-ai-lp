@@ -52,7 +52,7 @@ export const Header = () => {
               toggleMobileMenu();
             }}
             className="font-bold text-white cursor-pointer">
-            FEATURES
+            {constants.header.FEATURES}
           </div>
           <div className="font-bold text-white cursor-pointer"
           
@@ -61,14 +61,19 @@ export const Header = () => {
             toggleMobileMenu();
           }}
           
-          >HOW IT WORKS</div>
+          >
+            {constants.header.howitwork}
+            
+            </div>
           <div 
             onClick={() => {
               document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
               toggleMobileMenu();
             }}
             className="font-bold text-white cursor-pointer">
-            SOLUTIONS
+            {constants.header.SOLUTIONS}
+
+            
           </div>
           <div 
             onClick={() => {
@@ -76,9 +81,19 @@ export const Header = () => {
               toggleMobileMenu();
             }}
             className="font-bold text-white cursor-pointer">
-            FAQ&apos;S
+            {constants.header.FAQ}
+            
           </div>
-          <div className="font-bold text-[#FF4206] cursor-pointer">LOG IN</div>
+          <div className="font-bold text-[#FF4206] cursor-pointer">
+
+          {constants.header.login}
+
+          </div>
+          <FilledButton
+            buttonTitle="GET STARTED"
+            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
+            onClick={() => {}}
+          />
         </div>
       </div>
 
@@ -95,7 +110,8 @@ export const Header = () => {
               document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="font-bold text-4 leading-4 text-white cursor-pointer">
-            FEATURES
+            {constants.header.FEATURES}
+            
           </div>
           <div className="font-bold text-4 leading-4 text-white cursor-pointer"
           
@@ -103,20 +119,26 @@ export const Header = () => {
             document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
           }}
           
-          >HOW IT WORKS</div>
+          >
+            {constants.header.howitwork}
+
+            
+            </div>
           <div 
             onClick={() => {
               document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="font-bold text-4 leading-4 text-white cursor-pointer ">
-            SOLUTIONS
+            {constants.header.SOLUTIONS}
+            
           </div>
           <div 
             onClick={() => {
               document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="font-bold text-4 leading-4 text-white cursor-pointer">
-            FAQ&apos;S
+            {constants.header.FAQ}
+            
           </div>
         </div>
         <div className="flex gap-5 justify-center items-center">
