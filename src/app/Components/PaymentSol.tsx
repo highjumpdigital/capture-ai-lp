@@ -21,7 +21,7 @@ export const PaymentSol = () => {
           <div>
             <PlanDetails />
           </div>
-          <PlanCard planData={Plandata}  title="FREE"  image={FreePalnImage}   price="FREE"  className="border-[#00000033] bg-[#F3F6F8]"  headerText="text-black" textClass="text-[#000000CC]"
+          <PlanCard planData={Plandata}  title="BASIC"  image={FreePalnImage}   price="FREE"  className="border-[#00000033] bg-[#F3F6F8]"  headerText="text-black" textClass="text-[#000000CC]"
    />
           <PlanCard planData={STARTERPlandata}  title="STARTER KIT"  image={StarterPalnImage} price="$49/MO." className="border-[#00000033] bg-[#F3F6F8]" textClass="text-[#000000CC]" headerText="text-black" />
           <PlanCard planData={InfinityProPlandata}  title="INFINITY PRO"  image={AdvacedPalnImage} price="$99/MO."  className="border-[#FF4206] bg-black paySolShadow" textClass="text-[#FFFFFFCC]" headerText="text-white"
