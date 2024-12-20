@@ -3,7 +3,16 @@ import Image from "next/image";
 import React from "react";
 // import { constants } from '../_common';
 import { GrFacebookOption } from "react-icons/gr";
-import { FaInstagram, FaLinkedinIn } from "react-icons/fa6";
+import { FaInstagram, FaLinkedinIn, FaYoutube, FaXTwitter } from "react-icons/fa6";
+
+const socialLinks = [
+  { Icon: GrFacebookOption, url: "https://www.facebook.com/profile.php?id=61567631743624" },
+  { Icon: FaInstagram, url: "https://www.instagram.com/cptr.ai/" },
+  { Icon: FaLinkedinIn, url: "https://www.linkedin.com/company/cptr-ai/" },
+  { Icon: FaYoutube, url: "https://www.youtube.com/@CaptureAI" },
+  { Icon: FaXTwitter, url: "https://x.com/CaptureAI392628" },
+];
+
 export const Footer: React.FC = () => {
   // const {
   //   footerRoutes: { about, privacy, support, terms },
@@ -26,13 +35,19 @@ export const Footer: React.FC = () => {
 All Rights Reserved.`}
         </div>
         <div className="flex   justify-start   lg:justify-center space-x-3">
-          {[GrFacebookOption, FaInstagram, FaLinkedinIn].map((Icon, index) => (
-            <div
-              className="flex h-6 w-6 cursor-pointer items-center justify-center  rounded-[5px] bg-[#FF4206] "
+          {socialLinks.map(({ Icon, url }, index) => (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
               key={index}
             >
-              <Icon size={15} fill="black" />
-            </div>
+              <div
+                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-[5px] bg-[#FF4206] hover:opacity-80 transition-opacity"
+              >
+                <Icon size={15} fill="black" />
+              </div>
+            </a>
           ))}
         </div>
       </div>

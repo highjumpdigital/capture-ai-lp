@@ -2,7 +2,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { MdDone } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import { FilledButton } from "./FilledButton"; // Update this import path as needed
+import { FilledButton } from "./FilledButton";
 import { constants } from "./constants";
 
 // Define Props Type
@@ -12,7 +12,7 @@ interface PlanCardProps {
   className: string;
   headerText: string;
   textClass: string;
-  image: StaticImageData | string; // For static imports or external URLs
+  image: StaticImageData | string;
   planData: { title: string; flag: boolean }[];
   buttonTitle?: string;
   onClick?: () => void;
@@ -29,6 +29,16 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   headerText,
   onClick,
 }) => {
+  const getHoverText = (price: string) => {
+    if (price === "FREE") return "FOR FREE";
+    if (price.startsWith("$")) return `FOR ${price}`;
+    return buttonTitle;
+  };
+
+  const handleClick = () => {
+    if (onClick) onClick();
+  };
+
   return (
     <div
       className={`flex flex-col gap-4 max-w-[308px] w-full p-5 border  plandetailshadow rounded-[5px]  ${className} `}
@@ -84,8 +94,9 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       <div className="mt-5">
         <FilledButton
           buttonTitle={buttonTitle}
+          hoverText={getHoverText(price)}
           className="text-white h-10 w-full bg-[#FF4206]"
-          onClick={() => {}}
+          onClick={handleClick}
         />
       </div>
     </div>
