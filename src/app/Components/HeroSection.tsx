@@ -24,7 +24,7 @@ export const HeroSection = (): React.ReactElement => {
       <div className="flex justify-center items-center gap-5   mt-[50px]">
         <div>
           <FilledButton
-            buttonTitle="GET STARTED"
+            buttonTitle={constants.buttons.getStarted}
             className="rounded-[8px] w-[141px] h-10 text-white text-4  font-bold bg-[#FF4206] leading-4 "
             onClick={() => {}}
           />
@@ -36,7 +36,7 @@ export const HeroSection = (): React.ReactElement => {
       </div>
       <div className="rounded-[40px]">
 
-      <div className="absolute bottom-0  hidden md:block rounded-[10px]  right-[30%] left-[30%]  herosectionDashboardImage z-10">
+      <div className="absolute bottom-0  hidden md:block rounded-[10px]  right-[30%] left-[30%]  border-[10px] border-solid bg-gradient-to-r from-[rgba(47,53,57,0.5)] to-[rgba(131,148,159,0.5)] z-10">
         <Image src={HeroSectionDashboardImage} alt="" className="" 
         
         height={500}
