@@ -6,8 +6,6 @@ import { useRef, useEffect, useState } from 'react';
 import { Cairo } from 'next/font/google';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Eclipse from "../assets/Ellipse 5.svg"
 import { cards } from './constants';
 const cairo = Cairo({ 
   subsets: ['latin'],
@@ -115,7 +113,7 @@ export default function Work2() {
             
             </div>
             {/* Main line */}
-            <div className="absolute top-12 bottom-12 left-0 right-0 bg-orange-500">
+            <div className="absolute top-12 bottom-12 left-0 right-0 bg-[#FF4206]">
          
 
             </div>
@@ -174,10 +172,7 @@ export default function Work2() {
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
 
-                      <Image
-                      src={Eclipse}
-                      alt=''
-                      />
+                      <div className='w-[20px] h-[20px] rounded-full bg-[#FF4206]'/>
                       </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span 
@@ -197,16 +192,16 @@ export default function Work2() {
                       </motion.span>
                     </div>
                     <motion.div 
-                      className="bg-gray-50/90  p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#D3DDEF33] relative"
+                      className="bg-gray-50/90  p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
                       {/* Gray triangle shape */}
                       <motion.div 
-                        className="absolute left-[-15px] top-1/2 -translate-y-1/2 w-0 h-0"
+                        className="absolute left-[-21px] top-1/2 -translate-y-1/2 w-0 h-0"
                         style={{
-                          borderTop: '10px solid transparent',
-                          borderBottom: '10px solid transparent',
-                          borderRight: '10px solid #d3ddef33',
+                          borderTop: '14px solid transparent',
+                          borderBottom: '14px solid transparent',
+                          borderRight: '14px solid rgb(237,237,244)',
                         }}
                       />
                       <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
