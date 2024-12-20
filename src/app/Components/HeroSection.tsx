@@ -1,12 +1,12 @@
 import React from "react";
-import HeroSectionImage from "../assets/CONVERSATIONS THAT CONVERT..png";
 import PeopleGroup from "../assets/personGroup.png";
 import HeroSectionDashboardImage from "../assets/dashboardiamge.png";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
 import { constants } from "./constants";
-export const HeroSection = (): any => {
+
+export const HeroSection = (): React.ReactElement => {
   return (
     <div className=" heroSection relative">
       <div className="flex justify-center font-medium  Cairo text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[100px]">
