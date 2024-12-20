@@ -34,14 +34,12 @@ export const HeroSection = (): React.ReactElement => {
 
         </div>
       </div>
-      <div className="rounded-[40px]">
 
-      <div className="absolute bottom-0  hidden md:block rounded-[10px]  right-[30%] left-[30%]  border-[10px] border-solid bg-gradient-to-r from-[rgba(47,53,57,0.5)] to-[rgba(131,148,159,0.5)] z-10">
+      <div className="absolute bottom-0  hidden md:block rounded-tl-[10px] rounded-tr-[10px]  right-[30%] left-[30%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[#888c8f] z-10">
         <Image src={HeroSectionDashboardImage} alt="" className="" 
         
         height={500}
         />
-      </div>
       </div>
       <div>
         <div className="mt-[40px] flex flex-col justify-center items-center">

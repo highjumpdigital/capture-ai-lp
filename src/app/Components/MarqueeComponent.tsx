@@ -1,6 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { marquee1 } from "./constants";
+import { marquee1,marquee2,marquee3,marquee4 } from "./constants";
 
 export const MarqueeComponent = () => {
  
@@ -25,7 +25,7 @@ export const MarqueeComponent = () => {
 
       <Marquee direction="right" speed={200}>
         <div className="flex gap-4 opacity-50">
-          {marquee1.map((item, index) => {
+          {marquee2.map((item, index) => {
             return (
               <div
                 key={index}
@@ -42,7 +42,7 @@ export const MarqueeComponent = () => {
 
       <Marquee direction="left" speed={200}>
         <div className="flex gap-4 opacity-75">
-          {marquee1.map((item, index) => {
+          {marquee3.map((item, index) => {
             return (
               <div
                 key={index}
@@ -58,7 +58,7 @@ export const MarqueeComponent = () => {
       </Marquee>
       <Marquee direction="right" speed={200}>
         <div className="flex gap-4">
-          {marquee1.map((item, index) => {
+          {marquee4.map((item, index) => {
             return (
               <div
                 key={index}

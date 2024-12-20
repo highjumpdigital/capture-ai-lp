@@ -231,48 +231,78 @@ export const Immersiondata = [
 ];
 export const marquee1 = [
   {
-    text: "Need Help Placing Order",
+    text: "Need help tracking your order? ",
   },
   {
-    text: "How to apply for discount",
+    text: "How do I update my address?",
   },
   {
-    text: "csn i get invoice?",
+    text: "Want to see our latest offers?",
   },
   {
     text: "how to update my address?",
   },
   {
-    text: "Need Help tracking order",
+    text: "How do I apply a discount code?",
   },
   {
-    text: "want to see your latest offers",
+    text: "Need help placing an order?",
+  },
+
+  {
+    text: "Can I get an invoice?",
   },
 ];
 
-export const marquee = [
+export const marquee2 = [
   {
-    text: "How do change my subscription plan?",
+    text: "What payment methods do you accept?",
   },
   {
-    text: "Shall i guide you through the checkout",
-  }, {
-    text: "Do you ship Internationally",
-  }, {
-    text: "What payment method do you accept",
-  }, {
-    text: "",
-  }, {
-    text: "",
-  }, {
-    text: "",
-  }, {
-    text: "",
-  }, {
-    text: "",
-  }, {
-    text: "",
+    text: "Shall I guide you through the checkout? ",
   },
+  {
+    text: "How do I change my subscription plan?   ",
+  },
+  {
+    text: "Interested in our membership benefits? ",
+  },
+  {
+    text: "Do you ship internationally?",
+  },
+];
+
+export const marquee3 = [
+  {
+    text: "Do you want updates on new products?",
+  },
+  {
+    text: "Do you offer bulk discounts?",
+  },
+  {
+    text: "Can I recommend something for you? ",
+  },
+  {
+    text: "Where is my nearest store?",
+  },
+  {
+    text: "Have questions about your account?",
+  },
+];
+
+export const marquee4 = [
+  {
+    text: "Can I use Klarna?",
+  },
+  {
+    text: "Shall I guide you through the checkout?",
+  }, {
+    text: "How do I change my subscription plan?   ",
+  }, {
+    text: "When do you want to get started?",
+  }, {
+    text: "Do you ship internationally?",
+  },   
 ];
 export const ChatPerformancedata = [
   {
@@ -324,20 +354,21 @@ export const constants = {
     offer:
       "Offer services, answer questions, trigger user intents, manage documents, and provide suggestions.",
   },
-  chatperformance:{
-    showase:" Showcase your work to your customers, from before and after images to showcasing your most recent testimonials.",
+  chatperformance: {
+    showase:
+      " Showcase your work to your customers, from before and after images to showcasing your most recent testimonials.",
     title: "ENDLESS FEATURES",
-    subtitle: " TO INCREASE YOUR CHAT PERFORMANCE"
+    subtitle: " TO INCREASE YOUR CHAT PERFORMANCE",
   },
-  header:{
-    FEATURES:"FEATURES",
-    howitwork:"HOW IT WORKS",
-    SOLUTIONS:"SOLUTIONS",
-    FAQ:"FAQ'S",
-    login:"LOG IN"
+  header: {
+    FEATURES: "FEATURES",
+    howitwork: "HOW IT WORKS",
+    SOLUTIONS: "SOLUTIONS",
+    FAQ: "FAQ'S",
+    login: "LOG IN",
   },
   buttons: {
-    getStarted: "GET STARTED"
+    getStarted: "GET STARTED",
   },
   planDetails: {
     personalAgent: "PERSONAL WEBSITE AGENT",
@@ -351,7 +382,7 @@ export const constants = {
     proactiveSuggestion: "PROACTIVE SUGGESTION",
     realTimeAlerts: "REAL-TIME LEADS ALERTS",
     thirdParty: "3RD PARTY INTEGRATIONS",
-    technicalSupport: "TECHNICAL SUPPORT"
+    technicalSupport: "TECHNICAL SUPPORT",
   },
   planDetailsData: [
     {
@@ -392,3 +423,31 @@ export const constants = {
     },
   ],
 };
+
+export const cards = [
+  { 
+    number: ". 01", 
+    heading: "AI-Powered Analysis",
+    text: "Our advanced algorithms analyze your content in real-time." 
+  },
+  { 
+    number: ". 02", 
+    heading: "Smart Recommendations",
+    text: "Get personalized suggestions based on your unique needs." 
+  },
+  { 
+    number: ". 03", 
+    heading: "Instant Results",
+    text: "See immediate improvements in your content quality." 
+  },
+  { 
+    number: ". 04", 
+    heading: "Easy Integration",
+    text: "Seamlessly integrate with your existing workflow." 
+  },
+  { 
+    number: ". 05", 
+    heading: "Continuous Learning",
+    text: "Our system evolves and improves with each interaction." 
+  },
+];
