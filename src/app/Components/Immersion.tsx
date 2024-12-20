@@ -27,7 +27,7 @@ export const Immersion = () => {
           return (
             <div
               key={index}
-              className="max-w-[417px] min-h-[129px] w-full bg-[#FFFFFF33] border-[3px] border-[rgba(255,255,255,0.2)] border-solid rounded-[5px]  z-10 flex gap-[50px] justify-between items-center mt-[10px] p-[20px] transition-all duration-300 hover:translate-y-[-3px] hover:shadow-lg"
+              className="max-w-[417px] min-h-[129px] w-full bg-[#FFFFFF33] border-4 border-[rgba(240,242,246)] border-solid rounded-[5px]  z-10 flex gap-[50px] justify-between items-center mt-[10px] p-[20px] transition-all duration-300 hover:shadow-xl"
             >
               <div className="h-20 w-20  flex justify-center items-center rouneded-[5px]  gifshadow bg-[white]">
                 <Image src={item.img} alt="Image"  className="rounded-[5px]" height={40} width={40}  />
