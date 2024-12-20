@@ -7,14 +7,14 @@ import { Cairo } from 'next/font/google';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Eclipse from "../assets/Ellipse 5.png"
+import Eclipse from "../assets/Ellipse 5.svg"
 import { cards } from './constants';
 const cairo = Cairo({ 
   subsets: ['latin'],
   weight: ['400', '700'],
 });
 
-const SCROLL_ANIMATION_DURATION = 2000; // Increased from 800ms to 1200ms
+const SCROLL_ANIMATION_DURATION = 2000;
 
 export default function Work2() {
  
@@ -109,7 +109,7 @@ export default function Work2() {
             <div 
               className="absolute -top-4 left-1/2 -translate-x-1/2 w-[2px] h-16"
               style={{
-                background: 'linear-gradient(to bottom, transparent, #f97316 50%)'
+                background: '#FF4206'
               }}
             >
             
@@ -157,7 +157,7 @@ export default function Work2() {
                 {cards.map((card, index) => (
                   <motion.div 
                     key={card.number} 
-                    className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[541px] h-[176px]"
+                    className="card-container  flex items-center gap-4 lg:gap-8 w-full lg:w-[541px] h-[176px]"
                     style={{ 
                       opacity: cardOpacities[index]?.opacity ?? 1,
                     }}
@@ -181,11 +181,15 @@ export default function Work2() {
                       </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span 
-                        className="text-xl lg:text-3xl font-bold text-orange-500"
-                        style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
+                        className="text-[#FF4206]"
+                        style={{ 
+                          fontWeight: 300,
+                          fontSize: '48px',
+                          lineHeight: '48px'
+                        }}
                       >{card.number}</motion.span>
                       <motion.span 
-                        className="text-xl lg:text-3xl font-bold text-orange-500"
+                        className="text-xl lg:text-3xl font-bold text-[#FF4206]"
                         style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                       >
 
@@ -193,17 +197,16 @@ export default function Work2() {
                       </motion.span>
                     </div>
                     <motion.div 
-                      className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border border-[#AEB9DC33] relative"
+                      className="bg-gray-50/90  p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#D3DDEF33] relative"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
                       {/* Gray triangle shape */}
                       <motion.div 
-                        className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-0 h-0"
+                        className="absolute left-[-15px] top-1/2 -translate-y-1/2 w-0 h-0"
                         style={{
                           borderTop: '10px solid transparent',
                           borderBottom: '10px solid transparent',
-                          borderRight: '10px solid rgba(156, 163, 175, 0.9)',
-                          opacity: cardOpacities[index]?.opacity ?? 1
+                          borderRight: '10px solid light-gray',
                         }}
                       />
                       <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
