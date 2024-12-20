@@ -6,8 +6,6 @@ import { useRef, useEffect, useState } from 'react';
 import { Cairo } from 'next/font/google';
 import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Eclipse from "../assets/Ellipse 5.svg"
 import { cards } from './constants';
 const cairo = Cairo({ 
   subsets: ['latin'],
@@ -173,12 +171,8 @@ export default function Work2() {
                       className=" rounded-full"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
-
-                      <Image
-                      src={Eclipse}
-                      alt=''
-                      />
-                      </motion.div>
+                      <div className="w-[20px] h-[20px] rounded-full bg-[#FF4206]" />
+                    </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span 
                         className="text-[#FF4206]"
@@ -206,7 +200,7 @@ export default function Work2() {
                         style={{
                           borderTop: '10px solid transparent',
                           borderBottom: '10px solid transparent',
-                          borderRight: '10px solid #d3ddef33',
+                          borderRight: '10px solid rgb(237,237,244)',
                         }}
                       />
                       <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
