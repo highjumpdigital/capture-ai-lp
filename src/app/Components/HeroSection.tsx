@@ -5,10 +5,15 @@ import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
 import { constants } from "./constants";
+import herosectionimage from"../assets/herosectionbgImage.png"
 
 export const HeroSection = (): React.ReactElement => {
   return (
-    <div className=" heroSection relative">
+    <div className="heroSection relative" style={{
+      backgroundImage: `url(${herosectionimage.src})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}>
       <div className="flex justify-center font-medium  Cairo text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[100px]">
        {constants.herosection.CONVERSATIONS}
       </div>
