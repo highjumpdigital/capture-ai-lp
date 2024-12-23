@@ -35,8 +35,14 @@ export const HeroSection = (): React.ReactElement => {
           />
         </div>
         <div className="font-bold text-4 leading-4 text-[#FF4206]">
-        {constants.herosection.viewSolution}
-
+        <div 
+          onClick={() => {
+            document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="cursor-pointer"
+        >
+          {constants.herosection.viewSolution}
+        </div>
         </div>
       </div>
 

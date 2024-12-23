@@ -6,7 +6,7 @@ export const MarqueeComponent = () => {
  
   return (
     <div className=" flex flex-col gap-3 text-[#FFFFFFCC] ">
-      <Marquee speed={200}>
+      <Marquee speed={40}>
         <div className="flex gap-4 opacity-25">
           {marquee1.map((item, index) => {
             return (
@@ -23,7 +23,7 @@ export const MarqueeComponent = () => {
         </div>
       </Marquee>
 
-      <Marquee direction="right" speed={200}>
+      <Marquee direction="right" speed={40}>
         <div className="flex gap-4 opacity-50">
           {marquee2.map((item, index) => {
             return (
@@ -40,7 +40,7 @@ export const MarqueeComponent = () => {
         </div>
       </Marquee>
 
-      <Marquee direction="left" speed={200}>
+      <Marquee direction="left" speed={40}>
         <div className="flex gap-4 opacity-75">
           {marquee3.map((item, index) => {
             return (
@@ -56,7 +56,7 @@ export const MarqueeComponent = () => {
           })}
         </div>
       </Marquee>
-      <Marquee direction="right" speed={200}>
+      <Marquee direction="right" speed={40}>
         <div className="flex gap-4">
           {marquee4.map((item, index) => {
             return (
