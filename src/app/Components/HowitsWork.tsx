@@ -161,18 +161,15 @@ export default function Work2() {
           <div className="relative w-[2px] h-[400px] self-center overflow-visible"> 
             {/* Top blur gradient */}
             <div 
-              className="absolute -top-4 left-1/2 -translate-x-1/2 w-[2px] h-16"
-              style={{
-                background: '#FF4206'
-              }}
+              className="absolute -top-4 left-1/2 -translate-x-1/2 w-[2px] h-16 bg-orange"
             />
             {/* Main line */}
-            <div className="absolute top-12 bottom-12 left-0 right-0 bg-[#FF4206]" />
+            <div className="absolute top-12 bottom-12 left-0 right-0 bg-orange" />
             {/* Bottom blur gradient */}
             <div 
               className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[2px] h-16"
               style={{
-                background: 'linear-gradient(to top, transparent, #f97316 30%)'
+                background: 'linear-gradient(to top, transparent, #FF4206 30%)'
               }}
             />
           </div>
@@ -217,11 +214,11 @@ export default function Work2() {
                     style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                   >
 
-                    <div className='w-[20px] h-[20px] rounded-full bg-[primary]'/>
+                    <div className='w-[20px] h-[20px] rounded-full bg-orange'/>
                     </motion.div>
                   <div className="flex items-center gap-1 lg:gap-2">
                     <motion.span 
-                      className="text-[primary]"
+                      className="text-orange"
                       style={{ 
                         fontWeight: 300,
                         fontSize: '48px',
@@ -229,7 +226,7 @@ export default function Work2() {
                       }}
                     >{card.number}</motion.span>
                     <motion.span 
-                      className="text-xl lg:text-3xl font-bold text-[primary]"
+                      className="text-xl lg:text-3xl font-bold text-orange"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
 
