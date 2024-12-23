@@ -217,11 +217,11 @@ export default function Work2() {
                     style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                   >
 
-                    <div className='w-[20px] h-[20px] rounded-full bg-[#FF4206]'/>
+                    <div className='w-[20px] h-[20px] rounded-full bg-[primary]'/>
                     </motion.div>
                   <div className="flex items-center gap-1 lg:gap-2">
                     <motion.span 
-                      className="text-[#FF4206]"
+                      className="text-[primary]"
                       style={{ 
                         fontWeight: 300,
                         fontSize: '48px',
@@ -229,7 +229,7 @@ export default function Work2() {
                       }}
                     >{card.number}</motion.span>
                     <motion.span 
-                      className="text-xl lg:text-3xl font-bold text-[#FF4206]"
+                      className="text-xl lg:text-3xl font-bold text-[primary]"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
 

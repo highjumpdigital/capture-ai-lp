@@ -12,6 +12,7 @@ module.exports = {
         mono: ['var(--font-geist-mono)'],
       },
       colors: {
+        primary: '#FF4206',
         gray: {
           100: '#f5f5f5',
           600: '#525252',
