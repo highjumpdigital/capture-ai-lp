@@ -428,27 +428,22 @@ export const constants = {
 export const cards = [
   { 
     number: "01.", 
-    heading: "AI-Powered Analysis",
-    text: "Our advanced algorithms analyze your content in real-time." 
+    heading: "USER STARTS A CONVERSATION",
+    text: "The User Will Start A Conversation And Ask Any Questions They Need To. If You Do Not Have Pre-Programmed Answers, Your AI Will Take Over And Respond." 
   },
   { 
     number: "02.", 
-    heading: "Smart Recommendations",
-    text: "Get personalized suggestions based on your unique needs." 
+    heading: "LEAD CAPTURE AND SEND",
+    text: "Once Your Chatbot Has Captured The Qualifying Information from The User, The Data Will Send To You Directly Via Email And SMS." 
   },
   { 
     number: "03.", 
-    heading: "Instant Results",
-    text: "See immediate improvements in your content quality." 
+    heading: "CUSTOM CRM INTEGRATION",
+    text: "As An Optional Extra, We Can Have Your Chatbot Send The Lead Information Directly To Your CRM Via API." 
   },
   { 
     number: "04.", 
-    heading: "Easy Integration",
-    text: "Seamlessly integrate with your existing workflow." 
-  },
-  { 
-    number: "05.", 
-    heading: "Continuous Learning",
-    text: "Our system evolves and improves with each interaction." 
+    heading: "INSIGHTS AND REPORTS",
+    text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts." 
   },
 ];
