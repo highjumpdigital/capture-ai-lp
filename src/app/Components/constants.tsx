@@ -212,7 +212,7 @@ export const Immersiondata = [
       "Equipped with your business’s details, your AI Chatbot answers all lead queries comprehensively.",
   },
   {
-    img: robot,
+    img: search,
     title: "Efficient Lead Management",
     description:
       "Expertly captures and channels inquiries, boosting engagement and user experience.",
@@ -224,7 +224,7 @@ export const Immersiondata = [
       "Personalised interactions foster deeper understanding and nurturing of prospects.",
   },
   {
-    img: search,
+    img: robot,
     title: "full screen sales agent",
     description:
       "choose from a discreet chat bot, or integrate our system directly into your platform.",

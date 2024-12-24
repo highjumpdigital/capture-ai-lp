@@ -1,4 +1,5 @@
-//How its work
+// Source: src/views/account/Work2.tsx
+
 "use client";
 
 import bgImage from '../assets/herosectionbgImage.png';
@@ -6,6 +7,7 @@ import { useRef, useEffect, useState } from 'react';
 import { Cairo } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { cards } from './constants';
+
 const cairo = Cairo({ 
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -20,6 +22,22 @@ export default function Work2() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
+  const [gap, setGap] = useState(60); // Default gap
+
+  // Update gap based on screen size
+  useEffect(() => {
+    const updateGap = () => {
+      if (window.innerWidth >= 1024) { // 'lg' breakpoint
+        setGap(120);
+      } else {
+        setGap(60);
+      }
+    };
+
+    updateGap();
+    window.addEventListener('resize', updateGap);
+    return () => window.removeEventListener('resize', updateGap);
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -54,7 +72,7 @@ export default function Work2() {
 
     section.addEventListener('wheel', preventScroll, { passive: false });
     return () => section.removeEventListener('wheel', preventScroll);
-  }, [isScrolling, currentIndex]);
+  }, [isScrolling, currentIndex, gap]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -70,7 +88,7 @@ export default function Work2() {
         const containerRect = container.getBoundingClientRect();
         const distanceFromCenter = Math.abs(cardCenter - (containerRect.top + containerHeight / 2));
         const maxDistance = containerHeight * 0.6;
-        const opacity = Math.max(0.5, 1 - (distanceFromCenter / maxDistance) * 1);
+        const opacity = Math.max(0.5, 1 - (distanceFromCenter / maxDistance));
         return {
           opacity,
           blur: (1 - opacity) * 1
@@ -116,11 +134,11 @@ export default function Work2() {
       : Math.max(currentIndex - 1, 0);
 
     if (newIndex !== currentIndex) {
-      const cardHeight = 296;
-      const scrollPosition = newIndex * cardHeight;
+      const CARD_HEIGHT = 176;
+      const totalScroll = newIndex * (CARD_HEIGHT + gap);
       
       containerRef.current.scrollTo({
-        top: scrollPosition,
+        top: totalScroll,
         behavior: 'smooth'
       });
       
@@ -177,7 +195,7 @@ export default function Work2() {
           {/* Cards Section */}
           <div 
             ref={containerRef} 
-            className="py-4 lg:py-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth scrollbar-hide"
+            className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -197,7 +215,7 @@ export default function Work2() {
               {cards.map((card, index) => (
                 <motion.div 
                   key={card.number} 
-                  className="card-container  flex items-center gap-4 lg:gap-8 w-full lg:w-[541px] h-[176px]"
+                  className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[541px] h-[176px]"
                   style={{ 
                     opacity: cardOpacities[index]?.opacity ?? 1,
                   }}
@@ -210,12 +228,11 @@ export default function Work2() {
                   }}
                 >
                   <motion.div 
-                    className=" rounded-full"
+                    className="rounded-full"
                     style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                   >
-
                     <div className='w-[20px] h-[20px] rounded-full bg-orange'/>
-                    </motion.div>
+                  </motion.div>
                   <div className="flex items-center gap-1 lg:gap-2">
                     <motion.span 
                       className="text-orange"
@@ -229,12 +246,11 @@ export default function Work2() {
                       className="text-xl lg:text-3xl font-bold text-orange"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
-
-
+                      {/* Optional Title or Additional Content */}
                     </motion.span>
                   </div>
                   <motion.div 
-                    className="bg-gray-50/90  p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
+                    className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
                     style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                   >
                     {/* Gray triangle shape */}
