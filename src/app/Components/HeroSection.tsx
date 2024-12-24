@@ -1,6 +1,6 @@
 import React from "react";
 import PeopleGroup from "../assets/personGroup.png";
-import HeroSectionDashboardImage from "../assets/dashboardiamge.png";
+import HeroSectionDashboardImage from "../assets/background/dashboard-new-image.png";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";

@@ -27,17 +27,17 @@ export const Immersion = () => {
           return (
             <div
               key={index}
-              className="max-w-[417px] min-h-[129px] w-full bg-[#FFFFFF33] border-4 border-[rgba(240,242,246)] border-solid rounded-[5px]  z-10 flex gap-[50px] justify-between items-center mt-[10px] p-[20px] transition-all duration-300 hover:shadow-xl"
+              className="max-w-[400px] min-h-[110px] w-full bg-[#FFFFFF33] border-2 border-[rgba(240,242,246)] border-solid rounded-[5px]  z-10 flex gap-[35px] justify-between items-center mt-[8px] p-[18px] transition-all duration-300 hover:shadow-xl"
             >
-              <div className="h-20 w-20  flex justify-center items-center rouneded-[5px]  gifshadow bg-[white]">
-                <Image src={item.img} alt="Image"  className="rounded-[5px]" height={40} width={40}  />
+              <div className="h-[72px] w-[72px] flex justify-center items-center rouneded-[5px] gifshadow bg-[white]">
+                <Image src={item.img} alt="Image"  className="rounded-[5px]" height={36} width={36}  />
               </div>
 
               <div>
-                <div className="font-bold text-[16px] leading-4 text-[#000000CC] uppercase max-w-[237px] ">
+                <div className="font-bold text-[15px] leading-4 text-[#000000CC] uppercase max-w-[230px] ">
                   {item.title}
                 </div>
-                <div className="font-medium text-[14px] leading-[14px mt-4 text-[#000000CC] max-w-[237px] ">
+                <div className="font-medium text-[13px] leading-[16px] mt-3 text-[#000000CC] max-w-[230px] ">
                   {item.description}
                 </div>
               </div>
