@@ -3,11 +3,11 @@ import gear from "../assets/GIF/gear.gif";
 import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
-import provide from "../assets/performance/provide.svg"
+import provide from "../assets/performance/provide copy.svg"
 import thirdparty from "../assets/performance/thirdparty.svg"
 import showcase from "../assets/performance/showcase.svg"
 import leadcapture from "../assets/performance/leadcapture.svg"
-import userintent from "../assets/performance/userintent.svg"
+import userintent from "../assets/performance/userintent copy.svg"
 import suggestion from "../assets/performance/suggest.svg"
 export const Plandata = [
   {
@@ -308,27 +308,35 @@ export const marquee4 = [
 export const ChatPerformancedata = [
   {
     title: "3rd party tool integration",
-    image: thirdparty
+    image: thirdparty,
+    detail:"Integrate with 3rd party tools to automate tasks, manage workflows, and streamline interactions. Stay connected and organized."
   },
   {
     title: "Provide company documents",
-    image: provide
+    image: provide,
+    detail:"Easily share essential company documents with your Customers. Provide quick access to key resources through the chatbot. "
   },
   {
     title: "Showcase work",
-    image: showcase
+    image: showcase,
+    detail:"Showcase your work to your customers, from before and after images to showcasing your most recent testimonials."
   },
   {
     title: "Lead capture functionality",
-    image: leadcapture
+    image: leadcapture,
+    detail:"Capture customer details effortlessly through automated forms. Turn interactions into valuable leads with ease."
+
   },
   {
     title: "User intent configuration",
-    image: userintent
+    image: userintent,
+    detail:"Customize your chatbot’s responses based on user intent for more personalized and accurate interactions.  "
   },
   {
     title: "Suggestion capabilities",
-    image: suggestion
+    image: suggestion,
+    detail:"With suggestion capabilities, the chatbot offers tailored recommendations, from personalized quotes to baseline pricing and other helpful options based on your needs."
+
   },
 ];
 export const constants = {
