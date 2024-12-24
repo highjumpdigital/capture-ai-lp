@@ -26,7 +26,9 @@ export const ChatPerformance = () => {
                 className={`max-w-[641px] ${
                   index === 0 ? "mt-[0px]" : "mt-[10px]"
                 } flex justify-between items-center w-full  cursor-pointer rounded-[5px] p-[10px] border-[3px] ${
-                  selectedOption === index ? "border-[#FF4206] bg-[#FF420633]" : "border-[#383E4E33] bg-[#FFFFFFCC]"
+                  selectedOption === index
+                    ? "border-[#FF4206] bg-[#FF420633]"
+                    : "border-[#383E4E33] bg-[#FFFFFFCC]"
                 } min-h-[54px] 
           hover:bg-[#FF420633] hover:border-[#FF4206]`}
               >
@@ -69,7 +71,7 @@ export const ChatPerformance = () => {
               transition={{ delay: 0.2 }}
               className="font-medium text-[16px] leading-6  text-[#000000CC]"
             >
-              {constants.chatperformance.showase}
+            {ChatPerformancedata[selectedOption].detail}
             </motion.div>
 
             <div className="mt-[10px]">
