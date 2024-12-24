@@ -12,9 +12,9 @@ export const MarqueeComponent = () => {
             return (
               <div
                 key={index}
-                className={`  px-[10px] py-5  rounded-[5px] font-semibold text-4 leading-6    ${
+                className={`px-[10px] py-5 rounded-[5px] font-semibold text-4 leading-6 Inter ${
                   index % 2 === 0 ? "bg-[#595959]" : "bg-[#F4F4F4] text-black "
-                }  `}
+                }`}
               >
                 {item.text}
               </div>
@@ -29,9 +29,9 @@ export const MarqueeComponent = () => {
             return (
               <div
                 key={index}
-                className={`  px-[10px] py-5  rounded-[5px] font-semibold text-4 leading-6 ${
+                className={`px-[10px] py-5 rounded-[5px] font-semibold text-4 leading-6 Inter ${
                   index % 2 === 0 ? "bg-[#595959]" : "bg-[#F4F4F4]  text-black"
-                }  `}
+                }`}
               >
                 {item.text}
               </div>
@@ -46,9 +46,9 @@ export const MarqueeComponent = () => {
             return (
               <div
                 key={index}
-                className={`  px-[10px] py-5  rounded-[5px] font-semibold text-4 leading-6 ${
+                className={`px-[10px] py-5 rounded-[5px] font-semibold text-4 leading-6 Inter ${
                   index % 2 === 0 ? "bg-[#595959]" : "bg-[#F4F4F4]  text-black"
-                }  `}
+                }`}
               >
                 {item.text}
               </div>
@@ -62,9 +62,9 @@ export const MarqueeComponent = () => {
             return (
               <div
                 key={index}
-                className={`  px-[10px] py-5  rounded-[5px] font-semibold text-4 leading-6 ${
+                className={`px-[10px] py-5 rounded-[5px] font-semibold text-4 leading-6 Inter ${
                   index % 2 === 0 ? "bg-[#595959]" : "bg-[#F4F4F4]  text-black"
-                }  `}
+                }`}
               >
                 {item.text}
               </div>

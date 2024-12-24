@@ -215,7 +215,7 @@ export default function Work2() {
               {cards.map((card, index) => (
                 <motion.div 
                   key={card.number} 
-                  className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[541px] h-[176px]"
+                  className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[630px] h-[176px]"
                   style={{ 
                     opacity: cardOpacities[index]?.opacity ?? 1,
                   }}
@@ -265,7 +265,7 @@ export default function Work2() {
                     <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
                       {card.heading}
                     </h2>
-                    <p className="text-sm lg:text-base text-gray-700">
+                    <p className="text-sm lg:text-base text-gray-700 Inter">
                       {card.text}
                     </p>
                   </motion.div>

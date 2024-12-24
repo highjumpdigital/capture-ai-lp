@@ -64,7 +64,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Description Section */}
       <div className={`border border-[#00000033] Cairo p-[24px] rounded-[5px] text-[12px] leading-[18px] ${
-        title === "INFINITY PRO" ? "bg-[#3E444A]" : "bg-[#D4D6D8]"
+        title === "INFINITY PRO" ? "bg-[#3E444A] text-white" : "bg-[#D4D6D8]"
       }`}>
         {constants.paymentSol.offer}
       </div>
@@ -78,7 +78,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               hoveredIndex === index 
                 ? title === "INFINITY PRO"
                   ? "bg-[rgb(51,13,1)] -mx-2 px-2 py-1 rounded-md" 
-                  : "bg-[rgb(255,255,249)] -mx-2 px-2 py-1 rounded-md"
+                  : "bg-[rgb(255,255,249)] text-[#633E34] -mx-2 px-2 py-1 rounded-md"
                 : "-mx-2 px-2 py-1"
             }`}
             onMouseEnter={() => onHoverIndex?.(index)}
@@ -96,7 +96,9 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               )}
             </div>
             <div
-              className={`text-[14px] Inter leading-[21px] font-bold ${textClass}`}
+              className={`text-[14px] Inter leading-[21px] font-bold ${textClass} ${
+                hoveredIndex === index && title !== "INFINITY PRO" ? "text-[#633E34]" : ""
+              }`}
             >
               {item.title}
             </div>
