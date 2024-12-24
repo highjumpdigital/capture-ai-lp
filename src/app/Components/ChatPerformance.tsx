@@ -30,7 +30,7 @@ export const ChatPerformance = () => {
                 } min-h-[54px] 
           hover:bg-[#FF420633] hover:border-[#FF4206]`}
               >
-                <div className="font-bold text-[16px] leading-[16px] text-[#000000CC] Cairo uppercase">
+                <div className="font-bold text-[16px] leading-[16px] text-[#000000CC] Inter uppercase">
                   {item.title}
                 </div>
                 <div>

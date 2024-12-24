@@ -265,7 +265,7 @@ export default function Work2() {
                     <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
                       {card.heading}
                     </h2>
-                    <p className="text-sm lg:text-base text-gray-700">
+                    <p className="text-sm lg:text-base text-gray-700 Inter">
                       {card.text}
                     </p>
                   </motion.div>
