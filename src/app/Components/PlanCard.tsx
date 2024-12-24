@@ -16,6 +16,8 @@ interface PlanCardProps {
   planData: { title: string; flag: boolean }[];
   buttonTitle?: string;
   onClick?: () => void;
+  onHoverIndex?: (index: number | null) => void;
+  hoveredIndex?: number | null;
 }
 
 export const PlanCard: React.FC<PlanCardProps> = ({
@@ -28,6 +30,8 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   textClass,
   headerText,
   onClick,
+  onHoverIndex,
+  hoveredIndex,
 }) => {
   const getHoverText = (price: string) => {
     if (price === "FREE") return "FOR FREE";
@@ -59,7 +63,9 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       </div>
 
       {/* Description Section */}
-      <div className="border border-[#00000033] Cairo bg-[#D4D6D8] p-[24px] rounded-[5px] text-[12px] leading-[18px]">
+      <div className={`border border-[#00000033] Cairo p-[24px] rounded-[5px] text-[12px] leading-[18px] ${
+        title === "INFINITY PRO" ? "bg-[#3E444A]" : "bg-[#D4D6D8]"
+      }`}>
         {constants.paymentSol.offer}
       </div>
 
@@ -68,7 +74,15 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         {planData.map((item, index) => (
           <div
             key={index}
-            className="flex gap-2 justify-start items-center text-[12px] font-bold"
+            className={`flex gap-2 justify-start items-center text-[12px] font-bold cursor-pointer transition-all duration-200 ease-in-out ${
+              hoveredIndex === index 
+                ? title === "INFINITY PRO"
+                  ? "bg-[rgb(51,13,1)] -mx-2 px-2 py-1 rounded-md" 
+                  : "bg-[rgb(255,255,249)] -mx-2 px-2 py-1 rounded-md"
+                : "-mx-2 px-2 py-1"
+            }`}
+            onMouseEnter={() => onHoverIndex?.(index)}
+            onMouseLeave={() => onHoverIndex?.(null)}
           >
             <div>
               {item.flag ? (

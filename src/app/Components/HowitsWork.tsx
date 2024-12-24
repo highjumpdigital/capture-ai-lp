@@ -13,7 +13,7 @@ const cairo = Cairo({
   weight: ['400', '700'],
 });
 
-const SCROLL_ANIMATION_DURATION = 300;
+const SCROLL_ANIMATION_DURATION = 600;
 
 export default function Work2() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -134,7 +134,7 @@ export default function Work2() {
       : Math.max(currentIndex - 1, 0);
 
     if (newIndex !== currentIndex) {
-      const CARD_HEIGHT = 176;
+      const CARD_HEIGHT = 176; // Height of each card in pixels
       const totalScroll = newIndex * (CARD_HEIGHT + gap);
       
       containerRef.current.scrollTo({
@@ -147,7 +147,7 @@ export default function Work2() {
 
     setTimeout(() => {
       setIsScrolling(false);
-    }, SCROLL_ANIMATION_DURATION + 100); // Added small buffer
+    }, SCROLL_ANIMATION_DURATION + 100);
   };
 
   return (
