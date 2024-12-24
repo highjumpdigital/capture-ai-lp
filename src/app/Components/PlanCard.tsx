@@ -64,7 +64,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Description Section */}
       <div className={`border border-[#00000033] Cairo p-[24px] rounded-[5px] text-[12px] leading-[18px] ${
-        title === "INFINITY PRO" ? "bg-[#3E444A]" : "bg-[#D4D6D8]"
+        title === "INFINITY PRO" ? "bg-[#3E444A] text-white" : "bg-[#D4D6D8]"
       }`}>
         {constants.paymentSol.offer}
       </div>
