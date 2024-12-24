@@ -16,6 +16,13 @@ export const FilledButton: React.FC<{
     }
   }, []);
 
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (buttonTitle === "GET STARTED") {
+      window.location.href = "https://chatbot-v0-frontend-development.up.railway.app/";
+    }
+    onClick(event);
+  };
+
   return (
     <div
       ref={buttonRef}
@@ -26,7 +33,7 @@ export const FilledButton: React.FC<{
           ? className
           : `bg-primaryColor ${className}`
       }`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <span className={`relative overflow-hidden w-full flex items-center justify-center ${titleClassName} sofia`}>
         <span

@@ -19,6 +19,10 @@ export const Header = () => {
     setIsMobile(!isMobile);
   };
 
+  const handleSignIn = () => {
+    window.location.href = "https://chatbot-v0-frontend-development.up.railway.app/sign-in";
+  };
+
   return (
     <>
       {/* Mobile Header */}
@@ -84,10 +88,10 @@ export const Header = () => {
             {constants.header.FAQ}
             
           </div>
-          <div className="font-bold text-[#FF4206] cursor-pointer">
-
-          {constants.header.login}
-
+          <div 
+            onClick={handleSignIn}
+            className="font-bold text-[#FF4206] cursor-pointer">
+            {constants.header.login}
           </div>
           <FilledButton
             buttonTitle="GET STARTED"
@@ -142,7 +146,11 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex gap-5 justify-center items-center">
-          <div className="text-[#FF4206] font-bold text-4 leading-4">{constants.header.login}</div>
+          <div 
+            onClick={handleSignIn}
+            className="text-[#FF4206] font-bold text-4 leading-4 cursor-pointer">
+            {constants.header.login}
+          </div>
           <FilledButton
             buttonTitle={constants.buttons.getStarted}
             className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
