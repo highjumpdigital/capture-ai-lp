@@ -18,11 +18,7 @@ export const FilledButton: React.FC<{
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (buttonTitle === "GET STARTED") {
-      const isInPaymentSection = buttonRef.current?.closest('#solutions') !== null;
-      
-      if (!isInPaymentSection) {
-        document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
-      }
+      window.location.href = "https://chatbot-v0-frontend-development.up.railway.app/";
     }
     onClick(event);
   };
