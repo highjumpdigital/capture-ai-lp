@@ -16,6 +16,17 @@ export const FilledButton: React.FC<{
     }
   }, []);
 
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (buttonTitle === "GET STARTED") {
+      const isInPaymentSection = buttonRef.current?.closest('#solutions') !== null;
+      
+      if (!isInPaymentSection) {
+        document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    onClick(event);
+  };
+
   return (
     <div
       ref={buttonRef}
@@ -26,7 +37,7 @@ export const FilledButton: React.FC<{
           ? className
           : `bg-primaryColor ${className}`
       }`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <span className={`relative overflow-hidden w-full flex items-center justify-center ${titleClassName} sofia`}>
         <span
