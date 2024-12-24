@@ -13,7 +13,7 @@ const cairo = Cairo({
   weight: ['400', '700'],
 });
 
-const SCROLL_ANIMATION_DURATION = 600;
+const SCROLL_ANIMATION_DURATION = 500;
 
 export default function Work2() {
   const containerRef = useRef<HTMLDivElement>(null);
