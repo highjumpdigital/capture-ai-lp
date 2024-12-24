@@ -215,7 +215,7 @@ export default function Work2() {
               {cards.map((card, index) => (
                 <motion.div 
                   key={card.number} 
-                  className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[541px] h-[176px]"
+                  className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[630px] h-[176px]"
                   style={{ 
                     opacity: cardOpacities[index]?.opacity ?? 1,
                   }}
