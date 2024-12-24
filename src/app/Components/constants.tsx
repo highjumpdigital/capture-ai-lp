@@ -203,31 +203,31 @@ export const Immersiondata = [
     img: time,
     title: "ROUND-THE-CLOCK ENGAGEMENT",
     description:
-      "Your AI Chatbot is available 24/7, ensuring every potential lead is captured.",
+      "Your AI Chatbot Is Available 24/7, Ensuring Every Potential Lead Is Captured.",
   },
   {
     img: gear,
     title: "Customised with Your Business Info",
     description:
-      "Equipped with your business’s details, your AI Chatbot answers all lead queries comprehensively.",
+      "Equipped With Your Business’s Details, Your AI Chatbot Answers All Lead Queries Comprehensively.",
   },
   {
     img: search,
     title: "Efficient Lead Management",
     description:
-      "Expertly captures and channels inquiries, boosting engagement and user experience.",
+      "Expertly Captures And Channels Inquiries, Boosting Engagement And User Experience.",
   },
   {
     img: stock,
     title: "Higher Conversion Potential ",
     description:
-      "Personalised interactions foster deeper understanding and nurturing of prospects.",
+      "Personalized Interactions Foster Deeper Understanding And Nurturing Of Prospects.",
   },
   {
     img: robot,
     title: "full screen sales agent",
     description:
-      "choose from a discreet chat bot, or integrate our system directly into your platform.",
+      "Choose From A Discreet Chat Bot, Or Integrate Our System Directly Into Your Platform.",
   },
 ];
 export const marquee1 = [
@@ -353,7 +353,7 @@ export const constants = {
     paymentsol: " PAYMENT SOLUTIONS",
     FREE: "FREE",
     offer:
-      "Offer services, answer questions, trigger user intents, manage documents, and provide suggestions.",
+      "Offer Services, Answer Questions, Trigger User Intents, Manage Documents, And Provide Suggestions.",
   },
   chatperformance: {
     showase:

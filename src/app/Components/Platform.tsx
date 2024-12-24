@@ -49,8 +49,8 @@ export const Platform = () => {
           <Image
             src={item.img}
             alt="image"
-            height={24}
-            width={24}
+            height={34}
+            width={33}
           />
         </div>
       ))}

@@ -14,7 +14,7 @@ export const PlanDetails: React.FC<PlanDetailsProps> = ({ hoveredIndex, onHoverI
           key={index}
           className={`font-bold Inter text-[14px] leading-[21px] cursor-pointer transition-all duration-200 ease-in-out ${
             hoveredIndex === index 
-              ? "bg-[#FF4206] bg-opacity-10 -mx-2 px-2 py-1 rounded-md" 
+              ? "bg-[rgb(255,255,249)] bg-opacity-10 -mx-2 px-2 py-1 rounded-md" 
               : "-mx-2 px-2 py-1"
           }`}
           onMouseEnter={() => onHoverIndex?.(index)}
