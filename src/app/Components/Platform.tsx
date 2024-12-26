@@ -34,10 +34,10 @@ export const Platform = () => {
 
   return (
     <div
-      className="z-10 px-[20px] relative lg:px-[100px] justify-center md:justify-between items-center flex lg:flex-row gap-[20px] h-[95px]"
+      className="z-10 px-[20px] relative lg:px-[100px] justify-center md:justify-between items-center flex lg:flex-row gap-[20px] h-[95px] bg-black"
       style={{
-        background: `linear-gradient(0deg, #000000, #000000),
-                     radial-gradient(49.97% 105.43% at 50.03% 100%, rgba(176, 179, 183, 0.4) 0%, rgba(176, 179, 183, 0) 100%)`,
+        background: `black !important`,
+        backgroundImage: `radial-gradient(49.97% 105.43% at 50.03% 100%, rgba(176, 179, 183, 0.4) 0%, rgba(176, 179, 183, 0) 100%) !important`
       }}
     >
       <div className="flex justify-start items-center text-[12px] sm:text-[16px] leading-6 text-white font-bold">
