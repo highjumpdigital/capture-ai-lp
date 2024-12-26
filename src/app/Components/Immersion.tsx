@@ -34,10 +34,10 @@ export const Immersion = () => {
               </div>
 
               <div>
-                <div className="font-bold text-[15px] leading-4 text-[#000000CC] uppercase max-w-[230px] ">
+                <div className="font-bold text-[15px] leading-4 text-black uppercase max-w-[230px] ">
                   {item.title}
                 </div>
-                <div className="font-medium text-[13px] leading-[16px] mt-3 text-[#000000CC] max-w-[230px] ">
+                <div className="font-medium text-[13px] leading-[14px] mt-3 text-black max-w-[230px] ">
                   {item.description}
                 </div>
               </div>

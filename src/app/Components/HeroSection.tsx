@@ -1,5 +1,5 @@
 import React from "react";
-import PeopleGroup from "../assets/personGroup.png";
+import PeopleGroup from "../assets/peoplephotos.svg";
 import HeroSectionDashboardImage from "../assets/background/dashboard-new-image.png";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";

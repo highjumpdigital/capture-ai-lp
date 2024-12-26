@@ -77,9 +77,9 @@ export const PlanCard: React.FC<PlanCardProps> = ({
             className={`flex gap-2 justify-start items-center text-[12px] font-bold cursor-pointer transition-all duration-200 ease-in-out ${
               hoveredIndex === index 
                 ? title === "INFINITY PRO"
-                  ? "bg-[rgb(51,13,1)] -mx-2 px-2 py-1 rounded-md" 
-                  : "bg-[rgb(255,255,249)] text-[#633E34] -mx-2 px-2 py-1 rounded-md"
-                : "-mx-2 px-2 py-1"
+                  ? "bg-[rgb(51,13,1)] -mx-5 px-5 py-1" 
+                  : "bg-[rgb(255,255,249)] text-[#633E34] -mx-5 px-5 py-1"
+                : "-mx-5 px-5 py-1"
             }`}
             onMouseEnter={() => onHoverIndex?.(index)}
             onMouseLeave={() => onHoverIndex?.(null)}
