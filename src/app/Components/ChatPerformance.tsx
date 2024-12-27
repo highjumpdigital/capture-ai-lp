@@ -9,7 +9,7 @@ export const ChatPerformance = () => {
   const [selectedOption, setSelectedOption] = useState(0);
 
   return (
-    <div id="features" className="px-5 py-8 xl:p-[50px]   w-[100%] bg-white">
+    <div id="features" className="px-5  pt-8 sm:py-8 xl:p-[50px]   w-[100%] bg-white">
       <div className=" text-[26px] lg:text-[48px]  leading-[26px] lg:leading-[48px] Cairo text-[#FF4206] text-center font-bold">
         {constants.chatperformance.title}
         <span className="text-black">{constants.chatperformance.subtitle}</span>
@@ -74,10 +74,10 @@ export const ChatPerformance = () => {
             {ChatPerformancedata[selectedOption].detail}
             </motion.div>
 
-            <div className="mt-[10px]">
+            <div className="mt-[10px] flex ">
               <FilledButton
                 buttonTitle={constants.buttons.getStarted}
-                className="rounded-[8px] w-[141px] h-10 text-white text-4  font-bold bg-[#FF4206] leading-4 "
+                className="rounded-[8px] w-[141px] h-10 text-white text-4 text-center  font-bold bg-[#FF4206] leading-4 "
                 onClick={() => {}}
               />
             </div>
