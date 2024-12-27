@@ -6,7 +6,7 @@ import { constants, Immersiondata } from "./constants";
 
 export const Immersion = () => {
   return (
-    <div className=" px-[20px] relative z-10  py-[100px] ">
+    <div className=" px-[20px] relative z-10  pt-8 pb-[20px] sm:py-[100px] ">
       <div className="max-w-[1311px] mx-auto flex  flex-col lg:flex-row  gap-4 justify-between items-center">
 
       <div>
