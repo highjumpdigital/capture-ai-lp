@@ -32,11 +32,11 @@ export const FAQ = () => {
       {FaqData.map((item, index) => (
         <div
           key={index}
-          className="max-w-[658px] w-full hover:bg-[#FF420633] hover:border-[#FF4206] cursor-pointer rounded-[5px] p-[10px] border-[3px] border-[#383E4E33] min-h-[54px]"
+          className="max-w-[658px] w-full hover:bg-[#FF420633] hover:border-[#FF4206] cursor-pointer rounded-[5px] p-[10px] border-[3px] border-[#383E4E33] min-h-[54px] bg-[#F2F5F7]"
           onClick={() => handleToggle(index)}
         >
-          <div className="flex justify-between items-center">
-            <div className="text-4 leading-4 font-bold flex justify-start items-center uppercase Cairo mt-[5px] ">
+          <div className="flex justify-between items-end">
+            <div className="text-4 text-black leading-4 font-bold flex justify-start items-center uppercase Cairo mt-[5px] ">
               {item.title}
             </div>
             <div className="cursor-pointer">

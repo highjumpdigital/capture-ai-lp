@@ -32,7 +32,7 @@ export const ChatPerformance = () => {
                 } min-h-[54px] 
           hover:bg-[#FF420633] hover:border-[#FF4206]`}
               >
-                <div className="font-bold text-[16px] leading-[16px] text-[#000000CC] Cairo uppercase">
+                <div className="font-bold text-[16px] leading-[16px] text-[#000000CC] Inter uppercase">
                   {item.title}
                 </div>
                 <div>
@@ -74,10 +74,10 @@ export const ChatPerformance = () => {
             {ChatPerformancedata[selectedOption].detail}
             </motion.div>
 
-            <div className="mt-[10px]">
+            <div className="mt-[10px] flex ">
               <FilledButton
                 buttonTitle={constants.buttons.getStarted}
-                className="rounded-[8px] w-[141px] h-10 text-white text-4  font-bold bg-[#FF4206] leading-4 "
+                className="rounded-[8px] w-[141px] h-10 text-white text-4 text-center  font-bold bg-[#FF4206] leading-4 "
                 onClick={() => {}}
               />
             </div>

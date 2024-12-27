@@ -203,31 +203,31 @@ export const Immersiondata = [
     img: time,
     title: "ROUND-THE-CLOCK ENGAGEMENT",
     description:
-      "Your AI Chatbot is available 24/7, ensuring every potential lead is captured.",
+      "Your AI Chatbot Is Available 24/7, Ensuring Every Potential Lead Is Captured.",
   },
   {
     img: gear,
     title: "Customised with Your Business Info",
     description:
-      "Equipped with your business’s details, your AI Chatbot answers all lead queries comprehensively.",
+      "Equipped With Your Business’s Details, Your AI Chatbot Answers All Lead Queries Comprehensively.",
   },
   {
-    img: robot,
+    img: search,
     title: "Efficient Lead Management",
     description:
-      "Expertly captures and channels inquiries, boosting engagement and user experience.",
+      "Expertly Captures And Channels Inquiries, Boosting Engagement And User Experience.",
   },
   {
     img: stock,
     title: "Higher Conversion Potential ",
     description:
-      "Personalised interactions foster deeper understanding and nurturing of prospects.",
+      "Personalized Interactions Foster Deeper Understanding And Nurturing Of Prospects.",
   },
   {
-    img: search,
+    img: robot,
     title: "full screen sales agent",
     description:
-      "choose from a discreet chat bot, or integrate our system directly into your platform.",
+      "Choose From A Discreet Chat Bot, Or Integrate Our System Directly Into Your Platform.",
   },
 ];
 export const marquee1 = [
@@ -361,7 +361,7 @@ export const constants = {
     paymentsol: " PAYMENT SOLUTIONS",
     FREE: "FREE",
     offer:
-      "Offer services, answer questions, trigger user intents, manage documents, and provide suggestions.",
+      "Offer Services, Answer Questions, Trigger User Intents, Manage Documents, And Provide Suggestions.",
   },
   chatperformance: {
     showase:
@@ -436,27 +436,22 @@ export const constants = {
 export const cards = [
   { 
     number: "01.", 
-    heading: "AI-Powered Analysis",
-    text: "Our advanced algorithms analyze your content in real-time." 
+    heading: "USER STARTS A CONVERSATION",
+    text: "The User Will Start A Conversation And Ask Any Questions They Need To. If You Do Not Have Pre-Programmed Answers, Your AI Will Take Over And Respond." 
   },
   { 
     number: "02.", 
-    heading: "Smart Recommendations",
-    text: "Get personalized suggestions based on your unique needs." 
+    heading: "LEAD CAPTURE AND SEND",
+    text: "Once Your Chatbot Has Captured The Qualifying Information from The User, The Data Will Send To You Directly Via Email And SMS." 
   },
   { 
     number: "03.", 
-    heading: "Instant Results",
-    text: "See immediate improvements in your content quality." 
+    heading: "CUSTOM CRM INTEGRATION",
+    text: "As An Optional Extra, We Can Have Your Chatbot Send The Lead Information Directly To Your CRM Via API." 
   },
   { 
     number: "04.", 
-    heading: "Easy Integration",
-    text: "Seamlessly integrate with your existing workflow." 
-  },
-  { 
-    number: "05.", 
-    heading: "Continuous Learning",
-    text: "Our system evolves and improves with each interaction." 
+    heading: "INSIGHTS AND REPORTS",
+    text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts." 
   },
 ];

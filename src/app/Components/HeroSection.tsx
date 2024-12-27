@@ -1,6 +1,6 @@
 import React from "react";
-import PeopleGroup from "../assets/personGroup.png";
-import HeroSectionDashboardImage from "../assets/dashboardiamge.png";
+import PeopleGroup from "../assets/peoplephotos.svg";
+import HeroSectionDashboardImage from "../assets/background/dashboard-new-image.png";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
@@ -35,8 +35,14 @@ export const HeroSection = (): React.ReactElement => {
           />
         </div>
         <div className="font-bold text-4 leading-4 text-[#FF4206]">
-        {constants.herosection.viewSolution}
-
+        <div 
+          onClick={() => {
+            document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="cursor-pointer"
+        >
+          {constants.herosection.viewSolution}
+        </div>
         </div>
       </div>
 
