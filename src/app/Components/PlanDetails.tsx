@@ -8,7 +8,7 @@ interface PlanDetailsProps {
 
 export const PlanDetails: React.FC<PlanDetailsProps> = ({ hoveredIndex, onHoverIndex }) => {
   return (
-    <div className="flex flex-col gap-5 max-w-[308px] p-5 border bg-[#FFFFFF80] border-[#00000033] plandetailshadow rounded-[5px]">
+    <div className="flex flex-col gap-5 max-w-[308px] p-5 border bg-[#FFFFFF80] border-[#00000033] plandetailshadow rounded-[5px] mt-[109px]">
       {constants.planDetailsData.map((item, index) => (
         <div
           key={index}
