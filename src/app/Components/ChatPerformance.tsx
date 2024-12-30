@@ -14,7 +14,7 @@ export const ChatPerformance = () => {
         {constants.chatperformance.title}
         <span className="text-black">{constants.chatperformance.subtitle}</span>
       </div>
-      <div className="  py-8  gap-4  flex flex-col lg:flex-row justify-between items-center w-full max-w-[1312px] mx-auto bg-white ">
+      <div className="  py-8  gap-4  flex flex-col lg:flex-row justify-between items-center w-full max-w-[1312px] mx-auto bg-white mt-8">
         <div className="max-w-[641px] h-[374px] flex flex-col justify-between items-center w-full">
           {ChatPerformancedata.map((item, index) => {
             return (

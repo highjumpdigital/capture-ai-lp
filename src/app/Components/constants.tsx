@@ -9,6 +9,55 @@ import showcase from "../assets/performance/showcase.svg"
 import leadcapture from "../assets/performance/leadcapture.svg"
 import userintent from "../assets/performance/userintent copy.svg"
 import suggestion from "../assets/performance/suggest.svg"
+import personicon from "../assets/price/personicon.svg"
+import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
+import diamond from "../assets/price/basil_diamond-solid.svg"
+
+export const PAYMENT_CONSTANTS = {
+  HEADING: {
+    FLEXIBLE: "FLEXIBLE",
+    PAYMENT_SOLUTIONS: " PAYMENT SOLUTIONS"
+  },
+  BREAKPOINTS: {
+    MOBILE: 768
+  },
+  PLANS: {
+    BASIC: {
+      TITLE: "BASIC",
+      PRICE: "FREE",
+      IMAGE: personicon,
+      STYLES: {
+        BORDER: "border-[#00000033]",
+        BACKGROUND: "bg-[#F3F6F8]",
+        TEXT: "text-[#000000CC]",
+        HEADER: "text-black"
+      }
+    },
+    STARTER: {
+      TITLE: "STARTER KIT",
+      PRICE: "$49/MO.",
+      IMAGE: materialsymbolrocket,
+      STYLES: {
+        BORDER: "border-[#00000033]",
+        BACKGROUND: "bg-[#F3F6F8]",
+        TEXT: "text-[#000000CC]",
+        HEADER: "text-black"
+      }
+    },
+    PRO: {
+      TITLE: "INFINITY PRO",
+      PRICE: "$99/MO.",
+      IMAGE: diamond,
+      STYLES: {
+        BORDER: "border-[#FF4206]",
+        BACKGROUND: "bg-black",
+        TEXT: "text-[#D8DADB]",
+        HEADER: "text-white",
+        SHADOW: "paySolShadow"
+      }
+    }
+  }
+} 
 export const Plandata = [
   {
     title: "1 WEBSITE AGENT (X MESSAGES)",
