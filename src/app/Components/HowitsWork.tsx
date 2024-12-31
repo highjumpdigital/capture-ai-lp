@@ -283,10 +283,10 @@ export default function Work2() {
                         borderRight: "14px solid rgb(237,237,244)",
                       }}
                     />
-                    <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
+                    <h2 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
                       {card.heading}
                     </h2>
-                    <p className="text-sm lg:text-base text-gray-700 Inter">
+                    <p className="text-xs sm:text-sm lg:text-base text-gray-700 Inter">
                       {card.text}
                     </p>
                   </motion.div>
