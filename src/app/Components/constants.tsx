@@ -4,14 +4,14 @@ import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
 import provide from "../assets/performance/provide copy.svg"
-import thirdparty from "../assets/performance/thirdparty.svg"
+import thirdpartypic from "../assets/performance/thirdparty.svg"
 import showcase from "../assets/performance/showcase.svg"
 import leadcapture from "../assets/performance/leadcapture.svg"
 import userintent from "../assets/performance/userintent copy.svg"
 import suggestion from "../assets/performance/suggest.svg"
 import personicon from "../assets/price/personicon.svg"
 import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
-import diamond from "../assets/price/basil_diamond-solid.svg"
+import diamond from "../assets/price/basil_diamond-solid.svg" 
 
 export const PAYMENT_CONSTANTS = {
   HEADING: {
@@ -357,7 +357,7 @@ export const marquee4 = [
 export const ChatPerformancedata = [
   {
     title: "3rd party tool integration",
-    image: thirdparty,
+    image: thirdpartypic,
     detail:"Integrate with 3rd party tools to automate tasks, manage workflows, and streamline interactions. Stay connected and organized."
   },
   {
