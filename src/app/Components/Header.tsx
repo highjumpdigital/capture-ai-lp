@@ -1,11 +1,13 @@
 import Image from "next/image";
-import Logo from "@/app/assets/Logo.png";
 import { FilledButton } from "./FilledButton";
 import { Sofia_Sans_Semi_Condensed } from "next/font/google";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 import { constants } from "./constants";
+import Logo from "../assets/header/Group 73.svg";
+import Logo2 from "../assets/logo/logo.svg"
+
 
 const sofiaSans = Sofia_Sans_Semi_Condensed({
   subsets: ["latin"],
@@ -27,12 +29,15 @@ export const Header = () => {
     <>
       {/* Mobile Header */}
       <div className="flex justify-between items-center w-full lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
-        <GiHamburgerMenu
-          fill="white"
-          size={30}
-          onClick={toggleMobileMenu}
-          className="cursor-pointer"
-        />
+        <div className="flex items-center gap-4">
+          <GiHamburgerMenu
+            fill="white"
+            size={30}
+            onClick={toggleMobileMenu}
+            className="cursor-pointer"
+          />
+        </div>
+        <Image src={Logo2} alt="Logo" className="w-[50px]" />
       </div>
 
       {/* Side Section for Mobile */}
