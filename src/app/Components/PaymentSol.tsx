@@ -118,7 +118,7 @@ export const PaymentSol = () => {
               {[0, 1, 2].map((index) => (
                 <div
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
                     activeIndex === index ? 'bg-[#FF4206]' : 'bg-gray-200'
                   }`}
                 />
