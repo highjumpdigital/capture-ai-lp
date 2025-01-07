@@ -1,16 +1,20 @@
 import { PlanCard } from "@/app/Components/PlanCard";
 import { PlanDetails } from "@/app/Components/PlanDetails";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { constants, Plandata, STARTERPlandata, InfinityProPlandata } from "./constants";
 import { PAYMENT_CONSTANTS } from "./constants";
 
 export const PaymentSol = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isPlanDetailsHidden, setIsPlanDetailsHidden] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < PAYMENT_CONSTANTS.BREAKPOINTS.MOBILE);
+      setIsMobile(window.innerWidth < 986);
+      setIsPlanDetailsHidden(window.innerWidth < 1536);
     };
 
     checkIfMobile();
@@ -18,9 +22,26 @@ export const PaymentSol = () => {
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  // Merge plan details data with plan data when on mobile
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollContainerRef.current && isMobile) {
+        const scrollLeft = scrollContainerRef.current.scrollLeft;
+        const cardWidth = scrollContainerRef.current.offsetWidth;
+        const newIndex = Math.round(scrollLeft / cardWidth);
+        setActiveIndex(newIndex);
+      }
+    };
+
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+      return () => scrollContainer.removeEventListener('scroll', handleScroll);
+    }
+  }, [isMobile]);
+
+  // Merge plan details data with plan data when plan details are hidden
   const getMergedPlanData = (planData: typeof Plandata) => {
-    if (!isMobile) return planData;
+    if (!isPlanDetailsHidden) return planData;
     return constants.planDetailsData.map((item: { text: string }, index: number) => ({
       title: item.text,
       flag: planData[index]?.flag ?? false
@@ -37,43 +58,75 @@ export const PaymentSol = () => {
           </span>
         </div>
 
-        <div className="flex gap-[20px] mt-[48px] lg:mt-[100px] justify-center md:justify-between items-center flex-wrap">
-          <div className="hidden md:block">
-            <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
+        <div className="relative">
+          <div 
+            ref={scrollContainerRef}
+            className={`flex gap-[20px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
+              isMobile 
+                ? 'justify-start overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' 
+                : 'justify-center md:justify-between flex-wrap md:flex-nowrap'
+            }`}
+            style={isMobile ? {
+              scrollSnapType: 'x mandatory',
+              scrollPaddingLeft: '0px',
+              scrollPaddingRight: '0px'
+            } : undefined}
+          >
+            <div className="hidden 2xl:block shrink-0">
+              <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
+            </div>
+            <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
+              <PlanCard 
+                planData={getMergedPlanData(Plandata)} 
+                title={PAYMENT_CONSTANTS.PLANS.BASIC.TITLE}
+                image={PAYMENT_CONSTANTS.PLANS.BASIC.IMAGE}
+                price={PAYMENT_CONSTANTS.PLANS.BASIC.PRICE}
+                className={`${PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BACKGROUND}`}
+                headerText={PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.HEADER}
+                textClass={PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.TEXT}
+                hoveredIndex={hoveredIndex}
+                onHoverIndex={setHoveredIndex}
+              />
+            </div>
+            <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
+              <PlanCard 
+                planData={getMergedPlanData(STARTERPlandata)} 
+                title={PAYMENT_CONSTANTS.PLANS.STARTER.TITLE}
+                image={PAYMENT_CONSTANTS.PLANS.STARTER.IMAGE}
+                price={PAYMENT_CONSTANTS.PLANS.STARTER.PRICE}
+                className={`${PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BACKGROUND}`}
+                textClass={PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.TEXT}
+                headerText={PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.HEADER}
+                hoveredIndex={hoveredIndex}
+                onHoverIndex={setHoveredIndex}
+              />
+            </div>
+            <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
+              <PlanCard 
+                planData={getMergedPlanData(InfinityProPlandata)} 
+                title={PAYMENT_CONSTANTS.PLANS.PRO.TITLE}
+                image={PAYMENT_CONSTANTS.PLANS.PRO.IMAGE}
+                price={PAYMENT_CONSTANTS.PLANS.PRO.PRICE}
+                className={`${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BACKGROUND} ${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.SHADOW}`}
+                textClass={PAYMENT_CONSTANTS.PLANS.PRO.STYLES.TEXT}
+                headerText={PAYMENT_CONSTANTS.PLANS.PRO.STYLES.HEADER}
+                hoveredIndex={hoveredIndex}
+                onHoverIndex={setHoveredIndex}
+              />
+            </div>
           </div>
-          <PlanCard 
-            planData={getMergedPlanData(Plandata)} 
-            title={PAYMENT_CONSTANTS.PLANS.BASIC.TITLE}
-            image={PAYMENT_CONSTANTS.PLANS.BASIC.IMAGE}
-            price={PAYMENT_CONSTANTS.PLANS.BASIC.PRICE}
-            className={`${PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BACKGROUND}`}
-            headerText={PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.HEADER}
-            textClass={PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.TEXT}
-            hoveredIndex={hoveredIndex}
-            onHoverIndex={setHoveredIndex}
-          />
-          <PlanCard 
-            planData={getMergedPlanData(STARTERPlandata)} 
-            title={PAYMENT_CONSTANTS.PLANS.STARTER.TITLE}
-            image={PAYMENT_CONSTANTS.PLANS.STARTER.IMAGE}
-            price={PAYMENT_CONSTANTS.PLANS.STARTER.PRICE}
-            className={`${PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BACKGROUND}`}
-            textClass={PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.TEXT}
-            headerText={PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.HEADER}
-            hoveredIndex={hoveredIndex}
-            onHoverIndex={setHoveredIndex}
-          />
-          <PlanCard 
-            planData={getMergedPlanData(InfinityProPlandata)} 
-            title={PAYMENT_CONSTANTS.PLANS.PRO.TITLE}
-            image={PAYMENT_CONSTANTS.PLANS.PRO.IMAGE}
-            price={PAYMENT_CONSTANTS.PLANS.PRO.PRICE}
-            className={`${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BACKGROUND} ${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.SHADOW}`}
-            textClass={PAYMENT_CONSTANTS.PLANS.PRO.STYLES.TEXT}
-            headerText={PAYMENT_CONSTANTS.PLANS.PRO.STYLES.HEADER}
-            hoveredIndex={hoveredIndex}
-            onHoverIndex={setHoveredIndex}
-          />
+          {isMobile && (
+            <div className="flex justify-center gap-2 mt-4">
+              {[0, 1, 2].map((index) => (
+                <div
+                  key={index}
+                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                    activeIndex === index ? 'bg-[#FF4206]' : 'bg-gray-200'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
 import React from "react";
 import PeopleGroup from "../assets/peoplephotos.svg";
-import HeroSectionDashboardImage from "../assets/background/dashboard-new-image.png";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
 import { constants } from "./constants";
 import herosectionimage from"../assets/herosectionbgImage.png"
-import Logo from "../assets/logo/logo.svg"
+import DashBoardImage from "../assets/dashboard/pixelcut-export (1).png"
 
 export const HeroSection = (): React.ReactElement => {
   return (
@@ -15,9 +14,6 @@ export const HeroSection = (): React.ReactElement => {
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
-      <div className="md:hidden flex justify-center items-center pt-[30px]">
-        <Image src={Logo} alt="Logo" className="w-[70px]" />
-      </div>
       <div className="flex justify-center font-medium  Cairo text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[30px] md:pt-[100px]">
        {constants.herosection.CONVERSATIONS}
       </div>
@@ -50,8 +46,8 @@ export const HeroSection = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="absolute bottom-0  hidden md:block rounded-tl-[10px] rounded-tr-[10px]  right-[30%] left-[30%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[#888c8f] z-10">
-        <Image src={HeroSectionDashboardImage} alt="" className="h-[300px]" 
+      <div className="absolute bottom-0  hidden md:block rounded-tl-[21px] rounded-tr-[21px]  right-[30%] left-[30%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[rgba(136,140,143,0.8)] z-10">
+        <Image src={DashBoardImage} alt="" className="h-[301px]" 
         
         height={500}
         />

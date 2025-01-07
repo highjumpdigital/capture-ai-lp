@@ -45,58 +45,58 @@ export const PlanCard: React.FC<PlanCardProps> = ({
 
   return (
     <div
-      className={`flex flex-col gap-4 max-w-[308px] w-full p-5 border  plandetailshadow rounded-[5px]  ${className} `}
+      className={`flex flex-col gap-4 max-w-[308px] w-full p-3 sm:p-5 border plandetailshadow rounded-[5px] ${className}`}
     >
       {/* Header Section */}
       <div className="w-full flex justify-between items-center">
-        <div className="flex gap-2 justify-start items-center">
-          <Image src={image} alt={title} width={24} height={24} />
+        <div className="flex gap-1 sm:gap-2 justify-start items-center">
+          <Image src={image} alt={title} width={20} height={20} className="sm:w-6 sm:h-6" />
           <div
-            className={`text-[22px] leading-[22px] font-bold Cairo ${headerText}   `}
+            className={`text-[18px] sm:text-[22px] leading-[18px] sm:leading-[22px] font-bold Cairo ${headerText}`}
           >
             {title}
           </div>
         </div>
-        <div className="font-light text-[22px] leading-[22px] Cairo text-[#FF4206]">
+        <div className="font-light text-[18px] sm:text-[22px] leading-[18px] sm:leading-[22px] Cairo text-[#FF4206]">
           {price}
         </div>
       </div>
 
       {/* Description Section */}
-      <div className={`border border-[#00000033] Cairo p-[24px] rounded-[5px] text-[12px] leading-[18px] ${
+      <div className={`border border-[#00000033] Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
         title === "INFINITY PRO" ? "bg-[#3E444A] text-white" : "bg-[#D4D6D8]"
       }`}>
         {constants.paymentSol.offer}
       </div>
 
       {/* Plan Features */}
-      <div className="flex flex-col gap-5 mt-5 ">
+      <div className="flex flex-col gap-3 sm:gap-5 mt-3 sm:mt-5">
         {planData.map((item, index) => (
           <div
             key={index}
-            className={`flex gap-2 justify-start items-center text-[12px] font-bold cursor-pointer transition-all duration-200 ease-in-out ${
+            className={`flex gap-1 sm:gap-2 justify-start items-center text-[10px] sm:text-[12px] font-bold cursor-pointer transition-all duration-200 ease-in-out ${
               hoveredIndex === index 
                 ? title === "INFINITY PRO"
-                  ? "bg-[rgb(51,13,1)] -mx-5 px-5 py-1" 
-                  : "bg-[rgb(255,255,249)] text-[#633E34] -mx-5 px-5 py-1"
-                : "-mx-5 px-5 py-1"
+                  ? "bg-[rgb(51,13,1)] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1" 
+                  : "bg-[rgb(255,255,249)] text-[#633E34] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
+                : "-mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
             }`}
             onMouseEnter={() => onHoverIndex?.(index)}
             onMouseLeave={() => onHoverIndex?.(null)}
           >
             <div>
               {item.flag ? (
-                <div className="bg-[green] rounded-[50%] border border-white h-5 w-5 flex justify-center items-center">
-                  <MdDone fill="white" size={12} />
+                <div className="bg-[green] rounded-[50%] border border-white h-4 w-4 sm:h-5 sm:w-5 flex justify-center items-center">
+                  <MdDone fill="white" size={10} className="sm:w-3 sm:h-3" />
                 </div>
               ) : (
-                <div className="bg-[red] rounded-[50%] border border-white h-5 w-5 flex justify-center items-center">
-                  <RxCross2 fill="white" color="white" size={12} />
+                <div className="bg-[red] rounded-[50%] border border-white h-4 w-4 sm:h-5 sm:w-5 flex justify-center items-center">
+                  <RxCross2 fill="white" color="white" size={10} className="sm:w-3 sm:h-3" />
                 </div>
               )}
             </div>
             <div
-              className={`text-[14px] Inter leading-[21px] font-bold ${textClass} ${
+              className={`text-[12px] sm:text-[14px] Inter leading-[18px] sm:leading-[21px] font-bold ${textClass} ${
                 hoveredIndex === index && title !== "INFINITY PRO" ? "text-[#633E34]" : ""
               }`}
             >
@@ -107,11 +107,11 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       </div>
 
       {/* Call-to-Action Button */}
-      <div className="mt-5">
+      <div className="mt-3 sm:mt-5">
         <FilledButton
           buttonTitle={buttonTitle}
           hoverText={getHoverText(price)}
-          className="text-white h-10 w-full bg-[#FF4206]"
+          className="text-white h-8 sm:h-10 w-full bg-[#FF4206] text-[12px] sm:text-[14px]"
           onClick={handleClick}
         />
       </div>

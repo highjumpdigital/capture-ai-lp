@@ -420,7 +420,7 @@ export const constants = {
   },
   header: {
     FEATURES: "FEATURES",
-    howitwork: "HOW IT WORKS",
+    howitwork: "HERE'S HOW IT WORKS",
     SOLUTIONS: "SOLUTIONS",
     FAQ: "FAQ'S",
     login: "LOG IN",

@@ -20,7 +20,7 @@ export const ChatPerformance = () => {
             return (
               <motion.div
                 key={index}
-                onClick={() => setSelectedOption(index)}
+                onMouseEnter={() => setSelectedOption(index)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={`max-w-[641px] ${

@@ -3,7 +3,7 @@
 "use client";
 
 import bgImage from "../assets/herosectionbgImage.png";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { Cairo } from "next/font/google";
 import { motion } from "framer-motion";
 import { cards } from "./constants";
@@ -25,6 +25,38 @@ export default function Work2() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const [gap, setGap] = useState(60); // Default gap
+
+  const scrollToCard = useCallback((direction: "up" | "down") => {
+    if (isScrolling || !containerRef.current) return;
+
+    setIsScrolling(true);
+    const container = containerRef.current;
+    const CARD_HEIGHT = 176;
+    const newIndex =
+      direction === "down"
+        ? Math.min(currentIndex + 1, cards.length - 1)
+        : Math.max(currentIndex - 1, 0);
+
+    if (newIndex !== currentIndex) {
+      const totalScroll = newIndex * (CARD_HEIGHT + gap);
+
+      container.scrollTo({
+        top: totalScroll,
+        behavior: "smooth",
+      });
+
+      setCurrentIndex(newIndex);
+    }
+
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, SCROLL_ANIMATION_DURATION + 100);
+  }, [currentIndex, gap, isScrolling]);
+
+  const handleManualScroll = useCallback((direction: "up" | "down") => {
+    setAutoScrollEnabled(false);
+    scrollToCard(direction);
+  }, [scrollToCard]);
 
   // Update gap based on screen size
   useEffect(() => {
@@ -75,7 +107,7 @@ export default function Work2() {
 
     section.addEventListener("wheel", preventScroll, { passive: false });
     return () => section.removeEventListener("wheel", preventScroll);
-  }, [isScrolling, currentIndex, gap]);
+  }, [isScrolling, currentIndex, gap, handleManualScroll]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -122,39 +154,7 @@ export default function Work2() {
     }, SCROLL_ANIMATION_DURATION + 1000); // Add 1 second pause between scrolls
 
     return () => clearInterval(autoScrollInterval);
-  }, [currentIndex, autoScrollEnabled]);
-
-  // Handle manual interaction
-  const handleManualScroll = (direction: "up" | "down") => {
-    setAutoScrollEnabled(false);
-    scrollToCard(direction);
-  };
-
-  const scrollToCard = (direction: "up" | "down") => {
-    if (isScrolling || !containerRef.current) return;
-
-    setIsScrolling(true);
-    const newIndex =
-      direction === "down"
-        ? Math.min(currentIndex + 1, cards.length - 1)
-        : Math.max(currentIndex - 1, 0);
-
-    if (newIndex !== currentIndex) {
-      const CARD_HEIGHT = 176; // Height of each card in pixels
-      const totalScroll = newIndex * (CARD_HEIGHT + gap);
-
-      containerRef.current.scrollTo({
-        top: totalScroll,
-        behavior: "smooth",
-      });
-
-      setCurrentIndex(newIndex);
-    }
-
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, SCROLL_ANIMATION_DURATION + 100);
-  };
+  }, [currentIndex, autoScrollEnabled, scrollToCard]);
 
   return (
     <div
