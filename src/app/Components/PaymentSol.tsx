@@ -6,13 +6,15 @@ import { PAYMENT_CONSTANTS } from "./constants";
 
 export const PaymentSol = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isPlanDetailsHidden, setIsPlanDetailsHidden] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 986);
+      setIsPlanDetailsHidden(window.innerWidth < 1536);
     };
 
     checkIfMobile();
@@ -39,7 +41,7 @@ export const PaymentSol = () => {
 
   // Merge plan details data with plan data when plan details are hidden
   const getMergedPlanData = (planData: typeof Plandata) => {
-    if (!isMobile) return planData;
+    if (!isPlanDetailsHidden) return planData;
     return constants.planDetailsData.map((item: { text: string }, index: number) => ({
       title: item.text,
       flag: planData[index]?.flag ?? false
