@@ -1,11 +1,11 @@
 import React from "react";
 import PeopleGroup from "../assets/peoplephotos.svg";
-import HeroSectionDashboardImage from "../assets/background/dashboard-new-image.png";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
 import { constants } from "./constants";
 import herosectionimage from"../assets/herosectionbgImage.png"
+import DashBoardImage from "../assets/dashboard/pixelcut-export (1).png"
 import Logo from "../assets/logo/logo.svg"
 
 export const HeroSection = (): React.ReactElement => {
@@ -51,7 +51,7 @@ export const HeroSection = (): React.ReactElement => {
       </div>
 
       <div className="absolute bottom-0  hidden md:block rounded-tl-[10px] rounded-tr-[10px]  right-[30%] left-[30%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[#888c8f] z-10">
-        <Image src={HeroSectionDashboardImage} alt="" className="h-[301px]" 
+        <Image src={DashBoardImage} alt="" className="h-[301px]" 
         
         height={500}
         />
