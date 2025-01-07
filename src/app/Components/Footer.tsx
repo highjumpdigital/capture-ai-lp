@@ -1,6 +1,6 @@
 import Logo from "@/app/assets/Logo.png";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import { constants } from '../_common';
 import { GrFacebookOption } from "react-icons/gr";
 import { FaInstagram, FaLinkedinIn, FaYoutube, FaXTwitter } from "react-icons/fa6";
@@ -14,9 +14,12 @@ const socialLinks = [
 ];
 
 export const Footer: React.FC = () => {
-  // const {
-  //   footerRoutes: { about, privacy, support, terms },
-  // } = constants;
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+  
   return (
     <div className="flex flex-col bg-black  px-[20px] lg:px-[100px] py-6 md:py-12 ">
       <div className="max-w-[1311px] w-full mx-auto">
@@ -31,7 +34,7 @@ export const Footer: React.FC = () => {
       </div>
       <div className="flex flex-col lg:flex-row  justify-start lg:justify-between  gap-5  py-10 items-center">
         <div className="text-[#FFFFFFCC] text-sm  lg:max-w-[330px]  w-full flex justify-start items-end  text-start  md:text-base">
-          {`© 2024 CAPTURE AI, by High Jump Digital.
+          {`© ${currentYear} CAPTURE AI, by High Jump Digital.
 All Rights Reserved.`}
         </div>
         <div className="flex   justify-start   lg:justify-center space-x-3">

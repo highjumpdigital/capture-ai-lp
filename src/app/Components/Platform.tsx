@@ -1,34 +1,34 @@
 import React from "react";
-import Image1 from "../assets/Vector (2).png";
-import Image2 from "../assets/shopify-svgrepo-com.png";
-import Image3 from "../assets/woocommerce-icon-svgrepo-com.png";
-import Image4 from "../assets/wix-svgrepo-com.png";
-import Image5 from "../assets/squarespace-132-svgrepo-com.png";
-import Image6 from "../assets/magento-svgrepo-com.png";
-import Image7 from "../assets/bigcommerce-svgrepo-com.png";
+import WordPress from "../assets/platform/wordpress-svgrepo-com.svg"
+import Shopify from "../assets/platform/shopify-svgrepo-com.svg"
+import Woo from "../assets/platform/woocommerce-icon-svgrepo-com.svg"
+import Wix from "../assets/platform/wix-svgrepo-com.svg"
+import SquareSpace from "../assets/platform/squarespace-132-svgrepo-com.svg"
+import Magneto from "../assets/platform/magento-svgrepo-com.svg"
+import BigCommerse from "../assets/platform/bigcommerce-svgrepo-com.svg"
 import Image from "next/image";
 export const Platform = () => {
   const data = [
     {
-      img: Image1,
+      img: WordPress,
     },
     {
-      img: Image2,
+      img: Shopify,
     },
     {
-      img: Image3,
+      img: Woo,
     },
     {
-      img: Image4,
+      img: Wix,
     },
     {
-      img: Image5,
+      img: SquareSpace,
     },
     {
-      img: Image6,
+      img: Magneto,
     },
     {
-      img: Image7,
+      img: BigCommerse,
     },
   ];
 

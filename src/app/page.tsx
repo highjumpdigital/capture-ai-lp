@@ -13,7 +13,7 @@ import HowItWorks from "./Components/HowitsWork";
 
 export default function Home() {
   return (
-    <div>
+    <div className="pt-20">
       <Header />
       <HeroSection />
       <Platform />

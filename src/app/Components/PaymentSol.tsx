@@ -37,7 +37,7 @@ export const PaymentSol = () => {
           </span>
         </div>
 
-        <div className="flex gap-[20px] mt-[48px] lg:mt-[100px] justify-center md:justify-between items-center flex-wrap">
+        <div className="flex gap-[20px] mt-[48px] lg:mt-[100px] justify-center md:justify-between items-center md:flex-nowrap flex-wrap">
           <div className="hidden md:block">
             <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
           </div>
