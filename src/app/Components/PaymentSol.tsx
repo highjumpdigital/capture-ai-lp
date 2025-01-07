@@ -10,7 +10,7 @@ export const PaymentSol = () => {
 
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < PAYMENT_CONSTANTS.BREAKPOINTS.MOBILE);
+      setIsMobile(window.innerWidth < 1400);
     };
 
     checkIfMobile();
@@ -18,7 +18,7 @@ export const PaymentSol = () => {
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  // Merge plan details data with plan data when on mobile
+  // Merge plan details data with plan data when plan details are hidden
   const getMergedPlanData = (planData: typeof Plandata) => {
     if (!isMobile) return planData;
     return constants.planDetailsData.map((item: { text: string }, index: number) => ({
@@ -37,8 +37,8 @@ export const PaymentSol = () => {
           </span>
         </div>
 
-        <div className="flex gap-[20px] mt-[48px] lg:mt-[100px] justify-center md:justify-between items-center md:flex-nowrap flex-wrap">
-          <div className="hidden md:block">
+        <div className="flex gap-[20px] mt-[48px] lg:mt-[100px] justify-center 2xl:justify-between items-center flex-wrap 2xl:flex-nowrap">
+          <div className="hidden 2xl:block">
             <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
           </div>
           <PlanCard 
