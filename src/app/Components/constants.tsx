@@ -4,11 +4,11 @@ import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
 import provide from "../assets/performance/provide copy.svg"
-import thirdpartypic from "../assets/performance/thirdparty.svg"
-import showcase from "../assets/performance/showcase.svg"
-import leadcapture from "../assets/performance/leadcapture.svg"
-import userintent from "../assets/performance/userintent copy.svg"
-import suggestion from "../assets/performance/suggest.svg"
+import thirdpartypic from "../assets/performance2/third-party.svg"
+import showcase from "../assets/performance2/showcase-work.svg"
+import leadcapture from "../assets/performance2/lead-capture.svg"
+import userintent from "../assets/performance2/user-intent.svg"
+import suggestion from "../assets/performance2/suggestion.svg"
 import personicon from "../assets/price/personicon.svg"
 import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
 import diamond from "../assets/price/basil_diamond-solid.svg" 

@@ -49,7 +49,7 @@ export const FAQ = () => {
                     activeIndex === index ? "max-h-[500px] " : "max-h-0"
                   }`}
                 >
-                  <div className="text-sm text-gray-700 my-4 Cairo">
+                  <div className=" text-[#000000CC] my-4 font-['Inter'] text-[16px] font-normal leading-[16px] text-left underline-offset-[from-font] decoration-skip-ink-none">
                     {item.description}
                   </div>
                 </div>
