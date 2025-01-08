@@ -48,6 +48,17 @@ export const PaymentSol = () => {
     }));
   };
 
+  const scrollToCard = (index: number) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.offsetWidth;
+      scrollContainerRef.current.scrollTo({
+        left: cardWidth * index,
+        behavior: 'smooth'
+      });
+      setActiveIndex(index);
+    }
+  };
+
   return (
     <div id="solutions" className="bg-[#F2F5F7] px-[20px] xl:px-[100px] pt-[70px] pb-[50px] lg:py-[100px]">
       <div className="max-w-[1311px] mx-auto">
@@ -118,11 +129,13 @@ export const PaymentSol = () => {
           {isMobile && (
             <div className="flex justify-center gap-2 mt-4">
               {[0, 1, 2].map((index) => (
-                <div
+                <button
                   key={index}
-                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                    activeIndex === index ? 'bg-[#FF4206]' : 'bg-gray-200'
+                  onClick={() => scrollToCard(index)}
+                  className={`w-4 h-4 rounded-full transition-all duration-300 cursor-pointer ${
+                    activeIndex === index ? 'bg-[#FF4206]' : 'bg-gray-200 hover:bg-gray-300'
                   }`}
+                  aria-label={`View plan ${index + 1}`}
                 />
               ))}
             </div>

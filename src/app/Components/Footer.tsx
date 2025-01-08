@@ -1,4 +1,4 @@
-import Logo from "@/app/assets/Logo.png";
+import Logo from "@/app/assets/header/Group 73.svg";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 // import { constants } from '../_common';

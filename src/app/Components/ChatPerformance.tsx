@@ -69,7 +69,7 @@ export const ChatPerformance = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="font-medium text-[16px] leading-6  text-[#000000CC]"
+              className="font-medium text-[16px] leading-[24px] text-[#000000CC] font-['Inter'] text-left underline-offset-[from-font] decoration-skip-ink-none"
             >
             {ChatPerformancedata[selectedOption].detail}
             </motion.div>

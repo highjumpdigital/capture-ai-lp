@@ -26,42 +26,53 @@ export default function Work2() {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const [gap, setGap] = useState(60); // Default gap
 
-  const scrollToCard = useCallback((direction: "up" | "down") => {
-    if (isScrolling || !containerRef.current) return;
+  const scrollToCard = useCallback(
+    (direction: "up" | "down") => {
+      if (isScrolling || !containerRef.current) return;
 
-    setIsScrolling(true);
-    const container = containerRef.current;
-    const CARD_HEIGHT = 176;
-    const newIndex =
-      direction === "down"
-        ? Math.min(currentIndex + 1, cards.length - 1)
-        : Math.max(currentIndex - 1, 0);
+      setIsScrolling(true);
+      const container = containerRef.current;
+      const CARD_HEIGHT = 176;
+      const newIndex =
+        direction === "down"
+          ? Math.min(currentIndex + 1, cards.length - 1)
+          : Math.max(currentIndex - 1, 0);
 
-    if (newIndex !== currentIndex) {
-      const totalScroll = newIndex * (CARD_HEIGHT + gap);
+      if (newIndex !== currentIndex) {
+        // Clamping the scroll offset to stay within container bounds
+        const maxScroll = container.scrollHeight - container.clientHeight;
+        const rawScroll = newIndex * (CARD_HEIGHT + gap);
+        const clampedScroll = Math.max(0, Math.min(rawScroll, maxScroll));
 
-      container.scrollTo({
-        top: totalScroll,
-        behavior: "smooth",
-      });
+        container.scrollTo({
+          top: clampedScroll,
+          behavior: "smooth",
+        });
 
-      setCurrentIndex(newIndex);
-    }
+        setCurrentIndex(newIndex);
+      }
 
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, SCROLL_ANIMATION_DURATION + 100);
-  }, [currentIndex, gap, isScrolling]);
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, SCROLL_ANIMATION_DURATION + 100);
+    },
+    [currentIndex, gap, isScrolling]
+  );
 
-  const handleManualScroll = useCallback((direction: "up" | "down") => {
-    setAutoScrollEnabled(false);
-    scrollToCard(direction);
-  }, [scrollToCard]);
+  const handleManualScroll = useCallback(
+    (direction: "up" | "down") => {
+      setAutoScrollEnabled(false);
+      scrollToCard(direction);
+    },
+    [scrollToCard]
+  );
 
-  // Update gap based on screen size
+  // Update gap based on screen size and current index
   useEffect(() => {
     const updateGap = () => {
-      if (window.innerWidth >= 1024) {
+      if (currentIndex === 3) {
+        setGap(71);
+      } else if (window.innerWidth >= 1024) {
         // 'lg' breakpoint
         setGap(120);
       } else {
@@ -72,7 +83,7 @@ export default function Work2() {
     updateGap();
     window.addEventListener("resize", updateGap);
     return () => window.removeEventListener("resize", updateGap);
-  }, []);
+  }, [currentIndex]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -151,7 +162,7 @@ export default function Work2() {
       } else {
         setAutoScrollEnabled(false);
       }
-    }, SCROLL_ANIMATION_DURATION + 1000); // Add 1 second pause between scrolls
+    }, SCROLL_ANIMATION_DURATION + 1300); // Add 1 second pause between scrolls
 
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, scrollToCard]);
@@ -190,23 +201,20 @@ export default function Work2() {
               maxWidth: "90%",
             }}
           >
-            HERE HOW IT WORKS
+            {`HERE'S HOW IT WORKS`}
           </h1>
         </div>
 
         {/* Right Content Section with Line */}
         <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0">
-          {/* Vertical Orange Line with Enhanced Gradient Blur */}
+          {/* Vertical Orange Line with Top and Bottom Blur */}
           <div className="relative w-[2px] h-[400px] self-center overflow-visible">
-            {/* Top blur gradient */}
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-[2px] h-16 bg-orange" />
-            {/* Main line */}
-            <div className="absolute top-12 bottom-12 left-0 right-0 bg-orange" />
-            {/* Bottom blur gradient */}
+            {/* Main line with top and bottom blur */}
             <div
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[2px] h-16"
+              className="absolute top-0 bottom-0 left-0 right-0"
               style={{
-                background: "linear-gradient(to top, transparent, #FF4206 30%)",
+                background:
+                  "linear-gradient(to bottom, rgba(255, 66, 6, 0), #FF4206 30%, #FF4206 70%, rgba(255, 66, 6, 0))",
               }}
             />
           </div>
@@ -214,10 +222,8 @@ export default function Work2() {
           {/* Cards Section */}
           <div
             ref={containerRef}
-            className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth scrollbar-hide"
+            className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth"
             style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
               scrollBehavior: "smooth",
               transition: `all ${SCROLL_ANIMATION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,
             }}
@@ -226,9 +232,15 @@ export default function Work2() {
               div::-webkit-scrollbar {
                 display: none;
               }
+              div::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 4px;
+              }
             `}</style>
-            <div className="flex flex-col gap-[60px] lg:gap-[120px]">
-              {/* Top spacer for scrolling */}
+            <div
+              className="flex flex-col gap-[60px] lg:gap-[120px]"
+              style={{ gap: `${gap}px` }}
+            >
               <div className="h-[10px]"></div>
 
               {cards.map((card, index) => (
@@ -286,7 +298,7 @@ export default function Work2() {
                     <h2 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
                       {card.heading}
                     </h2>
-                    <p className="text-xs sm:text-sm lg:text-base text-gray-700 Inter">
+                    <p className="text-gray-700 font-[Inter] text-sm sm:text-[14px] lg:text-[16px] font-[500] leading-[20px] sm:leading-[22px] lg:leading-[24px] text-left text-underline-position-from-font text-decoration-skip-ink-none">
                       {card.text}
                     </p>
                   </motion.div>
@@ -294,7 +306,7 @@ export default function Work2() {
               ))}
 
               {/* Bottom spacer for scrolling */}
-              <div className="h-[5px]"></div>
+              <div className="h-[-5px]"></div>
             </div>
           </div>
         </div>
