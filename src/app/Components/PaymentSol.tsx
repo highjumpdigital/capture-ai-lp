@@ -88,6 +88,8 @@ export const PaymentSol = () => {
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
               <PlanCard 
+              id={1}
+
                 planData={getMergedPlanData(Plandata)} 
                 title={PAYMENT_CONSTANTS.PLANS.BASIC.TITLE}
                 image={PAYMENT_CONSTANTS.PLANS.BASIC.IMAGE}
@@ -101,6 +103,7 @@ export const PaymentSol = () => {
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
               <PlanCard 
+              id={2}
                 planData={getMergedPlanData(STARTERPlandata)} 
                 title={PAYMENT_CONSTANTS.PLANS.STARTER.TITLE}
                 image={PAYMENT_CONSTANTS.PLANS.STARTER.IMAGE}
@@ -114,6 +117,8 @@ export const PaymentSol = () => {
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
               <PlanCard 
+              id={3}
+
                 planData={getMergedPlanData(InfinityProPlandata)} 
                 title={PAYMENT_CONSTANTS.PLANS.PRO.TITLE}
                 image={PAYMENT_CONSTANTS.PLANS.PRO.IMAGE}
