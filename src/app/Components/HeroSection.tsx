@@ -1,11 +1,11 @@
 import React from "react";
-import PeopleGroup from "../assets/peoplephotos.svg";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
 import { constants } from "./constants";
 import herosectionimage from"../assets/herosectionbgImage.png"
 import DashBoardImage from "../assets/dashboard/pixelcut-export (1).png"
+import PropleImage from "../assets/herosection-profile-photoes/all-leads.svg"
 
 export const HeroSection = (): React.ReactElement => {
   return (
@@ -54,7 +54,12 @@ export const HeroSection = (): React.ReactElement => {
       </div>
       <div>
         <div className="mt-[40px] flex flex-col justify-center items-center">
-          <Image src={PeopleGroup} alt="PeopleGroup" />
+          <Image 
+            src={PropleImage} 
+            alt="PeopleGroup" 
+            width={164}
+            height={100}
+          />
           <div className="font-light text-[12px] leading-3 mt-[10px] text-black">
           {constants.herosection.leadsCapture}
 

@@ -181,9 +181,8 @@ export default function Work2() {
         {/* Left Section */}
         <div className="w-full lg:w-1/2 p-4 lg:p-8 flex items-center justify-center">
           <h1
-            className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block"
+            className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
             style={{
-              fontSize: "clamp(40px, 6vw, 128px)",
               maxWidth: "90%",
             }}
           >
@@ -195,9 +194,8 @@ export default function Work2() {
           </h1>
 
           <h1
-            className="text-black font-bold leading-tight text-center lg:text-left block sm:hidden"
+            className="text-black font-bold leading-tight text-center lg:text-left block sm:hidden text-3xl sm:text-4xl"
             style={{
-              fontSize: "clamp(40px, 6vw, 128px)",
               maxWidth: "90%",
             }}
           >
@@ -257,6 +255,7 @@ export default function Work2() {
                     duration: 0.3,
                     ease: "easeOut",
                   }}
+                  
                 >
                   <motion.div
                     className="rounded-full"
@@ -266,12 +265,7 @@ export default function Work2() {
                   </motion.div>
                   <div className="flex items-center gap-1 lg:gap-2">
                     <motion.span
-                      className="text-orange"
-                      style={{
-                        fontWeight: 300,
-                        fontSize: "48px",
-                        lineHeight: "48px",
-                      }}
+                      className="text-orange text-3xl sm:text-4xl lg:text-5xl font-light leading-tight"
                     >
                       {card.number}
                     </motion.span>
@@ -295,10 +289,10 @@ export default function Work2() {
                         borderRight: "14px solid rgb(237,237,244)",
                       }}
                     />
-                    <h2 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
+                    <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 mb-1 lg:mb-2">
                       {card.heading}
                     </h2>
-                    <p className="text-gray-700 font-[Inter] text-sm sm:text-[14px] lg:text-[16px] font-[500] leading-[20px] sm:leading-[22px] lg:leading-[24px] text-left text-underline-position-from-font text-decoration-skip-ink-none">
+                    <p className="text-gray-700 font-[Inter] text-xs sm:text-sm lg:text-base xl:text-lg font-[500] leading-[1.4] sm:leading-[1.5] lg:leading-[1.6] text-left">
                       {card.text}
                     </p>
                   </motion.div>
