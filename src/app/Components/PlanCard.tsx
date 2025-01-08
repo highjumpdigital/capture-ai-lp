@@ -7,6 +7,7 @@ import { constants } from "./constants";
 
 // Define Props Type
 interface PlanCardProps {
+  id: Number;
   title: string;
   price: string;
   className: string;
@@ -21,6 +22,7 @@ interface PlanCardProps {
 }
 
 export const PlanCard: React.FC<PlanCardProps> = ({
+  id,
   title,
   image,
   planData,
@@ -50,7 +52,13 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       {/* Header Section */}
       <div className="w-full flex justify-between items-center">
         <div className="flex gap-1 sm:gap-2 justify-start items-center">
-          <Image src={image} alt={title} width={20} height={20} className="sm:w-6 sm:h-6" />
+          <Image
+            src={image}
+            alt={title}
+            width={20}
+            height={20}
+            className="sm:w-6 sm:h-6"
+          />
           <div
             className={`text-[18px] sm:text-[22px] leading-[18px] sm:leading-[22px] font-bold Cairo ${headerText}`}
           >
@@ -63,9 +71,13 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       </div>
 
       {/* Description Section */}
-      <div className={`border border-[#00000033] Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
-        title === "INFINITY PRO" ? "bg-[#3E444A] text-[#D8DADB]" : "bg-[#D4D6D8]"
-      }`}>
+      <div
+        className={`border border-[#00000033] Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
+          title === "INFINITY PRO"
+            ? "bg-[#3E444A] text-[#D8DADB]"
+            : "bg-[#D4D6D8]"
+        }`}
+      >
         {constants.paymentSol.offer}
       </div>
 
@@ -75,9 +87,9 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           <div
             key={index}
             className={`flex gap-1 sm:gap-2 justify-start items-center py-1 text-[10px] sm:text-[12px] font-bold cursor-pointer transition-all duration-200 ease-in-out ${
-              hoveredIndex === index 
+              hoveredIndex === index
                 ? title === "INFINITY PRO"
-                  ? "bg-[rgb(51,13,1)] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1" 
+                  ? "bg-[rgb(51,13,1)] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
                   : "bg-[rgb(255,251,249)] text-[#633E34] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
                 : "-mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
             }`}
@@ -91,13 +103,20 @@ export const PlanCard: React.FC<PlanCardProps> = ({
                 </div>
               ) : (
                 <div className="bg-[red] rounded-[50%] border border-white h-4 w-4 sm:h-5 sm:w-5 flex justify-center items-center">
-                  <RxCross2 fill="white" color="white" size={10} className="sm:w-3 sm:h-3" />
+                  <RxCross2
+                    fill="white"
+                    color="white"
+                    size={10}
+                    className="sm:w-3 sm:h-3"
+                  />
                 </div>
               )}
             </div>
             <div
               className={`text-[12px] sm:text-[14px] Inter leading-[18px] sm:leading-[21px] font-bold ${textClass} ${
-                hoveredIndex === index && title !== "INFINITY PRO" ? "text-[#633E34]" : ""
+                hoveredIndex === index && title !== "INFINITY PRO"
+                  ? "text-[#633E34]"
+                  : ""
               }`}
             >
               {item.title}
@@ -107,7 +126,11 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       </div>
 
       {/* Call-to-Action Button */}
-      <div className="mt-3 sm:mt-5">
+      <div
+        className={`mt-3  ${
+          id === 1 ? "sm:mt-6" : id === 2 ? "sm:mt-[22px]" : "sm:mt-5"
+        }   `}
+      >
         <FilledButton
           buttonTitle={buttonTitle}
           hoverText={getHoverText(price)}
