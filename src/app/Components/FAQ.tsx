@@ -35,11 +35,11 @@ export const FAQ = () => {
           className="max-w-[658px] w-full hover:bg-[#FF420633] hover:border-[#FF4206] cursor-pointer rounded-[5px] p-[10px] border-[3px] border-[#383E4E33] min-h-[54px] bg-[#F2F5F7]"
           onClick={() => handleToggle(index)}
         >
-          <div className="flex justify-between items-end">
+          <div className="flex justify-between items-end relative">
             <div className="text-4 text-black leading-4 font-bold flex justify-start items-center uppercase Cairo mt-[5px] ">
               {item.title}
             </div>
-            <div className="cursor-pointer">
+            <div className="cursor-pointer absolute right-0 top-[25%]">
               {activeIndex === index ? (
                 <MdOutlineArrowUpward fill="#FF4206" />
               ) : (

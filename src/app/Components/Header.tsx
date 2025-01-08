@@ -54,7 +54,7 @@ export const Header = () => {
             onClick={toggleMobileMenu}
           />
         </div>
-        <div className="flex flex-col gap-5 p-5">
+        <div className="flex flex-col gap-8 p-5">
           <div 
             onClick={() => {
               document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
@@ -113,7 +113,7 @@ export const Header = () => {
         <div>
           <Image src={Logo} alt="Logo" width={190} height={19} />
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-10">
           <div 
             onClick={() => {
               document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
