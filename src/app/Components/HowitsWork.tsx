@@ -347,6 +347,7 @@ export default function Work2() {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -87,7 +87,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         {planData.map((item, index) => (
           <div
             key={index}
-            className={`flex gap-1 sm:gap-2 justify-start items-center  text-[10px] h-[27.8px] sm:text-[12px] font-bold  cursor-pointer transition-all duration-200 ease-in-out ${
+            className={`flex gap-1 sm:gap-2 justify-start    items-center  text-[10px] h-[27.8px] sm:text-[12px] font-bold  cursor-pointer transition-all duration-200 ease-in-out ${
               hoveredIndex === index
                 ? title === "INFINITY PRO"
                   ? "bg-[rgb(51,13,1)] -mx-3 sm:-mx-5 px-3 sm:px-5 py-2"

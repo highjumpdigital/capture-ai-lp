@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";
 import { constants, FaqData } from "./constants";
+import SimpleSlider from "./SlickSlider";
 
 export const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -70,6 +71,7 @@ export const FAQ = () => {
           </div>
         </div>
       </div>
+      <SimpleSlider/>
     </div>
   );
 };
