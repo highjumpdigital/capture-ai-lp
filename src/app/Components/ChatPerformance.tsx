@@ -11,7 +11,7 @@ export const ChatPerformance = () => {
   return (
     <div
       id="features"
-      className="px-5 pt-8 sm:py-8 xl:p-[50px] w-[100%] bg-white"
+      className="px-5 pt-8 sm:py-8 xl:p-[120px] w-[100%] bg-white"
     >
       <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-[#FF4206] text-center font-bold mr-6">
         {constants.chatperformance.title}
@@ -89,7 +89,7 @@ export const ChatPerformance = () => {
         </div>
 
         {/* Desktop Image Display */}
-        <div className="hidden lg:flex max-w-[641px] h-[374px] w-full flex-row gap-5 justify-between items-center rounded-[5px] p-3 border-[3px] border-[#383E4E33]">
+        <div className="hidden lg:flex max-w-[641px] h-[374px] w-full flex-row gap-5 justify-between items-center rounded-[5px] p-3 border-[3px] border-[#E4E6EC]">
           <div className="h-[334px] w-[313px] relative">
             <AnimatePresence mode="wait">
               <motion.div
