@@ -59,10 +59,10 @@ a {
   background-position: center;
   background-repeat: no-repeat;
 
-  @media (max-width: 767px) {
-    height: 850px;
+  @media (max-width: 1024px) {
+    height: 910px;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 767px) {
     height: 780px;
   }
 }
