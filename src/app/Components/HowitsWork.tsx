@@ -240,7 +240,7 @@ export default function Work2() {
           </h1>
 
           <h1
-            className="text-black font-bold leading-tight text-center lg:text-left block sm:hidden text-3xl sm:text-4xl"
+            className="text-black font-bold leading-tight text-center  mb-[70] lg:text-left block sm:hidden text-3xl sm:text-4xl"
             style={{
               maxWidth: "90%",
             }}
@@ -250,7 +250,7 @@ export default function Work2() {
         </div>
 
         {/* Right Content Section with Line */}
-        <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0">
+        <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 mt-[10px] sm:mt-0  lg:px-0">
           {/* Vertical Orange Line with Top and Bottom Blur */}
           <div className="relative w-[4px] sm:w-[2px] h-[400px] self-center overflow-visible">
             {/* Main line with top and bottom blur */}

@@ -17,7 +17,7 @@ export const ChatPerformance = () => {
         {constants.chatperformance.title}
         <span className="text-black">{constants.chatperformance.subtitle}</span>
       </div>
-      <div className="py-8 gap-4 flex flex-col lg:flex-row justify-between items-start w-full max-w-[1312px] mx-auto bg-white mt-8">
+      <div className="pb-8 pt-1 sm:py-8 gap-4 flex flex-col lg:flex-row justify-between items-start w-full max-w-[1312px] mx-auto bg-white mt-8">
         <div className="flex flex-col w-full lg:max-w-[641px]">
           {ChatPerformancedata.map((item, index) => {
             const isSelected = selectedOption === index;
