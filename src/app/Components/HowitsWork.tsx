@@ -71,7 +71,7 @@ export default function Work2() {
   useEffect(() => {
     const updateGap = (direction?: "up" | "down") => {
       if (currentIndex === 2 && direction === "down") {
-        setGap(71); // Specific case for currentIndex === 3 and scrolling up
+        setGap(61); // Specific case for currentIndex === 3 and scrolling up
       }
     };
 
@@ -86,7 +86,7 @@ export default function Work2() {
     const updateGap = (direction?: "up" | "down") => {
       if (currentIndex === 3) {
         setGap(71);
-      } if (window.innerWidth >= 1024 && direction === "up") {
+      } else if (window.innerWidth >= 1024 && direction === "up") {
         setGap(120);
       } else {
         // setGap(60);
@@ -259,7 +259,7 @@ export default function Work2() {
               {cards.map((card, index) => (
                 <motion.div
                   key={card.number}
-                  className={`card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[630px] h-[176px] ${card.number==="01" || card.number==="02" || card.number==="03" ? "mt-[50px]":"" }  `}
+                  className="card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[630px] h-[176px]"
                   style={{
                     opacity: cardOpacities[index]?.opacity ?? 1,
                   }}
