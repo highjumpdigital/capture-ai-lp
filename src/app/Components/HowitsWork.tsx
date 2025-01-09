@@ -26,6 +26,28 @@ export default function Work2() {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const [gap, setGap] = useState(120); // Default gap
 
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0); // To store the previous scrollTop value
+
+  console.log(isScrollingUp, "isScrollingUpisScrollingUp");
+  // Monitor scrolling direction
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollTop = container.scrollTop;
+      if (scrollTop < lastScrollTop) {
+        setIsScrollingUp(true);
+      } else {
+        setIsScrollingUp(false);
+      }
+      setLastScrollTop(scrollTop);
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [lastScrollTop]);
   const scrollToCard = useCallback(
     (direction: "up" | "down") => {
       if (isScrolling || !containerRef.current) return;
@@ -70,8 +92,8 @@ export default function Work2() {
   // Update gap based on screen size and current index
   useEffect(() => {
     const updateGap = (direction?: "up" | "down") => {
-      if (currentIndex === 2 && direction === "down") {
-        setGap(61); // Specific case for currentIndex === 3 and scrolling up
+      if (currentIndex === 2) {
+        // setGap(70); // Specific case for currentIndex === 3 and scrolling up
       }
     };
 
@@ -84,12 +106,12 @@ export default function Work2() {
   // Update gap based on screen size and current index
   useEffect(() => {
     const updateGap = (direction?: "up" | "down") => {
-      if (currentIndex === 3) {
+   if (currentIndex === 2 && isScrollingUp === false ) {
+        setGap(70);
+      } else if (currentIndex === 3 && isScrollingUp === false) {
         setGap(71);
       } else if (window.innerWidth >= 1024 && direction === "up") {
         setGap(120);
-      } else {
-        // setGap(60);
       }
     };
 
@@ -98,7 +120,7 @@ export default function Work2() {
     updateGap();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [currentIndex]);
+  }, [currentIndex, isScrollingUp, gap]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -131,6 +153,7 @@ export default function Work2() {
       }
     };
 
+    console.log("gapgapgap", gap);
     section.addEventListener("wheel", preventScroll, { passive: false });
     return () => section.removeEventListener("wheel", preventScroll);
   }, [isScrolling, currentIndex, gap, handleManualScroll]);
@@ -166,6 +189,14 @@ export default function Work2() {
 
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
+
+  console.log(
+    isScrollingUp,
+    "isScrollingUpisScrollingUp",
+    currentIndex,
+    "gap",
+    gap
+  );
 
   // Auto-scroll effect
   useEffect(() => {
@@ -289,7 +320,7 @@ export default function Work2() {
                     </motion.span>
                   </div>
                   <motion.div
-                    className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
+                    className="bg-[#fdfdfd] p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
                     style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                   >
                     {/* Gray triangle shape */}
