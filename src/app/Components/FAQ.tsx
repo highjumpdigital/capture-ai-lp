@@ -71,7 +71,6 @@ export const FAQ = () => {
           </div>
         </div>
       </div>
-      <SimpleSlider/>
     </div>
   );
 };
