@@ -45,6 +45,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
     if (onClick) onClick();
   };
 
+
   return (
     <div
       className={`flex flex-col gap-4 max-w-[308px]   w-full p-3 sm:p-5 border plandetailshadow rounded-[5px] ${className}`}
@@ -74,7 +75,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       <div
         className={`border border-[#00000033] Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
           title === "INFINITY PRO"
-            ? "bg-[#3E444A] text-[#D8DADB]"
+            ? "bg-[#3E444A] text-infinityProTextColor"
             : "bg-[#D4D6D8]"
         }`}
       >
@@ -89,7 +90,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
             className={`flex gap-1 sm:gap-2 justify-start items-center  text-[10px] h-[27.8px] sm:text-[12px] font-bold  cursor-pointer transition-all duration-200 ease-in-out ${
               hoveredIndex === index
                 ? title === "INFINITY PRO"
-                  ? "bg-[rgb(51,13,1)] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
+                  ? "bg-[rgb(51,13,1)] -mx-3 sm:-mx-5 px-3 sm:px-5 py-2"
                   : "bg-[rgb(255,251,249)] text-[#633E34] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
                 : "-mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
             }`}
@@ -98,11 +99,14 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           >
             <div>
               {item.flag ? (
-                <div className={`bg-[green]  rounded-[50%] border border-white h-5 w-4 sm:h-5 sm:w-5    flex justify-center items-center`}>
+                <div className={`bg-secondary    ${ hoveredIndex === index && "bg-tickHoverBg"}  rounded-[50%] border-[2px] border-white h-5 w-4 sm:h-5 sm:w-5    flex justify-center items-center`}>
                   <MdDone fill="white" size={10} className="sm:w-3 sm:h-3" />
                 </div>
               ) : (
-                <div className="bg-[red] rounded-[50%] border border-white h-4 w-4 sm:h-5 sm:w-5 flex justify-center items-center">
+                <div className={` bg-crossIconbg 
+                ${ hoveredIndex === index && "bg-hoverTickBg"} 
+                
+                 rounded-[50%] border-[2px] border-white h-4 w-4 sm:h-5 sm:w-5 flex justify-center items-center` }>
                   <RxCross2
                     fill="white"
                     color="white"
@@ -116,7 +120,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               className={`text-[12px] sm:text-[14px] Inter leading-[18px] sm:leading-[21px] h-5 font-bold ${textClass} ${
                 hoveredIndex === index && title !== "INFINITY PRO"
                   ? "text-[#633E34]"
-                  : ""
+                  : "text-infinityProTextColor"
               }`}
             >
               {item.title}

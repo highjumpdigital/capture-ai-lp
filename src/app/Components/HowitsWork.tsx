@@ -24,7 +24,7 @@ export default function Work2() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
-  const [gap, setGap] = useState(60); // Default gap
+  const [gap, setGap] = useState(120); // Default gap
 
   const scrollToCard = useCallback(
     (direction: "up" | "down") => {
@@ -69,20 +69,35 @@ export default function Work2() {
 
   // Update gap based on screen size and current index
   useEffect(() => {
-    const updateGap = () => {
-      if (currentIndex === 3) {
-        setGap(71);
-      } else if (window.innerWidth >= 1024) {
-        // 'lg' breakpoint
-        setGap(120);
-      } else {
-        setGap(60);
+    const updateGap = (direction?: "up" | "down") => {
+      if (currentIndex === 2 && direction === "down") {
+        setGap(71); // Specific case for currentIndex === 3 and scrolling up
       }
     };
 
+    const handleResize = () => updateGap();
+
     updateGap();
-    window.addEventListener("resize", updateGap);
-    return () => window.removeEventListener("resize", updateGap);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [currentIndex]);
+  // Update gap based on screen size and current index
+  useEffect(() => {
+    const updateGap = (direction?: "up" | "down") => {
+      if (currentIndex === 3) {
+        setGap(71);
+      } if (window.innerWidth >= 1024 && direction === "up") {
+        setGap(120);
+      } else {
+        // setGap(60);
+      }
+    };
+
+    const handleResize = () => updateGap();
+
+    updateGap();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [currentIndex]);
 
   useEffect(() => {
@@ -244,7 +259,7 @@ export default function Work2() {
               {cards.map((card, index) => (
                 <motion.div
                   key={card.number}
-                  className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[630px] h-[176px]"
+                  className={`card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[630px] h-[176px] ${card.number==="01" || card.number==="02" || card.number==="03" ? "mt-[50px]":"" }  `}
                   style={{
                     opacity: cardOpacities[index]?.opacity ?? 1,
                   }}
@@ -255,7 +270,6 @@ export default function Work2() {
                     duration: 0.3,
                     ease: "easeOut",
                   }}
-                  
                 >
                   <motion.div
                     className="rounded-full"
@@ -264,9 +278,7 @@ export default function Work2() {
                     <div className="w-[20px] h-[20px] rounded-full bg-orange" />
                   </motion.div>
                   <div className="flex items-center gap-1 lg:gap-2">
-                    <motion.span
-                      className="text-orange text-3xl sm:text-4xl lg:text-5xl font-light leading-tight"
-                    >
+                    <motion.span className="text-orange text-3xl sm:text-4xl lg:text-5xl font-light leading-tight">
                       {card.number}
                     </motion.span>
                     <motion.span

@@ -17,7 +17,7 @@ export const HeroSection = (): React.ReactElement => {
       <div className="flex justify-center font-medium  Cairo text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[30px] md:pt-[100px]">
        {constants.herosection.CONVERSATIONS}
       </div>
-      <div className="flex justify-center font-medium  Cairo text-[40px]  md:text-[80px] lg:text-[119px] leading-[40px] md:leading-[80px] lg:leading-[119px]  text-black items-center">
+      <div className="flex justify-center font-bold  Cairo text-[40px]  md:text-[80px] lg:text-[119px] leading-[40px] md:leading-[80px] lg:leading-[119px]  text-black items-center">
       {constants.herosection.thatconvert}
 
       </div>
@@ -46,14 +46,10 @@ export const HeroSection = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 hidden md:block rounded-tl-[21px] rounded-tr-[21px] right-[30%] left-[30%] border-l-[10px] border-r-[10px] border-t-[10px] border-[rgba(136,140,143,0.8)] z-10">
-        <Image 
-          src={DashBoardImage} 
-          alt="Dashboard" 
-          className="h-auto w-full object-contain" 
-          layout="responsive"
-          width={6168}
-          height={2568}
+      <div className="absolute bottom-0  hidden md:block rounded-tl-[21px] rounded-tr-[21px]   right-[10%] left-[10%] xl:right-[29%] xl:left-[29%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[rgba(136,140,143,0.8)] z-10">
+        <Image src={DashBoardImage} alt="" className=" ml-[-1px] h-[299px] lg:h-[301px]" 
+        
+        height={500}
         />
       </div>
       <div>
