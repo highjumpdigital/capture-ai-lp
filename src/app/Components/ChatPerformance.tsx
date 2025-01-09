@@ -9,7 +9,10 @@ export const ChatPerformance = () => {
   const [selectedOption, setSelectedOption] = useState(0);
 
   return (
-    <div id="features" className="px-5  pt-8 sm:py-8 xl:p-[50px]   w-[100%] bg-white">
+    <div
+      id="features"
+      className="px-5  pt-8 sm:py-8 xl:p-[50px]   w-[100%] bg-white"
+    >
       <div className=" text-[26px] lg:text-[48px]  leading-[26px] lg:leading-[48px] Cairo text-[#FF4206] text-center font-bold mr-6">
         {constants.chatperformance.title}
         <span className="text-black">{constants.chatperformance.subtitle}</span>
@@ -21,8 +24,6 @@ export const ChatPerformance = () => {
               <motion.div
                 key={index}
                 onMouseEnter={() => setSelectedOption(index)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 className={`max-w-[641px] ${
                   index === 0 ? "mt-[0px]" : "mt-[10px]"
                 } flex justify-between items-center w-full  cursor-pointer rounded-[5px] p-[10px] border-[3px] ${
@@ -71,7 +72,7 @@ export const ChatPerformance = () => {
               transition={{ delay: 0.2 }}
               className="font-medium text-[16px] leading-[24px] text-[#000000CC] font-['Inter'] text-left underline-offset-[from-font] decoration-skip-ink-none"
             >
-            {ChatPerformancedata[selectedOption].detail}
+              {ChatPerformancedata[selectedOption].detail}
             </motion.div>
 
             <div className="mt-[10px] flex ">
