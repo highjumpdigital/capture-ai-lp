@@ -15,7 +15,7 @@ export const FAQ = () => {
       <div id="faq" style={{ backgroundImage: `url('/background/faqimage.svg')`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="  faq flex justify-center pt-[20px] lg:pt-[80px]  px-[20px] lg:px-[100px] items-start max">
         <div className="flex flex-col lg:flex-row gap-5 justify-between items-start w-full max-w-[1311px] mx-auto">
           {/* Left Section */}
-          <div className="sticky top-">
+          <div className="sticky top- w-full lg:w-auto text-center lg:text-left">
             <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206]">
               {constants.ask.frequentalyasked}
             </div>
