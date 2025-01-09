@@ -468,7 +468,7 @@ export const constants = {
       text: "SHOWCASE PRODUCT RANGES",
     },
     {
-      text: "PROACTIVE SUGGESTION",
+      text: "PROACTIVE SUGGESTIONS",
     },
     {
       text: "REAL-TIME LEADS ALERTS",
