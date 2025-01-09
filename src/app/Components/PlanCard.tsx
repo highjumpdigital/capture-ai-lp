@@ -7,7 +7,7 @@ import { constants } from "./constants";
 
 // Define Props Type
 interface PlanCardProps {
-  id: Number;
+  id: number;
   title: string;
   price: string;
   className: string;

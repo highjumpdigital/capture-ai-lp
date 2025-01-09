@@ -29,6 +29,7 @@ export const Header = () => {
     <>
       {/* Mobile Header */}
       <div className="flex justify-between items-center w-full lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
+        <Image src={Logo2} alt="Logo" className="w-[50px]" />
         <div className="flex items-center gap-4">
           <GiHamburgerMenu
             fill="white"
@@ -37,13 +38,12 @@ export const Header = () => {
             className="cursor-pointer"
           />
         </div>
-        <Image src={Logo2} alt="Logo" className="w-[50px]" />
       </div>
 
       {/* Side Section for Mobile */}
       <div
-        className={`fixed top-0 left-0 h-full w-[250px] bg-black text-white z-50 transition-transform duration-300 ${
-          isMobile ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 right-0 h-full w-[250px] bg-black text-white z-50 transition-transform duration-300 ${
+          isMobile ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="p-5 flex justify-between items-center">
