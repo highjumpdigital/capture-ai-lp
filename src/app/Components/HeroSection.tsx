@@ -17,7 +17,7 @@ export const HeroSection = (): React.ReactElement => {
       <div className="flex justify-center font-medium  Cairo text-[40px] md:text-[80px] lg:text-[119px]  leading-[40px] md:leading-[80px] lg:leading-[119px]  text-[#FF4206] items-center pt-[30px] md:pt-[100px]">
        {constants.herosection.CONVERSATIONS}
       </div>
-      <div className="flex justify-center font-medium  Cairo text-[40px]  md:text-[80px] lg:text-[119px] leading-[40px] md:leading-[80px] lg:leading-[119px]  text-black items-center">
+      <div className="flex justify-center font-bold  Cairo text-[40px]  md:text-[80px] lg:text-[119px] leading-[40px] md:leading-[80px] lg:leading-[119px]  text-black items-center">
       {constants.herosection.thatconvert}
 
       </div>
