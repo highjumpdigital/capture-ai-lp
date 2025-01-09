@@ -13,7 +13,7 @@ export const ChatPerformance = () => {
       id="features"
       className="px-5 pt-8 sm:py-8 xl:p-[120px] w-[100%] bg-white"
     >
-      <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-[#FF4206] text-center font-bold mr-6">
+      <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-[#FF4206] text-center sm:text-start font-bold mr-6">
         {constants.chatperformance.title}
         <span className="text-black">{constants.chatperformance.subtitle}</span>
       </div>
