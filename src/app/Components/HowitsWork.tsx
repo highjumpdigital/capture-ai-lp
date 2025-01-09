@@ -106,7 +106,7 @@ export default function Work2() {
   // Update gap based on screen size and current index
   useEffect(() => {
     const updateGap = (direction?: "up" | "down") => {
-   if (currentIndex === 2 && isScrollingUp === false ) {
+      if (currentIndex === 2 && isScrollingUp === false) {
         setGap(70);
       } else if (currentIndex === 3 && isScrollingUp === false) {
         setGap(71);
@@ -290,7 +290,22 @@ export default function Work2() {
               {cards.map((card, index) => (
                 <motion.div
                   key={card.number}
-                  className="card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[630px] h-[176px]"
+                  className={`card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[630px] h-[176px]  ${
+                    isScrolling === false &&
+                    gap === 70 &&
+                    currentIndex === 0 &&
+                    "mt-[50px]"
+                  }  ${
+                    isScrolling === false &&
+                    gap === 70 &&
+                    currentIndex === 1 &&
+                    "mt-[30px]"
+                  }  ${
+                    isScrolling === false &&
+                    gap === 70 &&
+                    currentIndex === 2 &&
+                    "mt-[20px]"
+                  }  `}
                   style={{
                     opacity: cardOpacities[index]?.opacity ?? 1,
                   }}
