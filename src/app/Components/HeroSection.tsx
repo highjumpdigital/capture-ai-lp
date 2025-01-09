@@ -46,7 +46,7 @@ export const HeroSection = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="absolute bottom-0  hidden md:block rounded-tl-[21px] rounded-tr-[21px]   right-[10%] left-[10%] xl:right-[29%] xl:left-[29%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[rgba(136,140,143,0.8)] z-10">
+      <div className="absolute bottom-0  hidden md:block rounded-tl-[21px] rounded-tr-[21px]   right-[10%] left-[10%] xxl:right-[29%] xxl:left-[29%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[rgba(136,140,143,0.8)] z-10">
         <Image src={DashBoardImage} alt="" className=" ml-[-1px] h-[299px] lg:h-[301px]" 
         
         height={500}

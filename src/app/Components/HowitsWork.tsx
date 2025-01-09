@@ -252,7 +252,7 @@ export default function Work2() {
         {/* Right Content Section with Line */}
         <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0">
           {/* Vertical Orange Line with Top and Bottom Blur */}
-          <div className="relative w-[2px] h-[400px] self-center overflow-visible">
+          <div className="relative w-[4px] sm:w-[2px] h-[400px] self-center overflow-visible">
             {/* Main line with top and bottom blur */}
             <div
               className="absolute top-0 bottom-0 left-0 right-0"
