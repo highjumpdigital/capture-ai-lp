@@ -120,7 +120,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               className={`text-[12px] sm:text-[14px] Inter leading-[18px] sm:leading-[21px] h-5 font-bold ${textClass} ${
                 hoveredIndex === index && title !== "INFINITY PRO"
                   ? "text-[#633E34]"
-                  : "text-infinityProTextColor"
+                  : ""
               }`}
             >
               {item.title}
