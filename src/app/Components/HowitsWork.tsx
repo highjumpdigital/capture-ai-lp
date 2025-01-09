@@ -289,7 +289,7 @@ export default function Work2() {
 
               {cards.map((card, index) => (
                 <motion.div
-                  key={card.number}
+                  key={index}
                   className={`card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[630px] h-[176px]  ${
                     isScrolling === false &&
                     gap === 70 &&
