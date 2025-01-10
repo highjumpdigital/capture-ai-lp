@@ -138,7 +138,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         <FilledButton
           buttonTitle={buttonTitle}
           hoverText={getHoverText(price)}
-          className="text-white h-8 sm:h-10 w-full bg-[#FF4206] text-[12px] sm:text-[14px]"
+          className="text-white h-8 sm:h-10 w-full bg-[#FF4206] sofia text-[12px] leading-4 font-bold sm:text-[16px]"
           onClick={handleClick}
         />
       </div>

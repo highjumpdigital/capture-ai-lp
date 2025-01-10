@@ -23,7 +23,7 @@ export default function Work2() {
   >(new Array(cards.length).fill({ opacity: 1, blur: 0 }));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
   const [gap, setGap] = useState(120); // Default gap
 
   const [isScrollingUp, setIsScrollingUp] = useState(false);
@@ -213,6 +213,21 @@ export default function Work2() {
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, scrollToCard]);
 
+  const useIsMobileView = () => {
+    // Check if running in a browser environment
+    const isMobile =
+      typeof navigator !== "undefined" &&
+      /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    return isMobile;
+  };
+
+  const isMobile = useIsMobileView();
+
+  useEffect(() => {
+    // Set autoScrollEnabled based on whether it's mobile or not
+    setAutoScrollEnabled(!isMobile);
+  }, [isMobile]);
   return (
     <div
       ref={sectionRef}
