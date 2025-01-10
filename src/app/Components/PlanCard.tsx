@@ -75,7 +75,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       <div
         className={`border border-[#00000033] Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
           title === "INFINITY PRO"
-            ? "bg-[#3E444A] text-infinityProTextColor"
+            ? "bg-[#3E444A] text-[#FFFFFFCC]"
             : "bg-[#D4D6D8]"
         }`}
       >
@@ -99,7 +99,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           >
             <div>
               {item.flag ? (
-                <div className={`bg-secondary    ${ hoveredIndex === index && "bg-tickHoverBg"}  rounded-[50%] border-[2px] border-white h-5 w-4 sm:h-5 sm:w-5    flex justify-center items-center`}>
+                <div className={`bg-secondary    ${ hoveredIndex === index && "bg-tickHoverBg"}  rounded-[50%] border-[2px] border-white h-5 w-4 sm:h-5 sm:w-5 flex justify-center items-center`}>
                   <MdDone fill="white" size={10} className="sm:w-3 sm:h-3" />
                 </div>
               ) : (

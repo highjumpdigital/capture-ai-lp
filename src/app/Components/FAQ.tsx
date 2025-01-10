@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";
 import { constants, FaqData } from "./constants";
-import SimpleSlider from "./SlickSlider";
-
 export const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -43,13 +41,13 @@ export const FAQ = () => {
               >
                 <div className="flex justify-between items-center sm:items-end  relative">
                   <div
-                    className={`text-4 text-black leading-4 font-bold flex justify-start items-center uppercase Cairo   ${
+                    className={`text-[14px] sm:text-[16px] text-black leading-4 sm:leading-5 font-bold flex justify-start items-center uppercase Cairo max-w-[280px] sm:max-w-[780px]   ${
                       index === 0  || index===3 ? " mt-[7] sm:mt-[5px] " : "sm:mt-[5px]"
                     } `}
                   >
                     {item.title}
                   </div>
-                  <div className="cursor-pointer mt-1 absolute top-[2px] right-0">
+                  <div className="cursor-pointer mt-1 absolute top-[12%] right-0">
                     {activeIndex === index ? (
                       <MdOutlineArrowUpward fill="#FF4206" />
                     ) : (
@@ -62,7 +60,7 @@ export const FAQ = () => {
                     activeIndex === index ? "max-h-[500px] " : "max-h-0"
                   }`}
                 >
-                  <div className=" text-[#000000CC] my-4 font-['Inter'] text-[16px] font-normal leading-[16px] text-left underline-offset-[from-font] decoration-skip-ink-none">
+                  <div className="text-[#000000CC] my-4 font-['Inter'] text-[14px] sm:text-[16px] font-normal leading-[20px] sm:leading-[24px] text-left underline-offset-[from-font] decoration-skip-ink-none max-w-[500px] sm:max-w-[780px]">
                     {item.description}
                   </div>
                 </div>

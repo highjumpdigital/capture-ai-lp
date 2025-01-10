@@ -91,7 +91,7 @@ export default function Work2() {
 
   // Update gap based on screen size and current index
   useEffect(() => {
-    const updateGap = (direction?: "up" | "down") => {
+    const updateGap = () => {
       if (currentIndex === 2) {
         // setGap(70); // Specific case for currentIndex === 3 and scrolling up
       }
@@ -208,7 +208,7 @@ export default function Work2() {
       } else {
         setAutoScrollEnabled(false);
       }
-    }, SCROLL_ANIMATION_DURATION + 1300); // Add 1 second pause between scrolls
+    }, SCROLL_ANIMATION_DURATION + 1300);
 
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, scrollToCard]);
@@ -223,142 +223,144 @@ export default function Work2() {
       id="work"
       onMouseEnter={() => setAutoScrollEnabled(false)}
     >
-      <div className="flex flex-col justify-center items-center h-full lg:flex-row">
-        {/* Left Section */}
-        <div className="w-full lg:w-1/2 p-4 lg:p-8 flex items-center justify-center">
-          <h1
-            className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-            style={{
-              maxWidth: "90%",
-            }}
-          >
-            HERE&apos;S
-            <br />
-            HOW
-            <br />
-            IT WORKS
-          </h1>
-
-          <h1
-            className="text-black font-bold leading-tight text-center  mb-[70] lg:text-left block sm:hidden text-3xl sm:text-4xl"
-            style={{
-              maxWidth: "90%",
-            }}
-          >
-            {`HERE'S HOW IT WORKS`}
-          </h1>
-        </div>
-
-        {/* Right Content Section with Line */}
-        <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 mt-[10px] sm:mt-0  lg:px-0">
-          {/* Vertical Orange Line with Top and Bottom Blur */}
-          <div className="relative w-[4px] sm:w-[2px] h-[400px] self-center overflow-visible">
-            {/* Main line with top and bottom blur */}
-            <div
-              className="absolute top-0 bottom-0 left-0 right-0"
+      <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px]">
+        <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
+          {/* Left Section */}
+          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start">
+            <h1
+              className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               style={{
-                background:
-                  "linear-gradient(to bottom, rgba(255, 66, 6, 0), #FF4206 30%, #FF4206 70%, rgba(255, 66, 6, 0))",
+                maxWidth: "90%",
               }}
-            />
+            >
+              HERE&apos;S
+              <br />
+              HOW
+              <br />
+              IT WORKS
+            </h1>
+
+            <h1
+              className="text-black font-bold leading-tight text-center  mb-[70] lg:text-left block sm:hidden text-3xl sm:text-4xl"
+              style={{
+                maxWidth: "90%",
+              }}
+            >
+              {`HERE'S HOW IT WORKS`}
+            </h1>
           </div>
 
-          {/* Cards Section */}
-          <div
-            ref={containerRef}
-            className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth"
-            style={{
-              scrollBehavior: "smooth",
-              transition: `all ${SCROLL_ANIMATION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,
-            }}
-          >
-            <style jsx>{`
-              div::-webkit-scrollbar {
-                display: none;
-              }
-              div::-webkit-scrollbar-track {
-                background: rgba(0, 0, 0, 0.1);
-                border-radius: 4px;
-              }
-            `}</style>
-            <div
-              className="flex flex-col gap-[60px] lg:gap-[120px]"
-              style={{ gap: `${gap}px` }}
-            >
-              <div className="h-[10px]"></div>
+          {/* Right Content Section with Line */}
+          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 mt-[10px] sm:mt-0 lg:px-5">
+            {/* Vertical Orange Line with Top and Bottom Blur */}
+            <div className="relative w-[4px] sm:w-[3px] h-[400px] self-center overflow-visible">
+              {/* Main line with top and bottom blur */}
+              <div
+                className="absolute top-0 bottom-0 left-0 right-0"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(255, 66, 6, 0), #FF4206 30%, #FF4206 70%, rgba(255, 66, 6, 0))",
+                }}
+              />
+            </div>
 
-              {cards.map((card, index) => (
-                <motion.div
-                  key={index}
-                  className={`card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[630px] h-[176px]  ${
-                    isScrolling === false &&
-                    gap === 70 &&
-                    currentIndex === 0 &&
-                    "mt-[50px]"
-                  }  ${
-                    isScrolling === false &&
-                    gap === 70 &&
-                    currentIndex === 1 &&
-                    "mt-[30px]"
-                  }  ${
-                    isScrolling === false &&
-                    gap === 70 &&
-                    currentIndex === 2 &&
-                    "mt-[20px]"
-                  }  `}
-                  style={{
-                    opacity: cardOpacities[index]?.opacity ?? 1,
-                  }}
-                  animate={{
-                    filter: `blur(${cardOpacities[index]?.blur ?? 0}px)`,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    ease: "easeOut",
-                  }}
-                >
+            {/* Cards Section */}
+            <div
+              ref={containerRef}
+              className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth"
+              style={{
+                scrollBehavior: "smooth",
+                transition: `all ${SCROLL_ANIMATION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+              }}
+            >
+              <style jsx>{`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+                div::-webkit-scrollbar-track {
+                  background: rgba(0, 0, 0, 0.1);
+                  border-radius: 4px;
+                }
+              `}</style>
+              <div
+                className="flex flex-col gap-[60px] lg:gap-[120px]"
+                style={{ gap: `${gap}px` }}
+              >
+                <div className="h-[10px]"></div>
+
+                {cards.map((card, index) => (
                   <motion.div
-                    className="rounded-full"
-                    style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
+                    key={index}
+                    className={`card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[640px] h-[176px]  ${
+                      isScrolling === false &&
+                      gap === 70 &&
+                      currentIndex === 0 &&
+                      "mt-[50px]"
+                    }  ${
+                      isScrolling === false &&
+                      gap === 70 &&
+                      currentIndex === 1 &&
+                      "mt-[30px]"
+                    }  ${
+                      isScrolling === false &&
+                      gap === 70 &&
+                      currentIndex === 2 &&
+                      "mt-[20px]"
+                    }  `}
+                    style={{
+                      opacity: cardOpacities[index]?.opacity ?? 1,
+                    }}
+                    animate={{
+                      filter: `blur(${cardOpacities[index]?.blur ?? 0}px)`,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeOut",
+                    }}
                   >
-                    <div className="w-[20px] h-[20px] rounded-full bg-orange" />
-                  </motion.div>
-                  <div className="flex items-center gap-1 lg:gap-2">
-                    <motion.span className="text-orange text-3xl sm:text-4xl lg:text-5xl font-light leading-tight">
-                      {card.number}
-                    </motion.span>
-                    <motion.span
-                      className="text-xl lg:text-3xl font-bold text-orange"
+                    <motion.div
+                      className="rounded-full"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
-                      {/* Optional Title or Additional Content */}
-                    </motion.span>
-                  </div>
-                  <motion.div
-                    className="bg-[#fdfdfd] p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
-                    style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
-                  >
-                    {/* Gray triangle shape */}
+                      <div className="w-[20px] h-[20px] rounded-full bg-orange " />
+                    </motion.div>
+                    <div className="flex items-center gap-1 lg:gap-2">
+                      <motion.span className="text-orange text-3xl sm:text-4xl lg:text-5xl font-light leading-tight">
+                        {card.number}
+                      </motion.span>
+                      <motion.span
+                        className="text-xl lg:text-3xl font-bold text-orange"
+                        style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
+                      >
+                        {/* Optional Title or Additional Content */}
+                      </motion.span>
+                    </div>
                     <motion.div
-                      className="absolute left-[-21px] top-1/2 -translate-y-1/2 w-0 h-0"
-                      style={{
-                        borderTop: "14px solid transparent",
-                        borderBottom: "14px solid transparent",
-                        borderRight: "14px solid rgb(237,237,244)",
-                      }}
-                    />
-                    <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 mb-1 lg:mb-2">
-                      {card.heading}
-                    </h2>
-                    <p className="text-gray-700 font-[Inter] text-xs sm:text-sm lg:text-base xl:text-lg font-[500] leading-[1.4] sm:leading-[1.5] lg:leading-[1.6] text-left">
-                      {card.text}
-                    </p>
+                      className="bg-[#fdfdfd] p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
+                      style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
+                    >
+                      {/* Gray triangle shape */}
+                      <motion.div
+                        className="absolute left-[-21px] top-1/2 -translate-y-1/2 w-0 h-0"
+                        style={{
+                          borderTop: "14px solid transparent",
+                          borderBottom: "14px solid transparent",
+                          borderRight: "14px solid rgb(237,237,244)",
+                        }}
+                      />
+                      <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 mb-1 lg:mb-2">
+                        {card.heading}
+                      </h2>
+                      <p className="text-gray-700 font-[Inter] text-xs sm:text-sm lg:text-base xl:text-lg font-[500] leading-[1.4] sm:leading-[1.5] lg:leading-[1.6] text-left">
+                        {card.text}
+                      </p>
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              ))}
+                ))}
 
-              {/* Bottom spacer for scrolling */}
-              <div className="h-[-5px]"></div>
+                {/* Bottom spacer for scrolling */}
+                <div className="h-[-5px]"></div>
+              </div>
             </div>
           </div>
         </div>
