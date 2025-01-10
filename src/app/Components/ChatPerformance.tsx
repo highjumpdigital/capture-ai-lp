@@ -65,19 +65,19 @@ export const ChatPerformance = () => {
                           </motion.div>
                         </AnimatePresence>
                       </div>
-                      <div className="mt-4">
+                      <div className="mt-4 w-[290px] mx-auto">
                         <motion.div
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
-                          className="max-w-[280px] sm:max-w-full font-medium text-[14px] sm:text-[16px] leading-[20px] sm:leading-[24px] text-[#000000CC] font-['Inter'] text-left ml-[2px] sm:ml-0"
+                          className="max-w-[230px] font-medium text-[14px] sm:text-[16px] leading-[20px] sm:leading-[24px] text-[#000000CC] font-['Inter'] text-left"
                         >
                           {ChatPerformancedata[selectedOption].detail}
                         </motion.div>
                         <div className="mt-[10px] flex">
                           <FilledButton
                             buttonTitle={constants.buttons.getStarted}
-                            className="rounded-[8px] w-[141px] h-10 text-white text-[14px] sm:text-[16px] text-center font-bold bg-[#FF4206] leading-4 ml-[2px] sm:ml-0"
+                            className="rounded-[8px] w-[141px] h-10 text-white text-[14px] sm:text-[16px] text-center font-bold bg-[#FF4206] leading-4"
                             onClick={() => {}}
                           />
                         </div>
