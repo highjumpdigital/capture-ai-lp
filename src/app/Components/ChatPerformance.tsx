@@ -14,7 +14,7 @@ export const ChatPerformance = () => {
       className="px-5 pt-8 sm:py-8 xl:p-[120px] w-[100%] bg-white"
     >
       <div className="max-w-[1312px] mx-auto">
-        <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-[#FF4206] text-center sm:text-start font-bold">
+        <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-chat-title text-center sm:text-start font-bold">
           {constants.chatperformance.title}
           <span className="text-black">{constants.chatperformance.subtitle}</span>
         </div>
@@ -30,11 +30,11 @@ export const ChatPerformance = () => {
                       index === 0 ? "mt-[0px]" : "mt-[10px]"
                     } flex justify-between items-center w-full cursor-pointer rounded-[5px] p-[10px] border-[3px] ${
                       isSelected
-                        ? "border-[#FF4206] bg-[#FF420633]"
-                        : "border-[#383E4E33] bg-[#FFFFFFCC]"
-                    } min-h-[54px] hover:bg-[#FF420633] hover:border-[#FF4206]`}
+                        ? "border-chat-border-selected bg-chat-bg-selected"
+                        : "border-chat-border bg-chat-bg"
+                    } min-h-[54px] hover:bg-chat-bg-selected hover:border-chat-border-selected`}
                   >
-                    <div className="font-bold text-[14px] sm:text-[16px] leading-[14px] sm:leading-[16px] text-[#000000CC] Inter uppercase">
+                    <div className="font-bold text-[14px] sm:text-[16px] leading-[14px] sm:leading-[16px] text-chat-text Inter uppercase">
                       {item.title}
                     </div>
                     <div>
@@ -44,7 +44,7 @@ export const ChatPerformance = () => {
                   
                   {/* Mobile Image Display */}
                   {isSelected && (
-                    <div className="lg:hidden mt-4 w-full rounded-[5px] p-3 border-[3px] border-[#383E4E33]">
+                    <div className="lg:hidden mt-4 w-full rounded-[5px] p-3 border-[3px] border-chat-border">
                       <div className="h-[334px] w-[290px] mx-auto relative">
                         <AnimatePresence mode="wait">
                           <motion.div

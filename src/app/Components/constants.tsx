@@ -427,6 +427,8 @@ export const constants = {
   },
   buttons: {
     getStarted: "GET STARTED",
+    forFree: "FOR FREE",
+    forPrice: (price: string) => `FOR ${price}`,
   },
   planDetails: {
     personalAgent: "PERSONAL WEBSITE AGENT",
@@ -480,6 +482,30 @@ export const constants = {
       text: "TECHNICAL SUPPORT",
     },
   ],
+  platform: {
+    title: "AVAILABLE ON ALL PLATFORMS:",
+  },
+  howItWorks: {
+    title: "HERE'S HOW IT WORKS",
+    steps: {
+      title: "HERE'S\nHOW\nIT WORKS",
+    }
+  },
+  immersionCard: {
+    bgColor: 'rgb(242,245,247)',
+  },
+  altText: {
+    logo: "Logo",
+    image: "image",
+    peopleGroup: "PeopleGroup",
+    dashboard: "Dashboard",
+  },
+  planCard: {
+    infinityPro: "INFINITY PRO",
+  },
+  faq: {
+    title: "FREQUENTLY ASKED QUESTIONS",
+  },
 };
 
 export const cards = [

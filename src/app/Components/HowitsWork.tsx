@@ -7,6 +7,8 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { Cairo } from "next/font/google";
 import { motion } from "framer-motion";
 import { cards } from "./constants";
+import { colors } from "../styles/colors";
+import { constants } from "./constants";
 
 const cairo = Cairo({
   subsets: ["latin"],
@@ -248,11 +250,7 @@ export default function Work2() {
                 maxWidth: "90%",
               }}
             >
-              HERE&apos;S
-              <br />
-              HOW
-              <br />
-              IT WORKS
+              {constants.howItWorks.steps.title}
             </h1>
 
             <h1
@@ -261,7 +259,7 @@ export default function Work2() {
                 maxWidth: "90%",
               }}
             >
-              {`HERE'S HOW IT WORKS`}
+              {constants.howItWorks.title}
             </h1>
           </div>
 
@@ -274,7 +272,7 @@ export default function Work2() {
                 className="absolute top-0 bottom-0 left-0 right-0"
                 style={{
                   background:
-                    "linear-gradient(to bottom, rgba(255, 66, 6, 0), #FF4206 30%, #FF4206 70%, rgba(255, 66, 6, 0))",
+                    `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
               />
             </div>
@@ -351,7 +349,7 @@ export default function Work2() {
                       </motion.span>
                     </div>
                     <motion.div
-                      className="bg-[#fdfdfd] p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
+                      className="bg-card-bg p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-card-border relative"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
                       {/* Gray triangle shape */}
@@ -360,7 +358,7 @@ export default function Work2() {
                         style={{
                           borderTop: "14px solid transparent",
                           borderBottom: "14px solid transparent",
-                          borderRight: "14px solid rgb(237,237,244)",
+                          borderRight: "14px solid #ededed",
                         }}
                       />
                       <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800 mb-1 lg:mb-2">
