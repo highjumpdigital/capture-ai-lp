@@ -160,13 +160,13 @@ export default function HowItWorkv2() {
       id='work'
       onMouseEnter={() => setAutoScrollEnabled(false)}
     >
-      <div className="max-w-[1512px] mx-auto">
-        <div className="flex flex-col justify-center items-center h-full lg:flex-row">
+      <div className="max-w-[1312px] mx-auto px-4 lg:px-8">
+        <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-10">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-4 lg:p-8 flex items-center justify-center">
+          <div className="w-full lg:w-1/2 p-4 lg:p-0 flex items-center justify-center lg:justify-start">
             <h1 className="text-black font-bold leading-tight text-center lg:text-left" style={{
               fontSize: 'clamp(40px, 6vw, 128px)',
-              maxWidth: '90%'
+              maxWidth: '100%'
             }}>
               HERE&apos;S<br />
               HOW<br />
@@ -175,7 +175,7 @@ export default function HowItWorkv2() {
           </div>
 
           {/* Right Content Section with Line */}
-          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0">
+          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
             <div className="relative w-[2px] h-[400px] self-center overflow-visible"> 
               {/* Top blur gradient */}
