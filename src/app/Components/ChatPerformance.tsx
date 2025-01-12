@@ -11,12 +11,12 @@ export const ChatPerformance = () => {
   return (
     <div
       id="features"
-      className="px-5 pt-8 sm:py-8 xl:p-[120px] w-[100%] bg-white"
+      className="px-5 pt-8 sm:py-8 xl:p-[100px] w-[100%] bg-white"
     >
       <div className="max-w-[1312px] mx-auto">
-        <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-chat-title text-center sm:text-start font-bold">
+        <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-chat-title text-center sm:text-start font-normal">
           {constants.chatperformance.title}
-          <span className="text-black">{constants.chatperformance.subtitle}</span>
+          <span className="text-black font-bold">{constants.chatperformance.subtitle}</span>
         </div>
         <div className="pb-8 pt-1 sm:py-8 gap-4 flex flex-col lg:flex-row justify-between items-start w-full bg-white mt-8">
           <div className="flex flex-col w-full lg:max-w-[641px]">

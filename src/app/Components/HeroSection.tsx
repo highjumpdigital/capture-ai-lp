@@ -50,7 +50,7 @@ export const HeroSection = (): React.ReactElement => {
         <Image 
           src={DashBoardImage} 
           alt={constants.altText.dashboard} 
-          className=" ml-[-1px] h-[299px] lg:h-[301px]" 
+          className=" ml-[-0.5px] h-[299px] lg:h-[301px]" 
           height={500}
         />
       </div>
