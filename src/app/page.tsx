@@ -10,8 +10,28 @@ import {
   ChatPerformance,
 } from "./Components";
 import HowItWorks from "./Components/HowitsWork";
+import HowItWorkv2 from "./Components/HowItWork-v2";
+import { useEffect, useState } from "react";
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
 
 export default function Home() {
+  const isMobile = useIsMobile();
+
   return (
     <div className="pt-20">
       <Header />
@@ -19,7 +39,7 @@ export default function Home() {
       <Platform />
       <Immersion />
       <ChatPerformance />
-      <HowItWorks />
+      {isMobile ? <HowItWorks /> : <HowItWorkv2 />}
       <PaymentSol />
       <FAQ />
       <Footer />

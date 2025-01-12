@@ -36,8 +36,8 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   hoveredIndex,
 }) => {
   const getHoverText = (price: string) => {
-    if (price === "FREE") return "FOR FREE";
-    if (price.startsWith("$")) return `FOR ${price}`;
+    if (price === constants.paymentSol.FREE) return constants.buttons.forFree;
+    if (price.startsWith("$")) return constants.buttons.forPrice(price);
     return buttonTitle;
   };
 
@@ -73,10 +73,10 @@ export const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Description Section */}
       <div
-        className={`border border-[#00000033] Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
-          title === "INFINITY PRO"
-            ? "bg-[#3E444A] text-[#FFFFFFCC]"
-            : "bg-[#D4D6D8]"
+        className={`border border-plan-border Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
+          title === constants.planCard.infinityPro
+            ? "bg-plan-description-dark text-plan-description-text"
+            : "bg-plan-description-light"
         }`}
       >
         {constants.paymentSol.offer}
@@ -87,11 +87,11 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         {planData.map((item, index) => (
           <div
             key={index}
-            className={`flex gap-1 sm:gap-2 justify-start    items-center  text-[10px] h-[27.8px] sm:text-[12px] font-bold  cursor-pointer transition-all duration-200 ease-in-out ${
+            className={`flex gap-1 sm:gap-2 justify-start items-center text-[10px] h-[27.8px] sm:text-[12px] font-bold cursor-pointer transition-all duration-200 ease-in-out ${
               hoveredIndex === index
-                ? title === "INFINITY PRO"
-                  ? "bg-[rgb(51,13,1)] -mx-3 sm:-mx-5 px-3 sm:px-5 py-2"
-                  : "bg-[rgb(255,251,249)] text-[#633E34] -mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
+                ? title === constants.planCard.infinityPro
+                  ? "bg-plan-hover-dark -mx-3 sm:-mx-5 px-3 sm:px-5 py-2"
+                  : "bg-plan-hover-light text-plan-hover-text -mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
                 : "-mx-3 sm:-mx-5 px-3 sm:px-5 py-1"
             }`}
             onMouseEnter={() => onHoverIndex?.(index)}
@@ -99,27 +99,23 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           >
             <div>
               {item.flag ? (
-                <div className={`bg-secondary    ${ hoveredIndex === index && "bg-tickHoverBg"}  rounded-[50%] border-[2px] border-white h-5 w-4 sm:h-5 sm:w-5 flex justify-center items-center`}>
-                  <MdDone fill="white" size={10} className="sm:w-3 sm:h-3" />
+                <div className={`bg-secondary ${hoveredIndex === index && "bg-tickHoverBg"} rounded-[50%] border-[2px] border-white h-[18px] w-[18px] sm:h-5 sm:w-5 flex justify-center items-center`}>
+                  <MdDone fill="white" className="w-[10px] h-[10px] sm:w-3 sm:h-3" />
                 </div>
               ) : (
-                <div className={` bg-crossIconbg 
-                ${ hoveredIndex === index && "bg-hoverTickBg"} 
-                
-                 rounded-[50%] border-[2px] border-white h-4 w-4 sm:h-5 sm:w-5 flex justify-center items-center` }>
+                <div className={`bg-crossIconbg ${hoveredIndex === index && "bg-hoverTickBg"} rounded-[50%] border-[2px] border-white h-[18px] w-[18px] sm:h-5 sm:w-5 flex justify-center items-center`}>
                   <RxCross2
                     fill="white"
                     color="white"
-                    size={10}
-                    className="sm:w-3 sm:h-3"
+                    className="w-[10px] h-[10px] sm:w-3 sm:h-3"
                   />
                 </div>
               )}
             </div>
             <div
-              className={`text-[12px] sm:text-[14px] Inter leading-[18px] sm:leading-[21px] h-5 font-bold  ${hoveredIndex===index && id===3 && "text-infinityProTextColor" } ${textClass} ${
-                hoveredIndex === index && title !== "INFINITY PRO"
-                  ? "text-[#633E34]"
+              className={`text-[11px] sm:text-[14px] Inter leading-[16px] sm:leading-[21px] h-5 font-bold ${hoveredIndex===index && id===3 && "text-infinityProTextColor"} ${textClass} ${
+                hoveredIndex === index && title !== constants.planCard.infinityPro
+                  ? "text-plan-hover-text"
                   : ""
               }`}
             >
