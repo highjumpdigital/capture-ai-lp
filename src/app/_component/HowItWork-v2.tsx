@@ -2,16 +2,16 @@
 
 "use client";
 
-import bgImage from '../assets/herosectionbgImage.png';
-import { useRef, useEffect, useState } from 'react';
-import { Cairo } from 'next/font/google';
-import { motion } from 'framer-motion';
+import bgImage from "../assets/herosectionbgImage.png";
+import { useRef, useEffect, useState } from "react";
+import { Cairo } from "next/font/google";
+import { motion } from "framer-motion";
 import { cards } from "../_common/constants";
 import { colors } from "../_styles/colors";
 import { constants } from "../_common/constants";
-const cairo = Cairo({ 
-  subsets: ['latin'],
-  weight: ['400', '700'],
+const cairo = Cairo({
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const SCROLL_ANIMATION_DURATION = 500;
@@ -19,16 +19,19 @@ const SCROLL_ANIMATION_DURATION = 500;
 export default function HowItWorkv2() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [cardOpacities, setCardOpacities] = useState<{ opacity: number; blur: number }[]>(new Array(cards.length).fill({ opacity: 1, blur: 0 }));
+  const [cardOpacities, setCardOpacities] = useState<
+    { opacity: number; blur: number }[]
+  >(new Array(cards.length).fill({ opacity: 1, blur: 0 }));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
   const [gap, setGap] = useState(60); // Default gap
 
   // Update gap based on screen size
   useEffect(() => {
     const updateGap = () => {
-      if (window.innerWidth >= 1024) { // 'lg' breakpoint
+      if (window.innerWidth >= 1024) {
+        // 'lg' breakpoint
         setGap(120);
       } else {
         setGap(60);
@@ -36,8 +39,8 @@ export default function HowItWorkv2() {
     };
 
     updateGap();
-    window.addEventListener('resize', updateGap);
-    return () => window.removeEventListener('resize', updateGap);
+    window.addEventListener("resize", updateGap);
+    return () => window.removeEventListener("resize", updateGap);
   }, []);
 
   useEffect(() => {
@@ -54,7 +57,7 @@ export default function HowItWorkv2() {
           }
           e.preventDefault();
           e.stopPropagation();
-          handleManualScroll('down');
+          handleManualScroll("down");
         } else {
           // Scrolling up
           if (currentIndex === 0) {
@@ -63,16 +66,15 @@ export default function HowItWorkv2() {
           }
           e.preventDefault();
           e.stopPropagation();
-          handleManualScroll('up');
+          handleManualScroll("up");
         }
       } else {
         e.preventDefault();
         e.stopPropagation();
       }
     };
-
-    section.addEventListener('wheel', preventScroll, { passive: false });
-    return () => section.removeEventListener('wheel', preventScroll);
+    section.addEventListener("wheel", preventScroll, { passive: false });
+    return () => section.removeEventListener("wheel", preventScroll);
   }, [isScrolling, currentIndex, gap]);
 
   useEffect(() => {
@@ -81,28 +83,30 @@ export default function HowItWorkv2() {
 
     const handleScroll = () => {
       const containerHeight = container.clientHeight;
-      const cardElements = container.getElementsByClassName('card-container');
-      
+      const cardElements = container.getElementsByClassName("card-container");
+
       const newOpacities = Array.from(cardElements).map((card) => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
         const containerRect = container.getBoundingClientRect();
-        const distanceFromCenter = Math.abs(cardCenter - (containerRect.top + containerHeight / 2));
+        const distanceFromCenter = Math.abs(
+          cardCenter - (containerRect.top + containerHeight / 2)
+        );
         const maxDistance = containerHeight * 0.6;
-        const opacity = Math.max(0.5, 1 - (distanceFromCenter / maxDistance));
+        const opacity = Math.max(0.5, 1 - distanceFromCenter / maxDistance);
         return {
           opacity,
-          blur: (1 - opacity) * 1
+          blur: (1 - opacity) * 1,
         };
       });
 
       setCardOpacities(newOpacities);
     };
 
-    container.addEventListener('scroll', handleScroll);
+    container.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    return () => container.removeEventListener('scroll', handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Auto-scroll effect
@@ -111,7 +115,7 @@ export default function HowItWorkv2() {
 
     const autoScrollInterval = setInterval(() => {
       if (currentIndex < cards.length - 1) {
-        scrollToCard('down');
+        scrollToCard("down");
       } else {
         setAutoScrollEnabled(false);
       }
@@ -121,28 +125,29 @@ export default function HowItWorkv2() {
   }, [currentIndex, autoScrollEnabled]);
 
   // Handle manual interaction
-  const handleManualScroll = (direction: 'up' | 'down') => {
+  const handleManualScroll = (direction: "up" | "down") => {
     setAutoScrollEnabled(false);
     scrollToCard(direction);
   };
 
-  const scrollToCard = (direction: 'up' | 'down') => {
+  const scrollToCard = (direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
 
     setIsScrolling(true);
-    const newIndex = direction === 'down' 
-      ? Math.min(currentIndex + 1, cards.length - 1)
-      : Math.max(currentIndex - 1, 0);
+    const newIndex =
+      direction === "down"
+        ? Math.min(currentIndex + 1, cards.length - 1)
+        : Math.max(currentIndex - 1, 0);
 
     if (newIndex !== currentIndex) {
       const CARD_HEIGHT = 176; // Height of each card in pixels
       const totalScroll = newIndex * (CARD_HEIGHT + gap);
-      
+
       containerRef.current.scrollTo({
         top: totalScroll,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
-      
+
       setCurrentIndex(newIndex);
     }
 
@@ -151,14 +156,36 @@ export default function HowItWorkv2() {
     }, SCROLL_ANIMATION_DURATION + 100);
   };
 
+  const [isConditionMet, setIsConditionMet] = useState(false);
+
+  const [height, setHeight] = useState(400); // Default height
+
+  useEffect(() => {
+    const targetHeight = currentIndex === 3 && !isScrolling && gap === 120 ? 490 : 400;
+
+    let currentHeight = height;
+
+    const adjustHeight = () => {
+      if (currentHeight !== targetHeight) {
+        // Increment or decrement the height smoothly
+        currentHeight += currentHeight < targetHeight ? 1 : -1;
+        setHeight(currentHeight);
+        requestAnimationFrame(adjustHeight);
+      }
+    };
+
+    adjustHeight();
+  }, [currentIndex, isScrolling, gap]); 
+  console.log("currentOdex", currentIndex, "scroll", isScrolling, "gap", gap);
+
   return (
-    <div 
+    <div
       ref={sectionRef}
       className={`h-[700px] bg-cover bg-center bg-no-repeat ${cairo.className}`}
       style={{
-        backgroundImage: `url(${bgImage.src})`
+        backgroundImage: `url(${bgImage.src})`,
       }}
-      id='work'
+      id="work"
       onMouseEnter={() => setAutoScrollEnabled(false)}
     >
       <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px]">
@@ -175,7 +202,7 @@ export default function HowItWorkv2() {
                 lineHeight: "1.1",
                 textAlign: "left",
                 textUnderlinePosition: "from-font",
-                textDecorationSkipInk: "none"
+                textDecorationSkipInk: "none",
               }}
             >
               {constants.howItWorks.steps.title}
@@ -201,80 +228,78 @@ export default function HowItWorkv2() {
               <div
                 className="absolute top-0 bottom-0 left-0 right-0"
                 style={{
-                  background:
-                    `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
+                  background: `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
               />
             </div>
 
             {/* Cards Section */}
-            <div 
-              ref={containerRef} 
-              className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth scrollbar-hide"
-              style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                scrollBehavior: 'smooth',
-                transition: `all ${SCROLL_ANIMATION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`
-              }}
-            >
-              <style jsx>{`
-                div::-webkit-scrollbar {
-                  display: none;
-                }
-              `}</style>
+            <div
+      ref={containerRef}
+      style={{
+        height: `${height}px`,
+        transition: "height 0ms linear", // Ensure smooth JS-driven transition
+        overflow: "hidden",
+      }}
+      className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 overflow-x-hidden overflow-y-auto scroll-smooth"
+    >
+           
               <div className="flex flex-col gap-[60px] lg:gap-[120px]">
                 {/* Top spacer for scrolling */}
                 <div className="h-[10px]"></div>
-                
+
                 {cards.map((card, index) => (
-                  <motion.div 
-                    key={card.number} 
+                  <motion.div
+                    key={card.number}
                     className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[630px] h-[176px]"
-                    style={{ 
+                    style={{
                       opacity: cardOpacities[index]?.opacity ?? 1,
                     }}
                     animate={{
-                      filter: `blur(${cardOpacities[index]?.blur ?? 0}px)`
+                      filter: `blur(${cardOpacities[index]?.blur ?? 0}px)`,
                     }}
                     transition={{
                       duration: 0.3,
-                      ease: "easeOut"
+                      ease: "easeOut",
                     }}
                   >
-                    <motion.div 
+                    <motion.div
                       className="rounded-full"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
-                      <div className='w-[20px] h-[20px] rounded-full bg-orange'/>
+                      <div className="w-[20px] h-[20px] rounded-full bg-orange" />
                     </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
-                      <motion.span 
+                      <motion.span
                         className="text-orange"
-                        style={{ 
+                        style={{
                           fontWeight: 300,
-                          fontSize: '48px',
-                          lineHeight: '48px'
+                          fontSize: "48px",
+                          lineHeight: "48px",
                         }}
-                      >{card.number}</motion.span>
-                      <motion.span 
+                      >
+                        {card.number}
+                      </motion.span>
+                      <motion.span
                         className="text-xl lg:text-3xl font-bold text-orange"
                         style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                       >
                         {/* Optional Title or Additional Content */}
                       </motion.span>
                     </div>
-                    <motion.div 
+                    <motion.div
                       className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
                       {/* Gray triangle shape */}
-                      <motion.div 
-                        className="absolute left-[-21px] top-1/2 -translate-y-1/2 w-0 h-0"
+                      <motion.div
+                        className={`absolute left-[-21px]  -translate-y-1/2 w-0 h-0  ${
+                          currentIndex === 3 ? "top-[60%]" : "top-1/2"
+                        }  `}
                         style={{
-                          borderTop: '14px solid transparent',
-                          borderBottom: '14px solid transparent',
-                          borderRight: '14px solid rgb(237,237,244)',
+                          borderTop: "14px solid transparent",
+                          borderBottom: "14px solid transparent",
+                          borderRight: "14px solid rgb(237,237,244)",
                         }}
                       />
                       <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
@@ -288,7 +313,7 @@ export default function HowItWorkv2() {
                 ))}
 
                 {/* Bottom spacer for scrolling */}
-                <div className="h-[5px]"></div>
+                <div className="h-[0px]"></div>
               </div>
             </div>
           </div>
