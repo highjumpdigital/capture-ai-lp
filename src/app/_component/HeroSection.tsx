@@ -46,13 +46,15 @@ export const HeroSection = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="absolute bottom-0  hidden md:block rounded-tl-[21px] rounded-tr-[21px]   right-[10%] left-[10%] xl:right-[25%] xl:left-[25%]  border-l-[10px] border-r-[10px] border-t-[10px]  border-[rgba(136,140,143,0.8)] z-10">
-        <Image 
-          src={DashBoardImage} 
-          alt={constants.altText.dashboard} 
-          className=" h-[299px] lg:h-[301px]" 
-          height={500}
-        />
+      <div className="absolute bottom-0 hidden md:block rounded-tl-[21px] rounded-tr-[21px] right-[10%] left-[10%] xl:right-[25%] xl:left-[25%] border-l-[10px] border-r-[10px] border-t-[10px] border-[rgba(136,140,143,0.8)] z-10">
+        <div className="flex justify-center items-start">
+          <Image 
+            src={DashBoardImage} 
+            alt={constants.altText.dashboard} 
+            className="h-[299px] lg:h-[301px] -translate-x-[1px] -translate-y-[1px] scale-[1.01]" 
+            height={500}
+          />
+        </div>
       </div>
       <div>
         <div className="mt-[40px] flex flex-col justify-center items-center">
