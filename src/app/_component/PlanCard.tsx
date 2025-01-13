@@ -3,7 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import { MdDone } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { FilledButton } from "./FilledButton";
-import { constants } from "./constants";
+import { constants } from "../_common/constants";
 
 // Define Props Type
 interface PlanCardProps {
@@ -99,15 +99,15 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           >
             <div>
               {item.flag ? (
-                <div className={`bg-secondary ${hoveredIndex === index && "bg-tickHoverBg"} rounded-[50%] border-[2px] border-white h-[18px] w-[18px] sm:h-5 sm:w-5 flex justify-center items-center`}>
-                  <MdDone fill="white" className="w-[10px] h-[10px] sm:w-3 sm:h-3" />
+                <div className={`bg-secondary ${hoveredIndex === index && "bg-tickHoverBg"} rounded-[50%] border-[2px] border-white h-[16px] w-[16px] sm:h-[18px] sm:w-[18px] flex justify-center items-center`}>
+                  <MdDone fill="white" className="w-[8px] h-[8px] sm:w-[10px] sm:h-[10px]" />
                 </div>
               ) : (
-                <div className={`bg-crossIconbg ${hoveredIndex === index && "bg-hoverTickBg"} rounded-[50%] border-[2px] border-white h-[18px] w-[18px] sm:h-5 sm:w-5 flex justify-center items-center`}>
+                <div className={`bg-crossIconbg ${hoveredIndex === index && "bg-hoverTickBg"} rounded-[50%] border-[2px] border-white h-[16px] w-[16px] sm:h-[18px] sm:w-[18px] flex justify-center items-center`}>
                   <RxCross2
                     fill="white"
                     color="white"
-                    className="w-[10px] h-[10px] sm:w-3 sm:h-3"
+                    className="w-[8px] h-[8px] sm:w-[10px] sm:h-[10px]"
                   />
                 </div>
               )}

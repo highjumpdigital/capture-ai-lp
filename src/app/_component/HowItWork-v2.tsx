@@ -6,8 +6,9 @@ import bgImage from '../assets/herosectionbgImage.png';
 import { useRef, useEffect, useState } from 'react';
 import { Cairo } from 'next/font/google';
 import { motion } from 'framer-motion';
-import { cards } from './constants';
-
+import { cards } from "../_common/constants";
+import { colors } from "../_styles/colors";
+import { constants } from "../_common/constants";
 const cairo = Cairo({ 
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -160,35 +161,48 @@ export default function HowItWorkv2() {
       id='work'
       onMouseEnter={() => setAutoScrollEnabled(false)}
     >
-      <div className="max-w-[1312px] mx-auto px-4 lg:px-8">
-        <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-10">
+      <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px]">
+        <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-4 lg:p-0 flex items-center justify-center lg:justify-start">
-            <h1 className="text-black font-bold leading-tight text-center lg:text-left" style={{
-              fontSize: 'clamp(40px, 6vw, 128px)',
-              maxWidth: '100%'
-            }}>
-              HERE&apos;S<br />
-              HOW<br />
-              IT WORKS
+          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start">
+            <h1
+              className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block"
+              style={{
+                maxWidth: "90%",
+                fontFamily: "Cairo",
+                fontSize: "clamp(64px, 8vw, 128px)",
+                fontWeight: 700,
+                lineHeight: "1.1",
+                textAlign: "left",
+                textUnderlinePosition: "from-font",
+                textDecorationSkipInk: "none"
+              }}
+            >
+              {constants.howItWorks.steps.title}
+            </h1>
+
+            <h1
+              className="text-black font-bold leading-tight text-center lg:hidden text-4xl sm:text-5xl md:text-6xl mb-8"
+              style={{
+                maxWidth: "90%",
+                fontFamily: "Cairo",
+                lineHeight: "1.1",
+              }}
+            >
+              {constants.howItWorks.title}
             </h1>
           </div>
 
           {/* Right Content Section with Line */}
           <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
-            <div className="relative w-[2px] h-[400px] self-center overflow-visible"> 
-              {/* Top blur gradient */}
-              <div 
-                className="absolute -top-4 left-1/2 -translate-x-1/2 w-[2px] h-16 bg-orange"
-              />
-              {/* Main line */}
-              <div className="absolute top-12 bottom-12 left-0 right-0 bg-orange" />
-              {/* Bottom blur gradient */}
-              <div 
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[2px] h-16"
+            <div className="relative w-[4px] sm:w-[3px] h-[400px] self-center overflow-visible">
+              {/* Main line with top and bottom blur */}
+              <div
+                className="absolute top-0 bottom-0 left-0 right-0"
                 style={{
-                  background: 'linear-gradient(to top, transparent, #FF4206 30%)'
+                  background:
+                    `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
               />
             </div>

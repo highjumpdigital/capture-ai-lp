@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 import ImmersionImage from "../assets/jeeves-chatbot.svg";
-import { constants, Immersiondata } from "./constants";
+import { constants, Immersiondata } from "../_common/constants";
 
 export const Immersion = () => {
   return (

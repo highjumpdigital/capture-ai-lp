@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { MdArrowForward } from "react-icons/md";
 import { FilledButton } from "./FilledButton";
-import { ChatPerformancedata, constants } from "./constants";
+import { ChatPerformancedata, constants } from "../_common/constants";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 

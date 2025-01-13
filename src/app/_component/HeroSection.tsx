@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
-import { constants } from "./constants";
+import { constants } from "../_common/constants";
 import herosectionimage from"../assets/herosectionbgImage.png"
 import DashBoardImage from "../assets/dashboard/pixelcut-export (1).png"
 import PropleImage from "../assets/herosection-profile-photoes/all-leads.svg"
@@ -26,7 +26,7 @@ export const HeroSection = (): React.ReactElement => {
 
       </div>
 
-      <div className="flex justify-center items-center gap-5   mt-[50px]">
+      <div className="flex justify-center items-center gap-5 mt-[50px]">
         <div>
           <FilledButton
             buttonTitle={constants.buttons.getStarted}
@@ -50,7 +50,7 @@ export const HeroSection = (): React.ReactElement => {
         <Image 
           src={DashBoardImage} 
           alt={constants.altText.dashboard} 
-          className=" ml-[-0.5px] h-[299px] lg:h-[301px]" 
+          className=" h-[299px] lg:h-[301px]" 
           height={500}
         />
       </div>

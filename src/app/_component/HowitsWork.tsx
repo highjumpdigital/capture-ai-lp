@@ -6,9 +6,9 @@ import bgImage from "../assets/herosectionbgImage.png";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { Cairo } from "next/font/google";
 import { motion } from "framer-motion";
-import { cards } from "./constants";
-import { colors } from "../styles/colors";
-import { constants } from "./constants";
+import { cards } from "../_common/constants";
+import { colors } from "../_styles/colors";
+import { constants } from "../_common/constants";
 
 const cairo = Cairo({
   subsets: ["latin"],
