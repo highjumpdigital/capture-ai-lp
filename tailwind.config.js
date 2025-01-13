@@ -14,7 +14,7 @@ module.exports = {
       colors: {
         primary: '#FF4206',
         secondary: 'rgb(109, 188, 67)',
-        tickHoverBg: "rgb(182,204,89)",
+        tickHoverBg: "rgb(176,207,65)",
         crossIconbg: "rgb(240,68,69)",
         hoverTickBg: "rgb(234,101,86)",
         infinityProTextColor: "rgb(248,218,207)",
