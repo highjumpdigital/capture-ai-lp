@@ -4,7 +4,7 @@ import { Sofia_Sans_Semi_Condensed } from "next/font/google";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
-import { constants } from "./constants";
+import { constants, AUTH_URLS } from "../_common/constants";
 import Logo from "../assets/header/Group 73.svg";
 import Logo2 from "../assets/logo/logo.svg"
 
@@ -22,7 +22,7 @@ export const Header = () => {
   };
 
   const handleSignIn = () => {
-    window.location.href = "https://chatbot-v0-frontend-development.up.railway.app/sign-in";
+    window.location.href = AUTH_URLS.SIGN_IN;
   };
 
   return (

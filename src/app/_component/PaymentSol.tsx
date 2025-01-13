@@ -1,8 +1,8 @@
-import { PlanCard } from "@/app/Components/PlanCard";
-import { PlanDetails } from "@/app/Components/PlanDetails";
+import { PlanCard } from "@/app/_component/PlanCard";
+import { PlanDetails } from "@/app/_component/PlanDetails";
 import { useState, useEffect, useRef } from "react";
-import { constants, Plandata, STARTERPlandata, InfinityProPlandata } from "./constants";
-import { PAYMENT_CONSTANTS } from "./constants";
+import { constants, Plandata, STARTERPlandata, InfinityProPlandata } from "../_common/constants";
+import { PAYMENT_CONSTANTS } from "../_common/constants";
 
 export const PaymentSol = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -14,7 +14,7 @@ export const PaymentSol = () => {
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 986);
-      setIsPlanDetailsHidden(window.innerWidth < 1536);
+      setIsPlanDetailsHidden(window.innerWidth < 1280);
     };
 
     checkIfMobile();
@@ -75,7 +75,7 @@ export const PaymentSol = () => {
             className={`flex gap-[20px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
               isMobile 
                 ? 'justify-start overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' 
-                : 'justify-center md:justify-between flex-wrap md:flex-nowrap'
+                : 'justify-center xl:justify-between flex-wrap xl:flex-nowrap'
             }`}
             style={isMobile ? {
               scrollSnapType: 'x mandatory',
@@ -83,7 +83,7 @@ export const PaymentSol = () => {
               scrollPaddingRight: '0px'
             } : undefined}
           >
-            <div className="hidden 2xl:block shrink-0">
+            <div className="hidden xl:block shrink-0">
               <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>

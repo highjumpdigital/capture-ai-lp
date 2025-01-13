@@ -530,3 +530,7 @@ export const cards = [
     text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts." 
   },
 ];
+
+export const AUTH_URLS = {
+  SIGN_IN: "https://chatbot-v0-frontend-development.up.railway.app/sign-in"
+} as const;

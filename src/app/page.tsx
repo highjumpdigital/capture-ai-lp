@@ -8,9 +8,9 @@ import {
   PaymentSol,
   Immersion,
   ChatPerformance,
-} from "./Components";
-import HowItWorks from "./Components/HowitsWork";
-import HowItWorkv2 from "./Components/HowItWork-v2";
+} from "./_component";
+import HowItWorks from "./_component/HowitsWork";
+import HowItWorkv2 from "./_component/HowItWork-v2";
 import { useEffect, useState } from "react";
 
 const useIsMobile = () => {
@@ -18,7 +18,7 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
 
     checkMobile();

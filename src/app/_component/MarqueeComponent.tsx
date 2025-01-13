@@ -1,6 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { marquee1,marquee2,marquee3,marquee4 } from "./constants";
+import { marquee1,marquee2,marquee3,marquee4 } from "../_common/constants";
 
 export const MarqueeComponent = () => {
  

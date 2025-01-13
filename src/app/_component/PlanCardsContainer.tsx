@@ -24,7 +24,7 @@ export const PlanCardsContainer: React.FC<PlanCardsContainerProps> = ({
   onHoverIndex
 }) => {
   return (
-    <div className="flex flex-wrap gap-6 justify-center items-stretch">
+    <div className="flex flex-wrap gap-6 justify-center xl:justify-between items-stretch">
       {plans.map((plan, idx) => (
         <PlanCard
           id={idx}

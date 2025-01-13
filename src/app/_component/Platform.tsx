@@ -7,8 +7,8 @@ import SquareSpace from "../assets/platform/squarespace-132-svgrepo-com.svg"
 import Magneto from "../assets/platform/magento-svgrepo-com.svg"
 import BigCommerse from "../assets/platform/bigcommerce-svgrepo-com.svg"
 import Image from "next/image";
-import { colors } from "../styles/colors";
-import { constants } from "./constants";
+import { colors } from "../_styles/colors";
+import { constants } from "../_common/constants";
 
 export const Platform = () => {
   const data = [
