@@ -248,9 +248,9 @@ export default function Work2() {
       <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px]">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start">
+          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mt-[100px] sm:mt-[100px]">
             <h1
-              className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+              className="text-black font-bold leading-tight text-center lg:text-left hidden md:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               style={{
                 maxWidth: "90%",
               }}
@@ -259,7 +259,7 @@ export default function Work2() {
             </h1>
 
             <h1
-              className="text-black font-bold leading-tight text-center  mb-[70] lg:text-left block sm:hidden text-3xl sm:text-4xl"
+              className="text-black font-bold leading-tight text-center mb-[70] lg:text-left block md:hidden text-3xl sm:text-4xl"
               style={{
                 maxWidth: "90%",
               }}
@@ -269,9 +269,9 @@ export default function Work2() {
           </div>
 
           {/* Right Content Section with Line */}
-          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 mt-[10px] sm:mt-0 lg:px-5">
+          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-5 mt-[100px] sm:mt-[100px]">
             {/* Vertical Orange Line with Top and Bottom Blur */}
-            <div className="relative w-[4px] sm:w-[3px] h-[400px] self-center overflow-visible">
+            <div className="relative w-[6px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
               <div
                 className="absolute top-0 bottom-0 left-0 right-0"

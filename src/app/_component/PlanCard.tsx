@@ -4,14 +4,13 @@ import { MdDone } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { FilledButton } from "./FilledButton";
 import { constants } from "../_common/constants";
-
 // Define Props Type
 interface PlanCardProps {
   id: number;
   title: string;
   price: string;
   className: string;
-  headerText: string;
+headerText: string;
   textClass: string;
   image: StaticImageData | string;
   planData: { title: string; flag: boolean }[];
@@ -113,7 +112,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               )}
             </div>
             <div
-              className={`text-[11px] sm:text-[14px] Inter leading-[16px] sm:leading-[21px] h-5 font-bold ${hoveredIndex===index && id===3 && "text-infinityProTextColor"} ${textClass} ${
+              className={`text-[11px] sm:text-[14px] mt-[4.5px] sm:mt-0 Inter leading-[16px] sm:leading-[21px] h-5 font-bold ${hoveredIndex===index && id===3 && "text-infinityProTextColor"} ${textClass} ${
                 hoveredIndex === index && title !== constants.planCard.infinityPro
                   ? "text-plan-hover-text"
                   : ""
