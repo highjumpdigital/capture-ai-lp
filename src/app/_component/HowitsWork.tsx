@@ -230,6 +230,11 @@ export default function Work2() {
     // Set autoScrollEnabled based on whether it's mobile or not
     setAutoScrollEnabled(!isMobile);
   }, [isMobile]);
+
+  useEffect(()=>{
+
+    
+  })
   return (
     <div
       ref={sectionRef}
@@ -271,8 +276,7 @@ export default function Work2() {
               <div
                 className="absolute top-0 bottom-0 left-0 right-0"
                 style={{
-                  background:
-                    `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
+                  background: `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
               />
             </div>
@@ -280,7 +284,11 @@ export default function Work2() {
             {/* Cards Section */}
             <div
               ref={containerRef}
-              className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 max-h-[400px] overflow-y-auto scroll-smooth"
+              className={`pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8    ${
+                currentIndex === 3 && isScrolling === false && gap === 120
+                  ? "max-h-[490px]"
+                  : "max-h-[400px]"
+              }  overflow-y-auto scroll-smooth`}
               style={{
                 scrollBehavior: "smooth",
                 transition: `all ${SCROLL_ANIMATION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,

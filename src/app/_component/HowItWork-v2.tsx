@@ -225,8 +225,9 @@ export default function HowItWorkv2() {
             <div className="relative w-[5px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
               <div
-                className="absolute top-0 bottom-0 left-0 right-0"
+                className="absolute top-0 bottom-0 left-0  right-0 "
                 style={{
+                  marginRight:"-0.5px",
                   background: `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
               />
