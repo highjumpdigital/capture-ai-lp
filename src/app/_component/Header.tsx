@@ -158,7 +158,7 @@ export const Header = () => {
           </div>
           <FilledButton
             buttonTitle={constants.buttons.getStarted}
-            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
+            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white ml-8"
             onClick={() => {}}
           />
         </div>
