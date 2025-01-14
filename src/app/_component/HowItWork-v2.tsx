@@ -190,7 +190,7 @@ export default function HowItWorkv2() {
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6 ">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mt-[100px] sm:mt-[100px]">
+          <div className="w-full lg:w-[45%] p-1 lg:p-3 flex items-center justify-center lg:justify-start mt-[100px] sm:mt-[100px]">
             <h1
               className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block"
               style={{
@@ -220,7 +220,7 @@ export default function HowItWorkv2() {
           </div>
 
           {/* Right Content Section with Line */}
-          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px]">
+          <div className="w-full lg:w-[55%] flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px]">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
             <div className="relative w-[5px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
@@ -266,7 +266,7 @@ export default function HowItWorkv2() {
                       className="rounded-full"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
-                      <div className="w-[20px] h-[20px] rounded-full bg-orange" />
+                      <div className="w-[20px] h-[20px] rounded-full bg-orange z-10 ml-[-0.6px]" />
                     </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span
@@ -293,7 +293,7 @@ export default function HowItWorkv2() {
                       {/* Gray triangle shape */}
                       <motion.div
                         className={`absolute left-[-21px]  -translate-y-1/2 w-0 h-0  ${
-                          currentIndex === 3 ? "top-[60%]" : "top-1/2"
+                          currentIndex === 3 ? "top-1/2" : "top-1/2"
                         }  `}
                         style={{
                           borderTop: "14px solid transparent",
