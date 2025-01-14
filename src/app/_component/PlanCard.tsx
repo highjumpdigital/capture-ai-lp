@@ -98,7 +98,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           >
             <div>
               {item.flag ? (
-                <div className={`bg-secondary ${hoveredIndex === index && "bg-tickHoverBg"} rounded-[50%] border-[2px] border-white h-[16px] w-[16px] sm:h-[18px] sm:w-[18px] flex justify-center items-center`}>
+                <div className={`bg-[#7FC248] ${hoveredIndex === index && "bg-[#B1CF4B]"} rounded-[50%] border-[2px] border-white h-[16px] w-[16px] sm:h-[18px] sm:w-[18px] flex justify-center items-center`}>
                   <MdDone fill="white" className="w-[8px] h-[8px] sm:w-[10px] sm:h-[10px]" />
                 </div>
               ) : (
