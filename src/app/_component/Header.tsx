@@ -100,7 +100,7 @@ export const Header = () => {
           </div>
           <FilledButton
             buttonTitle="GET STARTED"
-            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white mt-8"
+            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
             onClick={() => {}}
           />
         </div>
