@@ -227,7 +227,7 @@ export default function HowItWorkv2() {
               <div
                 className="absolute top-0 bottom-0 left-0  right-0 "
                 style={{
-                  marginRight:"-0.5px",
+                  marginRight:"-1px",
                   background: `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
               />
