@@ -187,7 +187,7 @@ export default function HowItWorkv2() {
       id="work"
       onMouseEnter={() => setAutoScrollEnabled(false)}
     >
-      <div className="max-w-[1312px] mx-auto px-4 sm:px-5 ">
+      <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6 ">
           {/* Left Section */}
           <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mt-[100px] sm:mt-[100px]">

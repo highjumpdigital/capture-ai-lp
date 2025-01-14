@@ -11,7 +11,7 @@ export const ChatPerformance = () => {
   return (
     <div
       id="features"
-      className="px-5 pt-8 sm:py-8 xl:p-[100px] w-[100%] bg-white"
+      className="px-[20px] relative z-10  pt-8 pb-[20px] sm:py-[100px] bg-white"
     >
       <div className="max-w-[1312px] mx-auto">
         <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-chat-title text-center sm:text-start font-normal">
