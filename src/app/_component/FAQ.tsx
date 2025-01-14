@@ -22,11 +22,11 @@ export const FAQ = () => {
       >
         <div className="flex flex-col lg:flex-row gap-5 justify-between items-center   sm:items-start sm:justify-between  w-full max-w-[1311px] mx-auto">
           {/* Left Section */}
-          <div className="sticky top- w-full lg:w-auto  text-center sm:text-start">
-            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206]">
+          <div className="sticky top- w-full lg:w-auto text-center">
+            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206] text-center">
               {constants.ask.frequentalyasked}
             </div>
-            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-black font-bold">
+            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-black font-bold text-center">
               {constants.ask.QUESTIONS}
             </div>
           </div>
@@ -47,7 +47,7 @@ export const FAQ = () => {
                   >
                     {item.title}
                   </div>
-                  <div className="cursor-pointer mt-1 absolute top-[12%] right-0">
+                  <div className="cursor-pointer mt-1 absolute top-[8%] right-0">
                     {activeIndex === index ? (
                       <MdOutlineArrowUpward fill="#FF4206" />
                     ) : (

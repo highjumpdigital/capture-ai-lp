@@ -271,7 +271,7 @@ export default function Work2() {
           {/* Right Content Section with Line */}
           <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-5 mt-[100px] sm:mt-[100px]">
             {/* Vertical Orange Line with Top and Bottom Blur */}
-            <div className="relative w-[6px] sm:w-[4px] h-[400px] self-center overflow-visible">
+            <div className="relative w-[8px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
               <div
                 className="absolute top-0 bottom-0 left-0 right-0"
@@ -307,26 +307,26 @@ export default function Work2() {
                 className="flex flex-col gap-[60px] lg:gap-[120px]"
                 style={{ gap: `${gap}px` }}
               >
-                <div className="h-[10px]"></div>
+                <div className="h-[10px] sm:h-[5px]"></div>
 
                 {cards.map((card, index) => (
                   <motion.div
                     key={index}
-                    className={`card-container flex items-center gap-4    lg:gap-8 w-full lg:w-[640px] h-[176px]  ${
+                    className={`card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[640px] h-[176px] ${
                       isScrolling === false &&
                       gap === 70 &&
                       currentIndex === 0 &&
-                      "mt-[50px]"
+                      "mt-[80px] sm:mt-[50px]"
                     }  ${
                       isScrolling === false &&
                       gap === 70 &&
                       currentIndex === 1 &&
-                      "mt-[30px]"
+                      "mt-[60px] sm:mt-[30px]"
                     }  ${
                       isScrolling === false &&
                       gap === 70 &&
                       currentIndex === 2 &&
-                      "mt-[20px]"
+                      "mt-[40px] sm:mt-[20px]"
                     }  `}
                     style={{
                       opacity: cardOpacities[index]?.opacity ?? 1,
@@ -343,7 +343,7 @@ export default function Work2() {
                       className="rounded-full"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
-                      <div className="w-[20px] h-[20px] rounded-full bg-orange " />
+                      <div className="w-[20px] h-[20px] rounded-full bg-orange ml-[-1.1px]" />
                     </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span className="text-orange text-3xl sm:text-4xl lg:text-5xl font-light leading-tight">
