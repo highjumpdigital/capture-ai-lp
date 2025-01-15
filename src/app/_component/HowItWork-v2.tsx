@@ -236,7 +236,7 @@ export default function HowItWorkv2() {
   return (
     <div
       ref={sectionRef}
-      className={`h-[700px] bg-cover bg-center bg-no-repeat ${cairo.className}`}
+      className={`h-[650px] bg-cover bg-center bg-no-repeat ${cairo.className}`}
       style={{
         backgroundImage: `url(${bgImage.src})`,
       }}
