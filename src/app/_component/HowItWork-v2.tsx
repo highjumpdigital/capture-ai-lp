@@ -92,19 +92,18 @@ export default function HowItWorkv2() {
 
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
-
   useEffect(() => {
     const section = sectionRef.current;
-
+  
     if (!section) return;
-
+  
     const preventScroll = (e: WheelEvent) => {
+      // If the section is not in the center, allow normal page scrolling
+      if (!isInViewportCenter) {
+        return; // Allow normal scroll
+      }
+  
       if (!isScrolling) {
-        if (!isInViewportCenter) {
-          const isOnCard = (e.target as Element).closest(".card-container");
-          if (!isOnCard) return; // Allow normal scrolling if not directly on a card
-        }
-
         if (e.deltaY > 0) {
           // Scrolling down
           if (currentIndex === cards.length) return;
@@ -123,10 +122,12 @@ export default function HowItWorkv2() {
         e.stopPropagation();
       }
     };
-
+  
     section.addEventListener("wheel", preventScroll, { passive: false });
     return () => section.removeEventListener("wheel", preventScroll);
   }, [isScrolling, currentIndex, isInViewportCenter]);
+  
+  
 
   useEffect(() => {
     const container = containerRef.current;
