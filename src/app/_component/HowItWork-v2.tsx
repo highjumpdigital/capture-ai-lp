@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import { cards } from "../_common/constants";
 import { colors } from "../_styles/colors";
 import { constants } from "../_common/constants";
-import { Slider } from "./SlickSlider";
 const cairo = Cairo({
   subsets: ["latin"],
   weight: ["400", "700"],
