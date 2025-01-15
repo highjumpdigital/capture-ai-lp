@@ -14,7 +14,7 @@ const cairo = Cairo({
   weight: ["400", "700"],
 });
 
-const SCROLL_ANIMATION_DURATION = 500;
+const SCROLL_ANIMATION_DURATION = 355;
 
 export default function HowItWorkv2() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -86,7 +86,7 @@ export default function HowItWorkv2() {
       } else {
         setAutoScrollEnabled(false); // Stop auto-scroll after reaching the last card
       }
-    }, SCROLL_ANIMATION_DURATION + 1000); // Ensure sufficient delay
+    }, SCROLL_ANIMATION_DURATION ); // Ensure sufficient delay
 
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, isInViewportCenter]);
