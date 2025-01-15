@@ -14,7 +14,7 @@ export const ChatPerformance = () => {
       className="px-[20px] relative z-10  pt-8 pb-[20px] sm:py-[100px] bg-white"
     >
       <div className="max-w-[1312px] mx-auto">
-        <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-chat-title text-center sm:text-start font-normal">
+        <div className="text-[20px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[26px] lg:leading-[48px] Cairo text-chat-title text-center sm:text-center lg:text-start font-normal">
           {constants.chatperformance.title}
           <span className="text-black font-bold">{constants.chatperformance.subtitle}</span>
         </div>
@@ -123,7 +123,7 @@ export const ChatPerformance = () => {
               <div className="mt-[10px] flex">
                 <FilledButton
                   buttonTitle={constants.buttons.getStarted}
-                  className="rounded-[8px] w-[141px] h-10 text-white text-[14px] sm:text-[16px] text-center font-bold bg-[#FF4206] leading-4"
+                  className="rounded-[8px] w-[141px] h-10 text-white text-[14px] sm:text-[16px] text-center  font-bold bg-[#FF4206] leading-4"
                   onClick={() => {}}
                 />
               </div>

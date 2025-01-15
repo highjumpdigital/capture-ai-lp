@@ -26,6 +26,7 @@ export default function HowItWorkv2() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
   const [gap, setGap] = useState(60); // Default gap
+  const [isInViewportCenter, setIsInViewportCenter] = useState(false);
 
   // Update gap based on screen size
   useEffect(() => {
@@ -41,29 +42,76 @@ export default function HowItWorkv2() {
     updateGap();
     window.addEventListener("resize", updateGap);
     return () => window.removeEventListener("resize", updateGap);
+  }, [currentIndex]);
+
+  // Add function to check if element is in center of viewport
+  const isElementInCenter = (element: HTMLElement) => {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const sectionHeight = rect.height;
+
+    // Calculate the vertical center positions
+    const sectionVerticalCenter = rect.top + sectionHeight / 2;
+    const viewportVerticalCenter = windowHeight / 2;
+
+    // Calculate how far the section's center can be from viewport center
+    const threshold = 100;
+
+    // Only check vertical centering
+    return (
+      Math.abs(sectionVerticalCenter - viewportVerticalCenter) <= threshold
+    );
+  };
+
+  // Add scroll listener to check section position
+  useEffect(() => {
+    const checkPosition = () => {
+      if (sectionRef.current) {
+        setIsInViewportCenter(isElementInCenter(sectionRef.current));
+      }
+    };
+
+    window.addEventListener("scroll", checkPosition);
+    checkPosition(); // Initial check
+
+    return () => window.removeEventListener("scroll", checkPosition);
   }, []);
+  useEffect(() => {
+    if (!autoScrollEnabled || !isInViewportCenter) return;
+
+    const autoScrollInterval = setInterval(() => {
+      // Ensure the last card is reached before stopping auto-scroll
+      if (currentIndex < cards.length + 1) {
+        scrollToCard("down");
+      } else {
+        setAutoScrollEnabled(false); // Stop auto-scroll after reaching the last card
+      }
+    }, SCROLL_ANIMATION_DURATION + 1000); // Ensure sufficient delay
+
+    return () => clearInterval(autoScrollInterval);
+  }, [currentIndex, autoScrollEnabled, isInViewportCenter]);
 
   useEffect(() => {
     const section = sectionRef.current;
+
     if (!section) return;
 
     const preventScroll = (e: WheelEvent) => {
       if (!isScrolling) {
+        if (!isInViewportCenter) {
+          const isOnCard = (e.target as Element).closest(".card-container");
+          if (!isOnCard) return; // Allow normal scrolling if not directly on a card
+        }
+
         if (e.deltaY > 0) {
           // Scrolling down
-          if (currentIndex === cards.length - 1) {
-            // At last card, allow page scroll
-            return;
-          }
+          if (currentIndex === cards.length) return;
           e.preventDefault();
           e.stopPropagation();
           handleManualScroll("down");
         } else {
           // Scrolling up
-          if (currentIndex === 0) {
-            // At first card, allow page scroll
-            return;
-          }
+          if (currentIndex === 0) return;
           e.preventDefault();
           e.stopPropagation();
           handleManualScroll("up");
@@ -73,9 +121,10 @@ export default function HowItWorkv2() {
         e.stopPropagation();
       }
     };
+
     section.addEventListener("wheel", preventScroll, { passive: false });
     return () => section.removeEventListener("wheel", preventScroll);
-  }, [isScrolling, currentIndex, gap]);
+  }, [isScrolling, currentIndex, isInViewportCenter]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -111,32 +160,33 @@ export default function HowItWorkv2() {
 
   // Auto-scroll effect
   useEffect(() => {
-    if (!autoScrollEnabled) return;
+    if (!autoScrollEnabled || !isInViewportCenter) return; // Only auto-scroll when in center
 
     const autoScrollInterval = setInterval(() => {
-      if (currentIndex < cards.length - 1) {
+      if (currentIndex < 4) {
         scrollToCard("down");
       } else {
-        setAutoScrollEnabled(false);
+        setAutoScrollEnabled(false); // Stop auto-scroll at the last card
       }
-    }, SCROLL_ANIMATION_DURATION + 1000); // Add 1 second pause between scrolls
+    }, SCROLL_ANIMATION_DURATION + 1000); // Add a 1-second pause
 
     return () => clearInterval(autoScrollInterval);
-  }, [currentIndex, autoScrollEnabled]);
+  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
 
-  // Handle manual interaction
   const handleManualScroll = (direction: "up" | "down") => {
+    if (!isInViewportCenter) return; // Prevent manual scroll when not centered
     setAutoScrollEnabled(false);
     scrollToCard(direction);
   };
-
   const scrollToCard = (direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
 
     setIsScrolling(true);
+
+    // Calculate new index safely
     const newIndex =
       direction === "down"
-        ? Math.min(currentIndex + 1, cards.length - 1)
+        ? Math.min(currentIndex + 1, cards.length - 1) // Include the last card
         : Math.max(currentIndex - 1, 0);
 
     if (newIndex !== currentIndex) {
@@ -151,16 +201,17 @@ export default function HowItWorkv2() {
       setCurrentIndex(newIndex);
     }
 
+    // Ensure scrolling state is reset after the animation
     setTimeout(() => {
       setIsScrolling(false);
-    }, SCROLL_ANIMATION_DURATION + 100);
+    }, SCROLL_ANIMATION_DURATION);
   };
-
 
   const [height, setHeight] = useState(400); // Default height
 
   useEffect(() => {
-    const targetHeight = currentIndex === 3 && !isScrolling && gap === 120 ? 490 : 400;
+    const targetHeight =
+      currentIndex === 3 && !isScrolling && gap === 120 ? 490 : 400;
 
     let currentHeight = height;
 
@@ -174,7 +225,7 @@ export default function HowItWorkv2() {
     };
 
     adjustHeight();
-  }, [currentIndex, isScrolling, gap]); 
+  }, [currentIndex, isScrolling, gap]);
   console.log("currentOdex", currentIndex, "scroll", isScrolling, "gap", gap);
 
   return (
@@ -222,12 +273,11 @@ export default function HowItWorkv2() {
           {/* Right Content Section with Line */}
           <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px]">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
-            <div className="relative w-[5px] sm:w-[4px] h-[400px] self-center overflow-visible">
+            <div className="relative w-[3px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
               <div
                 className="absolute top-0 bottom-0 left-0  right-0 "
                 style={{
-                  marginRight:"-0.5px",
                   background: `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
               />
@@ -235,15 +285,14 @@ export default function HowItWorkv2() {
 
             {/* Cards Section */}
             <div
-      ref={containerRef}
-      style={{
-        height: `${height}px`,
-        transition: "height 0ms linear", // Ensure smooth JS-driven transition
-        overflow: "hidden",
-      }}
-      className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 overflow-x-hidden overflow-y-auto scroll-smooth"
-    >
-           
+              ref={containerRef}
+              style={{
+                height: `${height}px`,
+                transition: "height 0ms linear",
+                overflow: "hidden",
+              }}
+              className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 overflow-x-hidden overflow-y-auto scroll-smooth"
+            >
               <div className="flex flex-col gap-[60px] lg:gap-[120px]">
                 {/* Top spacer for scrolling */}
                 <div className="h-[10px]"></div>
@@ -251,7 +300,7 @@ export default function HowItWorkv2() {
                 {cards.map((card, index) => (
                   <motion.div
                     key={card.number}
-                    className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[630px] h-[176px]"
+                    className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[650px] h-[176px]"
                     style={{
                       opacity: cardOpacities[index]?.opacity ?? 1,
                     }}
@@ -267,7 +316,7 @@ export default function HowItWorkv2() {
                       className="rounded-full"
                       style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
                     >
-                      <div className="w-[20px] h-[20px] rounded-full bg-orange" />
+                      <div className="w-[19px] h-[19px] rounded-full bg-orange" />
                     </motion.div>
                     <div className="flex items-center gap-1 lg:gap-2">
                       <motion.span
@@ -294,7 +343,7 @@ export default function HowItWorkv2() {
                       {/* Gray triangle shape */}
                       <motion.div
                         className={`absolute left-[-21px]  -translate-y-1/2 w-0 h-0  ${
-                          currentIndex === 3 ? "top-[60%]" : "top-1/2"
+                          currentIndex === 3 ? "top-[50%]" : "top-1/2"
                         }  `}
                         style={{
                           borderTop: "14px solid transparent",

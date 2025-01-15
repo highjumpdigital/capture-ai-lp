@@ -28,7 +28,7 @@ export const Header = () => {
   return (
     <>
       {/* Mobile Header */}
-      <div className="flex justify-between items-center w-full lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
+      <div className="flex justify-between items-center w-full  max-w-[1312px] lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
         <Image src={Logo2} alt="Logo" className="w-[50px]" />
         <div className="flex items-center gap-4">
           <GiHamburgerMenu
@@ -108,7 +108,7 @@ export const Header = () => {
 
       {/* Desktop Header */}
       <div
-        className={`flex px-[20px] lg:px-[100px] hidden lg:flex justify-between items-center w-full h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
+        className={`flex px-[20px] lg:px-[65px] hidden lg:flex justify-between items-center w-full h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
       >
         <div>
           <Image src={Logo} alt="Logo" width={190} height={19} />
@@ -158,7 +158,7 @@ export const Header = () => {
           </div>
           <FilledButton
             buttonTitle={constants.buttons.getStarted}
-            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white"
+            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white ml-8"
             onClick={() => {}}
           />
         </div>
