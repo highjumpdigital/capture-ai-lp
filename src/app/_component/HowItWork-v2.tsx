@@ -14,7 +14,6 @@ const cairo = Cairo({
   weight: ["400", "700"],
 });
 
-
 export default function HowItWorkv2() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -28,14 +27,10 @@ export default function HowItWorkv2() {
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
   const [firstScroll, setFirstScroll] = useState(true);
 
-  const SCROLL_ANIMATION_DURATION = firstScroll ? 300 : 350; // 300ms for the first scroll, 350ms for subsequent
+  const SCROLL_ANIMATION_DURATION = firstScroll ? 370 : 370; // 300ms for the first scroll, 350ms for subsequent
 
-  useEffect(()=>{
+  useEffect(() => {});
 
-
-
-  })
-  
   // Update gap based on screen size
   useEffect(() => {
     const updateGap = () => {
@@ -86,7 +81,7 @@ export default function HowItWorkv2() {
   }, []);
   useEffect(() => {
     if (!autoScrollEnabled || !isInViewportCenter) return;
-  
+
     const autoScrollInterval = setInterval(() => {
       if (currentIndex < cards.length - 1) {
         scrollToCard("down");
@@ -94,11 +89,9 @@ export default function HowItWorkv2() {
         setAutoScrollEnabled(false); // Stop auto-scroll at the last card
       }
     }, SCROLL_ANIMATION_DURATION); // Adjust duration for smoother scrolling
-  
+
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
-  
-  
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -177,7 +170,7 @@ export default function HowItWorkv2() {
       } else {
         setAutoScrollEnabled(false); // Stop auto-scroll at the last card
       }
-    }, SCROLL_ANIMATION_DURATION ); // Add a 1-second pause
+    }, SCROLL_ANIMATION_DURATION); // Add a 1-second pause
 
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
@@ -189,32 +182,33 @@ export default function HowItWorkv2() {
   };
   const scrollToCard = (direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
-  
+    if (currentIndex === 3 && direction === "down") {
+      window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
+      return; // Do not move further down, let the page scroll normally
+    }
     setIsScrolling(true);
-  
+
     const newIndex =
       direction === "down"
         ? Math.min(currentIndex + 1, cards.length - 1) // Include the last card
         : Math.max(currentIndex - 1, 0);
-  
+
     if (newIndex !== currentIndex) {
       const CARD_HEIGHT = 176; // Height of each card in pixels
       const totalScroll = newIndex * (CARD_HEIGHT + gap);
-  
+
       containerRef.current.scrollTo({
         top: totalScroll,
         behavior: "smooth",
       });
-  
+
       setCurrentIndex(newIndex);
     }
-  
+
     setTimeout(() => {
       setIsScrolling(false);
-      setFirstScroll(false);
     }, SCROLL_ANIMATION_DURATION);
   };
-  
 
   const [height, setHeight] = useState(400); // Default height
 
