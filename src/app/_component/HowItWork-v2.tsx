@@ -27,7 +27,7 @@ export default function HowItWorkv2() {
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
   const [firstScroll, setFirstScroll] = useState(true);
 
-  const SCROLL_ANIMATION_DURATION = firstScroll ? 370 : 370; // 300ms for the first scroll, 350ms for subsequent
+  const SCROLL_ANIMATION_DURATION = firstScroll ? 350 : 350; // 300ms for the first scroll, 350ms for subsequent
 
   useEffect(() => {});
 
