@@ -14,7 +14,6 @@ const cairo = Cairo({
   weight: ["400", "700"],
 });
 
-const SCROLL_ANIMATION_DURATION = 350;
 
 export default function HowItWorkv2() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -27,7 +26,16 @@ export default function HowItWorkv2() {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
   const [gap, setGap] = useState(60); // Default gap
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
+  const [firstScroll, setFirstScroll] = useState(true);
 
+  const SCROLL_ANIMATION_DURATION = firstScroll ? 300 : 350; // 300ms for the first scroll, 350ms for subsequent
+
+  useEffect(()=>{
+
+
+
+  })
+  
   // Update gap based on screen size
   useEffect(() => {
     const updateGap = () => {
@@ -77,15 +85,18 @@ export default function HowItWorkv2() {
     return () => window.removeEventListener("scroll", checkPosition);
   }, []);
   useEffect(() => {
-    if (!isInViewportCenter) return;
+    if (!autoScrollEnabled || !isInViewportCenter) return;
   
-    const startAutoScroll = setTimeout(() => {
-      setAutoScrollEnabled(true); // Enable auto-scroll after delay
-    }, 500); // Delay auto-scroll for 500ms
+    const autoScrollInterval = setInterval(() => {
+      if (currentIndex < cards.length - 1) {
+        scrollToCard("down");
+      } else {
+        setAutoScrollEnabled(false); // Stop auto-scroll at the last card
+      }
+    }, SCROLL_ANIMATION_DURATION); // Adjust duration for smoother scrolling
   
-    return () => clearTimeout(startAutoScroll);
-  }, [isInViewportCenter]);
-  
+    return () => clearInterval(autoScrollInterval);
+  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
   
   
 
@@ -200,6 +211,7 @@ export default function HowItWorkv2() {
   
     setTimeout(() => {
       setIsScrolling(false);
+      setFirstScroll(false);
     }, SCROLL_ANIMATION_DURATION);
   };
   
