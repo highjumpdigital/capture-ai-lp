@@ -13,6 +13,7 @@ const cairo = Cairo({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
+//how its work
 
 export default function HowItWorkv2() {
   const containerRef = useRef<HTMLDivElement>(null);
