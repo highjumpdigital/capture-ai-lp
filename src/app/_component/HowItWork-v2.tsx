@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { cards } from "../_common/constants";
 import { colors } from "../_styles/colors";
 import { constants } from "../_common/constants";
+import { Slider } from "./SlickSlider";
 const cairo = Cairo({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -57,7 +58,7 @@ export default function HowItWorkv2() {
     const viewportVerticalCenter = windowHeight / 2;
   
     // Allow a margin of error (threshold) for "centered" detection
-    const threshold = 20;
+    const threshold = 30;
   console.log(sectionVerticalCenter,"sectionVerticalCenter",viewportVerticalCenter,"viewportVerticalCenter")
     // Disable auto-scroll if the center exceeds 550
     // if (sectionVerticalCenter < 50) {
