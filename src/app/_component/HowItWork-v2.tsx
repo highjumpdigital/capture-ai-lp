@@ -48,22 +48,23 @@ export default function HowItWorkv2() {
   }, [currentIndex]);
 
   // Add function to check if element is in center of viewport
-  const isElementInCenter = (element: HTMLElement) => {
+  const isElementInCenter = (element: HTMLElement): boolean => {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const sectionHeight = rect.height;
-
-    // Calculate the vertical center positions
+  
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
-
-    // Calculate how far the section's center can be from viewport center
+  
+    // Allow a margin of error (threshold) for "centered" detection
     const threshold = 100;
-
-    // Only check vertical centering
-    return (
-      Math.abs(sectionVerticalCenter - viewportVerticalCenter) <= threshold
-    );
+  console.log(sectionVerticalCenter,"sectionVerticalCenter",viewportVerticalCenter,"viewportVerticalCenter")
+    // Disable auto-scroll if the center exceeds 550
+    if (sectionVerticalCenter < 520) {
+      return false;
+    }
+  
+    return Math.abs(sectionVerticalCenter - viewportVerticalCenter) <= threshold;
   };
 
   // Add scroll listener to check section position
