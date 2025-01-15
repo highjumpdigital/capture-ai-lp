@@ -77,19 +77,17 @@ export default function HowItWorkv2() {
     return () => window.removeEventListener("scroll", checkPosition);
   }, []);
   useEffect(() => {
-    if (!autoScrollEnabled || !isInViewportCenter) return;
-
-    const autoScrollInterval = setInterval(() => {
-      // Ensure the last card is reached before stopping auto-scroll
-      if (currentIndex < cards.length + 1) {
-        scrollToCard("down");
-      } else {
-        setAutoScrollEnabled(false); // Stop auto-scroll after reaching the last card
-      }
-    }, SCROLL_ANIMATION_DURATION ); // Ensure sufficient delay
-
-    return () => clearInterval(autoScrollInterval);
-  }, [currentIndex, autoScrollEnabled, isInViewportCenter]);
+    if (!isInViewportCenter) return;
+  
+    const startAutoScroll = setTimeout(() => {
+      setAutoScrollEnabled(true); // Enable auto-scroll after delay
+    }, 500); // Delay auto-scroll for 500ms
+  
+    return () => clearTimeout(startAutoScroll);
+  }, [isInViewportCenter]);
+  
+  
+  
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -180,32 +178,31 @@ export default function HowItWorkv2() {
   };
   const scrollToCard = (direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
-
+  
     setIsScrolling(true);
-
-    // Calculate new index safely
+  
     const newIndex =
       direction === "down"
         ? Math.min(currentIndex + 1, cards.length - 1) // Include the last card
         : Math.max(currentIndex - 1, 0);
-
+  
     if (newIndex !== currentIndex) {
       const CARD_HEIGHT = 176; // Height of each card in pixels
       const totalScroll = newIndex * (CARD_HEIGHT + gap);
-
+  
       containerRef.current.scrollTo({
         top: totalScroll,
         behavior: "smooth",
       });
-
+  
       setCurrentIndex(newIndex);
     }
-
-    // Ensure scrolling state is reset after the animation
+  
     setTimeout(() => {
       setIsScrolling(false);
     }, SCROLL_ANIMATION_DURATION);
   };
+  
 
   const [height, setHeight] = useState(400); // Default height
 
