@@ -28,7 +28,7 @@ export const Header = () => {
   return (
     <>
       {/* Mobile Header */}
-      <div className="flex justify-between items-center w-full lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
+      <div className="flex justify-between items-center w-full  max-w-[1312px] lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
         <Image src={Logo2} alt="Logo" className="w-[50px]" />
         <div className="flex items-center gap-4">
           <GiHamburgerMenu
@@ -108,8 +108,11 @@ export const Header = () => {
 
       {/* Desktop Header */}
       <div
-        className={`flex px-[20px] lg:px-[100px] hidden lg:flex justify-between items-center w-full h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
+        className={` px-[20px] lg:px-[65px] hidden lg:flex justify-between items-center w-full   h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
       >
+
+        <div className="w-full  max-w-[1312px] mx-auto lg:flex justify-between items-center">
+
         <div>
           <Image src={Logo} alt="Logo" width={190} height={19} />
         </div>
@@ -163,6 +166,7 @@ export const Header = () => {
           />
         </div>
       </div>
+        </div>
     </>
   );
 };
