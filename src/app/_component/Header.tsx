@@ -108,8 +108,11 @@ export const Header = () => {
 
       {/* Desktop Header */}
       <div
-        className={`flex px-[20px] lg:px-[65px] hidden lg:flex justify-between items-center w-full h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
+        className={` px-[20px] lg:px-[65px] hidden lg:flex justify-between items-center w-full   h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
       >
+
+        <div className="w-full  max-w-[1312px] mx-auto lg:flex justify-between items-center">
+
         <div>
           <Image src={Logo} alt="Logo" width={190} height={19} />
         </div>
@@ -163,6 +166,7 @@ export const Header = () => {
           />
         </div>
       </div>
+        </div>
     </>
   );
 };
