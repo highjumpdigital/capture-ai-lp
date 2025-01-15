@@ -102,7 +102,9 @@ export default function HowItWorkv2() {
       if (!isInViewportCenter) {
         return; // Allow normal scroll
       }
-  
+      if (currentIndex === cards.length - 1 && e.deltaY > 0) {
+        return; // Allow normal scroll
+      }
       if (!isScrolling) {
         if (e.deltaY > 0) {
           // Scrolling down
@@ -183,10 +185,7 @@ export default function HowItWorkv2() {
   };
   const scrollToCard = (direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
-    if (currentIndex === 3 && direction === "down") {
-      window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
-      return; // Do not move further down, let the page scroll normally
-    }
+  
     setIsScrolling(true);
 
     const newIndex =
