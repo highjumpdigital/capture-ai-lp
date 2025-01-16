@@ -91,7 +91,7 @@ export default function HowItWorkv2() {
     const viewportVerticalCenter = windowHeight / 2;
   
     // Allow a margin of error (threshold) for "centered" detection
-    const threshold = 50;
+    const threshold = 100;
   console.log(sectionVerticalCenter,"sectionVerticalCenter",viewportVerticalCenter,"viewportVerticalCenter")
     // Disable auto-scroll if the center exceeds 550
     // if (sectionVerticalCenter < 50) {
