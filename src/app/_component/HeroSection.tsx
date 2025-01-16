@@ -69,7 +69,7 @@ export const HeroSection = (): React.ReactElement => {
           </div>
         </div>
       </div>
-      <div className="mt-[45px]">
+      <div className="mt-[43px]">
         <MarqueeComponent />
       </div>
     </div>
