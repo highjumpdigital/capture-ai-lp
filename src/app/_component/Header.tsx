@@ -1,13 +1,12 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { Sofia_Sans_Semi_Condensed } from "next/font/google";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-import { useState } from "react";
 import { constants, AUTH_URLS } from "../_common/constants";
 import Logo from "../assets/header/Group 73.svg";
-import Logo2 from "../assets/logo/logo.svg"
-
+import Logo2 from "../assets/logo/logo.svg";
 
 const sofiaSans = Sofia_Sans_Semi_Condensed({
   subsets: ["latin"],
@@ -16,6 +15,7 @@ const sofiaSans = Sofia_Sans_Semi_Condensed({
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollingDisabled, setScrollingDisabled] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobile(!isMobile);
@@ -25,10 +25,12 @@ export const Header = () => {
     window.location.href = AUTH_URLS.SIGN_IN;
   };
 
+ 
+
   return (
     <>
       {/* Mobile Header */}
-      <div className="flex justify-between items-center w-full  max-w-[1312px] lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
+      <div className="flex justify-between items-center w-full max-w-[1312px] lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
         <Image src={Logo2} alt="Logo" className="w-[50px]" />
         <div className="flex items-center gap-4">
           <GiHamburgerMenu
@@ -55,47 +57,46 @@ export const Header = () => {
           />
         </div>
         <div className="flex flex-col gap-8 p-5">
-          <div 
+          <div
             onClick={() => {
-              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
               toggleMobileMenu();
             }}
-            className="font-bold text-white cursor-pointer">
+            className="font-bold text-white cursor-pointer"
+          >
             {constants.header.FEATURES}
           </div>
-          <div className="font-bold text-white cursor-pointer"
-          
-          onClick={() => {
-            document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-            toggleMobileMenu();
-          }}
-          
+          <div
+            onClick={() => {
+              document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+              toggleMobileMenu();
+            }}
+            className="font-bold text-white cursor-pointer"
           >
             {constants.header.howitwork}
-            
-            </div>
-          <div 
+          </div>
+          <div
             onClick={() => {
-              document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
               toggleMobileMenu();
             }}
-            className="font-bold text-white cursor-pointer">
+            className="font-bold text-white cursor-pointer"
+          >
             {constants.header.SOLUTIONS}
-
-            
           </div>
-          <div 
+          <div
             onClick={() => {
-              document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
               toggleMobileMenu();
             }}
-            className="font-bold text-white cursor-pointer">
+            className="font-bold text-white cursor-pointer"
+          >
             {constants.header.FAQ}
-            
           </div>
-          <div 
+          <div
             onClick={handleSignIn}
-            className="font-bold text-[#FF4206] cursor-pointer">
+            className="font-bold text-[#FF4206] cursor-pointer"
+          >
             {constants.header.login}
           </div>
           <FilledButton
@@ -108,65 +109,61 @@ export const Header = () => {
 
       {/* Desktop Header */}
       <div
-        className={` px-[20px] lg:px-[65px] hidden lg:flex justify-between items-center w-full   h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
+        className={`px-[20px] lg:px-[65px] hidden lg:flex justify-between items-center w-full h-20 bg-black fixed top-0 left-0 z-40 ${sofiaSans.className}`}
       >
-
-        <div className="w-full  max-w-[1312px] mx-auto lg:flex justify-between items-center">
-
-        <div>
-          <Image src={Logo} alt="Logo" width={190} height={19} />
-        </div>
-        <div className="flex gap-10">
-          <div 
-            onClick={() => {
-              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="font-bold text-4 leading-4 text-white cursor-pointer">
-            {constants.header.FEATURES}
-            
+        <div className="w-full max-w-[1312px] mx-auto lg:flex justify-between items-center">
+          <div>
+            <Image src={Logo} alt="Logo" width={190} height={19} />
           </div>
-          <div className="font-bold text-4 leading-4 text-white cursor-pointer"
-          
-          onClick={() => {
-            document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          
-          >
-            {constants.header.howitwork}
-
-            
+          <div className="flex gap-10">
+            <div
+              onClick={() => {
+                document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="font-bold text-4 leading-4 text-white cursor-pointer"
+            >
+              {constants.header.FEATURES}
             </div>
-          <div 
-            onClick={() => {
-              document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="font-bold text-4 leading-4 text-white cursor-pointer ">
-            {constants.header.SOLUTIONS}
-            
+            <div
+              className="font-bold text-4 leading-4 text-white cursor-pointer"
+              onClick={() => {
+                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              {constants.header.howitwork}
+            </div>
+            <div
+              onClick={() => {
+                document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="font-bold text-4 leading-4 text-white cursor-pointer"
+            >
+              {constants.header.SOLUTIONS}
+            </div>
+            <div
+              onClick={() => {
+                document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="font-bold text-4 leading-4 text-white cursor-pointer"
+            >
+              {constants.header.FAQ}
+            </div>
           </div>
-          <div 
-            onClick={() => {
-              document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="font-bold text-4 leading-4 text-white cursor-pointer">
-            {constants.header.FAQ}
-            
+          <div className="flex gap-5 justify-center items-center">
+            <div
+              onClick={handleSignIn}
+              className="text-[#FF4206] font-bold text-4 leading-4 cursor-pointer"
+            >
+              {constants.header.login}
+            </div>
+            <FilledButton
+              buttonTitle={constants.buttons.getStarted}
+              className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white ml-8"
+              onClick={() => {}}
+            />
           </div>
-        </div>
-        <div className="flex gap-5 justify-center items-center">
-          <div 
-            onClick={handleSignIn}
-            className="text-[#FF4206] font-bold text-4 leading-4 cursor-pointer">
-            {constants.header.login}
-          </div>
-          <FilledButton
-            buttonTitle={constants.buttons.getStarted}
-            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-4 leading-4 text-white ml-8"
-            onClick={() => {}}
-          />
         </div>
       </div>
-        </div>
     </>
   );
 };

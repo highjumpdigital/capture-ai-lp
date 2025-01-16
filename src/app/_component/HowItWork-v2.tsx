@@ -28,7 +28,7 @@ export default function HowItWorkv2() {
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
   const [firstScroll] = useState(true);
 
-  const SCROLL_ANIMATION_DURATION = firstScroll ? 350 : 350; 
+  const SCROLL_ANIMATION_DURATION = firstScroll ? 300 : 300; 
 
   const scrollToCard = useCallback((direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
