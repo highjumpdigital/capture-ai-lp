@@ -3,7 +3,7 @@
 "use client";
 
 import bgImage from "../assets/herosectionbgImage.png";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { Cairo } from "next/font/google";
 import { motion } from "framer-motion";
 import { cards } from "../_common/constants";
@@ -26,9 +26,9 @@ export default function HowItWorkv2() {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
   const [gap, setGap] = useState(60); // Default gap
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
-  const [firstScroll, setFirstScroll] = useState(true);
+  const [firstScroll] = useState(true);
 
-  const SCROLL_ANIMATION_DURATION = firstScroll ? 350 : 350; // 300ms for the first scroll, 350ms for subsequent
+  const SCROLL_ANIMATION_DURATION = firstScroll ? 350 : 350; 
 
   useEffect(() => {});
 
@@ -58,7 +58,7 @@ export default function HowItWorkv2() {
     const viewportVerticalCenter = windowHeight / 2;
   
     // Allow a margin of error (threshold) for "centered" detection
-    const threshold = 30;
+    const threshold = 100;
   console.log(sectionVerticalCenter,"sectionVerticalCenter",viewportVerticalCenter,"viewportVerticalCenter")
     // Disable auto-scroll if the center exceeds 550
     // if (sectionVerticalCenter < 50) {
@@ -133,21 +133,19 @@ export default function HowItWorkv2() {
   
   
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  const handleScroll = useCallback(() => {
+    const containerHeight = containerRef.current?.clientHeight || 0;
+    const cardElements = containerRef.current?.getElementsByClassName("card-container");
 
-    const handleScroll = () => {
-      const containerHeight = container.clientHeight;
-      const cardElements = container.getElementsByClassName("card-container");
-
+    if (cardElements) {
       const newOpacities = Array.from(cardElements).map((card) => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
-        const containerRect = container.getBoundingClientRect();
-        const distanceFromCenter = Math.abs(
-          cardCenter - (containerRect.top + containerHeight / 2)
-        );
+        const containerRect = containerRef.current?.getBoundingClientRect();
+
+        // Check if containerRect is defined before accessing its properties
+        const containerTop = containerRect ? containerRect.top : 0; // Default to 0 if undefined
+        const distanceFromCenter = Math.abs(cardCenter - (containerTop + containerHeight / 2));
         const maxDistance = containerHeight * 0.6;
         const opacity = Math.max(0.5, 1 - distanceFromCenter / maxDistance);
         return {
@@ -157,13 +155,18 @@ export default function HowItWorkv2() {
       });
 
       setCardOpacities(newOpacities);
-    };
+    }
+  }, [containerRef]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
     container.addEventListener("scroll", handleScroll);
     handleScroll();
 
     return () => container.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   // Auto-scroll effect
   useEffect(() => {
