@@ -30,6 +30,39 @@ export default function HowItWorkv2() {
 
   const SCROLL_ANIMATION_DURATION = firstScroll ? 350 : 350; 
 
+  const scrollToCard = useCallback((direction: "up" | "down") => {
+    if (isScrolling || !containerRef.current) return;
+  
+    setIsScrolling(true);
+
+    const newIndex =
+      direction === "down"
+        ? Math.min(currentIndex + 1, cards.length - 1) // Include the last card
+        : Math.max(currentIndex - 1, 0);
+
+    if (newIndex !== currentIndex) {
+      const CARD_HEIGHT = 176; // Height of each card in pixels
+      const totalScroll = newIndex * (CARD_HEIGHT + gap);
+
+      containerRef.current.scrollTo({
+        top: totalScroll,
+        behavior: "smooth",
+      });
+
+      setCurrentIndex(newIndex);
+    }
+
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, SCROLL_ANIMATION_DURATION);
+  }, [currentIndex, gap, isScrolling, SCROLL_ANIMATION_DURATION]);
+
+  const handleManualScroll = useCallback((direction: "up" | "down") => {
+    if (!isInViewportCenter) return; // Prevent manual scroll when not centered
+    setAutoScrollEnabled(false);
+    scrollToCard(direction);
+  }, [isInViewportCenter, scrollToCard]);
+
   useEffect(() => {});
 
   // Update gap based on screen size
@@ -58,7 +91,7 @@ export default function HowItWorkv2() {
     const viewportVerticalCenter = windowHeight / 2;
   
     // Allow a margin of error (threshold) for "centered" detection
-    const threshold = 100;
+    const threshold = 50;
   console.log(sectionVerticalCenter,"sectionVerticalCenter",viewportVerticalCenter,"viewportVerticalCenter")
     // Disable auto-scroll if the center exceeds 550
     // if (sectionVerticalCenter < 50) {
@@ -95,43 +128,44 @@ export default function HowItWorkv2() {
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
   useEffect(() => {
-    const section = sectionRef.current;
-  
-    if (!section) return;
-  
-    const preventScroll = (e: WheelEvent) => {
-      // If the section is not in the center, allow normal page scrolling
-      if (!isInViewportCenter) {
-        return; // Allow normal scroll
-      }
-      if (currentIndex === cards.length - 1 && e.deltaY > 0) {
-        return; // Allow normal scroll
-      }
-      if (!isScrolling) {
-        if (e.deltaY > 0) {
-          // Scrolling down
-          if (currentIndex === cards.length) return;
-          e.preventDefault();
-          e.stopPropagation();
-          handleManualScroll("down");
-        } else {
-          // Scrolling up
-          if (currentIndex === 0) return;
-          e.preventDefault();
-          e.stopPropagation();
-          handleManualScroll("up");
-        }
-      } else {
+    const preventPageScroll = (e: WheelEvent) => {
+      if (!sectionRef.current) return;
+      
+      const isInView = isElementInCenter(sectionRef.current);
+      
+      if (!isInView) return;
+
+      // Prevent scrolling if we're in the middle of an animation
+      if (isScrolling) {
         e.preventDefault();
-        e.stopPropagation();
+        return;
+      }
+
+      // Allow scrolling down only after all cards are viewed
+      if (currentIndex === cards.length - 1 && e.deltaY > 0) {
+        return;
+      }
+
+      // Allow scrolling up only when at the first card
+      if (currentIndex === 0 && e.deltaY < 0) {
+        return;
+      }
+
+      // Prevent default scroll and handle card navigation
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (e.deltaY > 0 && currentIndex < cards.length - 1) {
+        handleManualScroll("down");
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        handleManualScroll("up");
       }
     };
-  
-    section.addEventListener("wheel", preventScroll, { passive: false });
-    return () => section.removeEventListener("wheel", preventScroll);
-  }, [isScrolling, currentIndex, isInViewportCenter]);
-  
-  
+
+    // Add the event listener to the window instead of the section
+    window.addEventListener("wheel", preventPageScroll, { passive: false });
+    return () => window.removeEventListener("wheel", preventPageScroll);
+  }, [isScrolling, currentIndex, handleManualScroll]);
 
   const handleScroll = useCallback(() => {
     const containerHeight = containerRef.current?.clientHeight || 0;
@@ -182,38 +216,6 @@ export default function HowItWorkv2() {
 
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
-
-  const handleManualScroll = (direction: "up" | "down") => {
-    if (!isInViewportCenter) return; // Prevent manual scroll when not centered
-    setAutoScrollEnabled(false);
-    scrollToCard(direction);
-  };
-  const scrollToCard = (direction: "up" | "down") => {
-    if (isScrolling || !containerRef.current) return;
-  
-    setIsScrolling(true);
-
-    const newIndex =
-      direction === "down"
-        ? Math.min(currentIndex + 1, cards.length - 1) // Include the last card
-        : Math.max(currentIndex - 1, 0);
-
-    if (newIndex !== currentIndex) {
-      const CARD_HEIGHT = 176; // Height of each card in pixels
-      const totalScroll = newIndex * (CARD_HEIGHT + gap);
-
-      containerRef.current.scrollTo({
-        top: totalScroll,
-        behavior: "smooth",
-      });
-
-      setCurrentIndex(newIndex);
-    }
-
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, SCROLL_ANIMATION_DURATION);
-  };
 
   const [height, setHeight] = useState(400); // Default height
 

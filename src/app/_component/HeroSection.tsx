@@ -46,7 +46,7 @@ export const HeroSection = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 hidden md:block rounded-tl-[14px] rounded-tr-[14px] right-[10%] left-[10%] xl:right-[25%] xl:left-[25%] border-l-[13px] border-r-[13px] border-t-[12px] border-[rgba(136,140,143,0.8)] z-10">
+      <div className="absolute bottom-0 hidden md:block rounded-tl-[14px] rounded-tr-[14px] right-[10%] left-[10%] xl:right-[28%] xl:left-[28%] border-l-[13px] border-r-[13px] border-t-[12px] border-[rgba(136,140,143,0.8)] z-10">
         <div className="flex justify-center items-start">
           <Image 
             src={DashBoardImage} 
