@@ -4,11 +4,11 @@ import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
 import provide from "../assets/performance/provide copy.svg"
-import thirdpartypic from "../assets/performance/thirdparty.svg"
-import showcase from "../assets/performance/showcase.svg"
-import leadcapture from "../assets/performance/leadcapture.svg"
-import userintent from "../assets/performance/userintent copy.svg"
-import suggestion from "../assets/performance/suggest.svg"
+import thirdpartypic from "../assets/performance2/third-party.svg"
+import showcase from "../assets/performance2/showcase-work.svg"
+import leadcapture from "../assets/performance2/lead-capture.svg"
+import userintent from "../assets/performance2/user-intent.svg"
+import suggestion from "../assets/performance2/suggestion.svg"
 import personicon from "../assets/price/personicon.svg"
 import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
 import diamond from "../assets/price/basil_diamond-solid.svg" 
@@ -427,6 +427,8 @@ export const constants = {
   },
   buttons: {
     getStarted: "GET STARTED",
+    forFree: "FOR FREE",
+    forPrice: (price: string) => `FOR ${price}`,
   },
   planDetails: {
     personalAgent: "PERSONAL WEBSITE AGENT",
@@ -468,7 +470,7 @@ export const constants = {
       text: "SHOWCASE PRODUCT RANGES",
     },
     {
-      text: "PROACTIVE SUGGESTION",
+      text: "PROACTIVE SUGGESTIONS",
     },
     {
       text: "REAL-TIME LEADS ALERTS",
@@ -480,6 +482,30 @@ export const constants = {
       text: "TECHNICAL SUPPORT",
     },
   ],
+  platform: {
+    title: "AVAILABLE ON ALL PLATFORMS:",
+  },
+  howItWorks: {
+    title: "HERE'S HOW IT WORKS",
+    steps: {
+      title: "HERE'S\nHOW\nIT WORKS",
+    }
+  },
+  immersionCard: {
+    bgColor: 'rgb(242,245,247)',
+  },
+  altText: {
+    logo: "Logo",
+    image: "image",
+    peopleGroup: "PeopleGroup",
+    dashboard: "Dashboard",
+  },
+  planCard: {
+    infinityPro: "INFINITY PRO",
+  },
+  faq: {
+    title: "FREQUENTLY ASKED QUESTIONS",
+  },
 };
 
 export const cards = [
@@ -504,3 +530,7 @@ export const cards = [
     text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts." 
   },
 ];
+
+export const AUTH_URLS = {
+  SIGN_IN: "https://chatbot-v0-frontend-development.up.railway.app/sign-in"
+} as const;

@@ -1,8 +1,8 @@
-import { PlanCard } from "@/app/Components/PlanCard";
-import { PlanDetails } from "@/app/Components/PlanDetails";
+import { PlanCard } from "@/app/_component/PlanCard";
+import { PlanDetails } from "@/app/_component/PlanDetails";
 import { useState, useEffect, useRef } from "react";
-import { constants, Plandata, STARTERPlandata, InfinityProPlandata } from "./constants";
-import { PAYMENT_CONSTANTS } from "./constants";
+import { constants, Plandata, STARTERPlandata, InfinityProPlandata } from "../_common/constants";
+import { PAYMENT_CONSTANTS } from "../_common/constants";
 
 export const PaymentSol = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -14,7 +14,7 @@ export const PaymentSol = () => {
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 986);
-      setIsPlanDetailsHidden(window.innerWidth < 1536);
+      setIsPlanDetailsHidden(window.innerWidth < 1280);
     };
 
     checkIfMobile();
@@ -60,11 +60,11 @@ export const PaymentSol = () => {
   };
 
   return (
-    <div id="solutions" className="bg-[#F2F5F7] px-[20px] xl:px-[100px] pt-[70px] pb-[50px] lg:py-[100px]">
+    <div id="solutions" className="bg-[#F2F5F7] px-[20px] xl:px-[0px] pt-[70px] pb-[50px] lg:py-[100px]">
       <div className="max-w-[1311px] mx-auto">
-        <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo text-center lg:text-left text-[#FF4206] font-bold">
+        <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo text-center lg:text-left text-orange font-normal">
           {PAYMENT_CONSTANTS.HEADING.FLEXIBLE}
-          <span className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairofont-bold text-black">
+          <span className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo font-bold text-black">
             {PAYMENT_CONSTANTS.HEADING.PAYMENT_SOLUTIONS}
           </span>
         </div>
@@ -75,7 +75,7 @@ export const PaymentSol = () => {
             className={`flex gap-[20px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
               isMobile 
                 ? 'justify-start overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' 
-                : 'justify-center md:justify-between flex-wrap md:flex-nowrap'
+                : 'justify-center xl:justify-between flex-wrap xl:flex-nowrap'
             }`}
             style={isMobile ? {
               scrollSnapType: 'x mandatory',
@@ -83,11 +83,13 @@ export const PaymentSol = () => {
               scrollPaddingRight: '0px'
             } : undefined}
           >
-            <div className="hidden 2xl:block shrink-0">
+            <div className="hidden xl:block shrink-0">
               <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
               <PlanCard 
+              id={1}
+
                 planData={getMergedPlanData(Plandata)} 
                 title={PAYMENT_CONSTANTS.PLANS.BASIC.TITLE}
                 image={PAYMENT_CONSTANTS.PLANS.BASIC.IMAGE}
@@ -101,6 +103,7 @@ export const PaymentSol = () => {
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
               <PlanCard 
+              id={2}
                 planData={getMergedPlanData(STARTERPlandata)} 
                 title={PAYMENT_CONSTANTS.PLANS.STARTER.TITLE}
                 image={PAYMENT_CONSTANTS.PLANS.STARTER.IMAGE}
@@ -114,6 +117,8 @@ export const PaymentSol = () => {
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
               <PlanCard 
+              id={3}
+
                 planData={getMergedPlanData(InfinityProPlandata)} 
                 title={PAYMENT_CONSTANTS.PLANS.PRO.TITLE}
                 image={PAYMENT_CONSTANTS.PLANS.PRO.IMAGE}

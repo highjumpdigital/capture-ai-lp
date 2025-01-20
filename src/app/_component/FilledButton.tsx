@@ -26,7 +26,7 @@ export const FilledButton: React.FC<{
   return (
     <div
       ref={buttonRef}
-      className={`group flex items-center justify-center rounded-lg cursor-pointer transform transition-all duration-200 hover:shadow-lg active:scale-95 hover:shadow-inner hover:brightness-95 relative ${
+      className={`group flex items-center justify-center rounded-lg cursor-pointer transform transition-all duration-200  active:scale-95 hover:shadow-inner hover:brightness-95 relative ${
         className.includes("bg-black") ? "" : ""
       } ${
         className.includes("bg-")

@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
   --background: #ffffff;
@@ -33,8 +34,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
-.sofia{
-  font-family: "Sofia Sans Semi Condensed"
+.sofia {
+  font-family: "Sofia Sans Semi Condensed";
 }
 
 .herosectionDashboardImage {
@@ -43,11 +44,13 @@ a {
   border-left: 10px solid;
   border-image-slice: 1;
   border-radius: 10px;
-  border-image-source: linear-gradient(90deg, rgba(47, 53, 57, 0.5) 0%, rgba(131, 148, 159, 0.5) 100%);
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(47, 53, 57, 0.5) 0%,
+    rgba(131, 148, 159, 0.5) 100%
+  );
   overflow: hidden; /* Ensures the border respects the rounded corners */
 }
-
-
 
 .heroSection {
   height: 990px;
@@ -57,102 +60,108 @@ a {
   background-position: center;
   background-repeat: no-repeat;
 
-
-  @media (max-width:767px) {
-
-    height: 850px;
-    
+  @media (max-width: 1024px) {
+    height: 910px;
   }
-  
+  @media (max-width: 767px) {
+    height: 780px;
+  }
 }
 
 .faq {
-  height:611px;
+  height: 611px;
   width: 100%;
   background-image: url("./assets/faq.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
- @media (max-width:1024px) {
-  height: auto;
-  padding-bottom: 50px;
-  
- }
-}
-.immersionCardBorder
-  {
-    border: 3px solid ;
-    border-image-source: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(174, 185, 220, 0.2) 100%);
-    border-image-slice: 1;
-    border-radius: 5px;
+  @media (max-width: 1024px) {
+    height: auto;
+    padding-bottom: 50px;
   }
+}
+.immersionCardBorder {
+  border: 3px solid;
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(174, 185, 220, 0.2) 100%
+  );
+  border-image-slice: 1;
+  border-radius: 5px;
+}
 
-
-.herobackground{
-  border-top: 10px solid ;
-  border-left:10px solid ;
-  border-right:10px solid ;
+.herobackground {
+  border-top: 10px solid;
+  border-left: 10px solid;
+  border-right: 10px solid;
 
   border-radius: 10px;
 
-
-
-  border: 10px solid linear-gradient(90deg, rgba(47, 53, 57, 0.5) 0%, rgba(131, 148, 159, 0.5) 100%);
-
-  
-  
+  border: 10px solid
+    linear-gradient(
+      90deg,
+      rgba(47, 53, 57, 0.5) 0%,
+      rgba(131, 148, 159, 0.5) 100%
+    );
 }
-.marqueebg{
-  background: radial-gradient(103.36% 103.36% at 50% 100%, #000000 60%, rgba(0, 0, 0, 0) 100%);
-
+.marqueebg {
+  background: radial-gradient(
+    103.36% 103.36% at 50% 100%,
+    #000000 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
-.platformbg{
+.platformbg {
   background: linear-gradient(0deg, #000000, #000000),
-radial-gradient(49.97% 105.43% at 50.03% 100%, rgba(176, 179, 183, 0.4) 0%, rgba(176, 179, 183, 0) 100%);
-
+    radial-gradient(
+      49.97% 105.43% at 50.03% 100%,
+      rgba(176, 179, 183, 0.4) 0%,
+      rgba(176, 179, 183, 0) 100%
+    );
 }
 
-.plandetailshadow{
-
-  box-shadow: 0px 5px 20px 0px #3738421A;
-
+.plandetailshadow {
+  box-shadow: 0px 5px 20px 0px #3738421a;
 }
-.immersionBgColor{
+.immersionBgColor {
   /* backdrop-filter: blur(10px) */
   border: 3px solid;
 
-border-image-source: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(174, 185, 220, 0.2) 100%);
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(174, 185, 220, 0.2) 100%
+  );
 
-
-
-box-shadow: 0px 4px 15px 0px #00000003;
-
+  box-shadow: 0px 4px 15px 0px #00000003;
 }
-.Cairo{
+.Cairo {
   font-family: "Cairo";
 }
-.Inter{
-  font-family: "Inter",
+.Inter {
+  font-family: "Inter";
 }
-.paySolShadow{
-  box-shadow: 0px 0px 10px 0px #FF4206;
-
+.paySolShadow {
+  box-shadow: 0px 0px 10px 0px #ff4206;
 }
-.gifshadow{
-border-radius: 5px;
-  box-shadow: 4px 4px 15px 0px #1C2E3626;
+.gifshadow {
+  border-radius: 5px;
+  box-shadow: 4px 4px 15px 0px #1c2e3626;
 }
 
 html {
   color-scheme: light only;
   forced-color-adjust: none;
+  scroll-behavior: smooth;
+  scroll-timeline: smooth;
+  --scroll-duration: 1000ms;
 }
-.no-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+.transition-[max-height] {
+  transition: max-height 0.5s ease-in-out;
 }
 
+.transition-[height] {
+  transition: height 0.5s ease-in-out;
+}

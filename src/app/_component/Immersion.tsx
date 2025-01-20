@@ -1,16 +1,16 @@
 import Image from "next/image";
 import React from "react";
 
-import ImmersionImage from "../assets/latestnewImage.png";
-import { constants, Immersiondata } from "./constants";
+import ImmersionImage from "../assets/jeeves-chatbot.svg";
+import { constants, Immersiondata } from "../_common/constants";
 
 export const Immersion = () => {
   return (
-    <div className=" px-[20px] relative z-10  pt-8 pb-[20px] sm:py-[100px] " style={{ backgroundColor: 'rgb(242,245,247)' }}>
+    <div className=" px-[20px] relative z-10  pt-8 pb-[20px] sm:py-[100px] " style={{ backgroundColor: constants.immersionCard.bgColor }}>
       <div className="max-w-[1311px] mx-auto flex  flex-col lg:flex-row  gap-4 justify-between items-center">
 
       <div>
-        <div className="  text-[34px]  lg:text-[64px]  leading-[44px] lg:leading-[64px] text-[#FF4206]">
+        <div className="text-center lg:text-left text-[34px]  lg:text-[64px]  leading-[44px] lg:leading-[64px] text-[#FF4206] mt-[-6px]">
           {constants.immersion.fullimmersion} <br />
           <span className="font-bold text-black">
             {" "}
