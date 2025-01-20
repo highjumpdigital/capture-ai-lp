@@ -26,7 +26,7 @@ export const FAQ = () => {
             <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206] text-center">
               {constants.ask.frequentalyasked}
             </div>
-            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-black font-bold text-center">
+            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-black font-bold text-center sm:text-start">
               {constants.ask.QUESTIONS}
             </div>
           </div>

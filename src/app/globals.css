@@ -154,6 +154,9 @@ a {
 html {
   color-scheme: light only;
   forced-color-adjust: none;
+  scroll-behavior: smooth;
+  scroll-timeline: smooth;
+  --scroll-duration: 1000ms;
 }
 .transition-[max-height] {
   transition: max-height 0.5s ease-in-out;
