@@ -9,10 +9,15 @@ import { motion } from "framer-motion";
 import { cards } from "../_common/constants";
 import { colors } from "../_styles/colors";
 import { constants } from "../_common/constants";
+import { throttle } from "lodash";
+
 const cairo = Cairo({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
+
+const ANIMATION_DURATION = 800; // Global animation duration
+
 //how its work
 
 export default function HowItWorkv2() {
@@ -24,11 +29,10 @@ export default function HowItWorkv2() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
-  const [gap, setGap] = useState(60); // Default gap
+  const [gap, setGap] = useState(60); 
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
-  const [firstScroll] = useState(true);
-
-  const SCROLL_ANIMATION_DURATION = firstScroll ? 350 : 350; 
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
 
   const scrollToCard = useCallback((direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
@@ -37,16 +41,16 @@ export default function HowItWorkv2() {
 
     const newIndex =
       direction === "down"
-        ? Math.min(currentIndex + 1, cards.length - 1) // Include the last card
+        ? Math.min(currentIndex + 1, cards.length - 1)
         : Math.max(currentIndex - 1, 0);
 
     if (newIndex !== currentIndex) {
-      const CARD_HEIGHT = 176; // Height of each card in pixels
+      const CARD_HEIGHT = 176;
       const totalScroll = newIndex * (CARD_HEIGHT + gap);
 
       containerRef.current.scrollTo({
         top: totalScroll,
-        behavior: "smooth",
+        behavior: "smooth"
       });
 
       setCurrentIndex(newIndex);
@@ -54,8 +58,8 @@ export default function HowItWorkv2() {
 
     setTimeout(() => {
       setIsScrolling(false);
-    }, SCROLL_ANIMATION_DURATION);
-  }, [currentIndex, gap, isScrolling, SCROLL_ANIMATION_DURATION]);
+    }, ANIMATION_DURATION);
+  }, [currentIndex, gap, isScrolling]);
 
   const handleManualScroll = useCallback((direction: "up" | "down") => {
     if (!isInViewportCenter) return; // Prevent manual scroll when not centered
@@ -81,8 +85,8 @@ export default function HowItWorkv2() {
     return () => window.removeEventListener("resize", updateGap);
   }, [currentIndex]);
 
-  // Add function to check if element is in center of viewport
-  const isElementInCenter = (element: HTMLElement): boolean => {
+  // Improved center detection for continuous scrolling
+  const isElementInCenter = useCallback((element: HTMLElement): boolean => {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const sectionHeight = rect.height;
@@ -90,30 +94,52 @@ export default function HowItWorkv2() {
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
   
-    // Allow a margin of error (threshold) for "centered" detection
-    const threshold = 50;
-  console.log(sectionVerticalCenter,"sectionVerticalCenter",viewportVerticalCenter,"viewportVerticalCenter")
-    // Disable auto-scroll if the center exceeds 550
-    // if (sectionVerticalCenter < 50) {
-    //   return false;
-    // }
+    // Larger threshold for continuous scrolling
+    const threshold = 200;
   
-    return Math.abs(sectionVerticalCenter - viewportVerticalCenter) <= threshold;
-  };
+    // Adjust detection area based on scroll direction
+    const offset = scrollDirection === 'down' ? -50 : 50;
+    const adjustedCenter = viewportVerticalCenter + offset;
+  
+    return Math.abs(sectionVerticalCenter - adjustedCenter) <= threshold;
+  }, [scrollDirection]);
 
-  // Add scroll listener to check section position
+  // Add scroll listener with slower throttle for smoother detection
   useEffect(() => {
-    const checkPosition = () => {
-      if (sectionRef.current) {
-        setIsInViewportCenter(isElementInCenter(sectionRef.current));
+    const updateScrollDirection = () => {
+      const currentScrollTop = window.scrollY;
+      const newDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
+      
+      setLastScrollTop(currentScrollTop);
+      if (newDirection !== scrollDirection) {
+        setScrollDirection(newDirection);
       }
     };
 
-    window.addEventListener("scroll", checkPosition);
+    const checkPosition = throttle(() => {
+      updateScrollDirection();
+      if (sectionRef.current) {
+        const inCenter = isElementInCenter(sectionRef.current);
+        if (inCenter !== isInViewportCenter) {
+          setIsInViewportCenter(inCenter);
+        }
+      }
+    }, 8); // Reduced from 60fps
+
+    const handleScroll = () => {
+      checkPosition();
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     checkPosition(); // Initial check
 
-    return () => window.removeEventListener("scroll", checkPosition);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      checkPosition.cancel();
+    };
+  }, [isElementInCenter, isInViewportCenter, lastScrollTop, scrollDirection]);
+
+  // Adjust auto-scroll interval
   useEffect(() => {
     if (!autoScrollEnabled || !isInViewportCenter) return;
 
@@ -121,12 +147,13 @@ export default function HowItWorkv2() {
       if (currentIndex < cards.length - 1) {
         scrollToCard("down");
       } else {
-        setAutoScrollEnabled(false); // Stop auto-scroll at the last card
+        setAutoScrollEnabled(false);
       }
-    }, SCROLL_ANIMATION_DURATION); // Adjust duration for smoother scrolling
+    }, ANIMATION_DURATION + 150); // Added extra delay between auto-scrolls
 
     return () => clearInterval(autoScrollInterval);
-  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
+  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling, scrollToCard]);
+
   useEffect(() => {
     const preventPageScroll = (e: WheelEvent) => {
       if (!sectionRef.current) return;
@@ -212,7 +239,7 @@ export default function HowItWorkv2() {
       } else {
         setAutoScrollEnabled(false); // Stop auto-scroll at the last card
       }
-    }, SCROLL_ANIMATION_DURATION); // Add a 1-second pause
+    }, ANIMATION_DURATION); // Add a 1-second pause
 
     return () => clearInterval(autoScrollInterval);
   }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
