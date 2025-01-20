@@ -95,7 +95,7 @@ export default function HowItWorkv2() {
     const viewportVerticalCenter = windowHeight / 2;
   
     // Larger threshold for continuous scrolling
-    const threshold = 200;
+    const threshold = 100;
   
     // Adjust detection area based on scroll direction
     const offset = scrollDirection === 'down' ? -50 : 50;
