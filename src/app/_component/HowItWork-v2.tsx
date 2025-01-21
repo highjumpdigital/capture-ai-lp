@@ -17,7 +17,7 @@ const cairo = Cairo({
 });
 
 const ANIMATION_DURATION = 800; // Global animation duration
-const THROTTLE_TIME = 250; // 150ms is a good balance between performance and responsiveness
+const THROTTLE_TIME = 400; // 150ms is a good balance between performance and responsiveness
 
 interface HowItWorkv2Props {
   parentScrollRef: React.RefObject<HTMLDivElement | null>;
@@ -100,7 +100,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     const viewportVerticalCenter = windowHeight / 2;
   debugger
     // Larger threshold for continuous scrolling
-    const threshold = 220;
+    const threshold = 100;
   
     // Adjust detection area based on scroll direction
     const offset = scrollDirection === 'down' ? -50 : 50;
@@ -345,7 +345,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   return (
     <div
     ref={sectionRef}
-    className={`h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat ${cairo.className}`}
+    className={`h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat   ${cairo.className}`}
     style={{
       backgroundImage: `url(${bgImage.src})`,
       overflow: 'hidden',
