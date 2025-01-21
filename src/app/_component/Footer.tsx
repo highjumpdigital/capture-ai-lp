@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
   }, []);
   
   return (
-    <div className="flex flex-col bg-black  px-[20px] lg:px-[100px] py-6 md:py-12 ">
+    <div className="flex flex-col bg-black  px-[20px] lg:px-[0px] py-6 md:py-12 ">
       <div className="max-w-[1311px] w-full mx-auto">
       <div className="flex flex-col md:flex-row md:items-center    justify-between w-full space-y-4 md:space-y-0">
         <div className="flex  flex-col gap-4 lg:gap-8 lg:flex-row      ">
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-col lg:flex-row  justify-start lg:justify-between  gap-5  py-10 items-center">
-        <div className="text-[#FFFFFFCC] text-sm  lg:max-w-[330px]  w-full flex justify-start items-end  text-start  md:text-base">
+        <div className="text-[#FFFFFFCC] text-[16px] leading-[24px] font-bold  lg:max-w-[330px]  w-full flex justify-start items-end Inter  text-start  md:text-base">
           {`© ${currentYear} CAPTURE AI, by High Jump Digital.
 All Rights Reserved.`}
         </div>
