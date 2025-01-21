@@ -17,10 +17,15 @@ const cairo = Cairo({
 });
 
 const ANIMATION_DURATION = 800; // Global animation duration
+const THROTTLE_TIME = 250; // 150ms is a good balance between performance and responsiveness
+
+interface HowItWorkv2Props {
+  parentScrollRef: React.RefObject<HTMLDivElement | null>;
+}
 
 //how its work
 
-export default function HowItWorkv2() {
+export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [cardOpacities, setCardOpacities] = useState<
@@ -94,19 +99,16 @@ export default function HowItWorkv2() {
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
   
-    // Larger threshold for continuous scrolling
     const threshold = 100;
-  
-    // Adjust detection area based on scroll direction
     const offset = scrollDirection === 'down' ? -50 : 50;
     const adjustedCenter = viewportVerticalCenter + offset;
   
     return Math.abs(sectionVerticalCenter - adjustedCenter) <= threshold;
   }, [scrollDirection]);
 
-  // Add scroll listener with slower throttle for smoother detection
-  useEffect(() => {
-    const updateScrollDirection = () => {
+  // Scroll position checking with throttle
+  const checkScrollPosition = useCallback(
+    throttle(() => {
       const currentScrollTop = window.scrollY;
       const newDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
       
@@ -114,30 +116,33 @@ export default function HowItWorkv2() {
       if (newDirection !== scrollDirection) {
         setScrollDirection(newDirection);
       }
-    };
 
-    const checkPosition = throttle(() => {
-      updateScrollDirection();
       if (sectionRef.current) {
         const inCenter = isElementInCenter(sectionRef.current);
         if (inCenter !== isInViewportCenter) {
           setIsInViewportCenter(inCenter);
         }
       }
-    }, 8); // Reduced from 60fps
+    }, THROTTLE_TIME, { leading: true, trailing: true }),
+    [lastScrollTop, scrollDirection, isElementInCenter, isInViewportCenter]
+  );
 
+  // Scroll event listener
+  useEffect(() => {
     const handleScroll = () => {
-      checkPosition();
+      requestAnimationFrame(() => {
+        checkScrollPosition();
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    checkPosition(); // Initial check
+    checkScrollPosition(); // Initial check
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      checkPosition.cancel();
+      checkScrollPosition.cancel(); // Clean up the throttled function
     };
-  }, [isElementInCenter, isInViewportCenter, lastScrollTop, scrollDirection]);
+  }, [checkScrollPosition]);
 
   // Adjust auto-scroll interval
   useEffect(() => {
@@ -264,6 +269,34 @@ export default function HowItWorkv2() {
     adjustHeight();
   }, [currentIndex, isScrolling, gap]);
   console.log("currentOdex", currentIndex, "scroll", isScrolling, "gap", gap);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const section = sectionRef.current;
+    const parent = parentScrollRef.current;
+
+    if (!container || !section || !parent) return;
+
+    const handleNestedScroll = () => {
+      // Check if we've reached the bottom of the nested scroll
+      const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight;
+      const isAtTop = container.scrollTop === 0;
+
+      if (isAtBottom && scrollDirection === 'down') {
+        document.body.style.overflow = 'auto';
+      } else if (isAtTop && scrollDirection === 'up') {
+        document.body.style.overflow = 'auto';
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    container.addEventListener('scroll', handleNestedScroll);
+    return () => {
+      container.removeEventListener('scroll', handleNestedScroll);
+      document.body.style.overflow = 'auto';
+    };
+  }, [scrollDirection, parentScrollRef]);
 
   return (
     <div
