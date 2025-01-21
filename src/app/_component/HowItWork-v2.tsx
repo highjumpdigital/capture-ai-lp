@@ -105,7 +105,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
-    const threshold = 200; // Adjust this value to control how strict the centering is
+    const threshold = 90; // Adjust this value to control how strict the centering is
     
     const isCentered = Math.abs(sectionVerticalCenter - viewportVerticalCenter) < threshold;
     

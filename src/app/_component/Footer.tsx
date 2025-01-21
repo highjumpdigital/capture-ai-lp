@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-col lg:flex-row  justify-start lg:justify-between  gap-5  py-10 items-center">
-        <div className="text-[#FFFFFFCC] text-sm  lg:max-w-[330px]  w-full flex justify-start items-end  text-start  md:text-base">
+        <div className="text-[#FFFFFFCC] text-[16px] leading-[24px]  lg:max-w-[330px]  w-full flex justify-start items-end Inter  text-start  md:text-base">
           {`© ${currentYear} CAPTURE AI, by High Jump Digital.
 All Rights Reserved.`}
         </div>
