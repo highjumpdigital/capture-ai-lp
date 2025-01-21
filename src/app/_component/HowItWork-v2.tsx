@@ -105,20 +105,16 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
-    const threshold = 100; // Adjust this value to control how strict the centering is
-    
-    const isCentered = Math.abs(sectionVerticalCenter - viewportVerticalCenter) < threshold;
-    
-    if (isCentered && !isInViewportCenter) {
-      // Auto-center the section when it's close to the center
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'center'
-      });
-    }
-    
-    return isCentered;
-  }, [isInViewportCenter]);
+  debugger
+    // Larger threshold for continuous scrolling
+    const threshold = 100;
+  
+    // Adjust detection area based on scroll direction
+    const offset = scrollDirection === 'down' ? -50 : 50;
+    const adjustedCenter = viewportVerticalCenter + offset;
+  
+    return Math.abs(sectionVerticalCenter - adjustedCenter) <= threshold;
+  }, [scrollDirection]);
 
   // Scroll position checking with throttle
   const checkScrollPosition = useCallback(
