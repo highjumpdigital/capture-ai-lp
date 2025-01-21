@@ -1,4 +1,5 @@
 "use client"
+import { useEffect, useState, useRef } from "react";
 import {
   Header,
   Footer,
@@ -11,7 +12,6 @@ import {
 } from "./_component";
 import HowItWorks from "./_component/HowitsWork";
 import HowItWorkv2 from "./_component/HowItWork-v2";
-import { useEffect, useState } from "react";
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -30,63 +30,52 @@ const useIsMobile = () => {
 };
 
 export default function Home() {
-  const [scrollingDisabled, setScrollingDisabled] = useState(false);
   const isMobile = useIsMobile();
+  const parentScrollRef = useRef<HTMLDivElement>(null);
+  const workSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const workSection = document.getElementById("work");
+    const parentElement = parentScrollRef.current;
+    const workSection = workSectionRef.current;
 
-    // Set up Intersection Observer to detect when the "work" section enters the viewport
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
+    if (!parentElement || !workSection) return;
 
-        if (entry.isIntersecting) {
-          // Disable scrolling when the section is in view
-          setScrollingDisabled(true);
-        } else {
-          // Enable scrolling once the section leaves the viewport
-          setScrollingDisabled(false);
-        }
-      },
-      { threshold: 0.5 } // Trigger when 50% of the section is visible
-    );
+    const handleScroll = () => {
+      const workRect = workSection.getBoundingClientRect();
 
-    if (workSection) {
-      observer.observe(workSection); // Start observing the "work" section
-    }
-
-    // Cleanup observer when the component unmounts
-    return () => {
-      if (workSection) {
-        observer.unobserve(workSection);
+      // Check if work section is in the middle of the viewport
+      if (
+        workRect.top <= window.innerHeight / 2 &&
+        workRect.bottom >= window.innerHeight / 2
+      ) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
       }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflow = "auto";
     };
   }, []);
 
-  useEffect(() => {
-    if (scrollingDisabled) {
-      document.body.style.overflow = "hidden"; // Disable scroll
-    } else {
-      document.body.style.overflow = "auto"; // Enable scroll
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [scrollingDisabled]);
-
   return (
-    <div className="pt-20">
+    <div ref={parentScrollRef} className="pt-20">
       <Header />
       <HeroSection />
       <Platform />
       <Immersion />
       <ChatPerformance />
 
-      <div id="work"> {/* Add id to the section you want to track */}
-        {isMobile ? <HowItWorks /> : <HowItWorkv2 />}
+      <div ref={workSectionRef} id="work">
+        {isMobile ? (
+          <HowItWorks parentScrollRef={parentScrollRef} />
+        ) : (
+          <HowItWorkv2 parentScrollRef={parentScrollRef} />
+        )}
       </div>
 
       <PaymentSol />
