@@ -357,7 +357,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6 ">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mt-[100px] sm:mt-[100px]">
+          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start ">
             <h1
               className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block"
               style={{
@@ -387,7 +387,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
           </div>
 
           {/* Right Content Section with Line */}
-          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px]">
+          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 ">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
             <div className="relative w-[3px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
