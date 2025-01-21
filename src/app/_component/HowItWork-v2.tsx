@@ -68,9 +68,16 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
 
   const handleManualScroll = useCallback((direction: "up" | "down") => {
     if (!isInViewportCenter) return; // Prevent manual scroll when not centered
+    
+    // Prevent scrolling up when at the first card
+    if (direction === "up" && currentIndex === 0) return;
+    
+    // Prevent scrolling down when at the last card
+    if (direction === "down" && currentIndex === cards.length - 1) return;
+    
     setAutoScrollEnabled(false);
     scrollToCard(direction);
-  }, [isInViewportCenter, scrollToCard]);
+  }, [isInViewportCenter, scrollToCard, currentIndex]);
 
   useEffect(() => {});
 
