@@ -54,7 +54,7 @@ export const HeroSection = (): React.ReactElement => {
         min-[1100px]:right-[22%] min-[1100px]:left-[22%]
         min-[1200px]:right-[23%] min-[1200px]:left-[23%]
         min-[1300px]:right-[26%] min-[1300px]:left-[26%]
-        min-[1400px]:right-[25  %] min-[1400px]:left-[25%]
+        min-[1400px]:right-[25%] min-[1400px]:left-[25%]
         min-[1500px]:right-[27%] min-[1500px]:left-[27%]
         min-[1600px]:right-[28%] min-[1600px]:left-[28%]
         min-[1700px]:right-[29%] min-[1700px]:left-[29%]
