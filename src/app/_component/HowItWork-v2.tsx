@@ -93,9 +93,9 @@ export default function HowItWorkv2() {
   
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
-  
+  debugger
     // Larger threshold for continuous scrolling
-    const threshold = 100;
+    const threshold = 200;
   
     // Adjust detection area based on scroll direction
     const offset = scrollDirection === 'down' ? -50 : 50;
@@ -124,7 +124,7 @@ export default function HowItWorkv2() {
           setIsInViewportCenter(inCenter);
         }
       }
-    }, 8); // Reduced from 60fps
+    }, 0); // Reduced from 60fps
 
     const handleScroll = () => {
       checkPosition();
@@ -156,6 +156,7 @@ export default function HowItWorkv2() {
 
   useEffect(() => {
     const preventPageScroll = (e: WheelEvent) => {
+      
       if (!sectionRef.current) return;
       
       const isInView = isElementInCenter(sectionRef.current);
@@ -263,7 +264,8 @@ export default function HowItWorkv2() {
 
     adjustHeight();
   }, [currentIndex, isScrolling, gap]);
-  console.log("currentOdex", currentIndex, "scroll", isScrolling, "gap", gap);
+  console.log("iscenter", isElementInCenter)
+  
 
   return (
     <div

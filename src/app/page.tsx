@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Header,
   Footer,
@@ -22,41 +22,39 @@ const useIsMobile = () => {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return isMobile;
 };
 
 export default function Home() {
-  const [scrollingDisabled, setScrollingDisabled] = useState(false);
+  const [scrollingPaused, setScrollingPaused] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
     const workSection = document.getElementById("work");
 
-    // Set up Intersection Observer to detect when the "work" section enters the viewport
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
 
         if (entry.isIntersecting) {
-          // Disable scrolling when the section is in view
-          setScrollingDisabled(true);
-        } else {
-          // Enable scrolling once the section leaves the viewport
-          setScrollingDisabled(false);
+          // Pause scrolling for 3 seconds when the section is visible
+          setScrollingPaused(true);
+          setTimeout(() => {
+            setScrollingPaused(false);
+          }, 3000);
         }
       },
       { threshold: 0.5 } // Trigger when 50% of the section is visible
     );
 
     if (workSection) {
-      observer.observe(workSection); // Start observing the "work" section
+      observer.observe(workSection);
     }
 
-    // Cleanup observer when the component unmounts
     return () => {
       if (workSection) {
         observer.unobserve(workSection);
@@ -65,17 +63,16 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (scrollingDisabled) {
+    if (scrollingPaused) {
       document.body.style.overflow = "hidden"; // Disable scroll
     } else {
       document.body.style.overflow = "auto"; // Enable scroll
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [scrollingDisabled]);
+  }, [scrollingPaused]);
 
   return (
     <div className="pt-20">
@@ -85,7 +82,8 @@ export default function Home() {
       <Immersion />
       <ChatPerformance />
 
-      <div id="work"> {/* Add id to the section you want to track */}
+      <div id="work">
+        {/* Render different components based on device type */}
         {isMobile ? <HowItWorks /> : <HowItWorkv2 />}
       </div>
 
