@@ -17,7 +17,7 @@ const cairo = Cairo({
 });
 
 const ANIMATION_DURATION = 800; // Global animation duration
-const THROTTLE_TIME = 400; // 150ms is a good balance between performance and responsiveness
+const THROTTLE_TIME = 250; // 150ms is a good balance between performance and responsiveness
 
 interface HowItWorkv2Props {
   parentScrollRef: React.RefObject<HTMLDivElement | null>;
@@ -68,16 +68,9 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
 
   const handleManualScroll = useCallback((direction: "up" | "down") => {
     if (!isInViewportCenter) return; // Prevent manual scroll when not centered
-    
-    // Prevent scrolling up when at the first card
-    if (direction === "up" && currentIndex === 0) return;
-    
-    // Prevent scrolling down when at the last card
-    if (direction === "down" && currentIndex === cards.length - 1) return;
-    
     setAutoScrollEnabled(false);
     scrollToCard(direction);
-  }, [isInViewportCenter, scrollToCard, currentIndex]);
+  }, [isInViewportCenter, scrollToCard]);
 
   useEffect(() => {});
 
@@ -107,7 +100,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     const viewportVerticalCenter = windowHeight / 2;
   debugger
     // Larger threshold for continuous scrolling
-    const threshold = 100;
+    const threshold = 150;
   
     // Adjust detection area based on scroll direction
     const offset = scrollDirection === 'down' ? -50 : 50;
@@ -352,7 +345,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   return (
     <div
     ref={sectionRef}
-    className={`h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat   ${cairo.className}`}
+    className={`h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat ${cairo.className}`}
     style={{
       backgroundImage: `url(${bgImage.src})`,
       overflow: 'hidden',
@@ -364,7 +357,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6 ">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start ">
+          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mt-[100px] sm:mt-[100px]">
             <h1
               className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block"
               style={{
@@ -394,7 +387,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
           </div>
 
           {/* Right Content Section with Line */}
-          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 ">
+          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px]">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
             <div className="relative w-[3px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
