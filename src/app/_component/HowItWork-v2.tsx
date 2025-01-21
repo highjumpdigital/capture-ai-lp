@@ -100,7 +100,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     const viewportVerticalCenter = windowHeight / 2;
   debugger
     // Larger threshold for continuous scrolling
-    const threshold = 200;
+    const threshold = 220;
   
     // Adjust detection area based on scroll direction
     const offset = scrollDirection === 'down' ? -50 : 50;
@@ -303,16 +303,57 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     };
   }, [scrollDirection, parentScrollRef]);
 
+
+  
+  // Add this to an event listener or a specific trigger.
+  useEffect(() => {
+    if (isInViewportCenter && sectionRef.current) {
+      // Smooth scroll only when entering the section for the first time
+      sectionRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [isInViewportCenter]);
+  
+  useEffect(() => {
+    // Toggle body scroll lock based on `isInViewportCenter`
+    const originalOverflow = document.body.style.overflow;
+  
+    if (isInViewportCenter) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow || "auto";
+    }
+  
+    return () => {
+      // Reset overflow to its original state when the component unmounts
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isInViewportCenter]);
+  
+  const handleSectionEntry = useCallback(() => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [sectionRef]);
+  
+
   return (
     <div
-      ref={sectionRef}
-      className={`h-[650px] bg-cover bg-center bg-no-repeat ${cairo.className}`}
-      style={{
-        backgroundImage: `url(${bgImage.src})`,
-      }}
-      id="work"
-      onMouseEnter={() => setAutoScrollEnabled(false)}
-    >
+    ref={sectionRef}
+    className={`h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat ${cairo.className}`}
+    style={{
+      backgroundImage: `url(${bgImage.src})`,
+      overflow: 'hidden',
+    }}
+    id="work"
+    onMouseEnter={() => setAutoScrollEnabled(false)}
+  >
+  
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6 ">
           {/* Left Section */}
