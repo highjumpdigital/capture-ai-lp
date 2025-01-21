@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 "use client";
+=======
+"use client"
+import { useEffect, useState, useRef } from "react";
+>>>>>>> 19c097e9f2856a41296a06dc9a03bed30b7bf13d
 import {
   Header,
   Footer,
@@ -11,7 +16,6 @@ import {
 } from "./_component";
 import HowItWorks from "./_component/HowitsWork";
 import HowItWorkv2 from "./_component/HowItWork-v2";
-import { useEffect, useState } from "react";
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -30,12 +34,19 @@ const useIsMobile = () => {
 };
 
 export default function Home() {
+<<<<<<< HEAD
   const [scrollingPaused, setScrollingPaused] = useState(false);
+=======
+>>>>>>> 19c097e9f2856a41296a06dc9a03bed30b7bf13d
   const isMobile = useIsMobile();
+  const parentScrollRef = useRef<HTMLDivElement>(null);
+  const workSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const workSection = document.getElementById("work");
+    const parentElement = parentScrollRef.current;
+    const workSection = workSectionRef.current;
 
+<<<<<<< HEAD
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -58,10 +69,33 @@ export default function Home() {
     return () => {
       if (workSection) {
         observer.unobserve(workSection);
+=======
+    if (!parentElement || !workSection) return;
+
+    const handleScroll = () => {
+      const workRect = workSection.getBoundingClientRect();
+
+      // Check if work section is in the middle of the viewport
+      if (
+        workRect.top <= window.innerHeight / 2 &&
+        workRect.bottom >= window.innerHeight / 2
+      ) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+>>>>>>> 19c097e9f2856a41296a06dc9a03bed30b7bf13d
       }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflow = "auto";
     };
   }, []);
 
+<<<<<<< HEAD
   useEffect(() => {
     if (scrollingPaused) {
       document.body.style.overflow = "hidden"; // Disable scroll
@@ -74,17 +108,28 @@ export default function Home() {
     };
   }, [scrollingPaused]);
 
+=======
+>>>>>>> 19c097e9f2856a41296a06dc9a03bed30b7bf13d
   return (
-    <div className="pt-20">
+    <div ref={parentScrollRef} className="pt-20">
       <Header />
       <HeroSection />
       <Platform />
       <Immersion />
       <ChatPerformance />
 
+<<<<<<< HEAD
       <div id="work">
         {/* Render different components based on device type */}
         {isMobile ? <HowItWorks /> : <HowItWorkv2 />}
+=======
+      <div ref={workSectionRef} id="work">
+        {isMobile ? (
+          <HowItWorks parentScrollRef={parentScrollRef} />
+        ) : (
+          <HowItWorkv2 parentScrollRef={parentScrollRef} />
+        )}
+>>>>>>> 19c097e9f2856a41296a06dc9a03bed30b7bf13d
       </div>
 
       <PaymentSol />

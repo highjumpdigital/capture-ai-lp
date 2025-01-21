@@ -17,7 +17,11 @@ const cairo = Cairo({
 
 const SCROLL_ANIMATION_DURATION = 500;
 
-export default function Work2() {
+interface HowitsWorkProps {
+  parentScrollRef: React.RefObject<HTMLDivElement | null>;
+}
+
+export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [cardOpacities, setCardOpacities] = useState<
@@ -231,10 +235,33 @@ export default function Work2() {
     setAutoScrollEnabled(!isMobile);
   }, [isMobile]);
 
-  useEffect(()=>{
+  useEffect(() => {
+    const container = containerRef.current;
+    const section = sectionRef.current;
+    const parent = parentScrollRef.current;
 
-    
-  })
+    if (!container || !section || !parent) return;
+
+    const handleNestedScroll = () => {
+      const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight;
+      const isAtTop = container.scrollTop === 0;
+
+      if (isAtBottom && !isScrollingUp) {
+        document.body.style.overflow = 'auto';
+      } else if (isAtTop && isScrollingUp) {
+        document.body.style.overflow = 'auto';
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    container.addEventListener('scroll', handleNestedScroll);
+    return () => {
+      container.removeEventListener('scroll', handleNestedScroll);
+      document.body.style.overflow = 'auto';
+    };
+  }, [isScrollingUp, parentScrollRef]);
+
   return (
     <div
       ref={sectionRef}
