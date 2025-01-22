@@ -105,7 +105,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
-    const threshold = 100; // Adjust this value to control how strict the centering is
+    const threshold = 50; // Adjust this value to control how strict the centering is
     
     const isCentered = Math.abs(sectionVerticalCenter - viewportVerticalCenter) < threshold;
     
@@ -352,6 +352,9 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     }
   }, [sectionRef]);
   
+  useEffect(() => {
+    handleSectionEntry(); // Call the function to utilize it
+  }, [handleSectionEntry]);
 
   return (
     <div
