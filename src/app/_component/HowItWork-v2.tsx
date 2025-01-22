@@ -17,8 +17,6 @@ const cairo = Cairo({
 });
 
 const ANIMATION_DURATION = 800; // Global animation duration
-const THROTTLE_TIME = 250; // 150ms is a good balance between performance and responsiveness
-
 interface HowItWorkv2Props {
   parentScrollRef: React.RefObject<HTMLDivElement | null>;
 }
@@ -98,16 +96,27 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
-  debugger
-    // Larger threshold for continuous scrolling
-    const threshold = 150;
-  
-    // Adjust detection area based on scroll direction
-    const offset = scrollDirection === 'down' ? -50 : 50;
-    const adjustedCenter = viewportVerticalCenter + offset;
-  
-    return Math.abs(sectionVerticalCenter - adjustedCenter) <= threshold;
-  }, [scrollDirection]);
+
+    // Calculate distance from center as a percentage of viewport height
+    const distanceFromCenter = Math.abs(sectionVerticalCenter - viewportVerticalCenter);
+    const distancePercentage = (distanceFromCenter / windowHeight) * 100;
+
+    // Return true if within 15% of center
+    return distancePercentage <= 15;
+  }, []);
+
+  const smoothScrollToCenter = useCallback((element: HTMLElement) => {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const elementHeight = rect.height;
+    
+    const targetScroll = window.scrollY + rect.top - (windowHeight - elementHeight) / 2;
+    
+    window.scrollTo({
+      top: targetScroll,
+      behavior: 'smooth'
+    });
+  }, []);
 
   // Scroll position checking with throttle
   const checkScrollPosition = useCallback(
@@ -126,7 +135,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
           setIsInViewportCenter(inCenter);
         }
       }
-    }, THROTTLE_TIME, { leading: true, trailing: true }),
+    }, 100, { leading: true, trailing: true }), // Reduced throttle time for smoother updates
     [lastScrollTop, scrollDirection, isElementInCenter, isInViewportCenter]
   );
 
@@ -308,13 +317,9 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   // Add this to an event listener or a specific trigger.
   useEffect(() => {
     if (isInViewportCenter && sectionRef.current) {
-      // Smooth scroll only when entering the section for the first time
-      sectionRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+      smoothScrollToCenter(sectionRef.current);
     }
-  }, [isInViewportCenter]);
+  }, [isInViewportCenter, smoothScrollToCenter]);
   
   useEffect(() => {
     // Toggle body scroll lock based on `isInViewportCenter`
@@ -332,14 +337,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     };
   }, [isInViewportCenter]);
   
-  const handleSectionEntry = useCallback(() => {
-    if (sectionRef.current) {
-      sectionRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, [sectionRef]);
+
   
 
   return (
