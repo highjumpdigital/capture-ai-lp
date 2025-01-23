@@ -47,7 +47,7 @@ export const FAQ = () => {
                   >
                     {item.title}
                   </div>
-                  <div className="cursor-pointer mt-1 absolute top-[8%] right-0">
+                  <div className="cursor-pointer mt-1 absolute top-[10%] right-0">
                     {activeIndex === index ? (
                       <MdOutlineArrowUpward fill="#FF4206" />
                     ) : (
