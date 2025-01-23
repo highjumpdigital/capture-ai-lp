@@ -11,7 +11,7 @@ import userintent from "../assets/performance2/user-intent.svg"
 import suggestion from "../assets/performance2/suggestion.svg"
 import personicon from "../assets/price/personicon.svg"
 import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
-import diamond from "../assets/price/basil_diamond-solid.svg" 
+import diamond from "../assets/price/basil_diamond-solid.svg"
 
 export const PAYMENT_CONSTANTS = {
   HEADING: {
@@ -57,7 +57,7 @@ export const PAYMENT_CONSTANTS = {
       }
     }
   }
-} 
+}
 export const Plandata = [
   {
     title: "1 WEBSITE AGENT (X MESSAGES)",
@@ -352,39 +352,39 @@ export const marquee4 = [
     text: "When do you want to get started?",
   }, {
     text: "Do you ship internationally?",
-  },   
+  },
 ];
 export const ChatPerformancedata = [
   {
     title: "3rd party tool integration",
     image: thirdpartypic,
-    detail:"Integrate with 3rd party tools to automate tasks, manage workflows, and streamline interactions. Stay connected and organized."
+    detail: "Integrate with 3rd party tools to automate tasks, manage workflows, and streamline interactions. Stay connected and organized."
   },
   {
     title: "Provide company documents",
     image: provide,
-    detail:"Easily share essential company documents with your Customers. Provide quick access to key resources through the chatbot. "
+    detail: "Easily share essential company documents with your Customers. Provide quick access to key resources through the chatbot. "
   },
   {
     title: "Showcase work",
     image: showcase,
-    detail:"Showcase your work to your customers, from before and after images to showcasing your most recent testimonials."
+    detail: "Showcase your work to your customers, from before and after images to showcasing your most recent testimonials."
   },
   {
     title: "Lead capture functionality",
     image: leadcapture,
-    detail:"Capture customer details effortlessly through automated forms. Turn interactions into valuable leads with ease."
+    detail: "Capture customer details effortlessly through automated forms. Turn interactions into valuable leads with ease."
 
   },
   {
     title: "User intent configuration",
     image: userintent,
-    detail:"Customize your chatbot’s responses based on user intent for more personalized and accurate interactions.  "
+    detail: "Customize your chatbot’s responses based on user intent for more personalized and accurate interactions.  "
   },
   {
     title: "Suggestion capabilities",
     image: suggestion,
-    detail:"With suggestion capabilities, the chatbot offers tailored recommendations, from personalized quotes to baseline pricing and other helpful options based on your needs."
+    detail: "With suggestion capabilities, the chatbot offers tailored recommendations, from personalized quotes to baseline pricing and other helpful options based on your needs."
 
   },
 ];
@@ -509,25 +509,25 @@ export const constants = {
 };
 
 export const cards = [
-  { 
-    number: "01.", 
+  {
+    number: "01.",
     heading: "USER STARTS A CONVERSATION",
-    text: "The User Will Start A Conversation And Ask Any Questions They Need To. If You Do Not Have Pre-Programmed Answers, Your AI Will Take Over And Respond." 
+    text: "The User Will Start A Conversation And Ask Any Questions They Need To. If You Do Not Have Pre-Programmed Answers, Your AI Will Take Over And Respond."
   },
-  { 
-    number: "02.", 
+  {
+    number: "02.",
     heading: "LEAD CAPTURE AND SEND",
-    text: "Once Your Chatbot Has Captured The Qualifying Information from The User, The Data Will Send To You Directly Via Email And SMS." 
+    text: "Once Your Chatbot Has Captured The Qualifying Information from The User, The Data Will Send To You Directly Via Email And SMS."
   },
-  { 
-    number: "03.", 
+  {
+    number: "03.",
     heading: "CUSTOM CRM INTEGRATION",
-    text: "As An Optional Extra, We Can Have Your Chatbot Send The Lead Information Directly To Your CRM Via API." 
+    text: "As An Optional Extra, We Can Have Your Chatbot Send The Lead Information Directly To Your CRM Via API."
   },
-  { 
-    number: "04.", 
+  {
+    number: "04.",
     heading: "INSIGHTS AND REPORTS",
-    text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts." 
+    text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts."
   },
 ];
 

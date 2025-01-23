@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { Sofia_Sans_Semi_Condensed } from "next/font/google";
@@ -15,7 +15,6 @@ const sofiaSans = Sofia_Sans_Semi_Condensed({
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [scrollingDisabled, setScrollingDisabled] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobile(!isMobile);
@@ -59,8 +58,10 @@ export const Header = () => {
         <div className="flex flex-col gap-8 p-5">
           <div
             onClick={() => {
-              document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
               toggleMobileMenu();
+              setTimeout(() => {
+                document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+              }, 300);
             }}
             className="font-bold text-white cursor-pointer"
           >
@@ -68,8 +69,10 @@ export const Header = () => {
           </div>
           <div
             onClick={() => {
-              document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
               toggleMobileMenu();
+              setTimeout(() => {
+                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+              }, 300);
             }}
             className="font-bold text-white cursor-pointer"
           >
@@ -77,8 +80,10 @@ export const Header = () => {
           </div>
           <div
             onClick={() => {
-              document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
               toggleMobileMenu();
+              setTimeout(() => {
+                document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
+              }, 300);
             }}
             className="font-bold text-white cursor-pointer"
           >
@@ -86,8 +91,10 @@ export const Header = () => {
           </div>
           <div
             onClick={() => {
-              document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
               toggleMobileMenu();
+              setTimeout(() => {
+                document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+              }, 300);
             }}
             className="font-bold text-white cursor-pointer"
           >
