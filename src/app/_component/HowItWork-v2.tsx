@@ -36,6 +36,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
+  const [isHeaderNavigation, setIsHeaderNavigation] = useState(false);
 
   const scrollToCard = useCallback((direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
@@ -102,10 +103,14 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     const distancePercentage = (distanceFromCenter / windowHeight) * 100;
 
     // Return true if within 15% of center
-    return distancePercentage <= 15;
+    return distancePercentage <= 10;
   }, []);
 
   const smoothScrollToCenter = useCallback((element: HTMLElement) => {
+    if (isHeaderNavigation) {
+      return;
+    }
+
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const elementHeight = rect.height;
@@ -116,7 +121,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
       top: targetScroll,
       behavior: 'smooth'
     });
-  }, []);
+  }, [isHeaderNavigation]);
 
   // Scroll position checking with throttle
   const checkScrollPosition = useCallback(
@@ -325,7 +330,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     // Toggle body scroll lock based on `isInViewportCenter`
     const originalOverflow = document.body.style.overflow;
   
-    if (isInViewportCenter) {
+    if (isInViewportCenter && !isHeaderNavigation) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = originalOverflow || "auto";
@@ -335,10 +340,39 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
       // Reset overflow to its original state when the component unmounts
       document.body.style.overflow = originalOverflow;
     };
-  }, [isInViewportCenter]);
+  }, [isInViewportCenter, isHeaderNavigation]);
   
 
   
+
+  // Add effect to detect header navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#work') {
+        setIsHeaderNavigation(true);
+        // Reset after navigation is complete
+        setTimeout(() => setIsHeaderNavigation(false), 1000);
+      }
+    };
+
+    // Listen for clicks on header links
+    const headerLinks = document.querySelectorAll('div[onClick*="work"]');
+    headerLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        setIsHeaderNavigation(true);
+        // Reset after navigation is complete
+        setTimeout(() => setIsHeaderNavigation(false), 1000);
+      });
+    });
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      headerLinks.forEach(link => {
+        link.removeEventListener('click', handleHashChange);
+      });
+    };
+  }, []);
 
   return (
     <div
