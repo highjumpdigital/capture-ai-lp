@@ -42,10 +42,21 @@ export const PaymentSol = () => {
   // Merge plan details data with plan data when plan details are hidden
   const getMergedPlanData = (planData: typeof Plandata) => {
     if (!isPlanDetailsHidden) return planData;
-    return constants.planDetailsData.map((item: { text: string }, index: number) => ({
-      title: item.text,
-      flag: planData[index]?.flag ?? false
-    }));
+    return constants.planDetailsData.map((item: { text: string }, index: number) => {
+      // If there's existing plan data for this index, keep it
+      if (planData[index]) {
+        return {
+          ...planData[index],
+          // Only add the title if it's not already present
+          title: planData[index].title || item.text
+        };
+      }
+      // If no existing plan data, create new entry with plan details text
+      return {
+        title: item.text,
+        flag: false
+      };
+    });
   };
 
   const scrollToCard = (index: number) => {
