@@ -23,10 +23,10 @@ export const FAQ = () => {
         <div className="flex flex-col lg:flex-row gap-5 justify-between items-center   sm:items-start sm:justify-between  w-full max-w-[1311px] mx-auto">
           {/* Left Section */}
           <div className="sticky top- w-full lg:w-auto text-center sm:text-start sm:ml-[-3px]">
-            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206] text-center">
+            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-[#FF4206] text-center  lg:text-start">
               {constants.ask.frequentalyasked}
             </div>
-            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] text-black font-bold text-center sm:text-start">
+            <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] mt-2 lg:mt-0 text-black font-bold text-center lg:text-start">
               {constants.ask.QUESTIONS}
             </div>
           </div>
@@ -42,12 +42,12 @@ export const FAQ = () => {
                 <div className="flex justify-between items-center sm:items-end  relative">
                   <div
                     className={`text-[14px] sm:text-[16px] text-black leading-4 sm:leading-5 font-bold flex justify-start items-center uppercase Cairo max-w-[280px] sm:max-w-[780px]   ${
-                      index === 0  || index===3 ? " mt-[7] sm:mt-[5px] " : "sm:mt-[5px]"
+                      index === 0  || index===3 ? " mt-[7px] sm:mt-[5px] " : "sm:mt-[5px]"
                     } `}
                   >
                     {item.title}
                   </div>
-                  <div className="cursor-pointer mt-1 absolute top-[8%] right-0">
+                  <div className="cursor-pointer mt-1 absolute top-[10%] right-0">
                     {activeIndex === index ? (
                       <MdOutlineArrowUpward fill="#FF4206" />
                     ) : (

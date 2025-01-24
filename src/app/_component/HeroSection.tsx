@@ -46,13 +46,36 @@ export const HeroSection = (): React.ReactElement => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 hidden md:block rounded-tl-[14px] rounded-tr-[14px] right-[10%] left-[10%] xl:right-[28%] xl:left-[28%] border-l-[13px] border-r-[13px] border-t-[12px] border-[rgba(136,140,143,0.8)] z-10">
+      <div className="absolute bottom-0 hidden md:block rounded-tl-[14px] rounded-tr-[14px] 
+        right-[10%] left-[10%] 
+        min-[800px]:right-[12%] min-[800px]:left-[12%]
+        min-[900px]:right-[15%] min-[900px]:left-[15%]
+        min-[1000px]:right-[18%] min-[1000px]:left-[18%]
+        min-[1100px]:right-[22%] min-[1100px]:left-[22%]
+        min-[1200px]:right-[23%] min-[1200px]:left-[23%]
+        min-[1300px]:right-[26%] min-[1300px]:left-[26%]
+        min-[1400px]:right-[25%] min-[1400px]:left-[25%]
+        min-[1500px]:right-[27%] min-[1500px]:left-[27%]
+        min-[1600px]:right-[28%] min-[1600px]:left-[28%]
+        min-[1700px]:right-[29%] min-[1700px]:left-[29%]
+        min-[1800px]:right-[30%] min-[1800px]:left-[30%]
+        min-[1900px]:right-[31%] min-[1900px]:left-[31%]
+        min-[2000px]:right-[32%] min-[2000px]:left-[32%]
+        border-l-[13px] border-r-[13px] border-t-[12px] border-[rgba(136,140,143,0.8)] z-10">
         <div className="flex justify-center items-start">
           <Image 
             src={DashBoardImage} 
             alt={constants.altText.dashboard} 
-            className="h-[299px] lg:h-[301px] -translate-x-[1px] -translate-y-[1px] scale-[1.01]" 
-            height={500}
+            className="
+              min-[700px]:h-[301px] min-[700px]:w-auto
+              min-[800px]:h-[301px] min-[800px]:w-auto
+              min-[1000px]:h-[301px] min-[1000px]:w-auto
+              min-[1200px]:h-[301px] min-[1200px]:w-auto
+              min-[1400px]:h-[301px] min-[1400px]:w-auto
+              -translate-x-[1px] -translate-y-[1px] scale-[1.01]
+            "
+            width={1000}
+            height={301}
           />
         </div>
       </div>

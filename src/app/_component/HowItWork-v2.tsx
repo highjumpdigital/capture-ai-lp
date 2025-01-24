@@ -1,4 +1,4 @@
-// Source: src/views/account/Work2.tsx
+// Source: src/views/account/Work2.tsx 
 
 "use client";
 
@@ -17,10 +17,13 @@ const cairo = Cairo({
 });
 
 const ANIMATION_DURATION = 800; // Global animation duration
+interface HowItWorkv2Props {
+  parentScrollRef: React.RefObject<HTMLDivElement | null>;
+}
 
 //how its work
 
-export default function HowItWorkv2() {
+export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [cardOpacities, setCardOpacities] = useState<
@@ -33,6 +36,7 @@ export default function HowItWorkv2() {
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
+  const [isHeaderNavigation, setIsHeaderNavigation] = useState(false);
 
   const scrollToCard = useCallback((direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
@@ -93,20 +97,35 @@ export default function HowItWorkv2() {
   
     const sectionVerticalCenter = rect.top + sectionHeight / 2;
     const viewportVerticalCenter = windowHeight / 2;
-  
-    // Larger threshold for continuous scrolling
-    const threshold = 100;
-  
-    // Adjust detection area based on scroll direction
-    const offset = scrollDirection === 'down' ? -50 : 50;
-    const adjustedCenter = viewportVerticalCenter + offset;
-  
-    return Math.abs(sectionVerticalCenter - adjustedCenter) <= threshold;
-  }, [scrollDirection]);
 
-  // Add scroll listener with slower throttle for smoother detection
-  useEffect(() => {
-    const updateScrollDirection = () => {
+    // Calculate distance from center as a percentage of viewport height
+    const distanceFromCenter = Math.abs(sectionVerticalCenter - viewportVerticalCenter);
+    const distancePercentage = (distanceFromCenter / windowHeight) * 100;
+
+    // Return true if within 15% of center
+    return distancePercentage <= 10;
+  }, []);
+
+  const smoothScrollToCenter = useCallback((element: HTMLElement) => {
+    if (isHeaderNavigation) {
+      return;
+    }
+
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const elementHeight = rect.height;
+    
+    const targetScroll = window.scrollY + rect.top - (windowHeight - elementHeight) / 2;
+    
+    window.scrollTo({
+      top: targetScroll,
+      behavior: 'smooth'
+    });
+  }, [isHeaderNavigation]);
+
+  // Scroll position checking with throttle
+  const checkScrollPosition = useCallback(
+    throttle(() => {
       const currentScrollTop = window.scrollY;
       const newDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
       
@@ -114,30 +133,33 @@ export default function HowItWorkv2() {
       if (newDirection !== scrollDirection) {
         setScrollDirection(newDirection);
       }
-    };
 
-    const checkPosition = throttle(() => {
-      updateScrollDirection();
       if (sectionRef.current) {
         const inCenter = isElementInCenter(sectionRef.current);
         if (inCenter !== isInViewportCenter) {
           setIsInViewportCenter(inCenter);
         }
       }
-    }, 8); // Reduced from 60fps
+    }, 100, { leading: true, trailing: true }), // Reduced throttle time for smoother updates
+    [lastScrollTop, scrollDirection, isElementInCenter, isInViewportCenter]
+  );
 
+  // Scroll event listener
+  useEffect(() => {
     const handleScroll = () => {
-      checkPosition();
+      requestAnimationFrame(() => {
+        checkScrollPosition();
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    checkPosition(); // Initial check
+    checkScrollPosition(); // Initial check
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      checkPosition.cancel();
+      checkScrollPosition.cancel(); // Clean up the throttled function
     };
-  }, [isElementInCenter, isInViewportCenter, lastScrollTop, scrollDirection]);
+  }, [checkScrollPosition]);
 
   // Adjust auto-scroll interval
   useEffect(() => {
@@ -156,6 +178,7 @@ export default function HowItWorkv2() {
 
   useEffect(() => {
     const preventPageScroll = (e: WheelEvent) => {
+      
       if (!sectionRef.current) return;
       
       const isInView = isElementInCenter(sectionRef.current);
@@ -263,18 +286,106 @@ export default function HowItWorkv2() {
 
     adjustHeight();
   }, [currentIndex, isScrolling, gap]);
-  console.log("currentOdex", currentIndex, "scroll", isScrolling, "gap", gap);
+  console.log("iscenter", isElementInCenter)
+  
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const section = sectionRef.current;
+    const parent = parentScrollRef.current;
+
+    if (!container || !section || !parent) return;
+
+    const handleNestedScroll = () => {
+      // Check if we've reached the bottom of the nested scroll
+      const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight;
+      const isAtTop = container.scrollTop === 0;
+
+      if (isAtBottom && scrollDirection === 'down') {
+        document.body.style.overflow = 'auto';
+      } else if (isAtTop && scrollDirection === 'up') {
+        document.body.style.overflow = 'auto';
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    container.addEventListener('scroll', handleNestedScroll);
+    return () => {
+      container.removeEventListener('scroll', handleNestedScroll);
+      document.body.style.overflow = 'auto';
+    };
+  }, [scrollDirection, parentScrollRef]);
+
+
+  
+  // Add this to an event listener or a specific trigger.
+  useEffect(() => {
+    if (isInViewportCenter && sectionRef.current) {
+      smoothScrollToCenter(sectionRef.current);
+    }
+  }, [isInViewportCenter, smoothScrollToCenter]);
+  
+  useEffect(() => {
+    // Toggle body scroll lock based on `isInViewportCenter`
+    const originalOverflow = document.body.style.overflow;
+  
+    if (isInViewportCenter && !isHeaderNavigation) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow || "auto";
+    }
+  
+    return () => {
+      // Reset overflow to its original state when the component unmounts
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isInViewportCenter, isHeaderNavigation]);
+  
+
+  
+
+  // Add effect to detect header navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#work') {
+        setIsHeaderNavigation(true);
+        // Reset after navigation is complete
+        setTimeout(() => setIsHeaderNavigation(false), 1000);
+      }
+    };
+
+    // Listen for clicks on header links
+    const headerLinks = document.querySelectorAll('div[onClick*="work"]');
+    headerLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        setIsHeaderNavigation(true);
+        // Reset after navigation is complete
+        setTimeout(() => setIsHeaderNavigation(false), 1000);
+      });
+    });
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      headerLinks.forEach(link => {
+        link.removeEventListener('click', handleHashChange);
+      });
+    };
+  }, []);
 
   return (
     <div
-      ref={sectionRef}
-      className={`h-[650px] bg-cover bg-center bg-no-repeat ${cairo.className}`}
-      style={{
-        backgroundImage: `url(${bgImage.src})`,
-      }}
-      id="work"
-      onMouseEnter={() => setAutoScrollEnabled(false)}
-    >
+    ref={sectionRef}
+    className={`h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat ${cairo.className}`}
+    style={{
+      backgroundImage: `url(${bgImage.src})`,
+      overflow: 'hidden',
+    }}
+    id="work"
+    onMouseEnter={() => setAutoScrollEnabled(false)}
+  >
+  
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6 ">
           {/* Left Section */}
