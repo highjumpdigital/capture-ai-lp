@@ -83,7 +83,7 @@ export const PaymentSol = () => {
               scrollPaddingRight: '0px'
             } : undefined}
           >
-            <div className="hidden xl:block shrink-0">
+            <div className="hidden 2xl:block shrink-0">
               <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
             </div>
             <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
