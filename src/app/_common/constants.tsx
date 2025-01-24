@@ -501,7 +501,7 @@ export const constants = {
     dashboard: "Dashboard",
   },
   planCard: {
-    infinityPro: "INFINITY PRO",
+    infinityPro: "Infinity Pro",
   },
   faq: {
     title: "FREQUENTLY ASKED QUESTIONS",

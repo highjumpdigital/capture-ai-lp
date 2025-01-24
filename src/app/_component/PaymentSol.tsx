@@ -1,15 +1,39 @@
 import { PlanCard } from "@/app/_component/PlanCard";
 import { PlanDetails } from "@/app/_component/PlanDetails";
 import { useState, useEffect, useRef } from "react";
-import { constants, Plandata, STARTERPlandata, InfinityProPlandata } from "../_common/constants";
 import { PAYMENT_CONSTANTS } from "../_common/constants";
+import { getPlans } from "../_services/api";
+import type { Plan } from "../_services/api";
 
 export const PaymentSol = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isPlanDetailsHidden, setIsPlanDetailsHidden] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [plansData, setPlansData] = useState<Plan[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await getPlans();
+        if (response.success) {
+          setPlansData(response.content);
+        } else {
+          setError("Failed to fetch plans");
+        }
+      } catch (error) {
+        setError("Error fetching plans");
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPlans();
+  }, []);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -39,24 +63,19 @@ export const PaymentSol = () => {
     }
   }, [isMobile]);
 
-  // Merge plan details data with plan data when plan details are hidden
-  const getMergedPlanData = (planData: typeof Plandata) => {
-    if (!isPlanDetailsHidden) return planData;
-    return constants.planDetailsData.map((item: { text: string }, index: number) => {
-      // If there's existing plan data for this index, keep it
-      if (planData[index]) {
-        return {
-          ...planData[index],
-          // Only add the title if it's not already present
-          title: planData[index].title || item.text
-        };
-      }
-      // If no existing plan data, create new entry with plan details text
-      return {
-        title: item.text,
-        flag: false
-      };
-    });
+  const getMergedPlanData = (plan: Plan) => {
+    if (!isPlanDetailsHidden) {
+      // When plan details are visible, keep all fields but hide false ones
+      return plan.features.map(feature => ({
+        title: feature.is_enabled ? (feature.feature_description || feature.feature_name) : "",
+          flag: feature.is_enabled
+        }));
+    }
+    // When plan details are hidden, show all features in cards
+    return plan.features.map(feature => ({
+      title: feature.feature_description || feature.feature_name,
+      flag: feature.is_enabled
+    }));
   };
 
   const scrollToCard = (index: number) => {
@@ -67,6 +86,46 @@ export const PaymentSol = () => {
         behavior: 'smooth'
       });
       setActiveIndex(index);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-[500px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FF4206]"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-[500px] text-red-500">
+        {error}
+      </div>
+    );
+  }
+
+  const planStyles = {
+    Basic: {
+      border: PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BORDER,
+      background: PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BACKGROUND,
+      header: PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.HEADER,
+      text: PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.TEXT,
+      image: PAYMENT_CONSTANTS.PLANS.BASIC.IMAGE
+    },
+    "Starter Kit": {
+      border: PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BORDER,
+      background: PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BACKGROUND,
+      header: PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.HEADER,
+      text: PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.TEXT,
+      image: PAYMENT_CONSTANTS.PLANS.STARTER.IMAGE
+    },
+    "Infinity Pro": {
+      border: PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BORDER,
+      background: PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BACKGROUND,
+      header: PAYMENT_CONSTANTS.PLANS.PRO.STYLES.HEADER,
+      text: PAYMENT_CONSTANTS.PLANS.PRO.STYLES.TEXT,
+      image: PAYMENT_CONSTANTS.PLANS.PRO.IMAGE
     }
   };
 
@@ -95,56 +154,32 @@ export const PaymentSol = () => {
             } : undefined}
           >
             <div className="hidden 2xl:block shrink-0">
-              <PlanDetails hoveredIndex={hoveredIndex} onHoverIndex={setHoveredIndex} />
-            </div>
-            <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
-              <PlanCard 
-              id={1}
-
-                planData={getMergedPlanData(Plandata)} 
-                title={PAYMENT_CONSTANTS.PLANS.BASIC.TITLE}
-                image={PAYMENT_CONSTANTS.PLANS.BASIC.IMAGE}
-                price={PAYMENT_CONSTANTS.PLANS.BASIC.PRICE}
-                className={`${PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.BACKGROUND}`}
-                headerText={PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.HEADER}
-                textClass={PAYMENT_CONSTANTS.PLANS.BASIC.STYLES.TEXT}
-                hoveredIndex={hoveredIndex}
+              <PlanDetails 
+                hoveredIndex={hoveredIndex} 
                 onHoverIndex={setHoveredIndex}
+                features={plansData[0]?.features.map(f => ({ text: f.feature_name })) || []}
               />
             </div>
-            <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
-              <PlanCard 
-              id={2}
-                planData={getMergedPlanData(STARTERPlandata)} 
-                title={PAYMENT_CONSTANTS.PLANS.STARTER.TITLE}
-                image={PAYMENT_CONSTANTS.PLANS.STARTER.IMAGE}
-                price={PAYMENT_CONSTANTS.PLANS.STARTER.PRICE}
-                className={`${PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.BACKGROUND}`}
-                textClass={PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.TEXT}
-                headerText={PAYMENT_CONSTANTS.PLANS.STARTER.STYLES.HEADER}
-                hoveredIndex={hoveredIndex}
-                onHoverIndex={setHoveredIndex}
-              />
-            </div>
-            <div className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
-              <PlanCard 
-              id={3}
-
-                planData={getMergedPlanData(InfinityProPlandata)} 
-                title={PAYMENT_CONSTANTS.PLANS.PRO.TITLE}
-                image={PAYMENT_CONSTANTS.PLANS.PRO.IMAGE}
-                price={PAYMENT_CONSTANTS.PLANS.PRO.PRICE}
-                className={`${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BORDER} ${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.BACKGROUND} ${PAYMENT_CONSTANTS.PLANS.PRO.STYLES.SHADOW}`}
-                textClass={PAYMENT_CONSTANTS.PLANS.PRO.STYLES.TEXT}
-                headerText={PAYMENT_CONSTANTS.PLANS.PRO.STYLES.HEADER}
-                hoveredIndex={hoveredIndex}
-                onHoverIndex={setHoveredIndex}
-              />
-            </div>
+            {plansData.map((plan, index) => (
+              <div key={index} className={`shrink-0 ${isMobile ? 'snap-center min-w-full flex justify-center items-center' : ''}`}>
+                <PlanCard 
+                  id={index + 1}
+                  title={plan.plan_name}
+                  price={`$${plan.plan_price}`}
+                  image={planStyles[plan.plan_name as keyof typeof planStyles].image}
+                  planData={getMergedPlanData(plan)}
+                  className={`${planStyles[plan.plan_name as keyof typeof planStyles].border} ${planStyles[plan.plan_name as keyof typeof planStyles].background}`}
+                  headerText={planStyles[plan.plan_name as keyof typeof planStyles].header}
+                  textClass={planStyles[plan.plan_name as keyof typeof planStyles].text}
+                  hoveredIndex={hoveredIndex}
+                  onHoverIndex={setHoveredIndex}
+                />
+              </div>
+            ))}
           </div>
           {isMobile && (
             <div className="flex justify-center gap-2 mt-4">
-              {[0, 1, 2].map((index) => (
+              {plansData.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToCard(index)}
