@@ -42,7 +42,7 @@ export const FAQ = () => {
                 <div className="flex justify-between items-center sm:items-end  relative">
                   <div
                     className={`text-[14px] sm:text-[16px] text-black leading-4 sm:leading-5 font-bold flex justify-start items-center uppercase Cairo max-w-[280px] sm:max-w-[780px]   ${
-                      index === 0  || index===3 ? " mt-[7] sm:mt-[5px] " : "sm:mt-[5px]"
+                      index === 0  || index===3 ? " mt-[7px] sm:mt-[5px] " : "sm:mt-[5px]"
                     } `}
                   >
                     {item.title}
