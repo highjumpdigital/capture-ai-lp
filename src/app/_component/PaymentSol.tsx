@@ -14,7 +14,7 @@ export const PaymentSol = () => {
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 986);
-      setIsPlanDetailsHidden(window.innerWidth < 1280);
+      setIsPlanDetailsHidden(window.innerWidth < 1360);
     };
 
     checkIfMobile();
@@ -75,7 +75,7 @@ export const PaymentSol = () => {
             className={`flex gap-[20px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
               isMobile 
                 ? 'justify-start overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' 
-                : 'justify-center xl:justify-between flex-wrap xl:flex-nowrap'
+                : 'justify-center flex-wrap xl:flex-nowrap'
             }`}
             style={isMobile ? {
               scrollSnapType: 'x mandatory',
