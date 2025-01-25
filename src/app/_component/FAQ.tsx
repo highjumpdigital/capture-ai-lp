@@ -1,3 +1,4 @@
+// faq.tsx
 import React, { useState } from "react";
 import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";
