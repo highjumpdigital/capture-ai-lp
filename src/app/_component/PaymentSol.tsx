@@ -132,7 +132,7 @@ export const PaymentSol = () => {
   return (
     <div id="solutions" className="bg-[#F2F5F7] px-[20px] xl:px-[0px] pt-[70px] pb-[50px] lg:py-[100px]">
       <div className="max-w-[1311px] mx-auto">
-        <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo text-center lg:text-left text-orange font-normal">
+        <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo text-center 2xl:text-left text-orange font-normal">
           {PAYMENT_CONSTANTS.HEADING.FLEXIBLE}
           <span className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo font-bold text-black">
             {PAYMENT_CONSTANTS.HEADING.PAYMENT_SOLUTIONS}
