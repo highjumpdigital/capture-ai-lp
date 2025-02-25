@@ -71,10 +71,11 @@ export const HeroSection = (): React.ReactElement => {
               min-[800px]:h-[301px] min-[800px]:w-auto
               min-[1000px]:h-[301px] min-[1000px]:w-auto
               min-[1200px]:h-[301px] min-[1200px]:w-auto
-              min-[1400px]:h-[301px] min-[1400px]:w-auto
+              min-[1400px]:h-[301px] min-[1400px]:w-full
               -translate-x-[1px] -translate-y-[1px] scale-[1.01]
+            
             "
-            width={1000}
+            width="100%"
             height={301}
           />
         </div>
