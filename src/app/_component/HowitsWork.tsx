@@ -57,35 +57,37 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
   const scrollToCard = useCallback(
     (direction: "up" | "down") => {
       if (isScrolling || !containerRef.current) return;
-
-      setIsScrolling(true);
+  
       const container = containerRef.current;
       const CARD_HEIGHT = 176;
       const newIndex =
         direction === "down"
           ? Math.min(currentIndex + 1, cards.length - 1)
           : Math.max(currentIndex - 1, 0);
-
+  
       if (newIndex !== currentIndex) {
-        // Clamping the scroll offset to stay within container bounds
         const maxScroll = container.scrollHeight - container.clientHeight;
-        const rawScroll = newIndex * (CARD_HEIGHT + gap);
-        const clampedScroll = Math.max(0, Math.min(rawScroll, maxScroll));
-
-        container.scrollTo({
-          top: clampedScroll,
-          behavior: "smooth",
-        });
-
+        const targetScroll = Math.max(
+          0,
+          Math.min(newIndex * (CARD_HEIGHT + gap), maxScroll)
+        );
+  
+        container.scrollTo({ top: targetScroll, behavior: "smooth" });
+  
+        // Reset scrolling after transition ends
+        container.addEventListener(
+          "scroll",
+          () => setIsScrolling(false),
+          { once: true }
+        );
+  
         setCurrentIndex(newIndex);
+        setIsScrolling(true);
       }
-
-      setTimeout(() => {
-        setIsScrolling(false);
-      }, SCROLL_ANIMATION_DURATION + 100);
     },
     [currentIndex, gap, isScrolling]
   );
+  
 
   const handleManualScroll = useCallback(
     (direction: "up" | "down") => {
@@ -241,19 +243,17 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
     const parent = parentScrollRef.current;
 
     if (!container || !section || !parent) return;
-
     const handleNestedScroll = () => {
       const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight;
       const isAtTop = container.scrollTop === 0;
-
-      if (isAtBottom && !isScrollingUp) {
-        document.body.style.overflow = 'auto';
-      } else if (isAtTop && isScrollingUp) {
-        document.body.style.overflow = 'auto';
+    
+      if (isAtBottom || isAtTop) {
+        document.body.style.overflow = "auto"; // Let parent scroll
       } else {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden"; // Keep scroll within the container
       }
     };
+    
 
     container.addEventListener('scroll', handleNestedScroll);
     return () => {
