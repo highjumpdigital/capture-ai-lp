@@ -18,7 +18,7 @@ export const FilledButton: React.FC<{
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (buttonTitle === "GET STARTED") {
-      window.location.href = "https://chatbot-v0-frontend-development.up.railway.app/";
+      window.location.href = "https://app.cptr.ai/";
     }
     onClick(event);
   };
