@@ -532,5 +532,5 @@ export const cards = [
 ];
 
 export const AUTH_URLS = {
-  SIGN_IN: "https://chatbot-v0-frontend-development.up.railway.app/sign-in"
+  SIGN_IN: "https://app.cptr.ai/sign-in"
 } as const;
