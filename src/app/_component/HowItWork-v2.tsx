@@ -31,12 +31,12 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   >(new Array(cards.length).fill({ opacity: 1, blur: 0 }));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
   const [gap, setGap] = useState(60); 
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
   const [isHeaderNavigation, setIsHeaderNavigation] = useState(false);
+  const [autoScrollInterval, setAutoScrollInterval] = useState<NodeJS.Timeout | null>(null);
 
   const scrollToCard = useCallback((direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
@@ -67,7 +67,6 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
 
   const handleManualScroll = useCallback((direction: "up" | "down") => {
     if (!isInViewportCenter) return; // Prevent manual scroll when not centered
-    setAutoScrollEnabled(false);
     scrollToCard(direction);
   }, [isInViewportCenter, scrollToCard]);
 
@@ -161,20 +160,40 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
     };
   }, [checkScrollPosition]);
 
-  // Adjust auto-scroll interval
+  // Auto-scroll effect
   useEffect(() => {
-    if (!autoScrollEnabled || !isInViewportCenter) return;
-
-    const autoScrollInterval = setInterval(() => {
+    const interval = setInterval(() => {
       if (currentIndex < cards.length - 1) {
         scrollToCard("down");
       } else {
-        setAutoScrollEnabled(false);
+        // Reset to first card
+        setCurrentIndex(0);
+        if (containerRef.current) {
+          containerRef.current.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        }
       }
-    }, ANIMATION_DURATION + 150); // Added extra delay between auto-scrolls
+    }, 2000); // 2 second gap between transitions
 
-    return () => clearInterval(autoScrollInterval);
-  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling, scrollToCard]);
+    setAutoScrollInterval(interval);
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [currentIndex, scrollToCard]);
+
+  // Clean up interval when component unmounts
+  useEffect(() => {
+    return () => {
+      if (autoScrollInterval) {
+        clearInterval(autoScrollInterval);
+      }
+    };
+  }, [autoScrollInterval]);
 
   useEffect(() => {
     const preventPageScroll = (e: WheelEvent) => {
@@ -251,21 +270,6 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
 
     return () => container.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
-
-  // Auto-scroll effect
-  useEffect(() => {
-    if (!autoScrollEnabled || !isInViewportCenter) return; // Only auto-scroll when in center
-
-    const autoScrollInterval = setInterval(() => {
-      if (currentIndex < 4) {
-        scrollToCard("down");
-      } else {
-        setAutoScrollEnabled(false); // Stop auto-scroll at the last card
-      }
-    }, ANIMATION_DURATION); // Add a 1-second pause
-
-    return () => clearInterval(autoScrollInterval);
-  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
 
   const [height, setHeight] = useState(400); // Default height
 
@@ -383,7 +387,6 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
       overflow: 'hidden',
     }}
     id="work"
-    onMouseEnter={() => setAutoScrollEnabled(false)}
   >
   
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
@@ -419,7 +422,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
           </div>
 
           {/* Right Content Section with Line */}
-          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px]">
+          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px] relative">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
             <div className="relative w-[3px] sm:w-[4px] h-[400px] self-center overflow-visible">
               {/* Main line with top and bottom blur */}
