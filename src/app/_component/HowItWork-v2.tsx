@@ -31,12 +31,12 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   >(new Array(cards.length).fill({ opacity: 1, blur: 0 }));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
   const [gap, setGap] = useState(60); 
   const [isInViewportCenter, setIsInViewportCenter] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
   const [isHeaderNavigation, setIsHeaderNavigation] = useState(false);
-  const [autoScrollInterval, setAutoScrollInterval] = useState<NodeJS.Timeout | null>(null);
 
   const scrollToCard = useCallback((direction: "up" | "down") => {
     if (isScrolling || !containerRef.current) return;
@@ -67,6 +67,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
 
   const handleManualScroll = useCallback((direction: "up" | "down") => {
     if (!isInViewportCenter) return; // Prevent manual scroll when not centered
+    setAutoScrollEnabled(false);
     scrollToCard(direction);
   }, [isInViewportCenter, scrollToCard]);
 
@@ -162,38 +163,18 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
 
   // Auto-scroll effect
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (!autoScrollEnabled || !isInViewportCenter) return; // Only auto-scroll when in center
+
+    const autoScrollInterval = setInterval(() => {
       if (currentIndex < cards.length - 1) {
         scrollToCard("down");
       } else {
-        // Reset to first card
-        setCurrentIndex(0);
-        if (containerRef.current) {
-          containerRef.current.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-        }
+        setAutoScrollEnabled(false); // Stop auto-scroll at the last card
       }
-    }, 2000); // 2 second gap between transitions
+    }, ANIMATION_DURATION); // Add a 1-second pause
 
-    setAutoScrollInterval(interval);
-
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  }, [currentIndex, scrollToCard]);
-
-  // Clean up interval when component unmounts
-  useEffect(() => {
-    return () => {
-      if (autoScrollInterval) {
-        clearInterval(autoScrollInterval);
-      }
-    };
-  }, [autoScrollInterval]);
+    return () => clearInterval(autoScrollInterval);
+  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
 
   useEffect(() => {
     const preventPageScroll = (e: WheelEvent) => {
@@ -387,6 +368,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
       overflow: 'hidden',
     }}
     id="work"
+    onMouseEnter={() => setAutoScrollEnabled(false)}
   >
   
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
