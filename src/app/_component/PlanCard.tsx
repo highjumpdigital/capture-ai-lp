@@ -46,7 +46,6 @@ export const PlanCard: React.FC<PlanCardProps> = ({
     if (onClick) onClick();
   };
 
-
   return (
     <div
       className={`flex flex-col gap-4 max-w-[308px]   w-full p-3 sm:p-5 border plandetailshadow rounded-[5px] ${className}`}
