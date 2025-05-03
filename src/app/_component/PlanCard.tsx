@@ -15,6 +15,7 @@ headerText: string;
   image: StaticImageData | string;
   planData: { title: string; flag: boolean }[];
   buttonTitle?: string;
+  planDescription: string;
   onClick?: () => void;
   onHoverIndex?: (index: number | null) => void;
   hoveredIndex?: number | null;
@@ -30,6 +31,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   className,
   textClass,
   headerText,
+  planDescription,
   onClick,
   onHoverIndex,
   hoveredIndex,
@@ -72,13 +74,15 @@ export const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Description Section */}
       <div
-        className={`border border-plan-border Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] ${
+        className={`border border-[#00000033] Cairo p-3 sm:p-[24px] rounded-[5px] text-[10px] sm:text-[12px] leading-[16px] sm:leading-[18px] h-[80px] sm:h-[100px] flex items-center ${
           title === constants.planCard.infinityPro
-            ? "bg-plan-description-dark text-plan-description-text"
-            : "bg-plan-description-light"
+            ? "bg-[#D4D6D8] text-[#000000]"
+            : "bg-[#D4D6D8]"
         }`}
       >
-        {constants.paymentSol.offer}
+        <div className="line-clamp-3 sm:line-clamp-4 w-full">
+          {planDescription || constants.paymentSol.offer}
+        </div>
       </div>
 
       {/* Plan Features */}

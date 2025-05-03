@@ -166,6 +166,7 @@ export const PaymentSol = () => {
                   id={index + 1}
                   title={plan.plan_name}
                   price={`$${plan.plan_price}`}
+                  planDescription={plan.plan_description}
                   image={planStyles[plan.plan_name as keyof typeof planStyles].image}
                   planData={getMergedPlanData(plan)}
                   className={`${planStyles[plan.plan_name as keyof typeof planStyles].border} ${planStyles[plan.plan_name as keyof typeof planStyles].background}`}
