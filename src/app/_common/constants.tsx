@@ -228,7 +228,7 @@ export const FaqData = [
   {
     title: "Can the chatbot ask qualifying questions?",
     description:
-      "Yes, up to 10 questions can be asked per user intent. You can ask qualifying questions before presenting materials or making a suggestion.",
+      "Yes, before taking any action, the chatbot can ask qualifying questions first and then answer based on the user's response.",
   },
   {
     title: "Can I add other people in my organisation?",
@@ -362,9 +362,15 @@ export const marquee4 = [
 ];
 export const ChatPerformancedata = [
   {
-    title: "3rd party tool integration",
+    title: "Ask qualifying questions",
     image: thirdpartypic,
-    detail: "Integrate with 3rd party tools to automate tasks, manage workflows, and streamline interactions. Stay connected and organized."
+    detail: "Before your chatbot takes any action, it can ask qualifying questions first to determine the best response."
+  },
+  {
+    title: "Lead capture functionality",
+    image: leadcapture,
+    detail: "Capture customer details effortlessly through automated forms. Turn interactions into valuable leads with ease."
+
   },
   {
     title: "Provide company documents",
@@ -377,21 +383,14 @@ export const ChatPerformancedata = [
     detail: "Showcase your work to your customers, from before and after images to showcasing your most recent testimonials."
   },
   {
-    title: "Lead capture functionality",
-    image: leadcapture,
-    detail: "Capture customer details effortlessly through automated forms. Turn interactions into valuable leads with ease."
-
+    title: "Suggestion capabilities",
+    image: suggestion,
+    detail: "With suggestion capabilities, the chatbot can offer tailored responses urging the user to take a desired action."
   },
   {
     title: "User intent configuration",
     image: userintent,
-    detail: "Customize your chatbot’s responses based on user intent for more personalized and accurate interactions.  "
-  },
-  {
-    title: "Suggestion capabilities",
-    image: suggestion,
-    detail: "With suggestion capabilities, the chatbot offers tailored recommendations, from personalized quotes to baseline pricing and other helpful options based on your needs."
-
+    detail: "Customize your chatbot's responses based on user intent for more personalized and accurate interactions.  "
   },
 ];
 export const constants = {
