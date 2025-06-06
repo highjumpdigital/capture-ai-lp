@@ -258,31 +258,31 @@ export const Immersiondata = [
     img: time,
     title: "ROUND-THE-CLOCK ENGAGEMENT",
     description:
-      "Your AI Chatbot Is Available 24/7, Ensuring Every Potential Lead Is Captured.",
+      "Your AI chatbot is available 24/7, ensuring every potential lead is captured.",
   },
   {
     img: gear,
     title: "Customised with Your Business Info",
     description:
-      "Equipped With Your Business’s Details, Your AI Chatbot Answers All Lead Queries Comprehensively.",
+      "Equipped with your business's details, your AI chatbot answers all lead queries comprehensively.",
   },
   {
     img: search,
     title: "Efficient Lead Management",
     description:
-      "Expertly Captures And Channels Inquiries, Boosting Engagement And User Experience.",
+      "Expertly captures and channels inquiries, boosting engagement and user experience.",
   },
   {
     img: stock,
     title: "Higher Conversion Potential ",
     description:
-      "Personalized Interactions Foster Deeper Understanding And Nurturing Of Prospects.",
+      "Personalized interactions foster deeper understanding and nurturing of prospects.",
   },
   {
     img: robot,
     title: "full screen sales agent",
     description:
-      "Choose From A Discreet Chat Bot, Or Integrate Our System Directly Into Your Platform.",
+      "Choose from a discreet chat bot, or integrate our system directly into your platform.",
   },
 ];
 export const marquee1 = [
@@ -517,22 +517,22 @@ export const cards = [
   {
     number: "01.",
     heading: "USER STARTS A CONVERSATION",
-    text: "The User Will Start A Conversation And Ask Any Questions They Need To. If You Do Not Have Pre-Programmed Answers, Your AI Will Take Over And Respond."
+    text: "The user will start a conversation and ask any questions they need to. If you do not have pre-programmed answers, your AI will take over and respond."
   },
   {
     number: "02.",
     heading: "LEAD CAPTURE AND SEND",
-    text: "Once Your Chatbot Has Captured The Qualifying Information from The User, The Data Will Send To You Directly Via Email And SMS."
+    text: "Once your chatbot has captured the qualifying information from the user, the data will send to you directly via email and SMS."
   },
   {
     number: "03.",
-    heading: "CUSTOM CRM INTEGRATION",
-    text: "As An Optional Extra, We Can Have Your Chatbot Send The Lead Information Directly To Your CRM Via API."
+    heading: "CONVERSATION IS LOGGED",
+    text: "All conversations are logged and can be viewed in your dashboard."
   },
   {
     number: "04.",
     heading: "INSIGHTS AND REPORTS",
-    text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts."
+    text: "All transcripts will be emailed to you, you will also be provided with a dashboard login to view historical transcripts."
   },
 ];
 
