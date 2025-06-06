@@ -34,34 +34,6 @@ export default function Home() {
   const parentScrollRef = useRef<HTMLDivElement>(null);
   const workSectionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const parentElement = parentScrollRef.current;
-    const workSection = workSectionRef.current;
-
-    if (!parentElement || !workSection) return;
-
-    const handleScroll = () => {
-      const workRect = workSection.getBoundingClientRect();
-
-      // Check if work section is in the middle of the viewport
-      if (
-        workRect.top <= window.innerHeight / 2 &&
-        workRect.bottom >= window.innerHeight / 2
-      ) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
   return (
     <div ref={parentScrollRef} className="pt-20">
       <Header />
