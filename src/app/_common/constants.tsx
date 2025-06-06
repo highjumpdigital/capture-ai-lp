@@ -221,19 +221,24 @@ export const FaqData = [
       "Yes, your subscription can be cancelled at any time. Simply visit your client dashboard to make changes to your subscription.",
   },
   {
-    title: "Can I integrate the chatbot with 3rd party applications?",
+    title: "How does the chatbot capture lead data?",
     description:
-      "Some 3rd party integrations are pre-included such as Calendly. To request additional integrations feel free to submit a support ticket and we will consider all cases.",
+      "Either your chatbot can present the user with a form to fill out or you can have the chatbot directly ask the user questions to capture the data.",
   },
   {
-    title: "How many questions can the chatbot ask?",
+    title: "Can the chatbot ask qualifying questions?",
     description:
-      "The chatbot has the pre set capabilities to ask up to 10 questions per user intent, which totals to a 100 questions between the maximum of 10 user intents.",
+      "Yes, up to 10 questions can be asked per user intent. You can ask qualifying questions before presenting materials or making a suggestion.",
+  },
+  {
+    title: "Can I add other people in my organisation?",
+    description:
+      "Yes, you can either add them as a user to manage your chatbot, or simply as a contact to receive details captured notifications (or both).",
   },
   {
     title: "Does the chatbot log conversations?",
     description:
-      "Yes, the chatbot has the capability to store all transcripts so that you are able to review conversations and activity."
+      "Yes, the chatbot has the capability to store all transcripts so that you are able to review conversations and activity.",
   },
   {
     title: "Is it possible to make amendments to the chatbot once it is live?",
@@ -243,8 +248,9 @@ export const FaqData = [
   {
     title: "How long does the chatbot conversation stay active?",
     description:
-      "The chatbot conversation will remain active as visitors to your site navigate through different pages on your site. Visitors can also leave the site and come back and the conversation will still be live.",
+      "The conversation will remain active through different page visits, until the user closes their browser tab",
   },
+  
 ];
 
 export const Immersiondata = [
