@@ -4,7 +4,7 @@ import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
 import provide from "../assets/performance/provide copy.svg"
-import thirdpartypic from "../assets/performance2/third-party.svg"
+import thirdpartypic from "../assets/performance/Frame.svg"
 import showcase from "../assets/performance2/showcase-work.svg"
 import leadcapture from "../assets/performance2/lead-capture.svg"
 import userintent from "../assets/performance2/user-intent.svg"
