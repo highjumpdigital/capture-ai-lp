@@ -4,7 +4,7 @@ import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
 import provide from "../assets/performance/provide copy.svg"
-import thirdpartypic from "../assets/performance2/third-party.svg"
+import thirdpartypic from "../assets/performance/Frame.svg"
 import showcase from "../assets/performance2/showcase-work.svg"
 import leadcapture from "../assets/performance2/lead-capture.svg"
 import userintent from "../assets/performance2/user-intent.svg"
@@ -221,19 +221,24 @@ export const FaqData = [
       "Yes, your subscription can be cancelled at any time. Simply visit your client dashboard to make changes to your subscription.",
   },
   {
-    title: "Can I integrate the chatbot with 3rd party applications?",
+    title: "How does the chatbot capture lead data?",
     description:
-      "Some 3rd party integrations are pre-included such as Calendly. To request additional integrations feel free to submit a support ticket and we will consider all cases.",
+      "Either your chatbot can present the user with a form to fill out or you can have the chatbot directly ask the user questions to capture the data.",
   },
   {
-    title: "How many questions can the chatbot ask?",
+    title: "Can the chatbot ask qualifying questions?",
     description:
-      "The chatbot has the pre set capabilities to ask up to 10 questions per user intent, which totals to a 100 questions between the maximum of 10 user intents.",
+      "Yes, before taking any action, the chatbot can ask qualifying questions first and then answer based on the user's response.",
+  },
+  {
+    title: "Can I add other people in my organisation?",
+    description:
+      "Yes, you can either add them as a user to manage your chatbot, or simply as a contact to receive details captured notifications (or both).",
   },
   {
     title: "Does the chatbot log conversations?",
     description:
-      "Yes, the chatbot has the capability to store all transcripts so that you are able to review conversations and activity."
+      "Yes, the chatbot has the capability to store all transcripts so that you are able to review conversations and activity.",
   },
   {
     title: "Is it possible to make amendments to the chatbot once it is live?",
@@ -243,8 +248,9 @@ export const FaqData = [
   {
     title: "How long does the chatbot conversation stay active?",
     description:
-      "The chatbot conversation will remain active as visitors to your site navigate through different pages on your site. Visitors can also leave the site and come back and the conversation will still be live.",
+      "The conversation will remain active through different page visits, until the user closes their browser tab",
   },
+  
 ];
 
 export const Immersiondata = [
@@ -252,31 +258,31 @@ export const Immersiondata = [
     img: time,
     title: "ROUND-THE-CLOCK ENGAGEMENT",
     description:
-      "Your AI Chatbot Is Available 24/7, Ensuring Every Potential Lead Is Captured.",
+      "Your AI chatbot is available 24/7, ensuring every potential lead is captured.",
   },
   {
     img: gear,
     title: "Customised with Your Business Info",
     description:
-      "Equipped With Your Business’s Details, Your AI Chatbot Answers All Lead Queries Comprehensively.",
+      "Equipped with your business's details, your AI chatbot answers all lead queries comprehensively.",
   },
   {
     img: search,
     title: "Efficient Lead Management",
     description:
-      "Expertly Captures And Channels Inquiries, Boosting Engagement And User Experience.",
+      "Expertly captures and channels inquiries, boosting engagement and user experience.",
   },
   {
     img: stock,
     title: "Higher Conversion Potential ",
     description:
-      "Personalized Interactions Foster Deeper Understanding And Nurturing Of Prospects.",
+      "Personalized interactions foster deeper understanding and nurturing of prospects.",
   },
   {
     img: robot,
     title: "full screen sales agent",
     description:
-      "Choose From A Discreet Chat Bot, Or Integrate Our System Directly Into Your Platform.",
+      "Choose from a discreet chat bot, or integrate our system directly into your platform.",
   },
 ];
 export const marquee1 = [
@@ -356,9 +362,15 @@ export const marquee4 = [
 ];
 export const ChatPerformancedata = [
   {
-    title: "3rd party tool integration",
+    title: "Ask qualifying questions",
     image: thirdpartypic,
-    detail: "Integrate with 3rd party tools to automate tasks, manage workflows, and streamline interactions. Stay connected and organized."
+    detail: "Before your chatbot takes any action, it can ask qualifying questions first to determine the best response."
+  },
+  {
+    title: "Lead capture functionality",
+    image: leadcapture,
+    detail: "Capture customer details effortlessly through automated forms. Turn interactions into valuable leads with ease."
+
   },
   {
     title: "Provide company documents",
@@ -371,21 +383,14 @@ export const ChatPerformancedata = [
     detail: "Showcase your work to your customers, from before and after images to showcasing your most recent testimonials."
   },
   {
-    title: "Lead capture functionality",
-    image: leadcapture,
-    detail: "Capture customer details effortlessly through automated forms. Turn interactions into valuable leads with ease."
-
+    title: "Suggestion capabilities",
+    image: suggestion,
+    detail: "With suggestion capabilities, the chatbot can offer tailored responses urging the user to take a desired action."
   },
   {
     title: "User intent configuration",
     image: userintent,
-    detail: "Customize your chatbot’s responses based on user intent for more personalized and accurate interactions.  "
-  },
-  {
-    title: "Suggestion capabilities",
-    image: suggestion,
-    detail: "With suggestion capabilities, the chatbot offers tailored recommendations, from personalized quotes to baseline pricing and other helpful options based on your needs."
-
+    detail: "Customize your chatbot's responses based on user intent for more personalized and accurate interactions.  "
   },
 ];
 export const constants = {
@@ -401,7 +406,7 @@ export const constants = {
     CONVERSATIONS: "CONVERSATIONS",
     thatconvert: "THAT CONVERT.",
     chatbotengangement:
-      "Our 24/7 AI Chatbot boosts engagement, manages leads, and integrates seamlessly with your CRM for efficient interactions.",
+      "Our 24/7 AI Chatbot boosts engagement, asks qualifying questions, provides intelligent suggestions, captures lead data, and more...",
     viewSolution: " VIEW SOLUTIONS",
     leadsCapture: "5000+ LEADS CAPTURED FOR OUR PARTNERS",
   },
@@ -512,22 +517,22 @@ export const cards = [
   {
     number: "01.",
     heading: "USER STARTS A CONVERSATION",
-    text: "The User Will Start A Conversation And Ask Any Questions They Need To. If You Do Not Have Pre-Programmed Answers, Your AI Will Take Over And Respond."
+    text: "The user will start a conversation and ask any questions they need to. If you do not have pre-programmed answers, your AI will take over and respond."
   },
   {
     number: "02.",
     heading: "LEAD CAPTURE AND SEND",
-    text: "Once Your Chatbot Has Captured The Qualifying Information from The User, The Data Will Send To You Directly Via Email And SMS."
+    text: "Once your chatbot has captured the qualifying information from the user, the data will send to you directly via email and SMS."
   },
   {
     number: "03.",
-    heading: "CUSTOM CRM INTEGRATION",
-    text: "As An Optional Extra, We Can Have Your Chatbot Send The Lead Information Directly To Your CRM Via API."
+    heading: "CONVERSATION IS LOGGED",
+    text: "All conversations are logged and can be viewed in your dashboard."
   },
   {
     number: "04.",
     heading: "INSIGHTS AND REPORTS",
-    text: "All Transcripts Will Be Emailed To You, You Will Also Be Provided With A Dashboard Login To View Historical Transcripts."
+    text: "All transcripts will be emailed to you, you will also be provided with a dashboard login to view historical transcripts."
   },
 ];
 

@@ -3,378 +3,49 @@
 "use client";
 
 import bgImage from "../assets/herosectionbgImage.png";
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Cairo } from "next/font/google";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cards } from "../_common/constants";
 import { colors } from "../_styles/colors";
 import { constants } from "../_common/constants";
-import { throttle } from "lodash";
 
 const cairo = Cairo({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
 
-const ANIMATION_DURATION = 800; // Global animation duration
 interface HowItWorkv2Props {
   parentScrollRef: React.RefObject<HTMLDivElement | null>;
 }
 
-//how its work
-
 export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [cardOpacities, setCardOpacities] = useState<
-    { opacity: number; blur: number }[]
-  >(new Array(cards.length).fill({ opacity: 1, blur: 0 }));
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [autoScrollEnabled, setAutoScrollEnabled] = useState(false);
-  const [gap, setGap] = useState(60); 
-  const [isInViewportCenter, setIsInViewportCenter] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
-  const [isHeaderNavigation, setIsHeaderNavigation] = useState(false);
 
-  const scrollToCard = useCallback((direction: "up" | "down") => {
-    if (isScrolling || !containerRef.current) return;
-  
-    setIsScrolling(true);
-
-    const newIndex =
-      direction === "down"
-        ? Math.min(currentIndex + 1, cards.length - 1)
-        : Math.max(currentIndex - 1, 0);
-
-    if (newIndex !== currentIndex) {
-      const CARD_HEIGHT = 176;
-      const totalScroll = newIndex * (CARD_HEIGHT + gap);
-
-      containerRef.current.scrollTo({
-        top: totalScroll,
-        behavior: "smooth"
+  // Auto-cycle through cards every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        // Loop back to 0 after the last card
+        return prevIndex === cards.length - 1 ? 0 : prevIndex + 1;
       });
+    }, 3000); // 3 seconds
 
-      setCurrentIndex(newIndex);
-    }
-
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, ANIMATION_DURATION);
-  }, [currentIndex, gap, isScrolling]);
-
-  const handleManualScroll = useCallback((direction: "up" | "down") => {
-    if (!isInViewportCenter) return; // Prevent manual scroll when not centered
-    setAutoScrollEnabled(false);
-    scrollToCard(direction);
-  }, [isInViewportCenter, scrollToCard]);
-
-  useEffect(() => {});
-
-  // Update gap based on screen size
-  useEffect(() => {
-    const updateGap = () => {
-      if (window.innerWidth >= 1024) {
-        // 'lg' breakpoint
-        setGap(120);
-      } else {
-        setGap(60);
-      }
-    };
-
-    updateGap();
-    window.addEventListener("resize", updateGap);
-    return () => window.removeEventListener("resize", updateGap);
-  }, [currentIndex]);
-
-  // Improved center detection for continuous scrolling
-  const isElementInCenter = useCallback((element: HTMLElement): boolean => {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const sectionHeight = rect.height;
-  
-    const sectionVerticalCenter = rect.top + sectionHeight / 2;
-    const viewportVerticalCenter = windowHeight / 2;
-
-    // Calculate distance from center as a percentage of viewport height
-    const distanceFromCenter = Math.abs(sectionVerticalCenter - viewportVerticalCenter);
-    const distancePercentage = (distanceFromCenter / windowHeight) * 100;
-
-    // Return true if within 15% of center
-    return distancePercentage <= 10;
-  }, []);
-
-  const smoothScrollToCenter = useCallback((element: HTMLElement) => {
-    if (isHeaderNavigation) {
-      return;
-    }
-
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const elementHeight = rect.height;
-    
-    const targetScroll = window.scrollY + rect.top - (windowHeight - elementHeight) / 2;
-    
-    window.scrollTo({
-      top: targetScroll,
-      behavior: 'smooth'
-    });
-  }, [isHeaderNavigation]);
-
-  // Scroll position checking with throttle
-  const checkScrollPosition = useCallback(
-    throttle(() => {
-      const currentScrollTop = window.scrollY;
-      const newDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
-      
-      setLastScrollTop(currentScrollTop);
-      if (newDirection !== scrollDirection) {
-        setScrollDirection(newDirection);
-      }
-
-      if (sectionRef.current) {
-        const inCenter = isElementInCenter(sectionRef.current);
-        if (inCenter !== isInViewportCenter) {
-          setIsInViewportCenter(inCenter);
-        }
-      }
-    }, 100, { leading: true, trailing: true }), // Reduced throttle time for smoother updates
-    [lastScrollTop, scrollDirection, isElementInCenter, isInViewportCenter]
-  );
-
-  // Scroll event listener
-  useEffect(() => {
-    const handleScroll = () => {
-      requestAnimationFrame(() => {
-        checkScrollPosition();
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    checkScrollPosition(); // Initial check
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      checkScrollPosition.cancel(); // Clean up the throttled function
-    };
-  }, [checkScrollPosition]);
-
-  // Auto-scroll effect
-  useEffect(() => {
-    if (!autoScrollEnabled || !isInViewportCenter) return; // Only auto-scroll when in center
-
-    const autoScrollInterval = setInterval(() => {
-      if (currentIndex < cards.length - 1) {
-        scrollToCard("down");
-      } else {
-        setAutoScrollEnabled(false); // Stop auto-scroll at the last card
-      }
-    }, ANIMATION_DURATION); // Add a 1-second pause
-
-    return () => clearInterval(autoScrollInterval);
-  }, [currentIndex, autoScrollEnabled, isInViewportCenter, isScrolling]);
-
-  useEffect(() => {
-    const preventPageScroll = (e: WheelEvent) => {
-      
-      if (!sectionRef.current) return;
-      
-      const isInView = isElementInCenter(sectionRef.current);
-      
-      if (!isInView) return;
-
-      // Prevent scrolling if we're in the middle of an animation
-      if (isScrolling) {
-        e.preventDefault();
-        return;
-      }
-
-      // Allow scrolling down only after all cards are viewed
-      if (currentIndex === cards.length - 1 && e.deltaY > 0) {
-        return;
-      }
-
-      // Allow scrolling up only when at the first card
-      if (currentIndex === 0 && e.deltaY < 0) {
-        return;
-      }
-
-      // Prevent default scroll and handle card navigation
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (e.deltaY > 0 && currentIndex < cards.length - 1) {
-        handleManualScroll("down");
-      } else if (e.deltaY < 0 && currentIndex > 0) {
-        handleManualScroll("up");
-      }
-    };
-
-    // Add the event listener to the window instead of the section
-    window.addEventListener("wheel", preventPageScroll, { passive: false });
-    return () => window.removeEventListener("wheel", preventPageScroll);
-  }, [isScrolling, currentIndex, handleManualScroll]);
-
-  const handleScroll = useCallback(() => {
-    const containerHeight = containerRef.current?.clientHeight || 0;
-    const cardElements = containerRef.current?.getElementsByClassName("card-container");
-
-    if (cardElements) {
-      const newOpacities = Array.from(cardElements).map((card) => {
-        const rect = card.getBoundingClientRect();
-        const cardCenter = rect.top + rect.height / 2;
-        const containerRect = containerRef.current?.getBoundingClientRect();
-
-        // Check if containerRect is defined before accessing its properties
-        const containerTop = containerRect ? containerRect.top : 0; // Default to 0 if undefined
-        const distanceFromCenter = Math.abs(cardCenter - (containerTop + containerHeight / 2));
-        const maxDistance = containerHeight * 0.6;
-        const opacity = Math.max(0.5, 1 - distanceFromCenter / maxDistance);
-        return {
-          opacity,
-          blur: (1 - opacity) * 1,
-        };
-      });
-
-      setCardOpacities(newOpacities);
-    }
-  }, [containerRef]);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    container.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  const [height, setHeight] = useState(400); // Default height
-
-  useEffect(() => {
-    const targetHeight =
-      currentIndex === 3 && !isScrolling && gap === 120 ? 490 : 400;
-
-    let currentHeight = height;
-
-    const adjustHeight = () => {
-      if (currentHeight !== targetHeight) {
-        // Increment or decrement the height smoothly
-        currentHeight += currentHeight < targetHeight ? 1 : -1;
-        setHeight(currentHeight);
-        requestAnimationFrame(adjustHeight);
-      }
-    };
-
-    adjustHeight();
-  }, [currentIndex, isScrolling, gap]);
-  console.log("iscenter", isElementInCenter)
-  
-
-  useEffect(() => {
-    const container = containerRef.current;
-    const section = sectionRef.current;
-    const parent = parentScrollRef.current;
-
-    if (!container || !section || !parent) return;
-
-    const handleNestedScroll = () => {
-      // Check if we've reached the bottom of the nested scroll
-      const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight;
-      const isAtTop = container.scrollTop === 0;
-
-      if (isAtBottom && scrollDirection === 'down') {
-        document.body.style.overflow = 'auto';
-      } else if (isAtTop && scrollDirection === 'up') {
-        document.body.style.overflow = 'auto';
-      } else {
-        document.body.style.overflow = 'hidden';
-      }
-    };
-
-    container.addEventListener('scroll', handleNestedScroll);
-    return () => {
-      container.removeEventListener('scroll', handleNestedScroll);
-      document.body.style.overflow = 'auto';
-    };
-  }, [scrollDirection, parentScrollRef]);
-
-
-  
-  // Add this to an event listener or a specific trigger.
-  useEffect(() => {
-    if (isInViewportCenter && sectionRef.current) {
-      smoothScrollToCenter(sectionRef.current);
-    }
-  }, [isInViewportCenter, smoothScrollToCenter]);
-  
-  useEffect(() => {
-    // Toggle body scroll lock based on `isInViewportCenter`
-    const originalOverflow = document.body.style.overflow;
-  
-    if (isInViewportCenter && !isHeaderNavigation) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = originalOverflow || "auto";
-    }
-  
-    return () => {
-      // Reset overflow to its original state when the component unmounts
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [isInViewportCenter, isHeaderNavigation]);
-  
-
-  
-
-  // Add effect to detect header navigation
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash === '#work') {
-        setIsHeaderNavigation(true);
-        // Reset after navigation is complete
-        setTimeout(() => setIsHeaderNavigation(false), 1000);
-      }
-    };
-
-    // Listen for clicks on header links
-    const headerLinks = document.querySelectorAll('div[onClick*="work"]');
-    headerLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        setIsHeaderNavigation(true);
-        // Reset after navigation is complete
-        setTimeout(() => setIsHeaderNavigation(false), 1000);
-      });
-    });
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      headerLinks.forEach(link => {
-        link.removeEventListener('click', handleHashChange);
-      });
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div
-    ref={sectionRef}
-    className={`h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat ${cairo.className}`}
+      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className} py-14`}
     style={{
       backgroundImage: `url(${bgImage.src})`,
-      overflow: 'hidden',
     }}
     id="work"
-    onMouseEnter={() => setAutoScrollEnabled(false)}
   >
-  
-      <div className="max-w-[1353px] mx-auto px-4 sm:px-0 ">
-        <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6 ">
+      <div className="max-w-[1353px] mx-auto px-4 sm:px-0">
+        <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mt-[100px] sm:mt-[100px]">
+          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start">
             <h1
               className="text-black font-bold leading-tight text-center lg:text-left hidden lg:block"
               style={{
@@ -392,7 +63,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
             </h1>
 
             <h1
-              className="text-black font-bold leading-tight text-center lg:hidden text-4xl sm:text-5xl md:text-6xl mb-8"
+              className="text-black font-bold leading-tight text-center lg:hidden text-4xl sm:text-5xl md:text-6xl mb-6"
               style={{
                 maxWidth: "90%",
                 fontFamily: "Cairo",
@@ -404,12 +75,11 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
           </div>
 
           {/* Right Content Section with Line */}
-          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 mt-[100px] sm:mt-[100px] relative">
+          <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-0 lg:pr-4 relative">
             {/* Vertical Orange Line with Enhanced Gradient Blur */}
             <div className="relative w-[3px] sm:w-[4px] h-[400px] self-center overflow-visible">
-              {/* Main line with top and bottom blur */}
               <div
-                className="absolute top-0 bottom-0 left-0  right-0 "
+                className="absolute top-0 bottom-0 left-0 right-0"
                 style={{
                   background: `linear-gradient(to bottom, ${colors.orange.gradient.start}, ${colors.orange.gradient.middle} 30%, ${colors.orange.gradient.middle} 70%, ${colors.orange.gradient.start})`,
                 }}
@@ -417,42 +87,21 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
             </div>
 
             {/* Cards Section */}
-            <div
-              ref={containerRef}
-              style={{
-                height: `${height}px`,
-                transition: "height 0ms linear",
-                overflow: "hidden",
-              }}
-              className="pb-4 mt-[-35px] lg:pb-8 px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 overflow-x-hidden overflow-y-auto scroll-smooth"
-            >
-              <div className="flex flex-col gap-[60px] lg:gap-[120px]">
-                {/* Top spacer for scrolling */}
-                <div className="h-[10px]"></div>
-
-                {cards.map((card, index) => (
+            <div className="px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 w-full">
+              <AnimatePresence mode="wait">
                   <motion.div
-                    key={card.number}
-                    className="card-container flex items-center gap-4 lg:gap-8 w-full lg:w-[650px] h-[176px]"
-                    style={{
-                      opacity: cardOpacities[index]?.opacity ?? 1,
-                    }}
-                    animate={{
-                      filter: `blur(${cardOpacities[index]?.blur ?? 0}px)`,
-                    }}
-                    transition={{
-                      duration: 0.3,
-                      ease: "easeOut",
-                    }}
-                  >
-                    <motion.div
-                      className="rounded-full"
-                      style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
-                    >
+                  key={currentIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex items-center gap-4 lg:gap-8 w-full lg:w-[650px] h-[176px]"
+                >
+                  <div className="rounded-full">
                       <div className="w-[19px] h-[19px] rounded-full bg-orange" />
-                    </motion.div>
+                  </div>
                     <div className="flex items-center gap-1 lg:gap-2">
-                      <motion.span
+                    <span
                         className="text-orange"
                         style={{
                           fontWeight: 300,
@@ -460,24 +109,13 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
                           lineHeight: "48px",
                         }}
                       >
-                        {card.number}
-                      </motion.span>
-                      <motion.span
-                        className="text-xl lg:text-3xl font-bold text-orange"
-                        style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
-                      >
-                        {/* Optional Title or Additional Content */}
-                      </motion.span>
+                      {cards[currentIndex].number}
+                    </span>
                     </div>
-                    <motion.div
-                      className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative"
-                      style={{ opacity: cardOpacities[index]?.opacity ?? 1 }}
-                    >
+                  <div className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative">
                       {/* Gray triangle shape */}
-                      <motion.div
-                        className={`absolute left-[-21px]  -translate-y-1/2 w-0 h-0  ${
-                          currentIndex === 3 ? "top-[50%]" : "top-1/2"
-                        }  `}
+                    <div
+                      className="absolute left-[-21px] top-1/2 -translate-y-1/2 w-0 h-0"
                         style={{
                           borderTop: "14px solid transparent",
                           borderBottom: "14px solid transparent",
@@ -485,17 +123,29 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
                         }}
                       />
                       <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
-                        {card.heading}
+                      {cards[currentIndex].heading}
                       </h2>
                       <p className="text-sm lg:text-base text-gray-700 Inter">
-                        {card.text}
+                      {cards[currentIndex].text}
                       </p>
+                  </div>
                     </motion.div>
-                  </motion.div>
-                ))}
+              </AnimatePresence>
 
-                {/* Bottom spacer for scrolling */}
-                <div className="h-[0px]"></div>
+              {/* Progress Dots */}
+              <div className="flex justify-center gap-2 mt-6">
+                {cards.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex 
+                        ? "bg-orange w-8" 
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    aria-label={`Go to card ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>

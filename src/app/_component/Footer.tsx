@@ -34,8 +34,7 @@ export const Footer: React.FC = () => {
       </div>
       <div className="flex flex-col lg:flex-row  justify-start lg:justify-between   gap-5  py-10 items-center">
         <div className="text-[#FFFFFFCC] text-[16px]    leading-[24px] font-bold  lg:max-w-[330px]  w-full flex justify-start items-end Inter  text-start  md:text-base">
-          {`© ${currentYear} CAPTURE AI, by High Jump Digital.
-All Rights Reserved.`}
+          {`© ${currentYear} Capture AI. All Rights Reserved.`}
         </div>
         <div className="flex   justify-start w-full  lg:justify-end space-x-3">
           {socialLinks.map(({ Icon, url }, index) => (
