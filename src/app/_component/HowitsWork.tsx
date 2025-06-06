@@ -42,10 +42,10 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
       }}
       id="work"
     >
-      <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px] py-20">
+      <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px] py-14">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
-          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mb-8 lg:mb-0">
+          <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mb-6 lg:mb-0">
             <h1
               className="text-black font-bold leading-tight text-center lg:text-left hidden md:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               style={{
@@ -117,7 +117,7 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
               </AnimatePresence>
 
               {/* Progress Dots */}
-              <div className="flex justify-center gap-2 mt-8">
+              <div className="flex justify-center gap-2 mt-6">
                 {cards.map((_, index) => (
                   <button
                     key={index}

@@ -36,12 +36,12 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
 
   return (
     <div
-      className={`min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat ${cairo.className}`}
-      style={{
-        backgroundImage: `url(${bgImage.src})`,
-      }}
-      id="work"
-    >
+      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className} py-14`}
+    style={{
+      backgroundImage: `url(${bgImage.src})`,
+    }}
+    id="work"
+  >
       <div className="max-w-[1353px] mx-auto px-4 sm:px-0">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
@@ -63,7 +63,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
             </h1>
 
             <h1
-              className="text-black font-bold leading-tight text-center lg:hidden text-4xl sm:text-5xl md:text-6xl mb-8"
+              className="text-black font-bold leading-tight text-center lg:hidden text-4xl sm:text-5xl md:text-6xl mb-6"
               style={{
                 maxWidth: "90%",
                 fontFamily: "Cairo",
@@ -89,7 +89,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
             {/* Cards Section */}
             <div className="px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 w-full">
               <AnimatePresence mode="wait">
-                <motion.div
+                  <motion.div
                   key={currentIndex}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -98,42 +98,42 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
                   className="flex items-center gap-4 lg:gap-8 w-full lg:w-[650px] h-[176px]"
                 >
                   <div className="rounded-full">
-                    <div className="w-[19px] h-[19px] rounded-full bg-orange" />
+                      <div className="w-[19px] h-[19px] rounded-full bg-orange" />
                   </div>
-                  <div className="flex items-center gap-1 lg:gap-2">
+                    <div className="flex items-center gap-1 lg:gap-2">
                     <span
-                      className="text-orange"
-                      style={{
-                        fontWeight: 300,
-                        fontSize: "48px",
-                        lineHeight: "48px",
-                      }}
-                    >
+                        className="text-orange"
+                        style={{
+                          fontWeight: 300,
+                          fontSize: "48px",
+                          lineHeight: "48px",
+                        }}
+                      >
                       {cards[currentIndex].number}
                     </span>
-                  </div>
+                    </div>
                   <div className="bg-gray-50/90 p-3 lg:p-4 rounded-lg shadow-md flex-1 h-full flex flex-col justify-center border-[4px] border-[#d3ddef33] relative">
-                    {/* Gray triangle shape */}
+                      {/* Gray triangle shape */}
                     <div
                       className="absolute left-[-21px] top-1/2 -translate-y-1/2 w-0 h-0"
-                      style={{
-                        borderTop: "14px solid transparent",
-                        borderBottom: "14px solid transparent",
-                        borderRight: "14px solid rgb(237,237,244)",
-                      }}
-                    />
-                    <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
+                        style={{
+                          borderTop: "14px solid transparent",
+                          borderBottom: "14px solid transparent",
+                          borderRight: "14px solid rgb(237,237,244)",
+                        }}
+                      />
+                      <h2 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2">
                       {cards[currentIndex].heading}
-                    </h2>
-                    <p className="text-sm lg:text-base text-gray-700 Inter">
+                      </h2>
+                      <p className="text-sm lg:text-base text-gray-700 Inter">
                       {cards[currentIndex].text}
-                    </p>
+                      </p>
                   </div>
-                </motion.div>
+                    </motion.div>
               </AnimatePresence>
 
               {/* Progress Dots */}
-              <div className="flex justify-center gap-2 mt-8">
+              <div className="flex justify-center gap-2 mt-6">
                 {cards.map((_, index) => (
                   <button
                     key={index}
