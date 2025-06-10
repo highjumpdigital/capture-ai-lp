@@ -61,7 +61,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
             className="sm:w-6 sm:h-6"
           />
           <div
-            className={`text-[18px] sm:text-[22px] leading-[18px] sm:leading-[22px] font-bold Cairo ${headerText}`}
+            className={`text-[18px] uppercase sm:text-[22px] leading-[18px] sm:leading-[22px] font-bold Cairo ${headerText}`}
           >
             {title}
           </div>
