@@ -3,57 +3,118 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 // import { constants } from '../_common';
 import { GrFacebookOption } from "react-icons/gr";
-import { FaInstagram, FaLinkedinIn, FaYoutube, FaXTwitter } from "react-icons/fa6";
-
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+  FaXTwitter,
+} from "react-icons/fa6";
+import Link from "next/link";
+ 
 const socialLinks = [
-  { Icon: GrFacebookOption, url: "https://www.facebook.com/profile.php?id=61567631743624" },
+  {
+    Icon: GrFacebookOption,
+    url: "https://www.facebook.com/profile.php?id=61567631743624",
+  },
   { Icon: FaInstagram, url: "https://www.instagram.com/cptr.ai/" },
   { Icon: FaLinkedinIn, url: "https://www.linkedin.com/company/cptr-ai/" },
   { Icon: FaYoutube, url: "https://www.youtube.com/@CaptureAI" },
   { Icon: FaXTwitter, url: "https://x.com/CaptureAI392628" },
 ];
-
+ 
 export const Footer: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-
+  const [isMiddleScreen, setIsMiddleScreen] = useState(false);
+  const [isWideScreen, setIsWideScreen] = useState(false);
+ 
+  useEffect(() => {
+    const checkDimensions = () => {
+      setIsMiddleScreen(window.innerHeight < 850);
+      setIsWideScreen(window.innerWidth < 768);
+    };
+ 
+    checkDimensions(); // Initial check
+    window.addEventListener("resize", checkDimensions);
+ 
+    return () => window.removeEventListener("resize", checkDimensions);
+  }, []);
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
-  
+ 
+  // const {
+  //   footerRoutes: { about, privacy, support, terms },
+  // } = constants;
   return (
-    <div className="flex flex-col bg-black  px-5 lg:px-[0px] py-6 md:py-12 ">
-      <div className="max-w-[1311px] w-full  lg:px-[65px] 2xl:px-0  mx-auto">
-      <div className="flex flex-col md:flex-row md:items-center    justify-between w-full space-y-4 md:space-y-0">
-        <div className="flex  flex-col gap-4 lg:gap-8 lg:flex-row      ">
-          <Image
-            className="h-10 md:h-auto max-h-[100vh] cursor-pointer object-contain"
-            src={Logo}
-            alt=""
-          />
+    <div
+      className={`flex    ${
+        isMiddleScreen
+          ? "lg:px-[65px] px-[20px] py-4  md:py-8"
+          : "lg:px-[65px] px-[20px] py-6  md:py-10"
+      }   lg:flex justify-between items-center w-full  bg-black  `}
+    >
+      <div className="max-w-[1312px] mx-auto flex sm:flex-row flex-col justify-between items-center w-full">
+        <div className={`flex flex-col justify-between  sm:space-y-4 md:space-y-0 sm:gap-4 ${(isMiddleScreen && isWideScreen)?"h-[80px] items-center mb-5":"h-[110px]"} `}>
+          <div className="flex  flex-col gap-4 lg:gap-8 lg:flex-row      ">
+            <Link href="https://cptr.ai/" passHref>
+              <Image
+                className="h-10 md:h-auto max-h-[100vh] cursor-pointer object-contain"
+                src={Logo}
+                alt=""
+              />
+            </Link>
+          </div>
+          <div className="text-[#FFFFFFCC] text-[16px]    leading-[24px] font-normal  lg:max-w-[330px]  w-full flex justify-start items-end Inter  text-start  md:text-base">
+            {`© ${currentYear} Capture AI. All Rights Reserved.`}
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col lg:flex-row  justify-start lg:justify-between   gap-5  py-10 items-center">
-        <div className="text-[#FFFFFFCC] text-[16px]    leading-[24px] font-bold  lg:max-w-[330px]  w-full flex justify-start items-end Inter  text-start  md:text-base">
-          {`© ${currentYear} Capture AI. All Rights Reserved.`}
-        </div>
-        <div className="flex   justify-start w-full  lg:justify-end space-x-3">
-          {socialLinks.map(({ Icon, url }, index) => (
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={index}
-            >
-              <div
-                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-[5px] bg-[#FF4206] "
+        <div>
+          <div className={`flex flex-col justify-between ${(isMiddleScreen && isWideScreen)?"items-center":""}  h-[120px]`}>
+            <h3 className="text-[20px] font-bold text-[#FF4206] ">
+              Quick Links
+            </h3>
+            <div className="flex flex-col space-y-1">
+              <Link
+                href="https://cptr.ai/privacy-policy"
+                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
+                target="blank"
               >
-                <Icon size={15} fill="black" />
-              </div>
-            </a>
-          ))}
+                Terms
+              </Link>
+              <Link
+                href="https://cptr.ai/privacy-policy"
+                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
+                target="blank"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="https://cptr.ai/support"
+                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":"text-left"}`}
+                target="blank"
+              >
+                Support
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col lg:flex-row justify-start lg:justify-between sm:gap-5 py-3 items-center">
+          <div className={`flex justify-start lg:justify-center space-x-3 ${(isMiddleScreen && isWideScreen)?"h-[40px]":"h-[120px]"} items-end`}>
+            {socialLinks.map(({ Icon, url }, index) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+              >
+                <div className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-[5px] bg-[#FF4206] ">
+                  <Icon size={15} fill="black" />
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
