@@ -1,6 +1,7 @@
 import Logo from "@/app/assets/header/Group 73.svg";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { openSupportEmail } from "@/app/_component/utils/support";
+import Image from "next/image";
 // import { constants } from '../_common';
 import { GrFacebookOption } from "react-icons/gr";
 import {
@@ -10,7 +11,7 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import Link from "next/link";
- 
+
 const socialLinks = [
   {
     Icon: GrFacebookOption,
@@ -21,31 +22,32 @@ const socialLinks = [
   { Icon: FaYoutube, url: "https://www.youtube.com/@CaptureAI" },
   { Icon: FaXTwitter, url: "https://x.com/CaptureAI392628" },
 ];
- 
+
 export const Footer: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [isMiddleScreen, setIsMiddleScreen] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(false);
- 
+
   useEffect(() => {
     const checkDimensions = () => {
       setIsMiddleScreen(window.innerHeight < 850);
       setIsWideScreen(window.innerWidth < 768);
     };
- 
+
     checkDimensions(); // Initial check
     window.addEventListener("resize", checkDimensions);
- 
+
     return () => window.removeEventListener("resize", checkDimensions);
   }, []);
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
- 
+
   // const {
   //   footerRoutes: { about, privacy, support, terms },
   // } = constants;
   return (
+    
     <div
       className={`flex    ${
         isMiddleScreen
@@ -55,7 +57,7 @@ export const Footer: React.FC = () => {
     >
       <div className="max-w-[1312px] mx-auto flex sm:flex-row flex-col justify-between items-center w-full">
         <div className={`flex flex-col justify-between  sm:space-y-4 md:space-y-0 sm:gap-4 ${(isMiddleScreen && isWideScreen)?"h-[80px] items-center mb-5":"h-[110px]"} `}>
-          <div className="flex  flex-col gap-4 lg:gap-8 lg:flex-row      ">
+          <div className="flex  justify-center items-center sm:justify-start  ">
             <Link href="https://cptr.ai/" passHref>
               <Image
                 className="h-10 md:h-auto max-h-[100vh] cursor-pointer object-contain"
@@ -68,14 +70,15 @@ export const Footer: React.FC = () => {
             {`© ${currentYear} Capture AI. All Rights Reserved.`}
           </div>
         </div>
-        <div>
+
+        <div className="  hidden  sm:block ">
           <div className={`flex flex-col justify-between ${(isMiddleScreen && isWideScreen)?"items-center":""}  h-[120px]`}>
             <h3 className="text-[20px] font-bold text-[#FF4206] ">
               Quick Links
             </h3>
             <div className="flex flex-col space-y-1">
               <Link
-                href="https://cptr.ai/privacy-policy"
+                href="https://cptr.ai/terms-of-service"
                 className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
                 target="blank"
               >
@@ -89,9 +92,13 @@ export const Footer: React.FC = () => {
                 Privacy
               </Link>
               <Link
-                href="https://cptr.ai/support"
+                href=""
                 className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":"text-left"}`}
                 target="blank"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openSupportEmail();
+                }}
               >
                 Support
               </Link>
@@ -99,7 +106,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col lg:flex-row justify-start lg:justify-between sm:gap-5 py-3 items-center">
-          <div className={`flex justify-start lg:justify-center space-x-3 ${(isMiddleScreen && isWideScreen)?"h-[40px]":"h-[120px]"} items-end`}>
+          <div className={`flex justify-start lg:justify-center space-x-3 ${(isMiddleScreen && isWideScreen)?"h-[40px]":"sm:h-[120px]"} items-end`}>
             {socialLinks.map(({ Icon, url }, index) => (
               <a
                 href={url}
@@ -114,7 +121,38 @@ export const Footer: React.FC = () => {
             ))}
           </div>
         </div>
+
+        <div className="flex justify-between items-center w-full mt-5  sm:hidden">
+              <Link
+                href="https://cptr.ai/terms-of-service"
+                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
+                target="blank"
+              >
+                Terms
+              </Link>
+              <Link
+                href="https://cptr.ai/privacy-policy"
+                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
+                target="blank"
+              >
+                Privacy
+              </Link>
+              <Link
+                href=""
+                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":"text-left"}`}
+                target="blank"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openSupportEmail();
+                }}
+              >
+                Support
+              </Link>
+            </div>
       </div>
+      
     </div>
   );
 };
+
+ 
