@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Header, Footer } from "../_component";
 import { FilledButton } from "../_component/FilledButton";
 import bgImage from "../assets/herosectionbgImage.png";
+import { submitSupportTicket, SupportTicketData } from "./api";
 
 export default function Support() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ export default function Support() {
 
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -39,6 +42,12 @@ export default function Support() {
         ...prev,
         [name]: ""
       }));
+    }
+
+    // Clear submit status when user makes changes
+    if (submitStatus !== 'idle') {
+      setSubmitStatus('idle');
+      setSubmitMessage("");
     }
   };
 
@@ -79,20 +88,34 @@ export default function Support() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submission started');
     
     if (!validateForm()) {
+      console.log('Form validation failed');
       return;
     }
 
+    console.log('Form validation passed, submitting...');
     setIsSubmitting(true);
-    
-    // API submission will be added here
-    console.log("Form data:", formData);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert("Thank you for your submission. We'll get back to you soon!");
+    setSubmitStatus('idle');
+    setSubmitMessage("");
+
+    try {
+      // Prepare data for API call (convert to backend format)
+      const apiData: SupportTicketData = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        website: formData.website.trim(),
+        department: formData.department as 'technical' | 'sales' | 'other',
+        message: formData.message.trim(),
+        confirm_account: formData.confirmAccount
+      };
+
+      const result = await submitSupportTicket(apiData);
+
+      setSubmitStatus('success');
+      setSubmitMessage(`Thank you for your submission! Your support ticket #${result.ticket_number} has been created. We'll get back to you soon at ${formData.email}.`);
+      
       // Reset form
       setFormData({
         name: "",
@@ -102,7 +125,18 @@ export default function Support() {
         message: "",
         confirmAccount: false
       });
-    }, 1000);
+    } catch (error) {
+      console.error('Support submission error:', error);
+      setSubmitStatus('error');
+      
+      if (error instanceof Error) {
+        setSubmitMessage(`Error: ${error.message}`);
+      } else {
+        setSubmitMessage('An unexpected error occurred. Please try again or contact us directly at support@cptr.ai');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -125,6 +159,41 @@ export default function Support() {
           <form onSubmit={handleSubmit} className="space-y-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8" style={{
             boxShadow: '0 10px 40px -10px rgba(0, 0, 0, 0.2), 0 4px 25px -5px rgba(0, 0, 0, 0.1)'
           }}>
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-green-800">
+                      {submitMessage}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-red-800">
+                      {submitMessage}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Name Field */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -136,9 +205,10 @@ export default function Support() {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
+                disabled={isSubmitting}
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   errors.name ? 'border-red-500' : 'border-gray-300'
-                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors`}
+                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed`}
                 placeholder="Your full name"
               />
               {errors.name && (
@@ -157,9 +227,10 @@ export default function Support() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                disabled={isSubmitting}
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   errors.email ? 'border-red-500' : 'border-gray-300'
-                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors`}
+                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed`}
                 placeholder="your@email.com"
               />
               {errors.email && (
@@ -178,9 +249,10 @@ export default function Support() {
                 name="website"
                 value={formData.website}
                 onChange={handleInputChange}
+                disabled={isSubmitting}
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   errors.website ? 'border-red-500' : 'border-gray-300'
-                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors`}
+                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed`}
                 placeholder="https://yourwebsite.com"
               />
               {errors.website && (
@@ -198,9 +270,10 @@ export default function Support() {
                 name="department"
                 value={formData.department}
                 onChange={handleInputChange}
+                disabled={isSubmitting}
                 className={`w-full pl-3 pr-10 py-2.5 rounded-lg border ${
                   errors.department ? 'border-red-500' : 'border-gray-300'
-                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors bg-white`}
+                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors bg-white disabled:bg-gray-100 disabled:cursor-not-allowed`}
               >
                 <option value="">Select a department</option>
                 <option value="technical">Technical support</option>
@@ -214,7 +287,7 @@ export default function Support() {
 
             {/* Message Field */}
             <div>
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                 Message <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -223,9 +296,10 @@ export default function Support() {
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={4}
+                disabled={isSubmitting}
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   errors.message ? 'border-red-500' : 'border-gray-300'
-                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none`}
+                } focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none disabled:bg-gray-100 disabled:cursor-not-allowed`}
                 placeholder="Please describe your issue or question in detail..."
               />
               {errors.message && (
@@ -242,7 +316,8 @@ export default function Support() {
                     name="confirmAccount"
                     checked={formData.confirmAccount}
                     onChange={handleInputChange}
-                    className="mt-0.5 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
+                    disabled={isSubmitting}
+                    className="mt-0.5 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary disabled:cursor-not-allowed"
                   />
                   <span className="ml-2 text-sm text-gray-700">
                     I confirm that the email and website provided above are linked to my Capture AI account
@@ -257,12 +332,15 @@ export default function Support() {
 
             {/* Submit Button */}
             <div className="pt-2">
-              <FilledButton
-                className={`w-full h-12 bg-primary rounded-[8px] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                buttonTitle={isSubmitting ? "SUBMITTING..." : "SUBMIT REQUEST"}
-                onClick={() => {}}
-                titleClassName="text-white font-bold text-base"
-              />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full h-12 bg-primary rounded-[8px] text-white font-bold text-base ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary/90'
+                } transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50`}
+              >
+                {isSubmitting ? "SUBMITTING..." : "SUBMIT REQUEST"}
+              </button>
             </div>
 
             {/* Additional Information */}
