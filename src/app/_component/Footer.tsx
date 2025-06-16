@@ -138,13 +138,13 @@ export const Footer: React.FC = () => {
                 Privacy
               </Link>
               <Link
-                href=""
+                href="https://cptr.ai/support"
                 className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":"text-left"}`}
                 target="blank"
-                onClick={(e) => {
-                  e.preventDefault();
-                  openSupportEmail();
-                }}
+                // onClick={(e) => {
+                //   e.preventDefault();
+                //   openSupportEmail();
+                // }}
               >
                 Support
               </Link>
