@@ -3,12 +3,12 @@ import gear from "../assets/GIF/gear.gif";
 import robot from "../assets/GIF/robot.gif";
 import stock from "../assets/GIF/stock.gif";
 import search from "../assets/GIF/search.gif";
-import provide from "../assets/performance/provide copy.svg"
-import thirdpartypic from "../assets/performance/Frame.svg"
-import showcase from "../assets/performance2/showcase-work.svg"
-import leadcapture from "../assets/performance2/lead-capture.svg"
-import userintent from "../assets/performance2/user-intent.svg"
-import suggestion from "../assets/performance2/suggestion.svg"
+import provide from "../assets/performance/e3.svg"
+import thirdpartypic from "../assets/performance/e1.svg"
+import showcase from "../assets/performance/e4.svg"
+import leadcapture from "../assets/performance/e6.svg"
+import userintent from "../assets/performance/e2.svg"
+import suggestion from "../assets/performance/e5.svg"
 import personicon from "../assets/price/personicon.svg"
 import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
 import diamond from "../assets/price/basil_diamond-solid.svg"
