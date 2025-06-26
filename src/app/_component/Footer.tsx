@@ -11,6 +11,12 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import Link from "next/link";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const socialLinks = [
   {
@@ -71,7 +77,9 @@ export const Footer: React.FC = () => {
               />
             </Link>
           </div>
-          <div className="text-[#FFFFFFCC] text-[16px]    leading-[24px] font-normal  lg:max-w-[330px]  w-full flex justify-start items-end Inter  text-start  md:text-base">
+         <div
+            className={`text-[#FFFFFFCC] text-base font-normal w-full flex justify-start items-end leading-6 lg:max-w-[330px] ${inter.className} tracking-[0.08px]`}
+          >
             {`© ${currentYear} Capture AI. All Rights Reserved.`}
           </div>
         </div>
@@ -83,7 +91,7 @@ export const Footer: React.FC = () => {
             }  h-[120px]`}
           >
             <h3
-              className={`text-[20px] font-bold text-[#FF4206] Inter`}
+              className={`text-[20px] font-bold text-[#FF4206] ${inter.className} tracking-[0.2px]`}
             >
               Quick Links
             </h3>
