@@ -142,7 +142,7 @@ export const PaymentSol = () => {
         <div className="relative">
           <div 
             ref={scrollContainerRef}
-            className={`flex gap-[28px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
+            className={`flex gap-[35px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
               isMobile 
                 ? 'justify-start overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' 
                 : 'justify-center flex-wrap xl:flex-nowrap'
