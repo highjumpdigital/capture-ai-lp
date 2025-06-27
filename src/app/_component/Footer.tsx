@@ -11,6 +11,12 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import Link from "next/link";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const socialLinks = [
   {
@@ -47,7 +53,6 @@ export const Footer: React.FC = () => {
   //   footerRoutes: { about, privacy, support, terms },
   // } = constants;
   return (
-    
     <div
       className={`flex    ${
         isMiddleScreen
@@ -56,7 +61,13 @@ export const Footer: React.FC = () => {
       }   lg:flex justify-between items-center w-full  bg-black  `}
     >
       <div className="max-w-[1312px] mx-auto flex sm:flex-row flex-col justify-between items-center w-full">
-        <div className={`flex flex-col justify-between  sm:space-y-4 md:space-y-0 sm:gap-4 ${(isMiddleScreen && isWideScreen)?"h-[80px] items-center mb-5":"h-[110px]"} `}>
+        <div
+          className={`flex flex-col justify-between  sm:space-y-4 md:space-y-0 sm:gap-4 ${
+            isMiddleScreen && isWideScreen
+              ? "h-[80px] items-center mb-5"
+              : "h-[110px]"
+          } `}
+        >
           <div className="flex  justify-center items-center sm:justify-start  ">
             <Link href="https://cptr.ai/" passHref>
               <Image
@@ -66,34 +77,45 @@ export const Footer: React.FC = () => {
               />
             </Link>
           </div>
-          <div className="text-[#FFFFFFCC] text-[16px]    leading-[24px] font-normal  lg:max-w-[330px]  w-full flex justify-start items-end Inter  text-start  md:text-base">
+         <div
+            className={`text-[#FFFFFFCC] text-base font-normal w-full flex justify-start items-end leading-6 lg:max-w-[330px] ${inter.className} tracking-[0.08px]`}
+          >
             {`© ${currentYear} Capture AI. All Rights Reserved.`}
           </div>
         </div>
 
         <div className="  hidden  sm:block ">
-          <div className={`flex flex-col justify-between ${(isMiddleScreen && isWideScreen)?"items-center":""}  h-[120px]`}>
-            <h3 className="text-[20px] font-bold text-[#FF4206] ">
+          <div
+            className={`flex flex-col justify-between ${
+              isMiddleScreen && isWideScreen ? "items-center" : ""
+            }  h-[120px]`}
+          >
+            <h3
+              className={`text-[20px] font-bold text-[#FF4206] ${inter.className} tracking-[0.2px]`}
+            >
               Quick Links
             </h3>
             <div className="flex flex-col space-y-1">
               <Link
                 href="https://cptr.ai/terms-of-service"
-                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
+                className={`text-[#FFFFFF] text-base font-normal Inter ${isMiddleScreen && isWideScreen ? "text-center" : ""}`}
                 target="blank"
               >
                 Terms
               </Link>
               <Link
                 href="https://cptr.ai/privacy-policy"
-                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
+                className={`text-[#FFFFFF] text-base font-normal Inter ${isMiddleScreen && isWideScreen ? "text-center" : ""}`}
                 target="blank"
               >
                 Privacy
               </Link>
               <Link
-                href="/support"
-                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":"text-left"}`}
+                href="https://cptr.ai/support"
+                className={`text-[#FFFFFF] text-base font-normal Inter ${
+                  isMiddleScreen && isWideScreen ? "text-center" : "text-left"
+                }`}
+                target="blank"
               >
                 Support
               </Link>
@@ -101,7 +123,11 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col lg:flex-row justify-start lg:justify-between sm:gap-5 py-3 items-center">
-          <div className={`flex justify-start lg:justify-center space-x-3 ${(isMiddleScreen && isWideScreen)?"h-[40px]":"sm:h-[120px]"} items-end`}>
+          <div
+            className={`flex justify-start lg:justify-center space-x-3 ${
+              isMiddleScreen && isWideScreen ? "h-[40px]" : "sm:h-[120px]"
+            } items-end`}
+          >
             {socialLinks.map(({ Icon, url }, index) => (
               <a
                 href={url}
@@ -118,36 +144,40 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="flex justify-between items-center w-full mt-5  sm:hidden">
-              <Link
-                href="https://cptr.ai/terms-of-service"
-                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
-                target="blank"
-              >
-                Terms
-              </Link>
-              <Link
-                href="https://cptr.ai/privacy-policy"
-                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":""}`}
-                target="blank"
-              >
-                Privacy
-              </Link>
-              <Link
-                href="https://cptr.ai/support"
-                className={`text-[#FFFFFF]  text-[16px] font-normal ${(isMiddleScreen && isWideScreen)?"text-center":"text-left"}`}
-                target="blank"
-                // onClick={(e) => {
-                //   e.preventDefault();
-                //   openSupportEmail();
-                // }}
-              >
-                Support
-              </Link>
-            </div>
+          <Link
+            href="https://cptr.ai/terms-of-service"
+            className={`text-[#FFFFFF]  text-[16px] font-normal ${
+              isMiddleScreen && isWideScreen ? "text-center" : ""
+            }`}
+            target="blank"
+          >
+            Terms
+          </Link>
+          <Link
+            href="https://cptr.ai/privacy-policy"
+            className={`text-[#FFFFFF]  text-[16px] font-normal ${
+              isMiddleScreen && isWideScreen ? "text-center" : ""
+            }`}
+            target="blank"
+          >
+            Privacy
+          </Link>
+          <Link
+            href="https://cptr.ai/support"
+            className={`text-[#FFFFFF]  text-[16px] font-normal ${
+              isMiddleScreen && isWideScreen ? "text-center" : "text-left"
+            }`}
+            
+            target="blank"
+            // onClick={(e) => {
+            //   e.preventDefault();
+            //   openSupportEmail();
+            // }}
+          >
+            Support
+          </Link>
+        </div>
       </div>
-      
     </div>
   );
 };
-
- 

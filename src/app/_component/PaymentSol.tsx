@@ -142,7 +142,7 @@ export const PaymentSol = () => {
         <div className="relative">
           <div 
             ref={scrollContainerRef}
-            className={`flex gap-[20px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
+            className={`flex gap-[28px] mt-[48px] lg:mt-[100px] items-center flex-nowrap ${
               isMobile 
                 ? 'justify-start overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' 
                 : 'justify-center flex-wrap xl:flex-nowrap'
@@ -166,6 +166,7 @@ export const PaymentSol = () => {
                   id={index + 1}
                   title={plan.plan_name}
                   price={`$${plan.plan_price}`}
+                  planDescription={plan.plan_description}
                   image={planStyles[plan.plan_name as keyof typeof planStyles].image}
                   planData={getMergedPlanData(plan)}
                   className={`${planStyles[plan.plan_name as keyof typeof planStyles].border} ${planStyles[plan.plan_name as keyof typeof planStyles].background}`}
