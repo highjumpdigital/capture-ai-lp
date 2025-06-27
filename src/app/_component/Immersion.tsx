@@ -10,7 +10,7 @@ export const Immersion = () => {
       <div className="max-w-[1311px] mx-auto flex  flex-col lg:flex-row  gap-4 justify-between items-center">
 
       <div>
-        <div className="text-center lg:text-left text-[34px]  lg:text-[64px]  leading-[44px] lg:leading-[64px] text-[#FF4206] mt-[-6px]">
+        <div className="text-center lg:text-left text-[34px]  lg:text-[64px]  leading-[44px] ml-[-2px]lg:leading-[64px] text-[#FF4206] mt-[4px]">
           {constants.immersion.fullimmersion} <br />
           <span className="font-bold text-black">
             {" "}
