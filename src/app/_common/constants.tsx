@@ -280,9 +280,9 @@ export const Immersiondata = [
   },
   {
     img: robot,
-    title: "full screen sales agent",
+    title: "TRAINED SALES AGENT",
     description:
-      "Choose from a discreet chat bot, or integrate our system directly into your platform.",
+      "Train your chatbot on what to say and when so that it can answer your customers requests accurately while capturing the prospect.",
   },
 ];
 export const marquee1 = [
