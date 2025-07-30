@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa6";
 import Link from "next/link";
 import { Inter } from "next/font/google";
+import Chatbot from "./Chatbot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -178,6 +179,7 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
       </div>
+      <Chatbot />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { constants, AUTH_URLS } from "../_common/constants";
 import Logo from "../assets/header/Group 73.svg";
 import Logo2 from "../assets/logo/logo.svg";
+import { useRouter, usePathname } from "next/navigation";
 
 const sofiaSans = Sofia_Sans_Semi_Condensed({
   subsets: ["latin"],
@@ -15,6 +16,8 @@ const sofiaSans = Sofia_Sans_Semi_Condensed({
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const toggleMobileMenu = () => {
     setIsMobile(!isMobile);
@@ -22,6 +25,16 @@ export const Header = () => {
 
   const handleSignIn = () => {
     window.location.href = AUTH_URLS.SIGN_IN;
+  };
+
+  const navigateToSection = (sectionId: string) => {
+    if (pathname === '/') {
+      // On homepage: smooth scroll to section
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // On other pages: navigate to homepage with hash
+      router.push(`/#${sectionId}`);
+    }
   };
 
  
@@ -60,7 +73,7 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
-                document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+                navigateToSection("features");
               }, 300);
             }}
             className="font-bold text-white cursor-pointer"
@@ -71,7 +84,7 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
-                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+                navigateToSection("work");
               }, 300);
             }}
             className="font-bold text-white cursor-pointer"
@@ -82,7 +95,7 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
-                document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
+                navigateToSection("solutions");
               }, 300);
             }}
             className="font-bold text-white cursor-pointer"
@@ -93,7 +106,7 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
-                document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+                navigateToSection("faq");
               }, 300);
             }}
             className="font-bold text-white cursor-pointer"
@@ -124,33 +137,25 @@ export const Header = () => {
           </div>
           <div className="flex gap-10">
             <div
-              onClick={() => {
-                document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => navigateToSection("features")}
               className="font-bold text-4 leading-4 text-white cursor-pointer"
             >
               {constants.header.FEATURES}
             </div>
             <div
               className="font-bold text-4 leading-4 text-white cursor-pointer"
-              onClick={() => {
-                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => navigateToSection("work")}
             >
               {constants.header.howitwork}
             </div>
             <div
-              onClick={() => {
-                document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => navigateToSection("solutions")}
               className="font-bold text-4 leading-4 text-white cursor-pointer"
             >
               {constants.header.SOLUTIONS}
             </div>
             <div
-              onClick={() => {
-                document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => navigateToSection("faq")}
               className="font-bold text-4 leading-4 text-white cursor-pointer"
             >
               {constants.header.FAQ}
