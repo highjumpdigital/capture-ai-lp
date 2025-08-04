@@ -134,7 +134,7 @@ const DashboardSection: React.FC = () => {
     <section className="py-[60px] bg-gradient-to-b from-white to-[#F2F5F7]">
       <div className="container mx-auto max-w-[1353px] sm:px-5 px-4">
         {/* First Row */}
-        <div className="flex flex-col lg:flex-row sm:gap-4 gap-2 py-3">
+        <div className="flex flex-col lg:flex-row sm:gap-4 gap-3 py-3">
           {/* Left Card */}
           <div className="w-full bg-white lg:w-[64.5%] p-6 md:p-8 border-[3px] border-[#E4E6EC] rounded-2xl h-auto flex flex-col">
             <div className="w-full h-[240px] md:h-[207px] relative">
@@ -193,7 +193,7 @@ const DashboardSection: React.FC = () => {
         </div>
 
         {/* Second Row */}
-        <div className="flex flex-col lg:flex-row sm:gap-4 gap-2 py-3">
+        <div className="flex flex-col lg:flex-row sm:gap-4 gap-3 py-3">
           {/* Left Card */}
           <div className="w-full bg-white lg:w-[36%] p-6 md:p-8 border-[3px] border-[#E4E6EC] rounded-2xl h-auto flex flex-col">
             <div className="w-full h-[240px] md:h-[207px] relative">
