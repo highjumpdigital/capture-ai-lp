@@ -132,7 +132,7 @@ const inter = Inter({
 const DashboardSection: React.FC = () => {
   return (
     <section className="py-[60px] bg-gradient-to-b from-white to-[#F2F5F7]">
-      <div className="container mx-auto max-w-[1353px] px-4">
+      <div className="container mx-auto max-w-[1353px] sm:px-5 px-4">
         {/* First Row */}
         <div className="flex flex-col lg:flex-row sm:gap-4 gap-2 py-3">
           {/* Left Card */}
