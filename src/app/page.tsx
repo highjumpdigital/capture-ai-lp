@@ -9,6 +9,7 @@ import {
   PaymentSol,
   Immersion,
   ChatPerformance,
+  DashboardSection,
 } from "./_component";
 import HowItWorks from "./_component/HowitsWork";
 import HowItWorkv2 from "./_component/HowItWork-v2";
@@ -65,7 +66,7 @@ export default function Home() {
           <HowItWorkv2 parentScrollRef={parentScrollRef} />
         )}
       </div>
-
+      <DashboardSection />
       <PaymentSol />
       <FAQ />
       <Footer />
