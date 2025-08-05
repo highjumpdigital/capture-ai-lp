@@ -2,7 +2,7 @@
 
 "use client";
 
-import bgImage from "../assets/herosectionbgImage.png";
+import bgImage from "../assets/bgm.png";
 import { useRef, useEffect, useState } from "react";
 import { Cairo } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,13 +35,13 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
   }, []);
 
   return (
-    <div
-      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className}`}
-      style={{
-        backgroundImage: `url(${bgImage.src})`,
-      }}
-      id="work"
-    >
+        <div
+      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className} py-14`}
+    style={{
+      backgroundImage: `url(${bgImage.src})`,
+    }}
+    id="work"
+  >
       <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px] py-14">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
