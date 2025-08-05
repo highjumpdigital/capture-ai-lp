@@ -68,7 +68,7 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
           {/* Right Content Section with Line */}
           <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-5">
             {/* Vertical Orange Line with Top and Bottom Blur */}
-            <div className="relative w-[8px] sm:w-[4px] h-[400px] self-center overflow-visible">
+            <div className="relative w-[6px] sm:w-[4px] h-[400px] self-center overflow-visible">
               <div
                 className="absolute top-0 bottom-0 left-0 right-0"
                 style={{
@@ -78,7 +78,7 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
             </div>
 
             {/* Cards Section */}
-            <div className="relative px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 w-full">
+            <div className="relative px-[14px] ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
