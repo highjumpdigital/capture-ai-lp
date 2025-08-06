@@ -2,7 +2,7 @@
 
 "use client";
 
-import bgImage from "../assets/herosectionbgImage.png";
+import bgImage from "../assets/bgm.png";
 import { useRef, useEffect, useState } from "react";
 import { Cairo } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,13 +35,13 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
   }, []);
 
   return (
-    <div
-      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className}`}
-      style={{
-        backgroundImage: `url(${bgImage.src})`,
-      }}
-      id="work"
-    >
+        <div
+      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className} py-14`}
+    style={{
+      backgroundImage: `url(${bgImage.src})`,
+    }}
+    id="work"
+  >
       <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px] py-14">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
@@ -68,7 +68,7 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
           {/* Right Content Section with Line */}
           <div className="w-full lg:w-1/2 flex flex-row items-center justify-start px-4 lg:px-5">
             {/* Vertical Orange Line with Top and Bottom Blur */}
-            <div className="relative w-[8px] sm:w-[4px] h-[400px] self-center overflow-visible">
+            <div className="relative w-[6px] sm:w-[4px] h-[400px] self-center overflow-visible">
               <div
                 className="absolute top-0 bottom-0 left-0 right-0"
                 style={{
@@ -78,7 +78,7 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
             </div>
 
             {/* Cards Section */}
-            <div className="relative px-4 ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 w-full">
+            <div className="relative px-[14px] ml-[-26px] lg:ml-[-11px] lg:pl-0 lg:pr-8 w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
