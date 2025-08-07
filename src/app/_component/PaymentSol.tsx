@@ -81,7 +81,7 @@ export const PaymentSol = () => {
     }
     // When plan details are hidden, show all features in cards
     return plan.features.map(feature => ({
-      title: feature.is_enabled ? (feature.feature_description_2 || feature.feature_name) : "",
+      title:  (feature.feature_description_2 || feature.feature_name),
       flag: feature.is_enabled
     }));
   };
