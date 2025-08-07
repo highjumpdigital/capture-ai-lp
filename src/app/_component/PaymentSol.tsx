@@ -47,21 +47,29 @@ export const PaymentSol = () => {
   }, []);
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
     const handleScroll = () => {
       if (scrollContainerRef.current && isMobile) {
-        const scrollLeft = scrollContainerRef.current.scrollLeft;
-        const cardWidth = scrollContainerRef.current.offsetWidth;
-        const newIndex = Math.round(scrollLeft / cardWidth);
-        setActiveIndex(newIndex);
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          const scrollLeft = scrollContainerRef.current?.scrollLeft || 0;
+          const cardWidth = scrollContainerRef.current?.offsetWidth || 0;
+          const newIndex = Math.round(scrollLeft / cardWidth);
+          setActiveIndex(Math.max(0, Math.min(newIndex, plansData.length - 1)));
+        }, 100);
       }
     };
 
     const scrollContainer = scrollContainerRef.current;
-    if (scrollContainer) {
+    if (scrollContainer && isMobile) {
       scrollContainer.addEventListener('scroll', handleScroll);
-      return () => scrollContainer.removeEventListener('scroll', handleScroll);
+      return () => {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+        clearTimeout(timeoutId);
+      };
     }
-  }, [isMobile]);
+  }, [isMobile, plansData.length]);
 
   const getMergedPlanData = (plan: Plan) => {
     if (!isPlanDetailsHidden) {
@@ -73,7 +81,7 @@ export const PaymentSol = () => {
     }
     // When plan details are hidden, show all features in cards
     return plan.features.map(feature => ({
-      title: feature.feature_description || feature.feature_name,
+      title: feature.is_enabled ? (feature.feature_description_2 || feature.feature_name) : "",
       flag: feature.is_enabled
     }));
   };
