@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 function getBackendBaseUrl(): string {
   return (
     process.env.BACKEND_INTERNAL_URL ||
-    process.env.PUBLIC_BACKEND_URL ||
     process.env.NEXT_PUBLIC_BACKEND_URL ||
     'https://capture-ai-backend-development.up.railway.app'
   );
