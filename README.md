@@ -98,3 +98,7 @@ Create a `.env.local` file in the root directory:
 ## License
 
 This project is proprietary software. All rights reserved.
+
+git add .
+git commit -m "Updates"
+git push origin development

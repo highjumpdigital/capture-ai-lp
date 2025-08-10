@@ -248,11 +248,10 @@ const fallbackData: PlansResponse = {
 
 export const getPlans = async (): Promise<PlansResponse> => {
   try {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://capture-ai-backend-development.up.railway.app';
-    const response = await axios.get(`${backendUrl}/plans/v1/plans`);
+    const response = await axios.get(`/api/plans`);
     return response.data;
   } catch (error) {
     console.error('Failed to fetch plans, using fallback data:', error);
     return fallbackData;
   }
-}; 
+};

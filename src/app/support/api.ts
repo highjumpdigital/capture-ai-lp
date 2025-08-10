@@ -30,22 +30,12 @@ interface ApiResponse {
   message?: string;
 }
 
-// Get backend URL from environment variables
-const getBackendUrl = (): string => {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  
-  if (!backendUrl) {
-    console.warn('NEXT_PUBLIC_BACKEND_URL not found, using fallback URL');
-    return 'https://capture-ai-backend-development.up.railway.app';
-  }
-  
-  return backendUrl;
-};
+// Client calls our server route, which proxies to backend privately
+const getProxyUrl = (): string => '/api/support';
 
 export const submitSupportTicket = async (ticketData: SupportTicketData): Promise<SupportTicketResponse> => {
   try {
-    const backendUrl = getBackendUrl();
-    const url = `${backendUrl}/support/v1/public/create`;
+    const url = getProxyUrl();
     
     console.log('Submitting support ticket to:', url);
     
