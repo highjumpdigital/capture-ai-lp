@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
@@ -114,6 +116,17 @@ export const Header = () => {
             {constants.header.FAQ}
           </div>
           <div
+            onClick={() => {
+              toggleMobileMenu();
+              setTimeout(() => {
+                router.push('/resellers');
+              }, 300);
+            }}
+            className="font-bold text-white cursor-pointer"
+          >
+            {constants.header.RESELLERS}
+          </div>
+          <div
             onClick={handleSignIn}
             className="font-bold text-[#FF4206] cursor-pointer"
           >
@@ -159,6 +172,12 @@ export const Header = () => {
               className="font-bold text-4 leading-4 text-white cursor-pointer"
             >
               {constants.header.FAQ}
+            </div>
+            <div
+              onClick={() => router.push('/resellers')}
+              className="font-bold text-4 leading-4 text-white cursor-pointer"
+            >
+              {constants.header.RESELLERS}
             </div>
           </div>
           <div className="flex gap-5 justify-center items-center">
