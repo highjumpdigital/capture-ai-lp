@@ -47,7 +47,22 @@ export const WhyBecomeReseller = () => {
   ];
 
   const toggleAccordion = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? -1 : index);
+    if (expandedIndex === index) {
+      // Clicking the same one — just close it
+      setExpandedIndex(-1);
+    } else {
+      if (expandedIndex !== -1) {
+        // Close current first
+        setExpandedIndex(-1);
+        // Wait for close animation (500ms matches your content transition)
+        setTimeout(() => {
+          setExpandedIndex(index);
+        }, 500);
+      } else {
+        // If nothing is open, open directly
+        setExpandedIndex(index);
+      }
+    }
   };
 
   return (
@@ -55,30 +70,33 @@ export const WhyBecomeReseller = () => {
       className="pt-10 sm:pt-14 lg:pt-20 relative bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${whyBecomeReseller.src})` }}
     >
-      
       <div className="max-w-[1353px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <div className="text-center mb-10 sm:mb-14 lg:mb-16">
-          <p className="text-[32px] sm:text-[48px] lg:text-[64px] font-normal leading-[100%] Cairo">
+          <p className="text-[28px] sm:text-[48px] lg:text-[64px] font-normal leading-[100%] Cairo">
             WHY BECOME A
           </p>
-          <p className="text-[32px] sm:text-[48px] lg:text-[64px] font-bold leading-[100%] text-[#FF4206] Cairo">
+          <p className="text-[28px] sm:text-[48px] lg:text-[64px] font-bold leading-[100%] text-[#FF4206] Cairo">
             CAPTURE AI RESELLER?
           </p>
         </div>
 
         {/* Accordion */}
-        <div className="max-w-[1250px] mx-auto">
+        <div
+          className={`max-w-[1250px] mx-auto ${
+            expandedIndex === -1 ? "min-h-[653px]" : "sm:min-h-[653px]"
+          }`}
+        >
           {accordionItems.map((item, index) => (
             <div key={index} className="mb-0 border-t border-[#B3B3B3]">
               <div
                 className="transition-all duration-300 cursor-pointer"
                 onClick={() => toggleAccordion(index)}
               >
-                <div className="py-4 sm:py-6 flex flex-row sm:flex-row items-start sm:items-center justify-between sm:gap-4 gap-2">
+                <div className="py-2 sm:py-3 flex flex-row sm:flex-row items-start sm:items-center justify-between sm:gap-4 gap-2">
                   <div className="flex items-center gap-3 sm:gap-4">
                     <span
-                      className={`text-[#FF4206CC] font-bold text-[28px] sm:text-[48px] lg:text-[64px] italic tracking-[3.2%] ${inter.className}`}
+                      className={`text-[#FF4206CC] font-bold text-[24px] sm:text-[48px] lg:text-[64px] italic tracking-[3.2%] ${inter.className}`}
                     >
                       {item.number}
                     </span>

@@ -27,17 +27,17 @@ export const GrowYourBusiness = () => {
 
           {/* Headings */}
           <div className="flex flex-col justify-center items-center gap-2">
-            <p className="text-[40px] sm:text-[64px] lg:text-[99px] font-semibold leading-[100%] text-[#FF4206] Cairo">
+            <p className="text-[30px] sm:text-[64px] lg:text-[99px] font-semibold leading-[100%] text-[#FF4206] Cairo">
               GROW YOUR BUSINESS &
             </p>
-            <p className="text-[40px] sm:text-[64px] lg:text-[99px] font-bold leading-[100%] text-[#000000] Cairo tracking-[1px] sm:tracking-[2px] lg:tracking-[3.2px]">
+            <p className="text-[30px] sm:text-[64px] lg:text-[99px] font-bold leading-[100%] text-[#000000] Cairo tracking-[1px] sm:tracking-[2px] lg:tracking-[3.2px]">
               BOOST YOUR INCOME
             </p>
           </div>
 
           {/* Description */}
           <div
-            className={`text-base sm:text-lg lg:text-[24px] font-light leading-[150%] max-w-[1034px] text-[#000000] text-center tracking-[0.3px] sm:tracking-[0.4px] lg:tracking-[0.48px] ${inter.className}`}
+            className={`text-base sm:text-lg lg:text-[24px] font-light leading-[150%] sm:max-w-[1034px] max-w-[320px] text-[#000000] text-center tracking-[0.3px] sm:tracking-[0.4px] lg:tracking-[0.48px] ${inter.className}`}
           >
             Unlock an exceptional opportunity to grow your business and generate
             a recurring income stream by becoming a reseller for Capture AI’s

@@ -39,21 +39,18 @@ export const KeyBenefits = () => {
     ];
 
     return (
-        <section className="py-16 lg:py-24 bg-white">
+        <section className="pt-6 lg:pt-10 pb-4 lg:pb-6 bg-white">
             <div className="max-w-[1353px] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Title Section */}
                 <div className="text-center mb-6">
-                    <p className="text-[24px] lg:text-[48px] leading-[100%] font-normal text-[#FF4206]  Cairo">
+                    <p className="text-[28px] lg:text-[48px] leading-[100%] font-normal text-[#FF4206]  Cairo">
                         KEY BENEFITS FOR
                     </p>
-                    <p className="text-[24px] lg:text-[48px] leading-[100%] font-bold text-black">
+                    <p className="text-[28px] lg:text-[48px] leading-[100%] font-bold text-black">
                         RESELLERS
                     </p>
                 </div>
-
-                {/* 2x2 Grid with Central Element */}
                 <div className="relative max-w-[1250px] mx-auto">
-                    {/* Central Connecting Element */}
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 hidden sm:block">
                         <div className="w-20 h-20 lg:w-24 lg:h-24">
                             <Image
@@ -66,7 +63,6 @@ export const KeyBenefits = () => {
                         </div>
                     </div>
 
-                    {/* Grid Container */}
                     <section className="w-full py-10 sm:py-14 lg:py-20">
                         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 relative">

@@ -13,16 +13,13 @@ export default function ResellersPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
-      {/* Main Content */}
       <main className="pt-20">
-                                     <GrowYourBusiness />
-                    <Platform />
-                    <WhyBecomeReseller />
-                    <KeyBenefits />
-                    {/* <HowItWorks /> */}
+        <GrowYourBusiness />
+        <Platform />
+        <WhyBecomeReseller />
+        <KeyBenefits />
+        <HowItWorks />
       </main>
-
       <Footer />
     </div>
   );

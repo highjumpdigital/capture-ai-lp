@@ -41,7 +41,7 @@ export const HowItWorks = () => {
     ];
 
     return (
-        <section className="py-8 lg:py-16 bg-[#F9F9F9]">
+        <section className="py-6 lg:py-12 bg-[#F9F9F9]">
             <div className="max-w-[1353px] mx-auto px-4">
                 {/* Title */}
                 <div className="text-center mb-16">
