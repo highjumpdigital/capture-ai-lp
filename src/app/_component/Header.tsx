@@ -202,7 +202,7 @@ export const Header = () => {
           <div>
             <Image src={Logo} alt="Logo" width={190} height={19} />
           </div>
-          <div className="flex gap-10">
+          <div className="flex gap-4 xl:gap-10">
             <div
               onClick={() => navigateToSection("features")}
               className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${

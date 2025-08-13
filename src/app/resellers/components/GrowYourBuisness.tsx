@@ -27,10 +27,10 @@ export const GrowYourBusiness = () => {
 
           {/* Headings */}
           <div className="flex flex-col justify-center items-center gap-2">
-            <p className="text-[30px] sm:text-[64px] lg:text-[99px] font-semibold leading-[100%] text-[#FF4206] Cairo">
+            <p className="text-[30px] sm:text-[48px] lg:text-[64px] xl:text-[99px] font-semibold leading-[100%] text-[#FF4206] Cairo">
               GROW YOUR BUSINESS &
             </p>
-            <p className="text-[30px] sm:text-[64px] lg:text-[99px] font-bold leading-[100%] text-[#000000] Cairo tracking-[1px] sm:tracking-[2px] lg:tracking-[3.2px]">
+            <p className="text-[30px] sm:text-[48px] lg:text-[64px] xl:text-[99px] font-bold leading-[100%] text-[#000000] Cairo tracking-[1px] sm:tracking-[2px] lg:tracking-[3.2px]">
               BOOST YOUR INCOME
             </p>
           </div>
