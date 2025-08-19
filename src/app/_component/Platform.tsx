@@ -55,7 +55,6 @@ export const Platform = () => {
             height={34}
             width={33}
           />
-          
         </div>
       ))}
     </div>
