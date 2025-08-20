@@ -134,7 +134,7 @@ export const WhyBecomeReseller = () => {
                       {item.content.map((text, textIndex) => (
                         <li
                           key={textIndex}
-                          className={`text-[#000000] ${inter.className} font-light text-[14px] sm:text-[18px] lg:text-[24px] leading-[22px] tracking-[0.48px]`}
+                          className={`text-[#000000] ${inter.className} font-light text-[14px] sm:text-[18px] lg:text-[24px] leading-[30px] tracking-[0.48px]`}
                           dangerouslySetInnerHTML={{
                             __html: text.replace(
                               /\*\*(.*?)\*\*/g,

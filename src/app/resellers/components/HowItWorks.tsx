@@ -51,7 +51,7 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Steps */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 mb-16 justify-items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-16 justify-items-center">
     {steps.map((step, index) => {
         const isActive = hoveredIndex === index;
         return (
