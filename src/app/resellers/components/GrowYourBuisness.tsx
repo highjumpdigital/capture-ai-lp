@@ -47,7 +47,7 @@ export const GrowYourBusiness = () => {
           {/* Button */}
           <FilledButton
             buttonTitle="REGISTER TO APPLY"
-            className="h-10 w-[141px] bg-[#FF4206] rounded-[8px] font-bold text-sm sm:text-base leading-4 text-white"
+            className="h-10 w-[200px] px-8 bg-[#FF4206] rounded-lg font-bold text-[14px] sm:text-[16px] text-white"
             onClick={() => {
               window.location.href = "/resellers/register";
             }}
