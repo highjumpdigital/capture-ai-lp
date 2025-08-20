@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { Sofia_Sans_Semi_Condensed } from "next/font/google";
@@ -16,6 +18,7 @@ const sofiaSans = Sofia_Sans_Semi_Condensed({
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
   const router = useRouter();
   const pathname = usePathname();
 
@@ -36,6 +39,49 @@ export const Header = () => {
       router.push(`/#${sectionId}`);
     }
   };
+
+  // Function to check if a section is active
+  const isActiveSection = (sectionId: string) => {
+    return activeSection === sectionId;
+  };
+
+  // Function to check if resellers page is active
+  const isResellersActive = () => {
+    return pathname === '/resellers';
+  };
+
+  // Scroll event listener to detect active section
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (pathname === '/') {
+        const sections = ['features', 'work', 'solutions', 'faq'];
+        const scrollPosition = window.scrollY + 100; // Offset for header
+
+        for (const sectionId of sections) {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const { offsetTop, offsetHeight } = element;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(sectionId);
+              return;
+            }
+          }
+        }
+        setActiveSection('');
+      }
+    };
+
+    // Set initial active section based on URL hash
+    if (pathname === '/') {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && ['features', 'work', 'solutions', 'faq'].includes(hash)) {
+        setActiveSection(hash);
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname]);
 
  
 
@@ -76,7 +122,9 @@ export const Header = () => {
                 navigateToSection("features");
               }, 300);
             }}
-            className="font-bold text-white cursor-pointer"
+            className={`font-bold cursor-pointer transition-colors duration-300 ${
+              isActiveSection("features") ? "text-[#FF4206]" : "text-white"
+            }`}
           >
             {constants.header.FEATURES}
           </div>
@@ -87,7 +135,9 @@ export const Header = () => {
                 navigateToSection("work");
               }, 300);
             }}
-            className="font-bold text-white cursor-pointer"
+            className={`font-bold cursor-pointer transition-colors duration-300 ${
+              isActiveSection("work") ? "text-[#FF4206]" : "text-white"
+            }`}
           >
             {constants.header.howitwork}
           </div>
@@ -98,7 +148,9 @@ export const Header = () => {
                 navigateToSection("solutions");
               }, 300);
             }}
-            className="font-bold text-white cursor-pointer"
+            className={`font-bold cursor-pointer transition-colors duration-300 ${
+              isActiveSection("solutions") ? "text-[#FF4206]" : "text-white"
+            }`}
           >
             {constants.header.SOLUTIONS}
           </div>
@@ -109,9 +161,24 @@ export const Header = () => {
                 navigateToSection("faq");
               }, 300);
             }}
-            className="font-bold text-white cursor-pointer"
+            className={`font-bold cursor-pointer transition-colors duration-300 ${
+              isActiveSection("faq") ? "text-[#FF4206]" : "text-white"
+            }`}
           >
             {constants.header.FAQ}
+          </div>
+          <div
+            onClick={() => {
+              toggleMobileMenu();
+              setTimeout(() => {
+                router.push('/resellers');
+              }, 300);
+            }}
+            className={`font-bold cursor-pointer transition-colors duration-300 ${
+              isResellersActive() ? "text-[#FF4206]" : "text-white"
+            }`}
+          >
+            {constants.header.RESELLERS}
           </div>
           <div
             onClick={handleSignIn}
@@ -135,33 +202,74 @@ export const Header = () => {
           <div>
             <Image src={Logo} alt="Logo" width={190} height={19} />
           </div>
-          <div className="flex gap-10">
+          <div className="flex gap-4 xl:gap-10">
             <div
               onClick={() => navigateToSection("features")}
-              className="font-bold text-4 leading-4 text-white cursor-pointer"
+              className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
+                isActiveSection("features") 
+                  ? "text-[#FF4206]" 
+                  : "text-white hover:text-[#FF4206]"
+              }`}
             >
               {constants.header.FEATURES}
+              {isActiveSection("features") && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF4206]"></div>
+              )}
             </div>
             <div
-              className="font-bold text-4 leading-4 text-white cursor-pointer"
+              className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
+                isActiveSection("work") 
+                  ? "text-[#FF4206]" 
+                  : "text-white hover:text-[#FF4206]"
+              }`}
               onClick={() => navigateToSection("work")}
             >
               {constants.header.howitwork}
+              {isActiveSection("work") && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF4206]"></div>
+              )}
             </div>
             <div
               onClick={() => navigateToSection("solutions")}
-              className="font-bold text-4 leading-4 text-white cursor-pointer"
+              className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
+                isActiveSection("solutions") 
+                  ? "text-[#FF4206]" 
+                  : "text-white hover:text-[#FF4206]"
+              }`}
             >
               {constants.header.SOLUTIONS}
+              {isActiveSection("solutions") && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF4206]"></div>
+              )}
             </div>
             <div
               onClick={() => navigateToSection("faq")}
-              className="font-bold text-4 leading-4 text-white cursor-pointer"
+              className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
+                isActiveSection("faq") 
+                  ? "text-[#FF4206]" 
+                  : "text-white hover:text-[#FF4206]"
+              }`}
             >
               {constants.header.FAQ}
+              {isActiveSection("faq") && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF4206]"></div>
+              )}
+            </div>
+            <div
+              onClick={() => router.push('/resellers')}
+              className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
+                isResellersActive() 
+                  ? "text-[#FF4206]" 
+                  : "text-white hover:text-[#FF4206]"
+              }`}
+            >
+              {constants.header.RESELLERS}
+              {isResellersActive() && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF4206]"></div>
+              )}
             </div>
           </div>
-          <div className="flex gap-5 justify-center items-center">
+          <div className="flex gap-2 justify-center items-center">
             <div
               onClick={handleSignIn}
               className="text-[#FF4206] font-bold text-4 leading-4 cursor-pointer"

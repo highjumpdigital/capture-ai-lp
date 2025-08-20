@@ -1,3 +1,5 @@
+"use client";
+
 import Logo from "@/app/assets/header/Group 73.svg";
 import React, { useEffect, useState } from "react";
 import { openSupportEmail } from "@/app/_component/utils/support";
