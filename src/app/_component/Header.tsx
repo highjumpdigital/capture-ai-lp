@@ -55,19 +55,26 @@ export const Header = () => {
     const handleScroll = () => {
       if (pathname === '/') {
         const sections = ['features', 'work', 'solutions', 'faq'];
-        const scrollPosition = window.scrollY + 100; // Offset for header
+        const scrollPosition = window.scrollY + window.innerHeight / 2; // Middle of viewport
+        
+        let closestSection = '';
+        let closestDistance = Infinity;
 
         for (const sectionId of sections) {
           const element = document.getElementById(sectionId);
           if (element) {
             const { offsetTop, offsetHeight } = element;
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-              setActiveSection(sectionId);
-              return;
+            const sectionMiddle = offsetTop + offsetHeight / 2;
+            const distance = Math.abs(scrollPosition - sectionMiddle);
+            
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestSection = sectionId;
             }
           }
         }
-        setActiveSection('');
+        
+        setActiveSection(closestSection);
       }
     };
 
@@ -76,10 +83,18 @@ export const Header = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash && ['features', 'work', 'solutions', 'faq'].includes(hash)) {
         setActiveSection(hash);
+        // Scroll to the section after a brief delay
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
       }
     }
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 

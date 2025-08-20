@@ -33,9 +33,8 @@ export const FAQ = () => {
   }, [isTransitioning, activeIndex, nextIndex]);
 
   return (
-    <div className="flex justify-center items-center">
+    <div id="faq" className="flex justify-center items-center">
       <div
-        id="faq"
         style={{
           backgroundImage: `url('/background/faqimage.svg')`,
           backgroundSize: "cover",
