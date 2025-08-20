@@ -113,9 +113,11 @@ export const HowItWorks = () => {
                 {/* Button */}
                 <div className="text-center flex justify-center">
                     <FilledButton
-                        buttonTitle="GET STARTED AS A RESELLER NOW"
-                        className="h-10 w-[298px] px-8 bg-[#FF4206] rounded-lg font-bold text-[14px] sm:text-[16px] text-white"
-                        onClick={() => {}}
+                        buttonTitle="REGISTER TO APPLY"
+                        className="h-10 w-[200px] px-8 bg-[#FF4206] rounded-lg font-bold text-[14px] sm:text-[16px] text-white"
+                        onClick={() => {
+                            window.location.href = "/resellers/register";
+                        }}
                     />
                 </div>
             </div>
