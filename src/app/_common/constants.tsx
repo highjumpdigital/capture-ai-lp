@@ -428,6 +428,7 @@ export const constants = {
     howitwork: "HOW IT WORKS",
     SOLUTIONS: "SOLUTIONS",
     FAQ: "FAQ'S",
+    RESELLERS: "RESELLERS",
     login: "LOG IN",
   },
   buttons: {
