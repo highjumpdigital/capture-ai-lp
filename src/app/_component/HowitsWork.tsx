@@ -36,13 +36,13 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
 
   return (
         <div
-      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className} py-14`}
+      className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className} py-7 sm:py-[50px]`}
     style={{
       backgroundImage: `url(${bgImage.src})`,
     }}
     id="work"
   >
-      <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px] py-14">
+      <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px]">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
           <div className="w-full lg:w-1/2 p-1 lg:p-3 flex items-center justify-center lg:justify-start mb-6 lg:mb-0">

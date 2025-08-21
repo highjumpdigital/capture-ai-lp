@@ -43,7 +43,7 @@ export default function HowItWorkv2({ parentScrollRef }: HowItWorkv2Props) {
   //   id="work"
   // >
   <div
-  className={`h-auto ${cairo.className} py-14`}
+  className={`h-auto ${cairo.className} py-7 sm:py-[50px]`}
   style={{
     backgroundImage: `url(${bgImage.src})`,
     backgroundSize: "100% 100%", // object-fill equivalent
