@@ -250,6 +250,11 @@ export const FaqData = [
     description:
       "The conversation will remain active through different page visits, until the user closes their browser tab",
   },
+  {
+    title: "Does the chatbot integrate with Google Analytics?",
+    description:
+      "Yes, we offer a Google Analytics integration natively in the dashboard. You can connect your account and we will send events to your account when leads or details are captured.",
+  },
   
 ];
 

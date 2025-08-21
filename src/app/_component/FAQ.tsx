@@ -40,7 +40,7 @@ export const FAQ = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="faq flex justify-center px-[20px] relative z-10 pt-8 pb-[20px] sm:py-[100px] items-start max"
+        className="faq flex justify-center px-[20px] relative z-10 pt-[80px] pb-[80px] sm:pt-[120px] sm:pb-[120px] items-start max"
       >
         <div className="flex flex-col lg:flex-row gap-5 justify-between items-center sm:items-start sm:justify-between w-full max-w-[1311px] mx-auto">
           {/* Left Section */}
