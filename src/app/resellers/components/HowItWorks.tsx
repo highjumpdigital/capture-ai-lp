@@ -45,7 +45,7 @@ export const HowItWorks = () => {
             <div className="max-w-[1353px] mx-auto px-4">
                 {/* Title */}
                 <div className="text-center mb-16">
-                    <h2 className="text-[36px] sm:text-[48px] lg:text-[108px] font-bold text-[#000000CC] Cairo">
+                    <h2 className="text-[36px] sm:text-[48px] md:text-[60px] lg:text-[116px] font-bold text-[#000000] Cairo">
                         HOW IT WORKS
                     </h2>
                 </div>
@@ -74,7 +74,7 @@ export const HowItWorks = () => {
                 {/* Step Number */}
                 <div
                     className={`w-16 h-16 sm:w-20 sm:h-20 absolute top-0 left-2 rounded-full flex items-center justify-center text-white font-bold text-xl sm:text-[32px]
-                        ${isActive ? "bg-[#FF4206]" : "bg-[#333333]"}`}
+                        ${isActive ? "bg-[#FF4206]" : "bg-[#000000]"}`}
                 >
                     {step.number}
                 </div>
@@ -91,7 +91,7 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center px-4 text-[16px] sm:text-[20px] font-normal text-[#000000CC] leading-[1.4] Cairo">
+                <h3 className="text-center px-4 text-[16px] sm:text-[22px] font-medium sm:font-normal text-[#000000] leading-[1.4] Cairo">
                     {step.title}
                 </h3>
             </div>

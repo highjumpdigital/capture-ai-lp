@@ -83,7 +83,7 @@ export const WhyBecomeReseller = () => {
 
         {/* Accordion */}
         <div
-          className={`max-w-[1250px] mx-auto ${
+          className={`max-w-full mx-auto ${
             expandedIndex === -1 ? "min-h-[653px]" : "sm:min-h-[653px]"
           }`}
         >
@@ -100,7 +100,7 @@ export const WhyBecomeReseller = () => {
                     >
                       {item.number}
                     </span>
-                    <h3 className="text-[16px] sm:text-[28px] max-w-[200px] sm:max-w-none lg:text-[48px] font-normal text-black Cairo leading-tight">
+                    <h3 className="text-[16px] sm:text-[28px] max-w-[200px] sm:font-normal font-bold  sm:max-w-none lg:text-[48px]  text-black Cairo leading-tight">
                       {item.title}
                     </h3>
                   </div>
@@ -134,7 +134,7 @@ export const WhyBecomeReseller = () => {
                       {item.content.map((text, textIndex) => (
                         <li
                           key={textIndex}
-                          className={`text-[#000000] ${inter.className} font-light text-[14px] sm:text-[18px] lg:text-[24px] leading-[30px] tracking-[0.48px]`}
+                          className={`text-[#000000] Inter font-medium sm:font-normal text-[14px] sm:text-[18px] lg:text-[24px] sm:leading-[30px] leading-[24px] tracking-[0.48px]`}
                           dangerouslySetInnerHTML={{
                             __html: text.replace(
                               /\*\*(.*?)\*\*/g,
