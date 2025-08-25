@@ -46,7 +46,7 @@ export const KeyBenefits = () => {
                     <p className="text-[28px] lg:text-[48px] leading-[100%] font-normal text-[#FF4206]  Cairo">
                         KEY BENEFITS FOR
                     </p>
-                    <p className="text-[28px] lg:text-[48px] leading-[100%] font-bold text-black">
+                    <p className="text-[28px] lg:text-[48px] leading-[100%] font-bold text-black Cairo">
                         RESELLERS
                     </p>
                 </div>
@@ -89,11 +89,11 @@ export const KeyBenefits = () => {
                                                     className="w-[60px] h-[60px]"
                                                 />
                                             </div>
-                                            <h3 className="text-[16px] lg:text-[24px] font-bold text-black mb-3 Cairo">
+                                            <h3 className="text-[16px] lg:text-[20px] font-bold text-black mb-3 Cairo">
                                                 {benefit.title}
                                             </h3>
                                             <p
-                                                className={`text-[12px] lg:text-[16px] text-[#000000CC] font-medium leading-[22px] ${inter.className}`}
+                                                className={`text-[12px] lg:text-[16px] text-[#000000CC] font-medium leading-[22px] Inter`}
                                             >
                                                 {benefit.description}
                                             </p>
