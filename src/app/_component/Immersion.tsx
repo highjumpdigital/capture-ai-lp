@@ -32,7 +32,7 @@ export const Immersion = () => {
               className="max-w-[400px] min-h-[127px] w-full bg-[#FFFFFF33] border-2 border-[rgba(240,242,246)] border-solid rounded-[5px]  z-10 flex gap-[35px] justify-between items-center mt-[8px] p-[18px] transition-all duration-300 hover:shadow-xl"
             >
               <div className="h-[72px] w-[72px] flex justify-center items-center rouneded-[5px] gifshadow bg-[white]">
-                <Image src={item.img} alt="Image"  className="rounded-[5px]" height={36} width={36}  />
+                <Image src={item.img} alt="Image" className="rounded-[5px]" height={36} width={36} unoptimized />
               </div>
 
               <div>
