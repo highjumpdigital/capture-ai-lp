@@ -380,12 +380,12 @@ export const ChatPerformancedata = [
   {
     title: "Provide company documents",
     image: provide,
-    detail: "Easily share essential company documents with your Customers. Provide quick access to key resources through the chatbot. "
+    detail: "Easily share essential company documents with your customers. Provide quick access to key resources through the chatbot."
   },
   {
     title: "Showcase work",
     image: showcase,
-    detail: "Showcase your work to your customers, from before and after images to showcasing your most recent testimonials."
+    detail: "Showcase photo/image examples of your work to inspire confidence and trust before capturing the lead."
   },
   {
     title: "Suggestion capabilities",
