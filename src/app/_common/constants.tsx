@@ -393,6 +393,11 @@ export const ChatPerformancedata = [
     image: suggestion,
     detail: "With suggestion capabilities, the chatbot can offer tailored responses urging the user to take a desired action."
   },
+  // {
+  //   title: "PRICE QUOTING CAPABILITIES",
+  //   image: pricingquote,
+  //   detail: "Your AI Agent can provide calculated pricing quotes based on instructions provided by you, written in natural language.  "
+  // },
   {
     title: "PRICE QUOTING CAPABILITIES",
     image: pricingquote,
