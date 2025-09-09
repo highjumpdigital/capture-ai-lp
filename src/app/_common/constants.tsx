@@ -8,6 +8,7 @@ import thirdpartypic from "../assets/performance/e1.svg"
 import showcase from "../assets/performance/e4.svg"
 import leadcapture from "../assets/performance/e2.svg"
 import userintent from "../assets/performance/e6.svg"
+import pricingquote from "../assets/performance/e7.svg"
 import suggestion from "../assets/performance/e5.svg"
 import personicon from "../assets/price/personicon.svg"
 import materialsymbolrocket from "../assets/price/material-symbols_rocket.svg"
@@ -393,9 +394,9 @@ export const ChatPerformancedata = [
     detail: "With suggestion capabilities, the chatbot can offer tailored responses urging the user to take a desired action."
   },
   {
-    title: "User intent configuration",
-    image: userintent,
-    detail: "Customize your chatbot's responses based on user intent for more personalized and accurate interactions.  "
+    title: "PRICE QUOTING CAPABILITIES",
+    image: pricingquote,
+    detail: "Your AI Agent can provide calculated pricing quotes based on instructions provided by you, written in natural language.  "
   },
 ];
 export const constants = {
