@@ -403,6 +403,7 @@ export const ChatPerformancedata = [
     image: pricingquote,
     detail: "Your AI Agent can provide calculated pricing quotes based on instructions provided by you, written in natural language.  "
   },
+  
 ];
 export const constants = {
   immersion: {
