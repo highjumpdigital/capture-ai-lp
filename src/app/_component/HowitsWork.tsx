@@ -3,7 +3,7 @@
 "use client";
 
 import bgImage from "../assets/bgm.png";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Cairo } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { cards } from "../_common/constants";
@@ -35,13 +35,13 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
   }, []);
 
   return (
-        <div
+    <div
       className={`h-auto bg-cover bg-center bg-no-repeat ${cairo.className} py-7 sm:py-[50px]`}
-    style={{
-      backgroundImage: `url(${bgImage.src})`,
-    }}
-    id="work"
-  >
+      style={{
+        backgroundImage: `url(${bgImage.src})`,
+      }}
+      id="work"
+    >
       <div className="max-w-[1540px] mx-auto px-4 sm:px-5 lg:px-[100px]">
         <div className="flex flex-col justify-center items-center h-full lg:flex-row lg:gap-6">
           {/* Left Section */}
@@ -123,8 +123,8 @@ export default function HowitsWork({ parentScrollRef }: HowitsWorkProps) {
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex 
-                        ? "bg-orange w-8" 
+                      index === currentIndex
+                        ? "bg-orange w-8"
                         : "bg-gray-300 hover:bg-gray-400"
                     }`}
                     aria-label={`Go to card ${index + 1}`}
