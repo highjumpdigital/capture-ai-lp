@@ -256,6 +256,11 @@ export const FaqData = [
     description:
       "Yes, we offer a Google Analytics integration natively in the dashboard. You can connect your account and we will send events to your account when leads or details are captured.",
   },
+  {
+    title: "What technology powers the AI chatbot?",
+    description:
+      "We use a combination of Open AI's GPT models, from GPT-4o to GPT-5. Free plan users use GPT 4o mini, advanced users use higher models for increased performance",
+  },
   
 ];
 
