@@ -43,7 +43,7 @@ export const Platform = () => {
         backgroundImage: `radial-gradient(49.97% 105.43% at 50.03% 100%, ${colors.platform.gradient.start} 0%, ${colors.platform.gradient.end} 100%) !important`
       }}
     >
-      <div className="flex justify-start items-centertext-[10px] xs:text-[12px] sm:text-[14px] md:text-[16px] leading-3 sm:leading-5 tracking-tight text-white/80 font-bold">
+      <div className="flex justify-start items-center text-[10px] xs:text-[12px] sm:text-[14px] md:text-[16px] leading-3 sm:leading-5 text-white font-bold">
         {constants.platform.title}
       </div>
 
@@ -55,7 +55,7 @@ export const Platform = () => {
             height={34}
             width={33}
           />
-
+          
         </div>
       ))}
     </div>

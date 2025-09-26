@@ -45,20 +45,20 @@ export default function BookDemoPage() {
         <Header />
 
         {/* Main Hero Section */}
-        <section className="py-8 sm:py-12 md:py-16 lg:-my-24 xl:-my-24 2xl:-my-24 lg:-mb-36 xl:-mb-36 2xl:-mb-36 bg-transparent w-full mx-auto">
-          <div className="max-w-[1430px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-            <div className="flex flex-col xl:flex-row justify-between items-center">
+        <section className="py-8 my-[-100px] sm:py-2 md:py-2 sm:md:-my-16 md:-my-20 lg:-my-24 xl:-my-24 2xl:-my-24 lg:-mb-36 xl:-mb-36 2xl:-mb-36 bg-transparent w-full mx-auto">
+          <div className="max-w-[1450px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+            <div className="flex flex-col xl:flex-row justify-between items-center md:my-14">
 
               {/* Left Side - Content */}
               <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-6 mt-[180px] xl:mt-0 ">
                 {/* Main Heading */}
-                <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold">
+                <div className="space-y-10 text-center sm:text-left sm:space-y-5 md:space-y-6">
+                  <h1 className="text-3xl text-[40px] text-center sm:text-left sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold">
                     <span className="text-black Cairo">SCHEDULE A </span>
                     <span className="text-[#FF4206] Cairo font-normal">DEMO.</span>
                   </h1>
 
-                  <p className="text-base text-black/80 font-bold max-w-[480px] Inter">
+                  <p className="text-[12px] sm:text-base text-black/80 font-bold max-w-[480px] Inter">
                     See Capture AI In Action. Watch The 24/7 Chatbot Capture Leads,
                     Qualify Buyers, And Lift Conversion Across Web And Social.
                   </p>
@@ -74,7 +74,7 @@ export default function BookDemoPage() {
                       height={16}
                       className="mt-1 flex-shrink-0"
                     />
-                    <p className="text-sm font-medium text-black/80 Inter leading-relaxed">
+                    <p className="text-[12px] sm:text-sm font-medium text-black/80 Inter leading-relaxed">
                       Turn More Visits Into Pipeline With Guided Chats And Smart Prompts
                     </p>
                   </div>
@@ -86,7 +86,7 @@ export default function BookDemoPage() {
                       height={16}
                       className="mt-1 flex-shrink-0"
                     />
-                    <p className="text-sm font-medium text-black/80 Inter leading-relaxed">
+                    <p className="text-[12px] sm:text-sm font-medium text-black/80 Inter leading-relaxed">
                       Cut Reply Time To Zero With Always-On Support That Logs Every Chat
                     </p>
                   </div>
@@ -98,12 +98,12 @@ export default function BookDemoPage() {
                       height={16}
                       className="mt-1 flex-shrink-0"
                     />
-                    <p className="text-sm font-medium text-black/80 Inter leading-relaxed">
+                    <p className="text-[12px] sm:text-sm font-medium text-black/80 Inter leading-relaxed">
                       Send Clean Lead Data To Your Team By Email And SMS With Alerts
                     </p>
                   </div>
                 </div>
-                <p className="text-black/80 leading-relaxed Inter text-base font-bold max-w-[450px]">
+                <p className="text-[12px] sm:text-base text-black/80 leading-relaxed Inter text-base font-bold max-w-[450px]">
                   Book A Slot Now. We Tailor The Demo To Your Site, Use Case, And Stack.
                   Leave With Clear Next Steps.
                 </p>
@@ -126,7 +126,7 @@ export default function BookDemoPage() {
                       className="w-[130px] h-auto"
                     />
                   </div>
-                  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 md:gap-6">
+                  <div className="flex flex-row items-start gap-3 sm:gap-4 md:gap-6">
                     <div className="flex items-center gap-1 mb-1">
                       <Image
                         src={BookDemo7}
@@ -163,10 +163,10 @@ export default function BookDemoPage() {
 
                {/* Right Side - UI Mockups */}
                <div 
-                 className="relative mt-8 sm:mt-[130px] xl:mt-56 "
+                 className="relative mt-20 sm:mt-[130px] xl:mt-56 ml-20 xl:ml-0"
                >
                  <div 
-                 className="absolute top-[-40px] w-[400px] h-[425px] bg-[#FF4206] rounded-full xl:blur-[80px] sm:blur-[60px]"
+                 className="absolute top-[-40px] md:w-[400px] md:h-[425px] sm:w-[300px] sm:h-[325px] w-[200px] h-[225px] bg-[#FF4206] rounded-full xl:blur-[80px] blur-[60px]"
                ></div>
 
                 {/* Main Dashboard Mockup */}
@@ -176,12 +176,12 @@ export default function BookDemoPage() {
                     alt="Calendar Interface"
                     width={469}
                     height={333}
-                    className="w-[469px] h-[333px] object-contain border border-black rounded-xl"
+                    className="md:w-[469px] md:h-[333px] sm:w-[369px] sm:h-auto w-[269px] h-auto object-contain border border-black rounded-xl"
                   />
                 </div>
 
                 {/* Dashboard Video Mockup */}
-                <div className="relative  bottom-[210px] left-[-140px]  z-20">
+                <div className="relative  sm:bottom-[210px] bottom-[150px] sm:left-[-140px] left-[-80px]  z-20">
                   <video
                     src="/dashboard_loop.mp4"
                     autoPlay
@@ -190,7 +190,7 @@ export default function BookDemoPage() {
                     playsInline
                     width={469}
                     height={292}
-                    className=" w-[469px] h-[292px] border border-black rounded-xl"
+                    className=" md:w-[469px] md:h-[292px] sm:w-[369px] sm:h-auto w-[269px] h-auto border border-black rounded-xl"
                   />
                 </div>
 
@@ -229,7 +229,7 @@ export default function BookDemoPage() {
         <CalendlyModal
           isOpen={isCalendlyOpen}
           onClose={handleCloseCalendly}
-          calendlyUrl="https://calendly.com/talibabbas-devexcelit/30minhttps://calendly.com/talibabbas-devexcelit/30min?back=1&month=2025-09https://calendly.com/talibabbas-devexcelit/30min" // Replace with your actual Calendly URL
+          calendlyUrl="https://calendly.com/talibabbas-devexcelit/30min"
         />
       </div>
     </div>

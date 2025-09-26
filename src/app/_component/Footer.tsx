@@ -72,19 +72,19 @@ export const Footer: React.FC = () => {
                 alt=""
               />
             </Link>
-            <h1 className={`text-white text-sm font-extralight ml-6 mt-2 ${inter.className}`}>Powered by</h1><span className="ml-0.5 mt-1">
+            <h1 className={`text-white text-[12px] sm:text-sm font-extralight ml-6 mt-2 ${inter.className}`}>Powered by</h1><span className="ml-0.5 mt-1">
               <Image src={openAi} alt="open-ai" />
             </span>
           </div>
           <div
-            className={`text-[#FFFFFFCC] text-base font-semibold w-full flex justify-start items-end leading-6 lg:max-w-[400px] ${inter.className} tracking-[0.08px]`}
+            className={`text-[#FFFFFFCC] text-base font-semibold w-full flex justify-center sm:justify-start items-end leading-6 lg:max-w-[400px] ${inter.className} tracking-[0.08px]`}
           >
             {`© ${currentYear} Capture AI. All Rights Reserved.`}
           </div>
         </div>
 
         {/* Right Section - Social Icons and Navigation Links */}
-        <div className="flex flex-col items-end space-y-8">
+        <div className="flex flex-col items-center space-y-8">
           {/* Social Media Icons - Top Row */}
           <div className="flex space-x-2">
             {socialLinks.map(({ icon, url, alt }, index) => (
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links - Bottom Row */}
-          <div className={`flex space-x-12 mr-2 text-white text-base ${inter.className}`}>
+          <div className={`flex space-x-28 sm:space-x-12 mr-2 text-white text-base ${inter.className}`}>
             <Link
               href="https://cptr.ai/terms-of-service"
               className="hover:text-white transition-colors text-base font-extralight"
