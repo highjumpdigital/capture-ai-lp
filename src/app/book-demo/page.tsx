@@ -11,6 +11,8 @@ import { CalendlyModal } from "../_component/CalendlyModal";
 // Import SVG assets
 import BookDemo5 from "../assets/tick.svg";
 import calendarImg from "../assets/calendar_img.svg";
+import calendly from "../assets/calendly.svg";
+import ellipse from "../assets/ellipse.svg";
 import BookDemo6 from "../assets/funded-startups.png";
 import BookDemo7 from "../assets/black-tick.png";
 import DemoPageBg from "../assets/demo_page_bg.png";
@@ -43,115 +45,115 @@ export default function BookDemoPage() {
         <Header />
 
         {/* Main Hero Section */}
-        <section className="lg:py-52 bg-transparent w-full mx-auto">
-          <div className="max-w-[1700px] mx-auto px-4 sm:px-6 tracking-tighter">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <section className="-my-24 -mb-36 bg-transparent w-full mx-auto">
+          <div className="max-w-[1430px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-16 xl:gap-20 items-start lg:items-center">
 
               {/* Left Side - Content */}
-              <div className="space-y-6">
+              <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-6 order-2 lg:order-1">
                 {/* Main Heading */}
-                <div className="space-y-4">
-                  <h1 className="text-7xl font-bold">
+                <div className="space-y-4 sm:space-y-5 md:space-y-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold">
                     <span className="text-black Cairo">SCHEDULE A </span>
                     <span className="text-[#FF4206] Cairo font-normal">DEMO.</span>
                   </h1>
 
-                  <p className="text-2xl text-gray-800 font-bold leading-snug max-w-[650px] Inter pt-5">
+                  <p className="text-base text-black/80 font-bold max-w-[480px] Inter">
                     See Capture AI In Action. Watch The 24/7 Chatbot Capture Leads,
                     Qualify Buyers, And Lift Conversion Across Web And Social.
                   </p>
                 </div>
 
                 {/* Benefits List */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-4">
+                <div className="space-y-1.5 mt-5">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     <Image
                       src={BookDemo5}
                       alt="Dashboard Interface"
-                      width={14}
-                      height={14}
-                      className="w-5 h-auto"
+                      width={16}
+                      height={16}
+                      className="mt-1 flex-shrink-0"
                     />
-                    <p className="text-lg font-medium text-gray-700 Inter">
+                    <p className="text-sm font-medium text-black/80 Inter leading-relaxed">
                       Turn More Visits Into Pipeline With Guided Chats And Smart Prompts
                     </p>
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     <Image
                       src={BookDemo5}
                       alt="Dashboard Interface"
-                      width={14}
-                      height={14}
-                      className="w-5 h-auto"
+                      width={16}
+                      height={16}
+                      className="mt-1 flex-shrink-0"
                     />
-                    <p className="text-lg font-medium text-gray-700 Inter">
+                    <p className="text-sm font-medium text-black/80 Inter leading-relaxed">
                       Cut Reply Time To Zero With Always-On Support That Logs Every Chat
                     </p>
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     <Image
                       src={BookDemo5}
                       alt="Dashboard Interface"
-                      width={14}
-                      height={14}
-                      className="w-5 h-auto"
+                      width={16}
+                      height={16}
+                      className="mt-1 flex-shrink-0"
                     />
-                    <p className="text-lg font-medium text-gray-700 Inter">
+                    <p className="text-sm font-medium text-black/80 Inter leading-relaxed">
                       Send Clean Lead Data To Your Team By Email And SMS With Alerts
                     </p>
                   </div>
                 </div>
-                <p className="text-gray-800 leading-relaxed Inter text-xl font-bold max-w-[550px]">
+                <p className="text-black/80 leading-relaxed Inter text-base font-bold max-w-[450px]">
                   Book A Slot Now. We Tailor The Demo To Your Site, Use Case, And Stack.
                   Leave With Clear Next Steps.
                 </p>
 
                 {/* CTA Button */}
-                <div className="pt-4">
+                <div className="">
                   <FilledButton
                     buttonTitle="BOOK A DEMO"
-                    className="text-xl font-bold Cairo w-[180px] h-[50px] bg-[#FF4206] text-white"
+                    className="text-base sm:text-lg md:text-base font-bold Cairo w-[150px]  h-[40px] bg-[#FF4206] text-white hover:bg-[#e63900] transition-colors duration-200"
                     onClick={handleBookDemoClick}
                   />
                 </div>
 
                 {/* Target Audience Icons */}
-                <div className="flex flex-col items-start gap-6 pt-4">
+                <div className="flex flex-col items-start gap-0.5">
                   <div>
                     <Image
                       src={BookDemo6}
                       alt="Dashboard Interface"
-                      className="w-[180px] h-auto"
+                      className="w-[130px] h-auto"
                     />
                   </div>
-                  <div className="flex flex-row items-start gap-4 -mt-4">
-                    <div className="flex items-center gap-1">
+                  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 md:gap-6">
+                    <div className="flex items-center gap-1 mb-1">
                       <Image
                         src={BookDemo7}
                         alt="Dashboard Interface"
-                        className="w-[12px] h-[12px]"
+                        className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px]"
                       />
-                      <p className="text-base font-light text-black Cairo">
+                      <p className="text-xs font-light text-black Cairo">
                         Funded Startups.
                       </p>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mb-1">
                       <Image
                         src={BookDemo7}
                         alt="Dashboard Interface"
-                        className="w-[12px] h-[12px]"
+                        className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px]"
                       />
-                      <p className="text-base font-light text-black Cairo">
+                      <p className="text-xs font-light text-black Cairo">
                         E-commerce Brands.
                       </p>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mb-1">
                       <Image
                         src={BookDemo7}
                         alt="Dashboard Interface"
-                        className="w-[12px] h-[12px]"
+                        className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px]"
                       />
-                      <p className="text-base font-light text-black Cairo">
+                      <p className="text-xs font-light text-black Cairo">
                         B2B Teams.
                       </p>
                     </div>
@@ -160,34 +162,40 @@ export default function BookDemoPage() {
               </div>
 
               {/* Right Side - UI Mockups */}
-              <div className="relative">
-                {/* Reddish/Orange Background Glow */}
-                <div className="absolute inset-0 z-0 flex items-center justify-center">
-                  <div className="w-[600px] h-[600px] bg-gradient-radial from-red-600/90 via-orange-600 to-transparent rounded-full blur-[90px]"></div>
-                </div>
-
-                {/* Main Dashboard Mockup */}
-                <div className="relative z-10 h-full w-full -right-36 -top-10">
+              <div className="relative mt-8 sm:mt-12 lg:mt-56 order-1 lg:order-2 h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] xl:h-[750px] 2xl:h-[800px]">
+                {/* Professional Background Ellipse */}
+                <div className="absolute bottom-20 -left-20 z-0 blur">
                   <Image
-                    src={calendarImg}
-                    alt="Calendar Interface"
-                    width={600}
-                    height={400}
-                    className="w-[700px] h-full object-contain"
+                    src={ellipse}
+                    alt="Background Design Element"
+                    width={999}
+                    height={900}
+                    className="w-[999px] h-[900px] object-contain"
                   />
                 </div>
 
-                {/* Calendar Mockup */}
-                <div className="absolute -bottom-28 -left-[70px] z-20">
+                {/* Main Dashboard Mockup */}
+                <div className="absolute top-14 left-1/2 transform -translate-x-1/2 lg:left-auto lg:right-0 lg:transform-none z-10">
+                  <Image
+                    src={calendly}
+                    alt="Calendar Interface"
+                    width={469}
+                    height={333}
+                    className="w-[469px] h-[333px] object-contain border border-black rounded-xl"
+                  />
+                </div>
+
+                {/* Dashboard Video Mockup */}
+                <div className="absolute bottom-[300px] left-0 sm:left-4 md:left-8 lg:-left-16 xl:-left-20 2xl:-left-0 z-20">
                   <video
                     src="/dashboard_loop.mp4"
                     autoPlay
                     muted
                     loop
                     playsInline
-                    width={300}
-                    height={200}
-                    className="w-[700px] h-auto border-2 border-black rounded-2xl"
+                    width={469}
+                    height={292}
+                    className="w-[469px] h-[292px] border border-black rounded-xl"
                   />
                 </div>
 
@@ -226,7 +234,7 @@ export default function BookDemoPage() {
         <CalendlyModal
           isOpen={isCalendlyOpen}
           onClose={handleCloseCalendly}
-          calendlyUrl="https://calendly.com/your-username/30min" // Replace with your actual Calendly URL
+          calendlyUrl="https://calendly.com/talibabbas-devexcelit/30minhttps://calendly.com/talibabbas-devexcelit/30min?back=1&month=2025-09https://calendly.com/talibabbas-devexcelit/30min" // Replace with your actual Calendly URL
         />
       </div>
     </div>

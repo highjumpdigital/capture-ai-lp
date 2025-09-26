@@ -1,6 +1,7 @@
 "use client";
 
-import Logo_AI_Powered from "@/app/assets/logo_ai_powered.svg";
+import Logo from "@/app/assets/header/Group 73.svg";
+import openAi from "@/app/assets/openai.svg";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 // import { constants } from '../_common';
@@ -56,7 +57,7 @@ export const Footer: React.FC = () => {
         : "lg:px-[65px] px-[20px] py-6  md:py-10"
         }   lg:flex justify-between items-center w-full  bg-black  `}
     >
-      <div className="max-w-[1600px] py-8 mx-auto flex sm:flex-row flex-col justify-between items-center w-full">
+      <div className="max-w-[1312px] py-4 mx-auto flex sm:flex-row flex-col justify-between items-center w-full">
         <div
           className={`flex flex-col justify-between  sm:space-y-4 md:space-y-0 sm:gap-4 ${isMiddleScreen && isWideScreen
             ? "h-[80px] items-center mb-5"
@@ -66,14 +67,17 @@ export const Footer: React.FC = () => {
           <div className="flex  justify-center items-center sm:justify-start  ">
             <Link href="https://cptr.ai/" passHref>
               <Image
-                className="w-[600px] h-auto md:h-auto cursor-pointer object-contain"
-                src={Logo_AI_Powered}
+                className="h-10 md:h-auto max-h-[100vh] cusor-pointer object-contain"
+                src={Logo}
                 alt=""
               />
             </Link>
+            <h1 className={`text-white text-sm font-extralight ml-6 mt-2 ${inter.className}`}>Powered by</h1><span className="ml-0.5 mt-1">
+              <Image src={openAi} alt="open-ai" />
+            </span>
           </div>
           <div
-            className={`text-[#FFFFFFCC] text-xl font-semibold w-full flex justify-start items-end leading-6 lg:max-w-[400px] ${inter.className} tracking-[0.08px]`}
+            className={`text-[#FFFFFFCC] text-base font-semibold w-full flex justify-start items-end leading-6 lg:max-w-[400px] ${inter.className} tracking-[0.08px]`}
           >
             {`© ${currentYear} Capture AI. All Rights Reserved.`}
           </div>
@@ -82,7 +86,7 @@ export const Footer: React.FC = () => {
         {/* Right Section - Social Icons and Navigation Links */}
         <div className="flex flex-col items-end space-y-8">
           {/* Social Media Icons - Top Row */}
-          <div className="flex space-x-3">
+          <div className="flex space-x-2">
             {socialLinks.map(({ icon, url, alt }, index) => (
               <a
                 href={url}
@@ -103,61 +107,29 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links - Bottom Row */}
-          <div className="flex space-x-10 text-gray-200 text-sm">
+          <div className={`flex space-x-12 mr-2 text-white text-base ${inter.className}`}>
             <Link
               href="https://cptr.ai/terms-of-service"
-              className="hover:text-gray-200 transition-colors text-xl font-extralight"
+              className="hover:text-white transition-colors text-base font-extralight"
               target="_blank"
             >
               Terms
             </Link>
             <Link
               href="https://cptr.ai/privacy-policy"
-              className="hover:text-gray-200 transition-colors text-xl font-extralight"
+              className="hover:text-white transition-colors text-base font-extralight"
               target="_blank"
             >
               Privacy
             </Link>
             <Link
               href="https://cptr.ai/support"
-              className="hover:text-gray-200 transition-colors text-xl font-extralight"
+              className="hover:text-white transition-colors text-base font-extralight"
               target="_blank"
             >
               Support
             </Link>
           </div>
-        </div>
-
-        <div className="flex justify-between items-center w-full mt-5  sm:hidden">
-          <Link
-            href="https://cptr.ai/terms-of-service"
-            className={`text-[#FFFFFF]  text-[16px] font-normal ${isMiddleScreen && isWideScreen ? "text-center" : ""
-              }`}
-            target="blank"
-          >
-            Terms
-          </Link>
-          <Link
-            href="https://cptr.ai/privacy-policy"
-            className={`text-[#FFFFFF]  text-[16px] font-normal ${isMiddleScreen && isWideScreen ? "text-center" : ""
-              }`}
-            target="blank"
-          >
-            Privacy
-          </Link>
-          <Link
-            href="https://cptr.ai/support"
-            className={`text-[#FFFFFF]  text-[16px] font-normal ${isMiddleScreen && isWideScreen ? "text-center" : "text-left"
-              }`}
-
-            target="blank"
-          // onClick={(e) => {
-          //   e.preventDefault();
-          //   openSupportEmail();
-          // }}
-          >
-            Support
-          </Link>
         </div>
       </div>
       <Chatbot />

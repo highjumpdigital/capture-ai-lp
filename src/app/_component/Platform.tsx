@@ -37,13 +37,13 @@ export const Platform = () => {
 
   return (
     <div
-      className="z-10 px-[20px] relative lg:px-[100px] justify-center md:justify-between items-center flex lg:flex-row gap-[20px] h-[110px] bg-black"
+      className="z-10 px-[20px] relative lg:px-[100px] justify-center md:justify-between items-center flex lg:flex-row gap-[20px] h-[95px] bg-black"
       style={{
         background: `black !important`,
         backgroundImage: `radial-gradient(49.97% 105.43% at 50.03% 100%, ${colors.platform.gradient.start} 0%, ${colors.platform.gradient.end} 100%) !important`
       }}
     >
-      <div className="flex justify-start items-centertext-[10px] xs:text-[12px] sm:text-[14px] md:text-[16px] leading-3 sm:leading-5 text-gray-300 font-bold">
+      <div className="flex justify-start items-centertext-[10px] xs:text-[12px] sm:text-[14px] md:text-[16px] leading-3 sm:leading-5 tracking-tight text-white/80 font-bold">
         {constants.platform.title}
       </div>
 
