@@ -47,10 +47,10 @@ export default function BookDemoPage() {
         {/* Main Hero Section */}
         <section className="py-8 sm:py-12 md:py-16 lg:-my-24 xl:-my-24 2xl:-my-24 lg:-mb-36 xl:-mb-36 2xl:-mb-36 bg-transparent w-full mx-auto">
           <div className="max-w-[1430px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-16 xl:gap-20 items-start lg:items-center">
+            <div className="flex flex-col xl:flex-row justify-between items-center">
 
               {/* Left Side - Content */}
-              <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-6 order-1 lg:order-1">
+              <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-6 mt-[180px] xl:mt-0 ">
                 {/* Main Heading */}
                 <div className="space-y-4 sm:space-y-5 md:space-y-6">
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold">
@@ -161,32 +161,27 @@ export default function BookDemoPage() {
                 </div>
               </div>
 
-              {/* Right Side - UI Mockups */}
-              <div className="relative mt-8 sm:mt-12 lg:mt-56 order-2 lg:order-2 h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] xl:h-[750px] 2xl:h-[800px]">
-                {/* Professional Background Ellipse */}
-                <div className="absolute bottom-20 -left-20 z-0 blur hidden lg:block">
-                  <Image
-                    src={ellipse}
-                    alt="Background Design Element"
-                    width={999}
-                    height={900}
-                    className="w-[999px] h-[900px] object-contain"
-                  />
-                </div>
+               {/* Right Side - UI Mockups */}
+               <div 
+                 className="relative mt-8 sm:mt-[130px] xl:mt-56 "
+               >
+                 <div 
+                 className="absolute top-[-40px] w-[400px] h-[425px] bg-[#FF4206] rounded-full xl:blur-[80px] sm:blur-[60px]"
+               ></div>
 
                 {/* Main Dashboard Mockup */}
-                <div className="absolute top-14 left-1/2 transform -translate-x-1/2 lg:left-auto lg:right-0 lg:transform-none z-10">
+                <div className="relative top-[-40px]  left-1/2 transform -translate-x-1/2 lg:left-auto lg:right-0 lg:transform-none z-10">
                   <Image
                     src={calendly}
                     alt="Calendar Interface"
                     width={469}
                     height={333}
-                    className="w-[300px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[469px] h-auto object-contain border border-black rounded-xl"
+                    className="w-[469px] h-[333px] object-contain border border-black rounded-xl"
                   />
                 </div>
 
                 {/* Dashboard Video Mockup */}
-                <div className="absolute bottom-[200px] sm:bottom-[250px] md:bottom-[300px] left-0 sm:left-4 md:left-8 lg:-left-16 xl:-left-20 2xl:-left-0 z-20">
+                <div className="relative  bottom-[210px] left-[-140px]  z-20">
                   <video
                     src="/dashboard_loop.mp4"
                     autoPlay
@@ -195,7 +190,7 @@ export default function BookDemoPage() {
                     playsInline
                     width={469}
                     height={292}
-                    className="w-[300px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[469px] h-auto border border-black rounded-xl"
+                    className=" w-[469px] h-[292px] border border-black rounded-xl"
                   />
                 </div>
 
