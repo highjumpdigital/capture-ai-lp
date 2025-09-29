@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { InlineWidget } from "react-calendly";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface CalendlyModalProps {
   isOpen: boolean;
@@ -72,6 +73,13 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
           isOpen && !closing ? "animate-slide-up" : "animate-slide-down"
         }`}
       >
+        {/* Close Icon */}
+        <AiOutlineClose
+          size={24}
+          className="block lg:hidden  absolute top-5 right-4 z-20 text-black cursor-pointer hover:text-gray-300 transition-colors duration-200"
+          onClick={handleClose}
+        />
+        
         {/* Calendly Inline Widget */}
         <div className="w-full rounded-lg shadow-lg overflow-hidden">
           <InlineWidget

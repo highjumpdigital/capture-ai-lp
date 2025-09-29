@@ -47,7 +47,7 @@ export default function BookDemoPage() {
         {/* Main Hero Section */}
         <section className="py-8 ml-2 my-[-90px] sm:py-2 md:py-2 sm:-my-16 md:-my-32 lg:-my-24 xl:-my-24 2xl:-my-16 lg:-mb-36 xl:-mb-36 2xl:-mb-36 bg-transparent w-full mx-auto">
           <div className="max-w-[1450px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-            <div className="flex flex-col xl:flex-row justify-between items-center md:my-14">
+            <div className="flex flex-col xl:flex-row justify-between items-center md:my-16">
 
               {/* Left Side - Content */}
               <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-5 mt-[180px] xl:mt-0">

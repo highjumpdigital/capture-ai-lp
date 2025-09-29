@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Right Section - Social Icons and Navigation Links */}
-        <div className="flex flex-col items-center justify-end space-y-8">
+        <div className="flex flex-col items-center justify-end space-y-0 md:space-y-8 mt-8 -mb-3 md:-mb-0">
           {/* Social Media Icons - Top Row */}
           <div className="flex space-x-2">
             {socialLinks.map(({ icon, url, alt }, index) => (
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 key={index}
-                className="w-10 h-10 ml-6 flex items-start justify-end transition-all duration-200 hover:scale-110"
+                className="w-10 h-10 md:ml-6 flex items-start justify-end transition-all duration-200 hover:scale-110"
               >
                 <Image
                   src={icon}
