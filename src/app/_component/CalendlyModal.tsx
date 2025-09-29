@@ -18,6 +18,7 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
 }) => {
   const [mounted, setMounted] = useState(false);
   const [closing, setClosing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -25,6 +26,8 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
+      // Reset loading state when modal opens
+      setIsLoading(true);
       // Prevent scrolling on the body
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
@@ -75,6 +78,21 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
     }, 400); // match animation duration
   };
 
+  const handleCalendlyLoad = () => {
+    setIsLoading(false);
+  };
+
+  // Fallback timeout to hide loading after 5 seconds
+  useEffect(() => {
+    if (isOpen && isLoading) {
+      const timeout = setTimeout(() => {
+        setIsLoading(false);
+      }, 5000);
+      
+      return () => clearTimeout(timeout);
+    }
+  }, [isOpen, isLoading]);
+
   if (!mounted || (!isOpen && !closing)) return null;
 
   return createPortal(
@@ -98,6 +116,13 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
           onClick={handleClose}
         />
         
+        {/* Custom Loading Spinner */}
+        {isLoading && (
+          <div className="absolute inset-0 flex justify-center items-center z-30 bg-white rounded-lg">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FF4206]"></div>
+          </div>
+        )}
+
         {/* Calendly Inline Widget */}
         <div className="w-full rounded-lg shadow-lg overflow-hidden">
           <InlineWidget
@@ -118,6 +143,10 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
               utmCampaign: "demo-booking",
               utmSource: "website",
               utmMedium: "modal",
+            }}
+            onPageHeight={(height) => {
+              // Calendly has loaded when this callback is triggered
+              handleCalendlyLoad();
             }}
           />
         </div>

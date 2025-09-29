@@ -98,9 +98,7 @@ export const Footer: React.FC = () => {
                 <Image
                   src={icon}
                   alt={alt}
-                  width={21}
-                  height={21}
-                  className="object-contain"
+                  className="object-contain w-[22px] h-[22px]"
                 />
               </a>
             ))}
