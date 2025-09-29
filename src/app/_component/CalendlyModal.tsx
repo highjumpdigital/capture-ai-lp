@@ -76,7 +76,7 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
         {/* Close Icon */}
         <AiOutlineClose
           size={24}
-          className="block lg:hidden  absolute top-5 right-4 z-20 text-black cursor-pointer hover:text-gray-300 transition-colors duration-200"
+          className="block absolute top-5 right-4 lg:top-[73px] lg:right-[120px] z-20 text-black cursor-pointer hover:text-gray-300 transition-colors duration-200"
           onClick={handleClose}
         />
         

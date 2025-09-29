@@ -53,7 +53,7 @@ export default function BookDemoPage() {
               <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-5 mt-[180px] xl:mt-0">
                 {/* Main Heading */}
                 <div className="space-y-10 text-center sm:text-left sm:space-y-5 md:space-y-6">
-                  <h1 className="text-3xl text-[40px] mb-16 sm:mb-10 md:mb-12 sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold leading-3">
+                  <h1 className="text-3xl text-[40px] mb-16 sm:mb-10 md:mb-12 sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold leading-3 tracking-[0.5px]">
                     <span className="text-black Cairo">SCHEDULE A </span>
                     <span className="text-[#FF4206] Cairo font-normal">DEMO.</span>
                   </h1>
@@ -229,7 +229,6 @@ export default function BookDemoPage() {
         <CalendlyModal
           isOpen={isCalendlyOpen}
           onClose={handleCloseCalendly}
-          calendlyUrl="https://calendly.com/talibabbas-devexcelit/30min"
         />
       </div>
     </div>

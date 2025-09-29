@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Right Section - Social Icons and Navigation Links */}
-        <div className="flex flex-col items-center justify-end space-y-0 md:space-y-8 mt-8 -mb-3 md:-mb-0">
+        <div className="flex flex-col items-center justify-end space-y-0 md:space-y-8 mt-8 -mb-3 md:mb-7">
           {/* Social Media Icons - Top Row */}
           <div className="flex space-x-2">
             {socialLinks.map(({ icon, url, alt }, index) => (
@@ -98,8 +98,8 @@ export const Footer: React.FC = () => {
                 <Image
                   src={icon}
                   alt={alt}
-                  width={26}
-                  height={26}
+                  width={21}
+                  height={21}
                   className="object-contain"
                 />
               </a>
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links - Bottom Row */}
-          <div className={`flex space-x-24  sm:space-x-12 text-white text-base ${inter.className}`}>
+          <div className={`flex space-x-24  sm:space-x-12 text-white text-base ${inter.className} pt-1.5`}>
             <Link
               href="https://cptr.ai/terms-of-service"
               className="hover:text-[#FF4206] transition-colors duration-300 text-base font-normal"
