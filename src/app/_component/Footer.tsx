@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 key={index}
-                className="w-10 h-10 ml-6 flex items-center justify-end transition-all duration-200 hover:scale-110"
+                className="w-10 h-10 ml-6 flex items-start justify-end transition-all duration-200 hover:scale-110"
               >
                 <Image
                   src={icon}
