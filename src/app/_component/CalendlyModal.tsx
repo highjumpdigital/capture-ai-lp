@@ -68,7 +68,7 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
 
       {/* Modal Container */}
       <div
-        className={`relative z-10 w-full max-w-5xl mx-4 overflow-hidden transform transition-all duration-500 ease-out ${
+        className={`relative z-10 w-full  sm:max-w-md md:max-w-[480px] max-w-[380px] max-h-fit md:max-h-fit sm:max-h-fit lg:max-w-5xl mx-4 overflow-hidden transform transition-all duration-500 ease-out ${
           isOpen && !closing ? "animate-slide-up" : "animate-slide-down"
         }`}
       >

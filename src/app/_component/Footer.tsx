@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links - Bottom Row */}
-          <div className={`flex space-x-28 sm:space-x-12 mr-2 text-white text-base ${inter.className}`}>
+          <div className={`flex space-x-24 sm:space-x-12 mr-2 text-white text-base ${inter.className}`}>
             <Link
               href="https://cptr.ai/terms-of-service"
               className="hover:text-white transition-colors text-base font-extralight"
