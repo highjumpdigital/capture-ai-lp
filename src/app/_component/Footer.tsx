@@ -110,21 +110,21 @@ export const Footer: React.FC = () => {
           <div className={`flex space-x-24 sm:space-x-12 mr-2 text-white text-base ${inter.className}`}>
             <Link
               href="https://cptr.ai/terms-of-service"
-              className="hover:text-white transition-colors text-base font-extralight"
+              className="hover:text-[#FF4206] transition-colors duration-300 text-base font-normal"
               target="_blank"
             >
               Terms
             </Link>
             <Link
               href="https://cptr.ai/privacy-policy"
-              className="hover:text-white transition-colors text-base font-extralight"
+              className="hover:text-[#FF4206] transition-colors duration-300 text-base font-normal"
               target="_blank"
             >
               Privacy
             </Link>
             <Link
               href="https://cptr.ai/support"
-              className="hover:text-white transition-colors text-base font-extralight"
+              className="hover:text-[#FF4206] transition-colors duration-300 text-base font-normal"
               target="_blank"
             >
               Support
