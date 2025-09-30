@@ -37,27 +37,29 @@ export const Platform = () => {
 
   return (
     <div
-      className="z-10 px-[20px] relative lg:px-[100px] justify-center md:justify-between items-center flex lg:flex-row gap-[20px] h-[95px] bg-black"
+      className="z-10 relative h-[95px] bg-black w-full xl:-mb-1"
       style={{
         background: `black !important`,
         backgroundImage: `radial-gradient(49.97% 105.43% at 50.03% 100%, ${colors.platform.gradient.start} 0%, ${colors.platform.gradient.end} 100%) !important`
       }}
     >
-      <div className="flex justify-start items-center text-[10px] xs:text-[12px] sm:text-[14px] md:text-[16px] leading-3 sm:leading-5 text-white font-bold">
-        {constants.platform.title}
-      </div>
-
-      {data.map((item, index) => (
-        <div key={index}>
-          <Image
-            src={item.img}
-            alt={constants.altText.image}
-            height={34}
-            width={33}
-          />
-          
+      <div className="max-w-full md:max-w-[1350px] xl:max-w-[1450px] mx-auto px-[20px] lg:px-[70px] justify-center md:justify-between items-center flex lg:flex-row gap-[35px] md:gap-[20px] h-full">
+        <div className="flex justify-start items-center text-[10px] xs:text-[12px] sm:text-[14px] md:text-[16px] leading-3 sm:leading-5 text-white/80 font-bold">
+          {constants.platform.title}
         </div>
-      ))}
+
+        {data.map((item, index) => (
+          <div key={index}>
+            <Image
+              src={item.img}
+              alt={constants.altText.image}
+              height={34}
+              width={33}
+            />
+            
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

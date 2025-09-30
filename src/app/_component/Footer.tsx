@@ -53,21 +53,21 @@ export const Footer: React.FC = () => {
   return (
     <div
       className={`flex    ${isMiddleScreen
-        ? "lg:px-[65px] px-[20px] py-4  md:py-8"
-        : "lg:px-[65px] px-[20px] py-6  md:py-10"
+        ? "lg:px-[65px] px-[20px] py-6  md:py-4"
+        : "lg:px-[65px] px-[20px] py-6  md:py-5"
         }   lg:flex justify-between items-center w-full  bg-black  `}
     >
-      <div className="max-w-[1312px] py-4 mx-auto flex sm:flex-row flex-col justify-between items-center w-full">
+      <div className="max-w-[1312px] -mt-2 md:py-5 mx-auto flex sm:flex-row flex-col justify-between items-center w-full">
         <div
-          className={`flex flex-col justify-between  sm:space-y-4 md:space-y-0 sm:gap-4 ${isMiddleScreen && isWideScreen
-            ? "h-[80px] items-center mb-5"
-            : "h-[100px]"
+          className={`flex flex-col justify-between  sm:space-y-2 md:space-y-0 sm:gap-2 ${isMiddleScreen && isWideScreen
+            ? "h-[60px] items-center mb-5"
+            : "h-[80px]"
             } `}
         >
-          <div className="flex  justify-center items-center sm:justify-start  ">
+          <div className="flex  justify-center items-center sm:justify-start">
             <Link href="https://cptr.ai/" passHref>
               <Image
-                className="h-10 md:h-auto max-h-[100vh] cusor-pointer object-contain"
+                className="h-10 md:h-auto max-h-[100vh] cursor-pointer object-contain"
                 src={Logo}
                 alt=""
               />
@@ -84,9 +84,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Right Section - Social Icons and Navigation Links */}
-        <div className="flex flex-col items-center justify-end space-y-0 md:space-y-8 mt-8 -mb-3 md:mb-7">
+        <div className="flex flex-col items-center justify-end space-y-0 md:space-y-[10px] mt-8 -mb-3 md:mb-7">
           {/* Social Media Icons - Top Row */}
-          <div className="flex space-x-2">
+          <div className="flex space-x-0 md:space-x-1">
             {socialLinks.map(({ icon, url, alt }, index) => (
               <a
                 href={url}
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Navigation Links - Bottom Row */}
-          <div className={`flex space-x-24  sm:space-x-12 text-white text-base ${inter.className} pt-1.5`}>
+          <div className={`flex space-x-24  sm:space-x-8 text-white text-base ${inter.className} pt-1.5 ml-3`}>
             <Link
               href="https://cptr.ai/terms-of-service"
               className="hover:text-[#FF4206] transition-colors duration-300 text-base font-normal"

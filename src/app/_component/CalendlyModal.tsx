@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { InlineWidget } from "react-calendly";
 import { AiOutlineClose } from "react-icons/ai";
@@ -87,11 +87,30 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
     if (isOpen && isLoading) {
       const timeout = setTimeout(() => {
         setIsLoading(false);
-      }, 5000);
+      }, 4100);
       
       return () => clearTimeout(timeout);
     }
   }, [isOpen, isLoading]);
+
+  // Ensure GDPR cookie banner is hidden by appending the required query param
+  const calendlyUrlWithGdprHidden = useMemo(() => {
+    try {
+      const urlObject = new URL(calendlyUrl);
+      const current = urlObject.searchParams.get("hide_gdpr_banner");
+      if (current !== "1") {
+        urlObject.searchParams.set("hide_gdpr_banner", "1");
+      }
+      return urlObject.toString();
+    } catch {
+      const hasQuery = calendlyUrl.includes("?");
+      const separator = hasQuery ? "&" : "?";
+      if (/([?&])hide_gdpr_banner=1(?!\d)/.test(calendlyUrl)) {
+        return calendlyUrl;
+      }
+      return `${calendlyUrl}${separator}hide_gdpr_banner=1`;
+    }
+  }, [calendlyUrl]);
 
   if (!mounted || (!isOpen && !closing)) return null;
 
@@ -111,25 +130,25 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
       >
         {/* Close Icon */}
         <AiOutlineClose
-          size={21}
-          className="block absolute top-5 right-4 lg:top-[73px] lg:right-[120px] z-20 text-zinc-700 cursor-pointer hover:text-black transition-colors duration-200"
+          size={23}
+          className="block absolute top-6 right-4 lg:top-[45px] lg:right-[25px] z-20 text-black bg-white rounded-full p-1 cursor-pointer hover:text-black transition-colors duration-200"
           onClick={handleClose}
         />
         
         {/* Custom Loading Spinner */}
         {isLoading && (
-          <div className="absolute inset-0 flex justify-center items-center z-30 bg-white rounded-lg">
+          <div className="absolute inset-2 md:max-h-[700px] md:max-w-[810px] xl:mt-14 mx-auto flex justify-center items-center z-30 bg-white rounded-lg">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FF4206]"></div>
           </div>
         )}
 
         {/* Calendly Inline Widget */}
-        <div className="w-full rounded-lg shadow-lg overflow-hidden">
+        <div className={`w-full rounded-lg shadow-lg overflow-hidden transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
           <InlineWidget
             key={`calendly-${isOpen ? "open" : "closed"}`}
-            url={calendlyUrl}
+            url={calendlyUrlWithGdprHidden}
             styles={{
-              height: "670px",
+              height: "800px",
               minWidth: "100%",
             }}
             pageSettings={{
@@ -143,10 +162,6 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
               utmCampaign: "demo-booking",
               utmSource: "website",
               utmMedium: "modal",
-            }}
-            onPageHeight={(height) => {
-              // Calendly has loaded when this callback is triggered
-              handleCalendlyLoad();
             }}
           />
         </div>
