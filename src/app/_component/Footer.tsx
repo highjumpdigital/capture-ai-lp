@@ -1,7 +1,7 @@
 "use client";
 
 import Logo from "@/app/assets/header/Group 73.svg";
-import openAi from "@/app/assets/openai.svg";
+import openAi from "@/app/assets/open_ai.svg";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 // import { constants } from '../_common';
