@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
             </span>
           </div>
           <div
-            className={`text-[#FFFFFFCC] text-base font-semibold w-full flex justify-center sm:justify-start items-end leading-6 lg:max-w-[400px] ${inter.className} tracking-[0.08px]`}
+            className={`text-[#FFFFFFCC] text-base mt-2 font-semibold w-full flex justify-center sm:justify-start items-end leading-6 lg:max-w-[400px] ${inter.className} tracking-[0.08px]`}
           >
             {`© ${currentYear} Capture AI. All Rights Reserved.`}
           </div>
