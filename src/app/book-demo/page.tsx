@@ -16,7 +16,6 @@ import ellipse from "../assets/ellipse.svg";
 import BookDemo6 from "../assets/funded-startups.png";
 import BookDemo7 from "../assets/black-tick.png";
 import DemoPageBg from "../assets/demo_page_bg.png";
-// Using public path for video to avoid TypeScript import issues
 
 export default function BookDemoPage() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
