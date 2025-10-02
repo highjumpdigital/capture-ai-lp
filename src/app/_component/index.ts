@@ -8,5 +8,6 @@ export { Immersion } from './Immersion';
 export { ChatPerformance } from './ChatPerformance';
 export { default as Chatbot } from './Chatbot';
 export { PlanCard } from './PlanCard';
-export { MarqueeComponent } from './MarqueeComponent'; 
-export { default as DashboardSection } from './DashboardSection'; 
+export { MarqueeComponent } from './MarqueeComponent';
+export { default as DashboardSection } from './DashboardSection';
+export { CalendlyModal } from './CalendlyModal'; 

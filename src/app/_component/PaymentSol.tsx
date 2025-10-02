@@ -52,7 +52,10 @@ export const PaymentSol = () => {
         const scrollLeft = scrollContainerRef.current.scrollLeft;
         const cardWidth = scrollContainerRef.current.offsetWidth;
         const newIndex = Math.round(scrollLeft / cardWidth);
-        setActiveIndex(newIndex);
+        
+        // Ensure the index is within bounds
+        const clampedIndex = Math.max(0, Math.min(newIndex, plansData.length - 1));
+        setActiveIndex(clampedIndex);
       }
     };
 
@@ -61,7 +64,7 @@ export const PaymentSol = () => {
       scrollContainer.addEventListener('scroll', handleScroll);
       return () => scrollContainer.removeEventListener('scroll', handleScroll);
     }
-  }, [isMobile]);
+  }, [isMobile, plansData.length]);
 
   const getMergedPlanData = (plan: Plan) => {
     if (!isPlanDetailsHidden) {
@@ -185,7 +188,9 @@ export const PaymentSol = () => {
                   key={index}
                   onClick={() => scrollToCard(index)}
                   className={`w-4 h-4 rounded-full transition-all duration-300 cursor-pointer ${
-                    activeIndex === index ? 'bg-[#FF4206]' : 'bg-gray-200 hover:bg-gray-300'
+                    activeIndex === index 
+                      ? 'bg-[#FF4206]' 
+                      : 'bg-gray-200 hover:bg-gray-300'
                   }`}
                   aria-label={`View plan ${index + 1}`}
                 />

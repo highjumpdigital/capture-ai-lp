@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FilledButton } from "./FilledButton";
 import { MarqueeComponent } from "./MarqueeComponent";
+import { CalendlyModal } from "./CalendlyModal";
 import { constants } from "../_common/constants";
 import herosectionimage from"../assets/herosectionbgImage.png"
 import DashBoardImage from "../assets/dashboard/pixelcut-export (1).png"
 import PropleImage from "../assets/herosection-profile-photoes/all-leads.svg"
 
 export const HeroSection = (): React.ReactElement => {
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+
+  const handleBookDemoClick = () => {
+    setIsCalendlyOpen(true);
+  };
+
+  const handleCloseCalendly = () => {
+    setIsCalendlyOpen(false);
+  };
+
   return (
     <div className="heroSection relative" style={{
       backgroundImage: `url(${herosectionimage.src})`,
@@ -36,12 +47,10 @@ export const HeroSection = (): React.ReactElement => {
         </div>
         <div className="font-bold text-4 leading-4 text-primary">
         <div 
-          onClick={() => {
-            document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onClick={handleBookDemoClick}
           className="cursor-pointer"
         >
-          {constants.herosection.viewSolution}
+          {constants.herosection.bookDemo}
         </div>
         </div>
       </div>
@@ -75,7 +84,7 @@ export const HeroSection = (): React.ReactElement => {
               -translate-x-[1px] -translate-y-[1px] scale-[1.01]
             
             "
-            width="100%"
+            width={1200}
             height={301}
           />
         </div>
@@ -96,6 +105,12 @@ export const HeroSection = (): React.ReactElement => {
       <div className="mt-[43px]">
         <MarqueeComponent />
       </div>
+
+      {/* Calendly Modal */}
+      <CalendlyModal
+        isOpen={isCalendlyOpen}
+        onClose={handleCloseCalendly}
+      />
     </div>
   );
 };
