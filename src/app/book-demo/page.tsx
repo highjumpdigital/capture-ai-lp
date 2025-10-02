@@ -133,7 +133,7 @@ export default function BookDemoPage() {
                         className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px]"
                       />
                       <p className="text-xs font-light text-black Cairo">
-                        Funded Startups.
+                        Capture leads
                       </p>
                     </div>
                     <div className="flex items-center gap-1 mb-1">
@@ -143,7 +143,7 @@ export default function BookDemoPage() {
                         className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px]"
                       />
                       <p className="text-xs font-light text-black Cairo">
-                        E-commerce Brands.
+                        Automate support
                       </p>
                     </div>
                     <div className="flex items-center gap-1 mb-1">
@@ -153,7 +153,7 @@ export default function BookDemoPage() {
                         className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px]"
                       />
                       <p className="text-xs font-light text-black Cairo">
-                        B2B Teams.
+                        Answer FAQs
                       </p>
                     </div>
                   </div>
