@@ -424,7 +424,7 @@ export const constants = {
     thatconvert: "THAT CONVERT.",
     chatbotengangement:
       "Our 24/7 AI Chatbot boosts engagement, asks qualifying questions, provides intelligent suggestions, captures lead data, and more...",
-    viewSolution: " VIEW SOLUTIONS",
+    bookDemo: " BOOK A DEMO",
     leadsCapture: "5000+ LEADS CAPTURED FOR OUR PARTNERS",
   },
   paymentSol: {
