@@ -37,7 +37,7 @@ export const FilledButton: React.FC<{
     >
       <span className={`relative overflow-hidden w-full flex items-center justify-center ${titleClassName} sofia`}>
         <span
-          className="block transform translate-y-0 group-hover:-translate-y-[100%] transition-transform duration-300 flex items-center justify-center w-full"
+          className="block transform translate-y-0 group-hover:-translate-y-[100%] transition-transform duration-300 flex items-center justify-center w-full text-center mt-[2.02px]"
           style={{ height: buttonHeight ? `${buttonHeight}px` : 'auto' }}
         >
           {buttonTitle}
