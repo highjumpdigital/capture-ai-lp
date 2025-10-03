@@ -447,6 +447,7 @@ export const constants = {
     FAQ: "FAQ'S",
     RESELLERS: "RESELLERS",
     login: "LOG IN",
+    BOOKDEMO: "BOOK A DEMO",
   },
   buttons: {
     getStarted: "GET STARTED",

@@ -50,6 +50,11 @@ export const Header = () => {
     return pathname === '/resellers';
   };
 
+  // Function to check if book demo page is active
+  const isBookDemoActive = () => {
+    return pathname === '/book-demo';
+  };
+
   // Scroll event listener to detect active section
   React.useEffect(() => {
     const handleScroll = () => {
@@ -204,6 +209,19 @@ export const Header = () => {
             }`}
           >
             {constants.header.RESELLERS}
+          </div>
+          <div
+            onClick={() => {
+              toggleMobileMenu();
+              setTimeout(() => {
+                router.push('/book-demo');
+              }, 300);
+            }}
+            className={`font-bold cursor-pointer transition-colors duration-300 ${
+              isBookDemoActive() ? "text-[#FF4206]" : "text-white"
+            }`}
+          >
+            {constants.header.BOOKDEMO}
           </div>
           <div
             onClick={handleSignIn}
