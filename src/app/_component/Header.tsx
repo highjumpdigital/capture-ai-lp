@@ -50,6 +50,11 @@ export const Header = () => {
     return pathname === '/resellers';
   };
 
+  // Function to check if examples page is active
+  const isExamplesActive = () => {
+    return pathname === '/examples';
+  };
+
   // Function to check if book demo page is active
   const isBookDemoActive = () => {
     return pathname === '/book-demo';
@@ -214,6 +219,19 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
+                router.push('/examples');
+              }, 300);
+            }}
+            className={`font-bold cursor-pointer transition-colors duration-300 ${
+              isExamplesActive() ? "text-[#FF4206]" : "text-white"
+            }`}
+          >
+            {constants.header.EXAMPLES}
+          </div>
+          <div
+            onClick={() => {
+              toggleMobileMenu();
+              setTimeout(() => {
                 router.push('/book-demo');
               }, 300);
             }}
@@ -311,6 +329,19 @@ export const Header = () => {
             >
               {constants.header.RESELLERS}
               {isResellersActive() && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF4206]"></div>
+              )}
+            </div>
+            <div
+              onClick={() => router.push('/examples')}
+              className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
+                isExamplesActive() 
+                  ? "text-[#FF4206]" 
+                  : "text-white hover:text-[#FF4206]"
+              }`}
+            >
+              {constants.header.EXAMPLES}
+              {isExamplesActive() && (
                 <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF4206]"></div>
               )}
             </div>

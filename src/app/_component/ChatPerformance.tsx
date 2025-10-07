@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import { MdArrowForward } from "react-icons/md";
 import { FilledButton } from "./FilledButton";

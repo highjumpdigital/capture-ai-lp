@@ -446,6 +446,7 @@ export const constants = {
     SOLUTIONS: "SOLUTIONS",
     FAQ: "FAQ'S",
     RESELLERS: "RESELLERS",
+    EXAMPLES: "EXAMPLES",
     login: "LOG IN",
     BOOKDEMO: "BOOK A DEMO",
   },
