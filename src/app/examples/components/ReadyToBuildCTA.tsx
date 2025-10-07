@@ -52,12 +52,12 @@ export const ReadyToBuildCTA = () => {
             alt="AI assistant background"
             fill
             priority
-            className="object-cover object-center scale-105"
+            className="object-cover object-center -scale-100 scale-x-110"
           />
           {/* Darkening gradient for legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-[#992704]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,black_0%,#000_40%,#581500_75%,#992704_100%)] mix-blend-multiply" />
           {/* Brand accent gradient overlay */}
-          <div className="pointer-events-none absolute inset-0 opacity-70 mix-blend-screen bg-[radial-gradient(120%_80%_at_90%_50%,rgba(255,66,6,0.55)_0%,rgba(255,66,6,0.25)_30%,transparent_60%)]" />
+          <div className="pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay bg-[radial-gradient(120%_80%_at_90%_50%,rgba(255,66,6,0.55)_0%,rgba(255,66,6,0.25)_30%,transparent_60%)]" />
 
           {/* Content */}
           <div className="relative z-10 flex flex-col justify-center items-center gap-4 lg:gap-6">
