@@ -20,8 +20,8 @@ export const Immersion = () => {
         </div>
 
         <div className="flex justify-start items-center mt-[50px]">
-          <Image src={ImmersionImage} alt="ImmersionImage" />
-          {/* <video src="/full_immersion.mp4" autoPlay muted loop playsInline /> */}
+          {/* <Image src={ImmersionImage} alt="ImmersionImage" /> */}
+          <video src="/full_immersion.mp4" autoPlay muted loop playsInline className="w-full max-w-[790px] h-[530px] object-cover rounded-[14px]"/>
         </div>
       </div>
       <div className="">
