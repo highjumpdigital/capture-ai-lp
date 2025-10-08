@@ -6,6 +6,7 @@ export { FAQ } from './FAQ';
 export { PaymentSol } from './PaymentSol';
 export { Immersion } from './Immersion';
 export { ChatPerformance } from './ChatPerformance';
+export { ChatPerformanceV2 } from './ChatPerformanceV2';
 export { default as Chatbot } from './Chatbot';
 export { default as ExampleChatbot } from './ExampleChatbot';
 export { PlanCard } from './PlanCard';
