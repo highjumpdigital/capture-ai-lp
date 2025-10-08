@@ -45,7 +45,7 @@ export const ChatPerformanceV2 = () => {
                 key={index}
                 className={`${isLast ? 'relative' : 'sticky'} w-full mb-6`}
                 style={{
-                  top: isLast ? 'auto' : `${index * 20}px`,
+                  top: isLast ? 'auto' : `100px`,
                   zIndex: index + 1,
                 }}
               >
