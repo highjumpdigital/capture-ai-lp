@@ -11,7 +11,7 @@ export default function ExamplesPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-10 bg-gray-100">
+      <main className="pt-16 bg-gray-100">
         <HeroSection />
         <RealAIScenarios />
         <ReadyToBuildCTA />

@@ -27,9 +27,9 @@ declare global {
     };
     gtag?: (
       command: string,
-      measurementId: string,
-      field: string,
-      callback: (value: string) => void
+      targetId?: string,
+      config?: any,
+      callback?: (value: string) => void
     ) => void;
   }
 }
