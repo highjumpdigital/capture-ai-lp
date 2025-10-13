@@ -95,6 +95,8 @@ const Chatbot: React.FC = () => {
                 extensions: x,
               },
             }).then(() => {
+              // Auto-opening disabled - commenting out auto-popup functionality
+              /*
               if (window.v!.a) {
                 const k = `chatbot_popup_shown_${c}`;
                 const h = sessionStorage.getItem(k);
@@ -104,7 +106,10 @@ const Chatbot: React.FC = () => {
                   setTimeout(() => window.voiceflow!.chat.open(), window.v!.d || 10000);
                 }
               }
+              */
 
+              // Proactive messages disabled - commenting out proactive functionality
+              /*
               if (window.v!.t && window.v!.m) {
                 setTimeout(() => {
                   window.voiceflow!.chat.proactive.clear();
@@ -114,6 +119,7 @@ const Chatbot: React.FC = () => {
                   });
                 }, window.v!.md || 3000);
               }
+              */
             });
           };
           script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';

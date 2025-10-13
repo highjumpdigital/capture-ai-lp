@@ -109,7 +109,7 @@ export default function ExamplePage() {
         delay={1500}
       />
 
-      <main className="pt-[142px] pb-12 sm:pb-16 lg:pb-20 px-3 sm:px-4 md:px-6 lg:px-8">
+      <main className="pt-[90px] sm:pt-[100px] lg:pt-[142px] pb-12 sm:pb-16 lg:pb-20 px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="max-w-[1353px] mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12 mt-6 sm:mt-12 lg:mt-16">
