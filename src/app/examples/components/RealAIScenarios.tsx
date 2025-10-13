@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FilledButton } from "../../_component/FilledButton";
 import { Inter, Cairo } from "next/font/google";
@@ -105,6 +105,8 @@ const ExampleCard: React.FC<ExampleCardProps> = ({
 };
 
 export const RealAIScenarios = () => {
+  const [visibleCount, setVisibleCount] = useState(3);
+
   const examples = [
     {
       iconLight: giftDark,
@@ -130,10 +132,58 @@ export const RealAIScenarios = () => {
       slug: "cleaning-service",
       hasPromotion: true,
     },
+    {
+      iconLight: giftDark,
+      iconDark: giftLight,
+      title: "E-commerce Support",
+      description: "Handle customer inquiries, process returns, and provide product recommendations.",
+      slug: "ecommerce-support",
+      hasPromotion: false,
+    },
+    {
+      iconLight: guardDark,
+      iconDark: guardLight,
+      title: "Travel Booking",
+      description: "Book flights, hotels, and provide travel recommendations and itineraries.",
+      slug: "travel-booking",
+      hasPromotion: false,
+    },
+    {
+      iconLight: homeDark,
+      iconDark: homeLight,
+      title: "Healthcare Assistant",
+      description: "Schedule appointments, answer medical questions, and provide health information.",
+      slug: "healthcare-assistant",
+      hasPromotion: false,
+    },
+    {
+      iconLight: giftDark,
+      iconDark: giftLight,
+      title: "Legal Services",
+      description: "Provide legal information, document review, and basic legal consultations.",
+      slug: "legal-services",
+      hasPromotion: false,
+    },
+    {
+      iconLight: guardDark,
+      iconDark: guardLight,
+      title: "Financial Planning",
+      description: "Budget assistance, investment advice, and financial goal planning.",
+      slug: "financial-planning",
+      hasPromotion: false,
+    },
+    {
+      iconLight: homeDark,
+      iconDark: homeLight,
+      title: "Education Support",
+      description: "Academic assistance, study guides, and educational resource recommendations.",
+      slug: "education-support",
+      hasPromotion: false,
+    },
   ];
 
   const handleLoadMore = () => {
-    console.log("Load more examples");
+    setVisibleCount(prev => Math.min(prev + 3, examples.length));
   };
 
   return (
@@ -141,7 +191,7 @@ export const RealAIScenarios = () => {
       <div className="max-w-[1353px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Examples Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 place-items-center sm:place-items-stretch">
-          {examples.map((example, index) => (
+          {examples.slice(0, visibleCount).map((example, index) => (
             <ExampleCard
               key={index}
               iconLight={example.iconLight}
@@ -155,13 +205,15 @@ export const RealAIScenarios = () => {
         </div>
 
         {/* Load More Button */}
-        <div className="flex justify-center">
-          <FilledButton
-            buttonTitle="Load More"
-            className="h-10 sm:h-12 w-[120px] sm:w-[140px] px-4 sm:px-6 bg-[#FF4206] rounded-lg font-bold text-[13px] sm:text-[16px] text-white hover:bg-[#e63900] transition-colors"
-            onClick={handleLoadMore}
-          />
-        </div>
+        {visibleCount < examples.length && (
+          <div className="flex justify-center">
+            <FilledButton
+              buttonTitle="Load More"
+              className="h-10 sm:h-12 w-[120px] sm:w-[140px] px-4 sm:px-6 bg-[#FF4206] rounded-lg font-bold text-[13px] sm:text-[16px] text-white hover:bg-[#e63900] transition-colors"
+              onClick={handleLoadMore}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

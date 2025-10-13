@@ -10,7 +10,7 @@ const Chatbot: React.FC = () => {
     if (window.voiceflow) return;
 
     const initializeChatbot = () => {
-      const c = 'cHnIT11hLbm';
+      const c = 'cHlUzZJx7dC';
       const f = () =>
         fetch(`https://apis.cptr.ai/chatbot/settings/${c}`)
           .then(r => r.json())
