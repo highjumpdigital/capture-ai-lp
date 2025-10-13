@@ -9,6 +9,7 @@ import {
   PaymentSol,
   Immersion,
   ChatPerformance,
+  ChatPerformanceV2,
   DashboardSection,
 } from "../_component";
 import HowItWorks from "../_component/HowitsWork";
@@ -57,7 +58,7 @@ export default function HomePageClient() {
       <HeroSection />
       <Platform />
       <Immersion />
-      <ChatPerformance />
+      <ChatPerformanceV2 />
 
       <div ref={workSectionRef} id="work">
         {isMobile ? (

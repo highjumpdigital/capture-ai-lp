@@ -1,3 +1,4 @@
+"use client"
 import { PlanCard } from "@/app/_component/PlanCard";
 import { PlanDetails } from "@/app/_component/PlanDetails";
 import { useState, useEffect, useRef } from "react";

@@ -1,8 +1,7 @@
 import Image from "next/image";
 import React from "react";
-
-import ImmersionImage from "../assets/Chatbot preview.svg";
 import { constants, Immersiondata } from "../_common/constants";
+import ImmersionImage from "../assets/Chatbot preview.svg";
 
 export const Immersion = () => {
   return (
@@ -21,7 +20,8 @@ export const Immersion = () => {
         </div>
 
         <div className="flex justify-start items-center mt-[50px]">
-          <Image src={ImmersionImage} alt="ImmersionImage" />
+          {/* <Image src={ImmersionImage} alt="ImmersionImage" /> */}
+          <video src="/full_immersion.mp4" autoPlay muted loop playsInline className="w-full h-auto min-h-[200px] sm:max-w-[790px] sm:h-[530px] object-cover rounded-[14px]"/>
         </div>
       </div>
       <div className="">

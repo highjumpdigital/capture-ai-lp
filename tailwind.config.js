@@ -90,6 +90,93 @@ module.exports = {
         '.bg-gradient-radial': {
           'background-image': 'radial-gradient(circle, var(--tw-gradient-stops))',
         },
+        '.text-test-our': {
+          'font-family': 'Cairo, sans-serif',
+          'font-weight': '600',
+          'font-size': '32px',
+          'line-height': '100%',
+          'letter-spacing': '0%',
+          'text-align': 'center',
+          'text-transform': 'uppercase',
+          '@media (min-width: 640px)': {
+            'font-size': '48px',
+          },
+          '@media (min-width: 768px)': {
+            'font-size': '64px',
+          },
+          '@media (min-width: 1024px)': {
+            'font-size': '80px',
+          },
+          '@media (min-width: 1280px)': {
+            'font-size': '100px',
+          },
+        },
+        '.text-ai-assistant': {
+          'font-family': 'Cairo, sans-serif',
+          'font-weight': '700',
+          'font-size': '32px',
+          'line-height': '100%',
+          'letter-spacing': '0%',
+          'text-align': 'center',
+          'text-transform': 'uppercase',
+          '@media (min-width: 640px)': {
+            'font-size': '48px',
+          },
+          '@media (min-width: 768px)': {
+            'font-size': '64px',
+          },
+          '@media (min-width: 1024px)': {
+            'font-size': '80px',
+          },
+          '@media (min-width: 1280px)': {
+            'font-size': '100px',
+          },
+        },
+        '.chat-widget-banner': {
+          'background-color': '#FF42060F',
+          'width': '100%',
+          'max-width': '459px',
+          'height': 'auto',
+          'min-height': '40px',
+          'border-radius': '68px',
+          'padding': '12px 16px',
+          'display': 'flex',
+          'align-items': 'center',
+          'justify-content': 'center',
+          'font-family': 'Cairo, sans-serif',
+          'font-weight': '700',
+          'font-size': '12px',
+          'color': '#FF4206',
+          'text-align': 'center',
+          'text-transform': 'uppercase',
+          'letter-spacing': '0.5px',
+          'margin': '0 auto',
+          'opacity': '1',
+          'gap': '10px',
+          '@media (min-width: 640px)': {
+            'font-size': '14px',
+          },
+          '@media (min-width: 768px)': {
+            'font-size': '16px',
+          },
+        },
+        '.subtitle-text': {
+          'font-family': 'Inter, sans-serif',
+          'font-weight': '300',
+          'font-size': '16px',
+          'line-height': '150%',
+          'letter-spacing': '0%',
+          'text-align': 'center',
+          '@media (min-width: 640px)': {
+            'font-size': '18px',
+          },
+          '@media (min-width: 768px)': {
+            'font-size': '20px',
+          },
+          '@media (min-width: 1024px)': {
+            'font-size': '24px',
+          },
+        },
       })
     },
   ],

@@ -4,6 +4,7 @@ declare global {
       chat: {
         load: (config: any) => Promise<void>;
         open: () => void;
+        close: () => void;
         interact: (payload: any) => void;
         proactive: {
           clear: () => void;
@@ -27,9 +28,9 @@ declare global {
     };
     gtag?: (
       command: string,
-      measurementId: string,
-      field: string,
-      callback: (value: string) => void
+      targetId?: string,
+      config?: any,
+      callback?: (value: string) => void
     ) => void;
   }
 }
