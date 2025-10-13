@@ -143,7 +143,7 @@ export default function ExamplePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 place-items-center sm:place-items-stretch max-w-[1400px] mx-auto">
             {/* Ask Anything Card */}
             <div className="bg-white border border-gray-200 rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] w-full max-w-[418px] h-[240px] sm:h-[263px] relative transition-all duration-300 hover:shadow-[0_3.87px_20.05px_-1.94px_rgba(255,66,6,0.25)] group overflow-hidden sm:hover:scale-110">
-              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-start text-left h-full">
+              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-center sm:items-start text-center sm:text-left h-full">
                 {/* Title */}
                 <h3 className={`text-[20px] sm:text-[22px] md:text-[24px] font-bold text-black mb-3 sm:mb-4 py-2 leading-[1.2] ${cairo.className}`}>
                   Ask Anything
@@ -163,7 +163,7 @@ export default function ExamplePage() {
 
             {/* AI-Powered Card */}
             <div className="bg-white border border-gray-200 rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] w-full max-w-[418px] h-[240px] sm:h-[263px] relative transition-all duration-300 hover:shadow-[0_3.87px_20.05px_-1.94px_rgba(255,66,6,0.25)] group overflow-hidden sm:hover:scale-110">
-              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-start text-left h-full">
+              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-center sm:items-start text-center sm:text-left h-full">
                 {/* Title */}
                 <h3 className={`text-[20px] sm:text-[22px] md:text-[24px] font-bold text-black mb-3 sm:mb-4 py-2 leading-[1.2] ${cairo.className}`}>
                   AI-Powered
@@ -183,7 +183,7 @@ export default function ExamplePage() {
 
             {/* Capture Details Card */}
             <div className="bg-white border border-gray-200 rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] w-full max-w-[418px] h-[240px] sm:h-[263px] relative transition-all duration-300 hover:shadow-[0_3.87px_20.05px_-1.94px_rgba(255,66,6,0.25)] group overflow-hidden sm:hover:scale-110">
-              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-start text-left h-full">
+              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-center sm:items-start text-center sm:text-left h-full">
                 {/* Title */}
                 <h3 className={`text-[20px] sm:text-[22px] md:text-[24px] font-bold text-black mb-3 sm:mb-4 py-2 leading-[1.2] ${cairo.className}`}>
                   Capture Details

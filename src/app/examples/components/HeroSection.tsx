@@ -41,7 +41,7 @@ export const HeroSection = () => {
 
           {/* Description */}
           <p
-            className={`text-[24px] font-light leading-[150%] text-center mx-auto text-black max-w-[900px] mt-1.5 ${inter.className}`}
+            className={`text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-light leading-[150%] text-center mx-auto text-black max-w-[900px] mt-1.5 px-4 sm:px-0 ${inter.className}`}
           >
             Choose an industry below to see how your assistant could answer questions, quality leads, and automate workflows.
           </p>

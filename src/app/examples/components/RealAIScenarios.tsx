@@ -59,7 +59,7 @@ const ExampleCard: React.FC<ExampleCardProps> = ({
         )}
 
         {/* Icon */}
-        <div className="w-[64px] h-[64px] sm:w-[72px] sm:h-[72px] md:w-[75px] md:h-[74px] bg-[#E8E8E8] rounded-[12px] flex items-center justify-center mb-5 sm:mb-6 group-hover:bg-[#FF4206] transition-[colors,box-shadow] duration-300 group-hover:shadow-[0_0px_50px_rgba(255,66,6,0.75)]">
+        <div className="w-[64px] h-[64px] sm:w-[72px] sm:h-[72px] md:w-[75px] md:h-[74px] bg-[#E8E8E8] rounded-[12px] flex items-center justify-center mb-5 sm:mb-6 mx-auto sm:mx-0 group-hover:bg-[#FF4206] transition-[colors,box-shadow] duration-300 group-hover:shadow-[0_0px_50px_rgba(255,66,6,0.75)]">
           <Image
             src={iconLight}
             alt={`${title} icon`}
