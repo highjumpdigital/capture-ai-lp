@@ -41,7 +41,8 @@ const ExampleCard: React.FC<ExampleCardProps> = ({
   const router = useRouter();
 
   const handleTryExample = () => {
-    router.push(`/examples/${slug}`);
+    // Force a full page reload when navigating to the example page
+    window.location.href = `/examples/${slug}`;
   };
 
   return (
