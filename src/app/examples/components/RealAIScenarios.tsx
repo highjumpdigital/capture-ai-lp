@@ -115,7 +115,7 @@ export const RealAIScenarios = () => {
       title: "Promotional Products",
       description: "Find swag, check pricing tiers, and get help with bulk orders.",
       slug: "promotional-products",
-      hasPromotion: true,
+      hasPromotion: false,
     },
     {
       iconLight: guardDark,
@@ -123,7 +123,7 @@ export const RealAIScenarios = () => {
       title: "Insurance",
       description: "Policy guidance, claim status, and personalized coverage options.",
       slug: "insurance",
-      hasPromotion: true,
+      hasPromotion: false,
     },
     {
       iconLight: homeDark,
@@ -131,7 +131,7 @@ export const RealAIScenarios = () => {
       title: "Cleaning Service",
       description: "Book appointments, get quotes, and ask about eco-friendly options.",
       slug: "cleaning-service",
-      hasPromotion: true,
+      hasPromotion: false,
     },
     {
       iconLight: giftDark,
