@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import Chatbot from "./Chatbot";
+import { usePathname } from "next/navigation";
 import linkedIn from "../assets/linkedin_footer.svg"
 import facebook from "../assets/fb_footer.svg"
 import insta from "../assets/insta_footer.svg"
@@ -28,6 +29,8 @@ const socialLinks = [
 ];
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
+  const isExamplePage = pathname?.startsWith('/examples/') && pathname !== '/examples';
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [isMiddleScreen, setIsMiddleScreen] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(false);
@@ -130,7 +133,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <Chatbot />
+      {!isExamplePage && <Chatbot />}
     </div>
   );
 };

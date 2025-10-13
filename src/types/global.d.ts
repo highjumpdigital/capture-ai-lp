@@ -4,6 +4,7 @@ declare global {
       chat: {
         load: (config: any) => Promise<void>;
         open: () => void;
+        close: () => void;
         interact: (payload: any) => void;
         proactive: {
           clear: () => void;

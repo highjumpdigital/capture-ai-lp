@@ -27,7 +27,7 @@ export const HeroSection = () => {
         <div className="flex flex-col justify-center items-center gap-5 sm:gap-7 md:gap-8 text-center mt-4 md:mt-0">
           {/* Tagline Box */}
           <div
-            className={`font-bold text-xs sm:text-[16px] tracking-tight px-4 sm:px-4 py-1.5 sm:py-2 text-[#FF4206] border border-[#FF4206] rounded-full bg-[#FF4206]/5 flex justify-center items-center whitespace-nowrap ${inter.className}`}
+            className={`font-bold text-[16px] leading-[100%] tracking-[-0.03em] uppercase px-4 sm:px-4 py-1.5 sm:py-2 text-[#FF4206] border border-[#FF4206] rounded-full bg-[#FF4206]/5 flex justify-center items-center whitespace-nowrap ${cairo.className}`}
           >
             TRY INDUSTRY-TAILORED DEMOS
           </div>
@@ -41,7 +41,7 @@ export const HeroSection = () => {
 
           {/* Description */}
           <p
-            className={`text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] leading-[1.55] text-center mx-auto text-black max-w-[900px] font-light mt-1.5 ${inter.className}`}
+            className={`text-[24px] font-light leading-[150%] text-center mx-auto text-black max-w-[900px] mt-1.5 ${inter.className}`}
           >
             Choose an industry below to see how your assistant could answer questions, quality leads, and automate workflows.
           </p>

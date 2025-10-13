@@ -17,19 +17,30 @@ const ExampleChatbot: React.FC<ExampleChatbotProps> = ({
     // Only run on client side
     if (typeof window === "undefined") return;
 
-    // If chatbot is already loaded, just handle the auto-open
-    if (window.voiceflow?.chat) {
-      console.log("Chatbot already loaded, handling auto-open");
+    // Check if we need to reload with a different chatbot ID
+    const currentChatbotId = window.v?.c;
+    const needsReload = currentChatbotId && currentChatbotId !== chatbotId;
+
+    if (needsReload) {
+      console.log(`Switching chatbot from ${currentChatbotId} to ${chatbotId}`);
+      // Close current chatbot and clear it
+      if (window.voiceflow?.chat) {
+        window.voiceflow.chat.close();
+      }
+      // Clear the window.v to force reload
+      window.v = undefined;
+    }
+
+    // If chatbot is already loaded with the same ID, just handle the auto-open
+    if (window.voiceflow?.chat && !needsReload && currentChatbotId === chatbotId) {
+      console.log("Chatbot already loaded with same ID, handling auto-open");
       if (autoOpen) {
         console.log("Auto-open requested for existing chatbot");
-        // For examples, always try to open regardless of session storage
         setTimeout(() => {
           console.log("Attempting to open existing chatbot");
           if (window.voiceflow?.chat) {
             window.voiceflow.chat.open();
             console.log("Chatbot opened successfully");
-          } else {
-            console.log("Chatbot not available for opening");
           }
         }, delay || 1000);
       }

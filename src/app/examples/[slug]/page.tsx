@@ -27,13 +27,31 @@ const cairo = Cairo({
 // Example configurations with their respective chatbot IDs
 const exampleConfigs = {
   "promotional-products": {
-    chatbotId: "cHlUzZJx7dC", // Replace with actual chatbot ID
+    chatbotId: "cHlUzZJx7dC",
   },
   "insurance": {
-    chatbotId: "insurance_chatbot_id", // Replace with actual chatbot ID
+    chatbotId: "cBXcC6wcYhe",
   },
   "cleaning-service": {
-    chatbotId: "cleaning_service_chatbot_id", // Replace with actual chatbot ID
+    chatbotId: "cHlUzZJx7dC",
+  },
+  "ecommerce-support": {
+    chatbotId: "cBXcC6wcYhe",
+  },
+  "travel-booking": {
+    chatbotId: "cHlUzZJx7dC",
+  },
+  "healthcare-assistant": {
+    chatbotId: "cBXcC6wcYhe",
+  },
+  "legal-services": {
+    chatbotId: "cHlUzZJx7dC",
+  },
+  "financial-planning": {
+    chatbotId: "cBXcC6wcYhe",
+  },
+  "education-support": {
+    chatbotId: "cHlUzZJx7dC",
   }
 };
 
@@ -41,7 +59,7 @@ export default function ExamplePage() {
   const params = useParams();
   const router = useRouter();
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
-  
+
   const slug = params.slug as string;
   const example = exampleConfigs[slug as keyof typeof exampleConfigs];
 
@@ -82,13 +100,15 @@ export default function ExamplePage() {
       backgroundRepeat: 'no-repeat'
     }}>
       <Header />
-      
-      {/* Example Chatbot - Manual open only */}
+
+      {/* Example Chatbot - User can manually open by clicking widget */}
       <ExampleChatbot
         chatbotId={example.chatbotId}
+        autoOpen={false}
+        delay={1500}
       />
 
-      <main className="pt-24 pb-12 sm:pb-16 lg:pb-20 px-3 sm:px-4 md:px-6 lg:px-8">
+      <main className="pt-[142px] pb-12 sm:pb-16 lg:pb-20 px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="max-w-[1353px] mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12 mt-6 sm:mt-12 lg:mt-16">

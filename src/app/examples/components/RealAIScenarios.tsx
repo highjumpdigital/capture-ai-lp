@@ -208,8 +208,8 @@ export const RealAIScenarios = () => {
         {visibleCount < examples.length && (
           <div className="flex justify-center">
             <FilledButton
-              buttonTitle="Load More"
-              className="h-10 sm:h-12 w-[120px] sm:w-[140px] px-4 sm:px-6 bg-[#FF4206] rounded-lg font-bold text-[13px] sm:text-[16px] text-white hover:bg-[#e63900] transition-colors"
+              buttonTitle="LOAD MORE"
+              className="h-10 lg:h-12 w-[160px] lg:w-[200px] px-6 lg:px-8 bg-[#FF4206] rounded-lg font-bold text-[14px] lg:text-[16px] text-white hover:bg-[#e63900] transition-colors"
               onClick={handleLoadMore}
             />
           </div>
