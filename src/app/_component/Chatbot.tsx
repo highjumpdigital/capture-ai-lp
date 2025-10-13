@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { CHATBOT_CONFIG } from "../_common/constants";
 
 const Chatbot: React.FC = () => {
   useEffect(() => {
@@ -10,7 +11,7 @@ const Chatbot: React.FC = () => {
     if (window.voiceflow) return;
 
     const initializeChatbot = () => {
-      const c = 'cHlUzZJx7dC';
+      const c = CHATBOT_CONFIG.DEFAULT_CHATBOT_ID;
       const f = () =>
         fetch(`https://apis.cptr.ai/chatbot/settings/${c}`)
           .then(r => r.json())

@@ -35,8 +35,8 @@ export const Header = () => {
       // On homepage: smooth scroll to section
       document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     } else {
-      // On other pages: navigate to homepage with hash
-      router.push(`/#${sectionId}`);
+      // On other pages: navigate to homepage with hash using page refresh
+      window.location.href = `/#${sectionId}`;
     }
   };
 
@@ -115,7 +115,7 @@ export const Header = () => {
       {/* Mobile Header */}
       <div className="flex justify-between items-center w-full max-w-[1312px] lg:hidden p-5 h-20 bg-black fixed top-0 left-0 z-40">
         <div 
-          onClick={() => router.push('/')}
+          onClick={() => { window.location.href = '/'; }}
           className="cursor-pointer"
         >
           <Image src={Logo2} alt="Logo" className="w-[50px]" />
@@ -138,7 +138,7 @@ export const Header = () => {
       >
         <div className="p-5 flex justify-between items-center">
           <div 
-            onClick={() => router.push('/')}
+            onClick={() => { window.location.href = '/'; }}
             className="cursor-pointer"
           >
             <Image src={Logo} alt="Logo" width={150} height={15} />
@@ -206,7 +206,7 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
-                router.push('/resellers');
+                window.location.href = '/resellers';
               }, 300);
             }}
             className={`font-bold cursor-pointer transition-colors duration-300 ${
@@ -219,7 +219,7 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
-                router.push('/examples');
+                window.location.href = '/examples';
               }, 300);
             }}
             className={`font-bold cursor-pointer transition-colors duration-300 ${
@@ -232,7 +232,7 @@ export const Header = () => {
             onClick={() => {
               toggleMobileMenu();
               setTimeout(() => {
-                router.push('/book-demo');
+                window.location.href = '/book-demo';
               }, 300);
             }}
             className={`font-bold cursor-pointer transition-colors duration-300 ${
@@ -261,7 +261,7 @@ export const Header = () => {
       >
         <div className="w-full max-w-[1312px] mx-auto lg:flex justify-between items-center">
           <div 
-            onClick={() => router.push('/')}
+            onClick={() => { window.location.href = '/'; }}
             className="cursor-pointer"
           >
             <Image src={Logo} alt="Logo" width={190} height={19} />
@@ -320,7 +320,7 @@ export const Header = () => {
               )}
             </div>
             <div
-              onClick={() => router.push('/resellers')}
+              onClick={() => { window.location.href = '/resellers'; }}
               className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
                 isResellersActive() 
                   ? "text-[#FF4206]" 
@@ -333,7 +333,7 @@ export const Header = () => {
               )}
             </div>
             <div
-              onClick={() => router.push('/examples')}
+              onClick={() => { window.location.href = '/examples'; }}
               className={`font-bold text-4 leading-8 cursor-pointer relative  transition-colors duration-300 ${
                 isExamplesActive() 
                   ? "text-[#FF4206]" 

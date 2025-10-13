@@ -71,7 +71,7 @@ export default function ExamplePage() {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Example Not Found</h1>
           <p className="text-gray-600 mb-6">The requested example could not be found.</p>
           <button
-            onClick={() => router.push('/examples')}
+            onClick={() => { window.location.href = '/examples'; }}
             className="bg-[#FF4206] hover:bg-[#e63900] text-white px-6 py-3 rounded-lg font-bold"
           >
             Back to Examples
@@ -90,7 +90,7 @@ export default function ExamplePage() {
   };
 
   const handleBackToExamples = () => {
-    router.push('/examples');
+    window.location.href = '/examples';
   };
 
   return (

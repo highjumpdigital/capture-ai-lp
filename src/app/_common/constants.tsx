@@ -589,7 +589,7 @@ export const EndlessFeaturesData = [
   },
   {
     title: "Showcase Photos / Images Of Your Projects",
-    subtitle: "Your Chatbot Agent;",
+    subtitle: "Your chatbot agent Can showcase photos and images of your choosing, for example;",
     list: [
       "Photos of your completed work",
       "Before and after shots",
@@ -600,7 +600,7 @@ export const EndlessFeaturesData = [
   },
   {
     title: "Ask Qualifying Questions",
-    subtitle: "Your Chatbot Agent;",
+    subtitle: "Your Chatbot Agent Can;",
     list: [
       "Ask qualifying questions first to determine the best response.",
       "Ask questions and collect contact details before serving the user."
@@ -612,4 +612,8 @@ export const EndlessFeaturesData = [
 
 export const AUTH_URLS = {
   SIGN_IN: "https://app.cptr.ai/sign-in"
+} as const;
+
+export const CHATBOT_CONFIG = {
+  DEFAULT_CHATBOT_ID: "cHnIT11hLbm"
 } as const;
