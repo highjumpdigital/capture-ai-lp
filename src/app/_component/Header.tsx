@@ -47,12 +47,12 @@ export const Header = () => {
 
   // Function to check if resellers page is active
   const isResellersActive = () => {
-    return pathname === '/resellers';
+    return pathname === '/resellers' || pathname.startsWith('/resellers/');
   };
 
   // Function to check if examples page is active
   const isExamplesActive = () => {
-    return pathname === '/examples';
+    return pathname === '/examples' || pathname.startsWith('/examples/');
   };
 
   // Function to check if book demo page is active
