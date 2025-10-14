@@ -564,7 +564,7 @@ export const EndlessFeaturesData = [
       "Can ask qualifying questions in order to calculate the correct pricing.",
       "Will present the user with a form to capture their details and secure the lead."
     ],
-    vedioUrl:"/capture-1.mp4"
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-1.mp4"
   },
   {
     title: "Present Company Materials",
@@ -574,7 +574,7 @@ export const EndlessFeaturesData = [
       "Will present in a nicely structured carousel with a thumbnail and download button.",
       "Has the ability to read the contents of the documents and answer the users queries."
     ],
-    vedioUrl:"/capture-2.mp4"
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-2.mp4"
   },
   {
     title: "Present your products",
@@ -585,7 +585,7 @@ export const EndlessFeaturesData = [
       "Presents a nicely structured carousel of products with thumbnails and direct links to the page.",
       "Has the ability to access the product page in order to answer a user's queries."
     ],
-    vedioUrl:"/capture-3.mp4"
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-3.mp4"
   },
   {
     title: "Showcase Photos / Images Of Your Projects",
@@ -596,7 +596,7 @@ export const EndlessFeaturesData = [
       "Photos of your premises",
       "And more…"
     ],
-    vedioUrl:"/capture-4.mp4"
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-4.mp4"
   },
   {
     title: "Ask Qualifying Questions",
@@ -605,7 +605,7 @@ export const EndlessFeaturesData = [
       "Ask qualifying questions first to determine the best response.",
       "Ask questions and collect contact details before serving the user."
     ],
-    vedioUrl:"/capture-5.mp4"
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-5.mp4"
   },
   
 ];

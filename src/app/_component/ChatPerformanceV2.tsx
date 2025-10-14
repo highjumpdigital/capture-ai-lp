@@ -66,15 +66,14 @@ export const ChatPerformanceV2 = () => {
                       src={feature.vedioUrl}
                       className="w-[200px] h-[400px] sm:w-[250px] sm:h-[500px] md:w-[280px] md:h-[560px] lg:w-[326px] lg:h-[642px] relative top-[10px] md:top-[20px] rounded-lg object-contain shadow-md mt-5"
                       autoPlay
-                      loop
                       muted
                       playsInline
                     ></video>
                   </div>
 
                   {/* Right Section (Feature Text or Content) */}
-                  <div className="md:basis-[60%] relative z-10 flex flex-col w-full md:w-1/2 justify-center px-4 pt-4 md:pt-6 md:px-6 ">
-                    <h3 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] font-bold text-black leading-[36px] sm:leading-[44px] md:leading-[52px] lg:leading-[64px] uppercase mb-2 Cairo">
+                  <div className="md:basis-[60%] relative z-10 flex flex-col w-full md:w-1/2 justify-start px-4 pt-4 md:pt-6 md:px-6 ">
+                    <h3 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] font-bold text-black leading-[36px] sm:leading-[44px] md:leading-[52px] lg:leading-[64px] uppercase mb-2 Cairo pt-12">
                       {feature.title}
                     </h3>
                     <p className="text-[#000000CC] text-[14px] sm:text-[15px] md:text-[16px] Inter font-medium leading-relaxed mb-3 md:mb-4 mt-2">

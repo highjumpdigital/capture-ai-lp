@@ -11,6 +11,7 @@ interface PlanCardsContainerProps {
     textClass: string;
     image: StaticImageData | string;
     planData: { title: string; flag: boolean }[];
+    planDescription: string;
     buttonTitle?: string;
     onClick?: () => void;
   }[];
