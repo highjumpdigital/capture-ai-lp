@@ -1,7 +1,7 @@
 // src/app/examples/[slug]/page.tsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Header } from "../../_component/Header";
 import { Footer } from "../../_component/Footer";
@@ -64,6 +64,33 @@ export default function ExamplePage() {
   const slug = params.slug as string;
   const example = exampleConfigs[slug as keyof typeof exampleConfigs];
 
+  // Prevent scrolling on mobile devices
+  useEffect(() => {
+    // Store original overflow values
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyHeight = document.body.style.height;
+    const originalHtmlHeight = document.documentElement.style.height;
+    const originalBodyPosition = document.body.style.position;
+
+    // Prevent scrolling
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.height = '100dvh';
+    document.documentElement.style.height = '100dvh';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+
+    // Cleanup function to restore original values when component unmounts
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.height = originalBodyHeight;
+      document.documentElement.style.height = originalHtmlHeight;
+      document.body.style.position = originalBodyPosition;
+    };
+  }, []);
+
   if (!example) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -94,11 +121,13 @@ export default function ExamplePage() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-[#F5F5F5] relative overflow-hidden" style={{
+    <div className="flex flex-col bg-[#F5F5F5] relative overflow-hidden" style={{
+      height: '100dvh',
       backgroundImage: 'url(/background/image.svg)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
+      overscrollBehavior: 'none'
     }}>
       <Header />
 
@@ -109,7 +138,7 @@ export default function ExamplePage() {
         delay={1500}
       />
 
-      <main className="flex-1 flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8">
+      <main className="flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 h-[calc(100dvh-100px)]">
         <div className="max-w-[1353px] mx-auto w-full">
 
           <div className="text-center">
@@ -171,63 +200,6 @@ export default function ExamplePage() {
             </div>
           </div>
 
-{/* 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 place-items-center sm:place-items-stretch max-w-[1400px] mx-auto">
-
-            <div className="bg-white border border-gray-200 rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] w-full max-w-[418px] h-[240px] sm:h-[263px] relative transition-all duration-300 hover:shadow-[0_3.87px_20.05px_-1.94px_rgba(255,66,6,0.25)] group overflow-hidden sm:hover:scale-110">
-              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-center sm:items-start text-center sm:text-left h-full">
-
-                <h3 className={`text-[20px] sm:text-[22px] md:text-[24px] font-bold text-black mb-3 sm:mb-4 py-2 leading-[1.2] ${cairo.className}`}>
-                  Ask Anything
-                </h3>
-
-
-                <p className={`text-black/80 mb-6 sm:mb-8 leading-[1.6] text-[14px] sm:text-[15px] md:text-[16px] ${inter.className}`}>
-                  Get instant answers to your questions
-                </p>
-
-
-                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center flex-shrink-0 aspect-square" style={{ backgroundColor: '#FF42060F' }}>
-                  <Image src={comment} alt="comment" width={24} height={24} className="sm:w-8 sm:h-8 lg:w-10 lg:h-10 flex-shrink-0" />
-                </div>
-              </div>
-            </div>
-
-
-            <div className="bg-white border border-gray-200 rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] w-full max-w-[418px] h-[240px] sm:h-[263px] relative transition-all duration-300 hover:shadow-[0_3.87px_20.05px_-1.94px_rgba(255,66,6,0.25)] group overflow-hidden sm:hover:scale-110">
-              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-center sm:items-start text-center sm:text-left h-full">
-                <h3 className={`text-[20px] sm:text-[22px] md:text-[24px] font-bold text-black mb-3 sm:mb-4 py-2 leading-[1.2] ${cairo.className}`}>
-                  AI-Powered
-                </h3>
-
-                <p className={`text-black/80 mb-6 sm:mb-8 leading-[1.6] text-[14px] sm:text-[15px] md:text-[16px] ${inter.className}`}>
-                  Smart responses powered by advanced AI
-                </p>
-
-                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center flex-shrink-0 aspect-square" style={{ backgroundColor: '#FF42060F' }}>
-                  <Image src={starIcon} alt="star" width={24} height={24} className="sm:w-8 sm:h-8 lg:w-10 lg:h-10 flex-shrink-0" />
-                </div>
-              </div>
-            </div>
-
-
-            <div className="bg-white border border-gray-200 rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] w-full max-w-[418px] h-[240px] sm:h-[263px] relative transition-all duration-300 hover:shadow-[0_3.87px_20.05px_-1.94px_rgba(255,66,6,0.25)] group overflow-hidden sm:hover:scale-110">
-              <div className="border-b-[8px] border-[#FF4206] rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[30px] p-4 sm:p-6 md:p-8 lg:p-[45px_38px_45px_38px] transition-all duration-300 flex flex-col items-center sm:items-start text-center sm:text-left h-full">
-                <h3 className={`text-[20px] sm:text-[22px] md:text-[24px] font-bold text-black mb-3 sm:mb-4 py-2 leading-[1.2] ${cairo.className}`}>
-                  Capture Details
-                </h3>
-
-                <p className={`text-black/80 mb-6 sm:mb-8 leading-[1.6] text-[14px] sm:text-[15px] md:text-[16px] ${inter.className}`}>
-                  Effective details capture capabilities
-                </p>
-
-
-                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center flex-shrink-0 aspect-square" style={{ backgroundColor: '#FF42060F' }}>
-                  <Image src={handIcon} alt="hand" width={24} height={24} className="sm:w-8 sm:h-8 lg:w-10 lg:h-10 flex-shrink-0" />
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </main>
 
