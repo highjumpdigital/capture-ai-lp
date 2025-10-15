@@ -19,7 +19,8 @@ body {
 /* For example pages - no scroll */
 .no-scroll {
   overflow: hidden;
-  height: 100vh;
+  height: 100vh; /* Fallback for older browsers */
+  height: 100dvh; /* Dynamic viewport height - excludes browser UI on mobile */
 }
 
 /* Arrow animation pointing to bottom-right chatbot */
