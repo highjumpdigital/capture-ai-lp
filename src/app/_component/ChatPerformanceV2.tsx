@@ -3,9 +3,10 @@ import Image from "next/image";
 import { MdArrowForward } from "react-icons/md";
 import { FilledButton } from "./FilledButton";
 import { ChatPerformancedata, constants, EndlessFeaturesData } from "../_common/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import EndlessFeatureBG from "../assets/EndlessFeature.svg";
+import MobileEndlessFeatureBG from "../assets/mobile-featuresbg.svg";
 import { useRouter } from "next/navigation";
 import TickIcon from "../assets/tick-square.svg";
 
@@ -13,7 +14,33 @@ import TickIcon from "../assets/tick-square.svg";
 
 export const ChatPerformanceV2 = () => {
   const [selectedOption, setSelectedOption] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const router = useRouter();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on mount
+    checkMobile();
+    
+    // Add listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
    
   const handleBookDemo = () => {
     router.push('/book-demo');
@@ -40,19 +67,21 @@ export const ChatPerformanceV2 = () => {
         <div className="relative">
           {EndlessFeaturesData.map((feature, index) => {
             const isLast = index === EndlessFeaturesData.length - 1;
+            const scrollOffset = isMobile && scrollY > 100 ? Math.min(scrollY * 0.05, 30) : 0;
             return (
               <div
                 key={index}
-                className={`${isLast ? 'relative md:-top-8' : 'sticky top-[64px] sm:top-[80px] md:top-[100px]'} w-full mb-6 sm:mb-8`}
+                className={`${isLast ?  'relative md:-top-8' : 'sticky top-[64px] sm:top-[80px] md:top-[100px]'} w-full mb-6 sm:mb-8 transition-transform duration-300 ease-out`}
                 style={{
                   zIndex: index + 1,
+                  transform: `translateY(${isLast&&isMobile ? 6: scrollOffset }px)`,
                 }}
               >
                 <div
                   className="relative flex flex-col md:flex-row w-full gap-4 overflow-hidden rounded-[4px] bg-cover bg-center border-2 border-[#E4E6EC] bg-white mb-5"
                   style={{
-                    backgroundImage: `url(${EndlessFeatureBG.src})`,
-                    backgroundSize: 'auto',
+                    backgroundImage: `url(${isMobile ? MobileEndlessFeatureBG.src : EndlessFeatureBG.src})`,
+                    backgroundSize: "auto",
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'
                   }}
@@ -72,7 +101,8 @@ export const ChatPerformanceV2 = () => {
                   </div>
 
                   {/* Right Section (Feature Text or Content) */}
-                  <div className="md:basis-[60%] relative z-10 flex flex-col w-full md:w-1/2 justify-start px-4 pt-4 md:pt-6 md:px-6 ">
+                  <div className={`md:basis-[60%] relative z-10 flex flex-col w-full md:w-1/2  px-4 pt-4 md:pt-6 md:px-6 ${isMobile ? 'min-h-[460px] justify-between' : 'justify-start'}`}>
+                  <div >
                     <h3 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] font-bold text-black leading-[36px] sm:leading-[44px] md:leading-[52px] lg:leading-[64px] uppercase mb-2 Cairo pt-12">
                       {feature.title}
                     </h3>
@@ -95,7 +125,7 @@ export const ChatPerformanceV2 = () => {
                         </div>
                       ))}
                     </div>
-
+                    </div>
                     <FilledButton
                       buttonTitle="BOOK A DEMO"
                       className="text-white h-10 w-full sm:w-[150px] bg-[#FF4206] Cairo text-[14px] sm:text-[16px] leading-4 font-bold mb-5 sm:mb-0"
