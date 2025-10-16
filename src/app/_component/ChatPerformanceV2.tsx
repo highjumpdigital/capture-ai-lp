@@ -3,9 +3,10 @@ import Image from "next/image";
 import { MdArrowForward } from "react-icons/md";
 import { FilledButton } from "./FilledButton";
 import { ChatPerformancedata, constants, EndlessFeaturesData } from "../_common/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import EndlessFeatureBG from "../assets/EndlessFeature.svg";
+import MobileEndlessFeatureBG from "../assets/mobile-featuresbg.svg";
 import { useRouter } from "next/navigation";
 import TickIcon from "../assets/tick-square.svg";
 
@@ -13,7 +14,33 @@ import TickIcon from "../assets/tick-square.svg";
 
 export const ChatPerformanceV2 = () => {
   const [selectedOption, setSelectedOption] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const router = useRouter();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on mount
+    checkMobile();
+    
+    // Add listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
    
   const handleBookDemo = () => {
     router.push('/book-demo');
@@ -40,19 +67,21 @@ export const ChatPerformanceV2 = () => {
         <div className="relative">
           {EndlessFeaturesData.map((feature, index) => {
             const isLast = index === EndlessFeaturesData.length - 1;
+            const scrollOffset = isMobile && scrollY > 100 ? Math.min(scrollY * 0.05, 30) : 0;
             return (
               <div
                 key={index}
-                className={`${isLast ? 'relative md:-top-8' : 'sticky top-[64px] sm:top-[80px] md:top-[100px]'} w-full mb-6 sm:mb-8`}
+                className={`${isLast ? 'relative md:-top-8' : 'sticky top-[64px] sm:top-[80px] md:top-[100px]'} w-full mb-6 sm:mb-8 transition-transform duration-300 ease-out`}
                 style={{
                   zIndex: index + 1,
+                  transform: `translateY(${scrollOffset}px)`,
                 }}
               >
                 <div
                   className="relative flex flex-col md:flex-row w-full gap-4 overflow-hidden rounded-[4px] bg-cover bg-center border-2 border-[#E4E6EC] bg-white mb-5"
                   style={{
-                    backgroundImage: `url(${EndlessFeatureBG.src})`,
-                    backgroundSize: 'auto',
+                    backgroundImage: `url(${isMobile ? MobileEndlessFeatureBG.src : EndlessFeatureBG.src})`,
+                    backgroundSize: "auto",
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'
                   }}
