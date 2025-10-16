@@ -71,10 +71,10 @@ export const ChatPerformanceV2 = () => {
             return (
               <div
                 key={index}
-                className={`${isLast ? 'relative md:-top-8' : 'sticky top-[64px] sm:top-[80px] md:top-[100px]'} w-full mb-6 sm:mb-8 transition-transform duration-300 ease-out`}
+                className={`${isLast ?  'relative md:-top-8' : 'sticky top-[64px] sm:top-[80px] md:top-[100px]'} w-full mb-6 sm:mb-8 transition-transform duration-300 ease-out`}
                 style={{
                   zIndex: index + 1,
-                  transform: `translateY(${scrollOffset}px)`,
+                  transform: `translateY(${isLast&&isMobile ? 6: scrollOffset }px)`,
                 }}
               >
                 <div
@@ -101,7 +101,8 @@ export const ChatPerformanceV2 = () => {
                   </div>
 
                   {/* Right Section (Feature Text or Content) */}
-                  <div className="md:basis-[60%] relative z-10 flex flex-col w-full md:w-1/2 justify-start px-4 pt-4 md:pt-6 md:px-6 ">
+                  <div className={`md:basis-[60%] relative z-10 flex flex-col w-full md:w-1/2  px-4 pt-4 md:pt-6 md:px-6 ${isMobile ? 'min-h-[460px] justify-between' : 'justify-start'}`}>
+                  <div >
                     <h3 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] font-bold text-black leading-[36px] sm:leading-[44px] md:leading-[52px] lg:leading-[64px] uppercase mb-2 Cairo pt-12">
                       {feature.title}
                     </h3>
@@ -124,7 +125,7 @@ export const ChatPerformanceV2 = () => {
                         </div>
                       ))}
                     </div>
-
+                    </div>
                     <FilledButton
                       buttonTitle="BOOK A DEMO"
                       className="text-white h-10 w-full sm:w-[150px] bg-[#FF4206] Cairo text-[14px] sm:text-[16px] leading-4 font-bold mb-5 sm:mb-0"
