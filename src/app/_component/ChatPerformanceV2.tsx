@@ -93,7 +93,8 @@ export const ChatPerformanceV2 = () => {
                     ></div>
                     <video
                       src={feature.vedioUrl}
-                      className="w-[200px] h-[400px] sm:w-[250px] sm:h-[500px] md:w-[280px] md:h-[560px] lg:w-[326px] lg:h-[642px] relative top-[10px] md:top-[20px] rounded-lg object-contain shadow-md mt-5"
+                      className="w-[200px] h-[392px] sm:w-[250px] sm:h-[500px] md:w-[280px] md:h-[560px] lg:w-[326px] lg:h-[642px] relative top-[10px] md:top-[20px] object-contain shadow-md mt-5"
+                      style={{ borderRadius: '6px' }}
                       autoPlay
                       muted
                       playsInline
