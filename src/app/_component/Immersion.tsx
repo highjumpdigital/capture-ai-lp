@@ -1,8 +1,7 @@
 import Image from "next/image";
 import React from "react";
-
-import ImmersionImage from "../assets/Chatbot preview.svg";
 import { constants, Immersiondata } from "../_common/constants";
+import ImmersionImage from "../assets/Chatbot preview.svg";
 
 export const Immersion = () => {
   return (
@@ -11,7 +10,7 @@ export const Immersion = () => {
 
       <div>
         <div className="text-center lg:text-left text-[34px]  lg:text-[64px] mt-[10px] ml-[-3px]  leading-[30px] ml-[-2px]lg:leading-[64px] text-[#FF4206] ">
-          {constants.immersion.fullimmersion} <br /> <br /> 
+          {constants.immersion.fullimmersion} <br /> <br className="hidden sm:block" /> 
           <span className="font-bold text-black  "
         
           >
@@ -21,7 +20,8 @@ export const Immersion = () => {
         </div>
 
         <div className="flex justify-start items-center mt-[50px]">
-          <Image src={ImmersionImage} alt="ImmersionImage" />
+          {/* <Image src={ImmersionImage} alt="ImmersionImage" /> */}
+          <video src="https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/full-immersion-v2.mp4" autoPlay muted playsInline className="w-full h-auto min-h-[200px] sm:max-w-[790px] sm:h-[530px] object-cover rounded-[14px]"/>
         </div>
       </div>
       <div className="">

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { CHATBOT_CONFIG } from "../_common/constants";
 
 const Chatbot: React.FC = () => {
   useEffect(() => {
@@ -10,7 +11,7 @@ const Chatbot: React.FC = () => {
     if (window.voiceflow) return;
 
     const initializeChatbot = () => {
-      const c = 'cHnIT11hLbm';
+      const c = CHATBOT_CONFIG.DEFAULT_CHATBOT_ID;
       const f = () =>
         fetch(`https://apis.cptr.ai/chatbot/settings/${c}`)
           .then(r => r.json())
@@ -22,8 +23,8 @@ const Chatbot: React.FC = () => {
         const launchPayload = g.launchPayload || {};
         
         if (g.ga4MeasurementId && window.gtag) {
-          window.gtag('get', g.ga4MeasurementId, 'client_id', (clientId: string) => {
-            window.gtag('get', g.ga4MeasurementId, 'session_id', (sessionId: string) => {
+          window.gtag!('get', g.ga4MeasurementId, 'client_id', (clientId: string) => {
+            window.gtag!('get', g.ga4MeasurementId, 'session_id', (sessionId: string) => {
               launchPayload.ga4_client_id = clientId;
               launchPayload.ga4_session_id = sessionId;
               loadChatbotWidget();
@@ -70,7 +71,7 @@ const Chatbot: React.FC = () => {
                 new FormData(form as HTMLFormElement).forEach((v, k) => {
                   fd[k] = v;
                 });
-                window.voiceflow.chat.interact({ type: 'complete', payload: fd });
+                window.voiceflow!.chat.interact({ type: 'complete', payload: fd });
               });
 
               el.appendChild(form);
@@ -79,41 +80,47 @@ const Chatbot: React.FC = () => {
 
           const script = document.createElement('script');
           script.onload = () => {
-            window.voiceflow.chat.load({
-              verify: { projectID: window.v.p },
+            window.voiceflow!.chat.load({
+              verify: { projectID: window.v!.p },
               url: 'https://general-runtime.voiceflow.com',
-              versionID: window.v.s,
+              versionID: window.v!.s,
               voice: { url: 'https://runtime-api.voiceflow.com' },
               launch: {
                 event: {
                   type: 'launch',
-                  payload: window.v.l,
+                  payload: window.v!.l,
                 },
               },
               assistant: {
-                ...window.v.as,
+                ...window.v!.as,
                 extensions: x,
               },
             }).then(() => {
-              if (window.v.a) {
+              // Auto-opening disabled - commenting out auto-popup functionality
+              /*
+              if (window.v!.a) {
                 const k = `chatbot_popup_shown_${c}`;
                 const h = sessionStorage.getItem(k);
-                
+
                 if (!h) {
                   sessionStorage.setItem(k, 'true');
-                  setTimeout(() => window.voiceflow.chat.open(), window.v.d || 10000);
+                  setTimeout(() => window.voiceflow!.chat.open(), window.v!.d || 10000);
                 }
               }
-              
-              if (window.v.t && window.v.m) {
+              */
+
+              // Proactive messages disabled - commenting out proactive functionality
+              /*
+              if (window.v!.t && window.v!.m) {
                 setTimeout(() => {
-                  window.voiceflow.chat.proactive.clear();
-                  window.voiceflow.chat.proactive.push({ 
-                    type: 'text', 
-                    payload: { message: window.v.m }
+                  window.voiceflow!.chat.proactive.clear();
+                  window.voiceflow!.chat.proactive.push({
+                    type: 'text',
+                    payload: { message: window.v!.m }
                   });
-                }, window.v.md || 3000);
+                }, window.v!.md || 3000);
               }
+              */
             });
           };
           script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';

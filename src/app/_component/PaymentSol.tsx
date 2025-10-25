@@ -1,3 +1,4 @@
+"use client"
 import { PlanCard } from "@/app/_component/PlanCard";
 import { PlanDetails } from "@/app/_component/PlanDetails";
 import { useState, useEffect, useRef } from "react";
@@ -133,7 +134,7 @@ export const PaymentSol = () => {
   };
 
   return (
-    <div id="solutions" className="bg-[#F2F5F7] px-[20px] xl:px-[0px] pt-[70px] pb-[50px] lg:py-[100px]">
+    <div id="solutions" className="bg-[#F2F5F7] px-[20px] xl:px-[0px]  pb-[50px] lg:py-[100px]">
       <div className="max-w-[1311px] mx-auto">
         <div className="text-[24px] lg:text-[48px] leading-6 lg:leading-[48px] Cairo text-center 2xl:text-left text-orange font-normal">
           {PAYMENT_CONSTANTS.HEADING.FLEXIBLE}
@@ -145,7 +146,7 @@ export const PaymentSol = () => {
         <div className="relative">
           <div 
             ref={scrollContainerRef}
-            className={`flex gap-[24px] mt-[48px] lg:mt-[100px]   justify-between items-center flex-nowrap ${
+            className={`flex gap-[24px] mt-[48px] lg:mt-[100px]   justify-between items-center flex-nowrap max-w-[980px] mx-auto 2xl:mx-0 2xl:max-w-auto ${
               isMobile 
                 ? 'justify-start overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' 
                 : 'justify-center flex-wrap xl:flex-nowrap'

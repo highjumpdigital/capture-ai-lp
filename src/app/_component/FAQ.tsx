@@ -1,4 +1,4 @@
-// faq.tsx
+"use client"
 import React, { useState, useEffect } from "react";
 import { MdArrowForward } from "react-icons/md";
 import { MdOutlineArrowUpward } from "react-icons/md";

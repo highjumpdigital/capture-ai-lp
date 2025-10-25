@@ -446,7 +446,9 @@ export const constants = {
     SOLUTIONS: "SOLUTIONS",
     FAQ: "FAQ'S",
     RESELLERS: "RESELLERS",
+    EXAMPLES: "EXAMPLES",
     login: "LOG IN",
+    BOOKDEMO: "BOOK A DEMO",
   },
   buttons: {
     getStarted: "GET STARTED",
@@ -553,7 +555,65 @@ export const cards = [
     text: "All transcripts will be emailed to you, you will also be provided with a dashboard login to view historical transcripts."
   },
 ];
+export const EndlessFeaturesData = [
+  {
+    title: "Provide Pricing Quotes & Capture Quote Requests",
+    subtitle: "Your Chatbot Agent;",
+    list: [
+      "Can calculate complex pricing structures provided by you in natural language instructions.",
+      "Can ask qualifying questions in order to calculate the correct pricing.",
+      "Will present the user with a form to capture their details and secure the lead."
+    ],
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-1.mp4"
+  },
+  {
+    title: "Present Company Materials",
+    subtitle: "Your Chatbot Agent;",
+    list: [
+      "Can present brochures and documents like sales aids or package PDF’s. ",
+      "Will present in a nicely structured carousel with a thumbnail and download button.",
+      "Has the ability to read the contents of the documents and answer the users queries."
+    ],
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-2-v2.mp4"
+  },
+  {
+    title: "Present your products",
+    subtitle: "Your Chatbot Agent;",
+    list: [
+      "Can present your products and product ranges.",
+      "Handles up to 5000 imported products.",
+      "Presents a nicely structured carousel of products with thumbnails and direct links to the page.",
+      "Has the ability to access the product page in order to answer a user's queries."
+    ],
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-3-v2.mp4"
+  },
+  {
+    title: "Showcase Photos / Images Of Your Projects",
+    subtitle: "Your chatbot agent Can showcase photos and images of your choosing, for example;",
+    list: [
+      "Photos of your completed work",
+      "Before and after shots",
+      "Photos of your premises",
+      "And more…"
+    ],
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-4.mp4"
+  },
+  {
+    title: "Ask Qualifying Questions",
+    subtitle: "Your Chatbot Agent Can;",
+    list: [
+      "Ask qualifying questions first to determine the best response.",
+      "Ask questions and collect contact details before serving the user."
+    ],
+    vedioUrl:"https://storage.googleapis.com/capture-ai-public-videos-xgh9geym/lp-videos/feature-5.mp4"
+  },
+  
+];
 
 export const AUTH_URLS = {
   SIGN_IN: "https://app.cptr.ai/sign-in"
+} as const;
+
+export const CHATBOT_CONFIG = {
+  DEFAULT_CHATBOT_ID: "cHnIT11hLbm"
 } as const;
