@@ -28,13 +28,13 @@ const cairo = Cairo({
 // Example configurations with their respective chatbot IDs
 const exampleConfigs = {
   "promotional-products": {
-    chatbotId: "cHlUzZJx7dC",
+    chatbotId: "ciWB2ED9HWT",
   },
   "insurance": {
     chatbotId: "cBXcC6wcYhe",
   },
   "cleaning-service": {
-    chatbotId: "cHlUzZJx7dC",
+    chatbotId: "cBXcC6wcYhe",
   },
   "ecommerce-support": {
     chatbotId: "cBXcC6wcYhe",
