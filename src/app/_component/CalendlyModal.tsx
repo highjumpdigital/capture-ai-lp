@@ -15,7 +15,7 @@ interface CalendlyModalProps {
 export const CalendlyModal: React.FC<CalendlyModalProps> = ({
   isOpen,
   onClose,
-  calendlyUrl = "https://calendly.com/daniel-cptr/capture-ai-onboarding-call",
+  calendlyUrl = "https://calendly.com/alex-cptr/30min",
 }) => {
   const [mounted, setMounted] = useState(false);
   const [closing, setClosing] = useState(false);
